@@ -6,16 +6,14 @@ public abstract class EstadoDeAldeano {
 
     public abstract void ganarOro(Aldeano aldeano);
 
-    public abstract EstadoDeAldeano cambiar();
-
     public EstadoDeAldeano trabajando(){
         return new EstaTrabajando();
     }
 
     public abstract boolean estaTrabajando();
 
-    public abstract EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion)
-    }
+    public abstract EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion);
+
 }
 
 
