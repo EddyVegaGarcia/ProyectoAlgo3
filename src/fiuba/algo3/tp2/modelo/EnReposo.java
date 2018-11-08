@@ -13,8 +13,17 @@ public class EnReposo extends EstadoDeAldeano {
     }
 
     @Override
-    public String getEstado() {
-        return "EnReposo";
+    public boolean estaTrabajando() {
+        return false;
+    }
+
+    @Override
+    public EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion) {
+        if(!edificio.estaConstruido()) {
+            edificio.iniciarConstruccion();
+            return new EstaTrabajando();
+        }
+        throw new EdificioConstruidoException();
     }
 }
 

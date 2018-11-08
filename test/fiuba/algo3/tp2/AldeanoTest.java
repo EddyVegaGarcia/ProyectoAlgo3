@@ -27,13 +27,14 @@ public class AldeanoTest {
        Aldeano aldeano = new Aldeano(posicionAldeano);
        Cuartel unCuartel = new Cuartel(posicionCuartel);
 
+        Assert.assertFalse(aldeano.estaTrabajando());
 
         mapa.colocarUnidad(aldeano,posicion1);
         mapa.colocarEdificio(unCuartel, posicion2);
 
         aldeano.construir(unCuartel);
 
-        Assert.assertTrue(true);
+        Assert.assertTrue(aldeano.estaTrabajando());
 
     }
 

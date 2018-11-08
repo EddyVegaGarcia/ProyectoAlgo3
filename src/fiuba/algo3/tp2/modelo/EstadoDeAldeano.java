@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import static fiuba.algo3.tp2.modelo.Constantes.*;
+
 public abstract class EstadoDeAldeano {
 
     public abstract void ganarOro(Aldeano aldeano);
@@ -10,7 +12,10 @@ public abstract class EstadoDeAldeano {
         return new EstaTrabajando();
     }
 
-    public abstract String getEstado();
+    public abstract boolean estaTrabajando();
+
+    public abstract EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion)
+    }
 }
 
 

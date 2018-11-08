@@ -8,6 +8,7 @@ public class Aldeano extends Unidad {
 
     public int oro;
     public EstadoDeAldeano estado;
+    int turnosConstruccion;
 
 
     public Aldeano(ArrayList<Posicion> unasPosiciones) {
@@ -17,17 +18,21 @@ public class Aldeano extends Unidad {
         this.estado = new EnReposo();
         this.posiciones = unasPosiciones;
         this.tamanio = TAMANIO_UNIDAD;
+        this.turnosConstruccion = 0;
     }
 
     public void construir(Edificio edificio)  {
-        estado.construir(edificio)
+        this.turnosConstruccion++;
+        this.estado = estado.construir(edificio,turnosConstruccion);
+        if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
+            this.turnosConstruccion = 0;
+        }
     }
 
 
     public void reparar(Edificio edificio) {
         this.estado = estado.trabajando();
         edificio.reparar();
-
     }
 
     public int obtenerOroTotal() {
@@ -41,8 +46,7 @@ public class Aldeano extends Unidad {
     public void ganarMonedas(){ estado.ganarOro(this);
     }
 
-
-    public EstadoDeAldeano obtenerEstado() {
-        return estado;
+    public boolean estaTrabajando() {
+        return estado.estaTrabajando();
     }
 }

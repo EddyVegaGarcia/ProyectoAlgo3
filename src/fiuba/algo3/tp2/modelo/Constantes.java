@@ -51,7 +51,7 @@ public class Constantes {
     public static int VIDA_MAXIMA_CASTILLO = 1000;
 
     /*TURNOS*/
-    public static int TURNOS_CONSTRUCCION = 3;
+    public static int TURNOS_CONSTRUCCION_MAXIMO = 3;
     static final int VIDA_REPARACION = 15;
 
 
