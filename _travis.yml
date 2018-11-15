@@ -13,5 +13,9 @@ after_success:
 notifications:
   email:
     recipients:
-      - jbustamante@fi.uba.ar
+      - brenda.aylas95@gmail.com
+      - gretty.nazario@gmail.com
+      - nuniezvictor@gmail.com
+      - eavg_93@outlook.com
+      - eugenioy@gmail.com
     on_failure: always
