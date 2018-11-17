@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-public class EnReposo implements EstadoDeAldeano {
+public class EnReposo extends EstadoDeAldeano {
 
     @Override
     public void ganarOro(Aldeano aldeano){
