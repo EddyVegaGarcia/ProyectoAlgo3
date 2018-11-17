@@ -6,27 +6,32 @@ import static junit.framework.TestCase.assertTrue;
 
 public class AldeanoConstruccionTest {
 
+    static final int DANIO = 30;
+    static final int VIDAPLAZA = 450;
+    static final int VIDACUARTEL = 250;
+    static final int VIDACASTILLO = 1000;
+
     @Test
     public void AldeanoConstruyePlazaCentral() {
 
         Aldeano aldeano = new Aldeano("3,3");
         PlazaCentral plaza = new PlazaCentral();
-        /*Tarda 3 turnos en crearse */
+
+        /* La plaza no tiene vida y no existe por lo que no puede crear unidades*/
+        assertEquals(0, plaza.obtenerVida());
+
         aldeano.construir(plaza);
+        aldeano.ganarMonedas();
+
         aldeano.construir(plaza);
+        aldeano.ganarMonedas();
+
         aldeano.construir(plaza);
+        aldeano.ganarMonedas();
 
-        assertTrue(plaza.estaConstruido());
+        assertEquals(VIDAPLAZA, plaza.obtenerVida());
 
-        try{
-            aldeano.construir(plaza);
-        }
-        catch (RuntimeException YaEstaConstruidoError){
-            System.out.println("Ya esta construido");
-        }
-
-        /* No suma Oro*/
-
+        /* Aldeano No suma Oro*/
         assertEquals(0,aldeano.obtenerOroTotal());
     }
 
@@ -36,20 +41,41 @@ public class AldeanoConstruccionTest {
         Aldeano aldeano = new Aldeano("4,3");
         Cuartel cuartel = new Cuartel();
 
-        aldeano.construir(cuartel);
-        aldeano.construir(cuartel);
-        aldeano.construir(cuartel);
+        /* El cuartelno tiene vida y no existe por lo que no puede crear unidades*/
+        assertEquals(0, cuartel.obtenerVida());
 
-        assertTrue(cuartel.estaConstruido());
 
-        try{
-            aldeano.construir(cuartel);
-        }
-        catch (RuntimeException YaEstaConstruidoError) {
-            System.out.println("Ya está construido");
-        }
+        aldeano.construir(cuartel);
+        aldeano.ganarMonedas();
+
+        aldeano.construir(cuartel);
+        aldeano.ganarMonedas();
+
+        aldeano.construir(cuartel);
+        aldeano.ganarMonedas();
+
+        assertEquals(VIDACUARTEL, cuartel.obtenerVida());
 
         assertEquals(0,aldeano.obtenerOroTotal());
     }
 
+    @Test
+    public void AldeanoReparaCastillo(){
+
+        Aldeano aldeano = new Aldeano("3,2");
+        Castillo castillo = new Castillo();
+
+        castillo.recibirDanio(DANIO);
+        aldeano.ganarMonedas();
+
+        /*Aldeano suma oro*/
+        assertEquals(20, aldeano.obtenerOroTotal());
+
+        aldeano.reparar(castillo);
+        aldeano.ganarMonedas();
+
+        /*Aldeano no suma oro*/
+        assertEquals(20, aldeano.obtenerOroTotal());
+        assertEquals(VIDACASTILLO-15, castillo.obtenerVida());
+    }
 }

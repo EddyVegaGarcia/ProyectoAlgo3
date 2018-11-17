@@ -1,6 +1,9 @@
 package fiuba.algo3.tp2;
 
 public class PlazaCentral extends Edificio {
+    static final int VIDAMAXIMA = 450;
+    static final int TURNOSCOMPLETOS = 2;
+
 
     PlazaCentral(){
         this.costo = 100;
@@ -11,29 +14,20 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public void darleVida(){
-        this.vida = 450;
+    public void construir() {
+        if(turnosConstruccion == TURNOSCOMPLETOS){
+           this.estado = estado.cambiar();
+           this.vida = VIDAMAXIMA;
+        }
+        this.turnosConstruccion = turnosConstruccion + 1;
     }
 
-    @Override
-    public boolean estaConstruido(){
-        return (turnosConstruccion >=3);
+      @Override
+    protected int vidaMaxima(){
+        return VIDAMAXIMA;
     }
 
-    @Override
-    public void reparar(){}
-
-    @Override
-    public void recibirDanio(int danio){}
-
-    @Override
-    public boolean estaReparado(){
-        return (vida == 450);
-    }
-
-    public Unidad crearAldeano() {
-        /* lo posiciono cerca del edificio*/
-        Aldeano aldeano = new Aldeano("2,3");
-        return aldeano;
+    public Aldeano crearAldeano() {
+        return new Aldeano("2,3");
     }
 }
