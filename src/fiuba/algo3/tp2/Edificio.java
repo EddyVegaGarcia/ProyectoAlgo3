@@ -2,28 +2,36 @@ package fiuba.algo3.tp2;
 
 public abstract class Edificio {
 
+    private static final int REPARACION = 15;
+
     int vida;
     int costo;
     EstadoDeEdificio estado;
     int tamanio;
     int turnosConstruccion;
 
-    public void construir(){
-        if(turnosConstruccion == 3){
-            this.estado = new Construido();
-            this.darleVida();
+
+    public  abstract void construir();
+
+    protected abstract int vidaMaxima();
+
+
+    public void reparar(){
+        this.vida = vida + REPARACION;
+        if (vida == this.vidaMaxima()){
+            this.estado = estado.cambiar();
         }
-        this.turnosConstruccion = turnosConstruccion + 1;
     }
 
-    public abstract boolean estaConstruido();
+    public void recibirDanio(int danio){
+        if(vida == this.vidaMaxima()){
+            this.estado = estado.cambiar();
+        }
+        this.vida = vida - danio;
+    }
 
-    public abstract void recibirDanio(int danio);
-
-    public abstract void reparar();
-
-    public abstract void darleVida();
-
-    public abstract boolean estaReparado();
+    public int obtenerVida() {
+        return vida;
+    }
 }
 

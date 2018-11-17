@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2;
 
 public class Cuartel extends Edificio {
+    static final int VIDAMAXIMA = 250;
+    static final int TURNOSCOMPLETOS = 2;
 
     Cuartel(){
         this.costo = 50;
@@ -8,36 +10,28 @@ public class Cuartel extends Edificio {
         this.tamanio = 4;
         this.estado = new EnConstruccion();
         this.turnosConstruccion = 0;
+
     }
 
     @Override
-    public void darleVida(){
-        this.vida = 250;
+    public void construir() {
+        if(turnosConstruccion == TURNOSCOMPLETOS){
+            this.estado = estado.cambiar();
+            this.vida = VIDAMAXIMA;
+        }
+        this.turnosConstruccion = turnosConstruccion + 1;
     }
 
     @Override
-    public boolean estaConstruido(){
-        return (turnosConstruccion >=3);
+    protected int vidaMaxima() {
+        return VIDAMAXIMA;
     }
 
-    @Override
-    public void reparar(){}
-
-    @Override
-    public void recibirDanio(int danio){}
-
-    @Override
-    public boolean estaReparado(){
-        return (vida == 250);
+    public Espadachin crearEspadachin() {
+        return new Espadachin("2,3");
     }
 
-    public Unidad crearEspadachin() {
-        Espadachin espadachin = new Espadachin("2,3");
-        return espadachin;
-    }
-
-    public Unidad crearArquero() {
-        Arquero arquero = new Arquero("2,5");
-        return arquero;
+    public Arquero crearArquero() {
+        return new Arquero("2,5");
     }
 }

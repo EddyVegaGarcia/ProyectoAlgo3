@@ -2,7 +2,7 @@ package fiuba.algo3.tp2;
 
 public class Aldeano extends Unidad {
     int oro;
-    EstadoDeAldeano estado;
+    private EstadoDeAldeano estado;
 
 
     Aldeano(String pos) {
@@ -14,37 +14,27 @@ public class Aldeano extends Unidad {
     }
 
     public void construir(Edificio edificio)  {
-        if(edificio.estaConstruido()) {
-            throw new RuntimeException();
-        }
+        this.estado = estado.trabajando();
         edificio.construir();
-        this.cambiarEstado(edificio);
+    }
+
+
+    public void reparar(Edificio edificio) {
+        this.estado = estado.trabajando();
+        edificio.reparar();
+
     }
 
     public int obtenerOroTotal() {
         return oro;
     }
 
-    private void cambiarEstado(Edificio edificio){
-        if(edificio.estaConstruido()){
-            this.estado = new EnReposo();
-        }else{
-            this.estado = new EstaTrabajando();
-        }
-    }
-
-    public void reparar(Edificio edificio) {
-        if(edificio.estaReparado()) {
-            throw new RuntimeException();
-        }
-        edificio.reparar();
-        this.cambiarEstado(edificio);
+    public void sumarOro(){
+        this.oro = oro + 20;
     }
 
     public void ganarMonedas(){
-        if(estado.estaEnReposo()){
-            this.oro = oro + 20;
-        }
+       estado.ganarOro(this);
     }
 
     @Override
