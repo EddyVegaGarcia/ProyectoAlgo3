@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-public class EstaTrabajando extends EstadoDeAldeano {
+public class EstaTrabajando implements EstadoDeAldeano {
 
     @Override
     public boolean estaEnReposo(){

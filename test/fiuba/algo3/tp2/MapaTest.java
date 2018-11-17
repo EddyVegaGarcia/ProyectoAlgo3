@@ -31,29 +31,6 @@ public class MapaTest {
     }
 
     @Test
-    public void testIniciarMapaConNivelMedioCorrespondiente() {
-
-        //Mapa Medio se inicia con 45 * 50 = 2250
-        Mapa mapa = new Mapa(45, 50);
-
-        int tamanio = 2250;
-
-        assertTrue(mapa.compararTamanio(tamanio));
-    }
-
-    @Test
-    public void testIniciarMapaConNivelAvanzadoCorrrespondiente() {
-
-        //Mapa Medio se inicia con 50 * 55 = 2750
-        Mapa mapa = new Mapa(50, 55);
-
-        int tamanio = 2750;
-
-        assertTrue(mapa.compararTamanio(tamanio));
-
-    }
-
-    @Test
     public void testColocarUnidadEnUnaUbiacionEnElMapaCorrectamente() {
 
         //Mapa Base ubica una unidad en una celda correspondiente
