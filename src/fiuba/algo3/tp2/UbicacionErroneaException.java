@@ -1,4 +1,4 @@
 package fiuba.algo3.tp2;
 
-public class UbicacionErroneaException {
+public class UbicacionErroneaException extends RuntimeException {
 }
