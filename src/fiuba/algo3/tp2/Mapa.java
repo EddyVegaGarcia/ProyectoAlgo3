@@ -9,7 +9,6 @@ public class Mapa {
 
     Map<Posicion, Unidad> coleccionUnidad;
     Posicion posicionMaxima;
-    Map<String, Unidad> coleccion;
 
     public Mapa(){
 
@@ -21,7 +20,7 @@ public class Mapa {
     public void colocarUnidad(Unidad unaUnidad, Posicion unaPosicion) {
 
         posicionMaxima.contiene(unaPosicion.getFila(), unaPosicion.getColumna());
-        if(!coleccionUnidad.containsKey(unaPosicion))
+        if(coleccionUnidad.containsKey(unaPosicion))
             throw new UbicacionOcupadaException();
         coleccionUnidad.put(unaPosicion, unaUnidad);
     }
