@@ -15,9 +15,9 @@ public class Jugador {
     private int limitePoblacion = 50;
 
     public Jugador() {
-        aldeanos.add(new Aldeano("0,0"));
-        aldeanos.add(new Aldeano("0,0"));
-        aldeanos.add(new Aldeano("0,0"));
+        aldeanos.add(new Aldeano());
+        aldeanos.add(new Aldeano());
+        aldeanos.add(new Aldeano());
 
         plazas.add(new PlazaCentral());
     }

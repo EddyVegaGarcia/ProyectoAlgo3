@@ -28,6 +28,6 @@ public class PlazaCentral extends Edificio {
     }
 
     public Aldeano crearAldeano() {
-        return new Aldeano("2,3");
+        return new Aldeano();
     }
 }

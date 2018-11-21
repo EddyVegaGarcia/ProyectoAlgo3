@@ -2,8 +2,7 @@ package fiuba.algo3.tp2;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MapaTest {
 
@@ -16,7 +15,7 @@ public class MapaTest {
 
         int tamanio = 1400;
 
-        assertTrue(mapa.compararTamanio(tamanio));
+        assertEquals(mapa.getTamanio(), tamanio);
     }
 
     @Test
@@ -27,35 +26,23 @@ public class MapaTest {
 
         int tamanio = 1000;
 
-        assertFalse(mapa.compararTamanio(tamanio));
+        assertNotEquals(mapa.getTamanio(), tamanio);
     }
 
     @Test
-    public void testColocarUnidadEnUnaUbiacionEnElMapaCorrectamente() {
+    public void testColocarUnidadEnParcelaCorrectamente() {
 
         //Mapa Base ubica una unidad en una celda correspondiente
         Mapa mapa = new Mapa();
 
-        int posicionFila = 35;
-        int posicionColumna = 35;
+        Posicion posicion = new Posicion(35,35);
 
-        //Unidad Aldeano, espadachin, arquero, arma de asedio (1 parcela)
-        mapa.colocarUnidad(posicionFila, posicionColumna);
+        Aldeano unAldeano = new Aldeano();
 
-    }
+        //se coloca al aldeano en la parcela de fila:35 y columna:35
+        mapa.colocarUnidad(unAldeano, posicion);
 
-    @Test
-    public void testColocarUnidadYEstaEnParcelaCorrectamente() {
-
-        //Mapa Base ubica una unidad en una celda correspondiente
-        Mapa mapa = new Mapa();
-
-        int posicionFila = 35;
-        int posicionColumna = 35;
-
-        mapa.colocarUnidad(posicionFila, posicionColumna);
-
-        assertTrue(mapa.estaOcupadaEnPosicion(posicionFila, posicionColumna));
+        assertEquals(mapa.recuperarUnidad(posicion), unAldeano);
 
     }
 
@@ -65,10 +52,9 @@ public class MapaTest {
         //Mapa Base ubica una unidad en una celda correspondiente
         Mapa mapa = new Mapa();
 
-        int posicionFila = 49;
-        int posicionColumna = 35;
+        Posicion posicion = new Posicion(40,45);
 
-        mapa.colocarUnidad(posicionFila, posicionColumna);
+        mapa.colocarUnidad(new Aldeano(), posicion);
     }
 
     @Test ( expected = UbicacionOcupadaException.class)
@@ -77,12 +63,66 @@ public class MapaTest {
         //Mapa Base ubica una unidad en una celda correspondiente
         Mapa mapa = new Mapa();
 
-        int posicionFila = 35;
-        int posicionColumna = 35;
+        Posicion posicion = new Posicion(20,25);
+
+        Aldeano unAldeano = new Aldeano();
+        Espadachin unEspadachin = new Espadachin();
 
         //Unidad Aldeano, espadachin, arquero, arma de asedio (1 parcela)
-        mapa.colocarUnidad(posicionFila, posicionColumna);
-        mapa.colocarUnidad(posicionFila, posicionColumna);
+        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarUnidad(unEspadachin, posicion);
     }
+
+    @Test
+    public void moverUnidadHaciaArriba() {
+
+    }
+
+
+    @Test
+    public void moverUnidadHaciaArribaInvalido() {
+    }
+
+    @Test
+    public void moverUnidadHaciaAbajo() {
+    }
+
+    @Test
+    public void moverUnidadHaciaAbajoInvalido() {
+    }
+
+    @Test
+    public void moverUnidadHaciaIzquierda() {
+    }
+
+    @Test
+    public void moverUnidadHaciaIzquierdaInvalido() {
+    }
+
+    @Test
+    public void moverUnidadHaciaDerecha() {
+    }
+
+    @Test
+    public void moverUnidadHaciaDerechaInvalido() {
+    }
+
+    //los invalidos serian los que tienen unidades en el limite del mapa o los casilleros ya ocupados por otra unidad
+    //te falta agregar 4 test (los de pisar unidades)
+
+    @Test
+    public void borrarUnidad() { //borrar o destruir unidad
+
+    }
+
+    @Test
+    public void borrarUnidadInexistente() {
+
+        //excepciones
+    }
+
+
+
+
 
 }

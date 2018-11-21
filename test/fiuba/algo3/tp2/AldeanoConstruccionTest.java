@@ -14,7 +14,7 @@ public class AldeanoConstruccionTest {
     @Test
     public void AldeanoConstruyePlazaCentral() {
 
-        Aldeano aldeano = new Aldeano("3,3");
+        Aldeano aldeano = new Aldeano();
         PlazaCentral plaza = new PlazaCentral();
 
         /* La plaza no tiene vida y no existe por lo que no puede crear unidades*/
@@ -38,7 +38,7 @@ public class AldeanoConstruccionTest {
     @Test
     public void AldeanoConstruyeCuartel(){
 
-        Aldeano aldeano = new Aldeano("4,3");
+        Aldeano aldeano = new Aldeano();
         Cuartel cuartel = new Cuartel();
 
         /* El cuartelno tiene vida y no existe por lo que no puede crear unidades*/
@@ -62,7 +62,7 @@ public class AldeanoConstruccionTest {
     @Test
     public void AldeanoReparaCastillo(){
 
-        Aldeano aldeano = new Aldeano("3,2");
+        Aldeano aldeano = new Aldeano();
         Castillo castillo = new Castillo();
 
         castillo.recibirDanio(DANIO);

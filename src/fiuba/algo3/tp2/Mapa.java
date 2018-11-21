@@ -1,33 +1,36 @@
 package fiuba.algo3.tp2;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static fiuba.algo3.tp2.Constantes.*;
+
 public class Mapa {
 
-    ColleccionParcelas coleccionistaParcelas;
+    Map<Posicion, Unidad> coleccionUnidad;
+    Posicion posicionMaxima;
+    Map<String, Unidad> coleccion;
 
     public Mapa(){
 
-        coleccionistaParcelas = new ColleccionParcelas();
+        coleccionUnidad = new HashMap<>();
+        posicionMaxima = new Posicion(LIMIT_HORIZONTAL, LIMIT_VERTICAL);
 
     }
 
-    public Mapa(int filas, int columnas){
-        coleccionistaParcelas = new ColleccionParcelas(filas, columnas);
+    public void colocarUnidad(Unidad unaUnidad, Posicion unaPosicion) {
+
+        posicionMaxima.contiene(unaPosicion.getFila(), unaPosicion.getColumna());
+        if(!coleccionUnidad.containsKey(unaPosicion))
+            throw new UbicacionOcupadaException();
+        coleccionUnidad.put(unaPosicion, unaUnidad);
     }
 
-    public Boolean compararTamanio(int unaCantidadParcela) {
-
-        return coleccionistaParcelas.compararCantidadParcelas(unaCantidadParcela);
+    public int getTamanio() {
+        return LIMIT_HORIZONTAL * LIMIT_VERTICAL;
     }
 
-    public void colocarUnidad(int posicionFila, int posicionColumna) {
-
-        coleccionistaParcelas.colocarUnidad(posicionFila, posicionColumna);
-
-    }
-
-    public boolean estaOcupadaEnPosicion(int posicionFila, int posicionColumna) {
-
-        return coleccionistaParcelas.estaOcupada(posicionFila, posicionColumna);
-
+    public Unidad recuperarUnidad(Posicion posicion) {
+        return coleccionUnidad.get(posicion);
     }
 }

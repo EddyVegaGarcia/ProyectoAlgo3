@@ -5,8 +5,7 @@ public class Aldeano extends Unidad {
     private EstadoDeAldeano estado;
 
 
-    Aldeano(String pos) {
-        this.posicion = new Posicion(pos);
+    Aldeano() {
         this.vida = 50;
         this.costo = 25;
         this.oro = 0;

@@ -2,10 +2,9 @@ package fiuba.algo3.tp2;
 
 public class Arquero extends Unidad {
 
-    public Arquero(String pos){
+    public Arquero(){
         this.vida = 75;
         this.costo = 75;
-        this.posicion = new Posicion(pos);
 
     }
 

@@ -5,7 +5,7 @@ public abstract class Unidad {
     int vida;
     Posicion posicion;
     int costo;
-
+/*
     public void moverArriba(String dimensionMapa) {
         posicion.moverArriba(dimensionMapa);
     }
@@ -42,7 +42,7 @@ public abstract class Unidad {
         posicion.moverInferiorDerecha(dimensionMapa);
     }
 
-
+*/
     public abstract void atacar(Edificio edificio);
 
     public int obtenerVida(){

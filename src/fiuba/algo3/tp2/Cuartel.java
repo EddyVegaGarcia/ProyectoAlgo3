@@ -28,10 +28,10 @@ public class Cuartel extends Edificio {
     }
 
     public Espadachin crearEspadachin() {
-        return new Espadachin("2,3");
+        return new Espadachin();
     }
 
     public Arquero crearArquero() {
-        return new Arquero("2,5");
+        return new Arquero();
     }
 }
