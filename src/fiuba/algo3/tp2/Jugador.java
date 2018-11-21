@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Jugador {
 
+    private List visitor = new ArrayList();
     int oro = 100;
     private List<Aldeano> aldeanos = new ArrayList<Aldeano>();
     private Castillo castillo = new Castillo();
@@ -13,13 +14,19 @@ public class Jugador {
     private List<Arquero> arqueros = new ArrayList<Arquero>();
     private List<ArmaAsedio> armas = new ArrayList<ArmaAsedio>();
     private int limitePoblacion = 50;
+    private String nombre;
+    private Juego juego;
 
-    public Jugador() {
+    public Jugador(String unNombre, Juego unJuego) {
         aldeanos.add(new Aldeano("0,0"));
         aldeanos.add(new Aldeano("0,0"));
         aldeanos.add(new Aldeano("0,0"));
 
         plazas.add(new PlazaCentral());
+
+        juego = unJuego;
+
+        nombre = unNombre;
     }
 
     public void crearEdificio(int costo) {
@@ -81,5 +88,10 @@ public class Jugador {
 
     public void castilloDestruido() {
         castillo = null;
+        juego.perdi(this);
+    }
+
+    public String nombre() {
+        return nombre;
     }
 }
