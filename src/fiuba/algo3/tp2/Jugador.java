@@ -17,17 +17,10 @@ public class Jugador {
     private String nombre;
     private Juego juego;
 
-<<<<<<< HEAD
     public Jugador(String unNombre, Juego unJuego) {
-        aldeanos.add(new Aldeano("0,0"));
-        aldeanos.add(new Aldeano("0,0"));
-        aldeanos.add(new Aldeano("0,0"));
-=======
-    public Jugador() {
         aldeanos.add(new Aldeano());
         aldeanos.add(new Aldeano());
         aldeanos.add(new Aldeano());
->>>>>>> 2db9b09b260ac200b6cc14c0e2ef6bcee31813b6
 
         plazas.add(new PlazaCentral());
 
