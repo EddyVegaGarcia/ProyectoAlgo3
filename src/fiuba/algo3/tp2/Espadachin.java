@@ -2,11 +2,10 @@ package fiuba.algo3.tp2;
 
 public class Espadachin extends Unidad {
 
-    Espadachin(String pos) {
+    Espadachin() {
 
         this.vida = 100;
         this.costo = 50;
-        this.posicion = new Posicion(pos);
     }
 
     @Override

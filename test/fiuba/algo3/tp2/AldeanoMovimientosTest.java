@@ -7,7 +7,7 @@ public class AldeanoMovimientosTest {
 
     /* Cuando realizo movimientos, le paso por parámetro la dimensión del mapa
         que en estas pruebas es de 40x70 */
-
+/*
     @Test
     public void aldeanoMovimientosValidos() {
         Aldeano aldeano = new Aldeano("4,3");
@@ -59,5 +59,7 @@ public class AldeanoMovimientosTest {
         }
 
     }
+
+    */
 
 }

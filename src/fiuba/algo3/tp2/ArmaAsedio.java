@@ -2,10 +2,9 @@ package fiuba.algo3.tp2;
 
 public class ArmaAsedio extends Unidad {
 
-    ArmaAsedio(String pos){
+    ArmaAsedio(){
         this.vida = 150;
         this.costo = 200;
-        this.posicion = new Posicion(pos);
 
     }
 
