@@ -7,14 +7,13 @@ import java.util.List;
 public class Juego {
 
     private static List<Jugador> jugadores = new ArrayList<>();
-    private boolean finalizado;
+    private static boolean finalizado = false;
     private Mapa mapa;
     private static Jugador perdedor = null;
 
     public Juego() {
 
         mapa = new Mapa();
-        finalizado = false;
 
         jugadores.add(new Jugador("xxxs", this));
         jugadores.add(new Jugador("lsl", this));

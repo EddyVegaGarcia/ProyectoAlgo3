@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class JugadorTest {
-/*
+
     @Test
     public void testJugadorTieneNombre(){
         Juego juego = new Juego();
@@ -60,7 +60,7 @@ public class JugadorTest {
         Juego juego = new Juego();
         Jugador jugador = new Jugador("victor", juego);
         for (int i = 0; i < 47; i++) {
-            jugador.agregarAldeano(new Aldeano("0,0"));
+            jugador.agregarAldeano(new Aldeano());
         }
         jugador.crearUnidad(25);
     }
@@ -92,7 +92,7 @@ public class JugadorTest {
     public void testJugadorAgragaUnAldeano() {
         Juego juego = new Juego();
         Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarAldeano(new Aldeano("0,0"));
+        jugador.agregarAldeano(new Aldeano());
         Assert.assertEquals(4, jugador.cantidadDeAdeanos());
     }
 
@@ -100,7 +100,7 @@ public class JugadorTest {
     public void testJugadorAgragaUnEspadachin() {
         Juego juego = new Juego();
         Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarEspadachin(new Espadachin("0,0"));
+        jugador.agregarEspadachin(new Espadachin());
         Assert.assertEquals(1, jugador.cantidadEspadachin());
     }
 
@@ -108,7 +108,7 @@ public class JugadorTest {
     public void testJugadorAgragaUnArquero() {
         Juego juego = new Juego();
         Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarArquero(new Arquero("0,0"));
+        jugador.agregarArquero(new Arquero());
         Assert.assertEquals(1, jugador.cantidadArqueros());
     }
 
@@ -116,7 +116,7 @@ public class JugadorTest {
     public void testJugadorAgragaUnArmaAsedio() {
         Juego juego = new Juego();
         Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarArmaAsedio(new ArmaAsedio("0,0"));
+        jugador.agregarArmaAsedio(new ArmaAsedio());
         Assert.assertEquals(1, jugador.cantidadArmaAsedio());
     }
 
@@ -127,5 +127,5 @@ public class JugadorTest {
         jugador.castilloDestruido();
         Assert.assertFalse( jugador.tenesCastillo());
     }
-    */
+
 }
