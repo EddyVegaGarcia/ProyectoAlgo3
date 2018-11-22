@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import javafx.geometry.Pos;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,5 +33,10 @@ public class Mapa {
 
     public Unidad recuperarUnidad(Posicion posicion) {
         return coleccionUnidad.get(posicion);
+    }
+
+    public void moverUnidadA(Unidad unaUnidad, Posicion posicionAnterior, Posicion posicionNueva) {
+        coleccionUnidad.remove(posicionAnterior, unaUnidad);
+        coleccionUnidad.put(posicionNueva, unaUnidad);
     }
 }
