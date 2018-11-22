@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.modelo.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +9,12 @@ public class Jugador {
 
     private List visitor = new ArrayList();
     int oro = 100;
-    private List<Aldeano> aldeanos = new ArrayList<Aldeano>();
+    private List<Aldeano> aldeanos = new ArrayList<>();
     private Castillo castillo = new Castillo();
-    private List<PlazaCentral> plazas = new ArrayList<PlazaCentral>();
-    private List<Espadachin> espadachines = new ArrayList<Espadachin>();
-    private List<Arquero> arqueros = new ArrayList<Arquero>();
-    private List<ArmaAsedio> armas = new ArrayList<ArmaAsedio>();
+    private List<PlazaCentral> plazas = new ArrayList<>();
+    private List<Espadachin> espadachines = new ArrayList<>();
+    private List<Arquero> arqueros = new ArrayList<>();
+    private List<ArmaAsedio> armas = new ArrayList<>();
     private int limitePoblacion = 50;
     private String nombre;
     private Juego juego;

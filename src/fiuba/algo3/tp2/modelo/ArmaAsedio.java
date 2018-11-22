@@ -1,8 +1,8 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class ArmaAsedio extends Unidad {
 
-    ArmaAsedio(){
+    public ArmaAsedio(){
         this.vida = 150;
         this.costo = 200;
 

@@ -1,11 +1,11 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class Aldeano extends Unidad {
     int oro;
     private EstadoDeAldeano estado;
 
 
-    Aldeano() {
+    public Aldeano() {
         this.vida = 50;
         this.costo = 25;
         this.oro = 0;

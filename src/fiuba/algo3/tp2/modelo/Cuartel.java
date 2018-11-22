@@ -1,10 +1,10 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class Cuartel extends Edificio {
     static final int VIDAMAXIMA = 250;
     static final int TURNOSCOMPLETOS = 2;
 
-    Cuartel(){
+    public Cuartel(){
         this.costo = 50;
         this.vida = 0;
         this.tamanio = 4;

@@ -1,11 +1,11 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class PlazaCentral extends Edificio {
     static final int VIDAMAXIMA = 450;
     static final int TURNOSCOMPLETOS = 2;
 
 
-    PlazaCentral(){
+    public PlazaCentral(){
         this.costo = 100;
         this.vida = 0;
         this.estado = new EnConstruccion();

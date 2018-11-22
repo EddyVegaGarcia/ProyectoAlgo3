@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class Posicion {
 
@@ -12,7 +12,7 @@ public class Posicion {
         this.y = posicion[1];
     }
 */
-    Posicion(int unaPosicionFila, int unaPosicionColumna) {
+    public Posicion(int unaPosicionFila, int unaPosicionColumna) {
         posicionFila = unaPosicionFila;
         posicionColumna = unaPosicionColumna;
     }

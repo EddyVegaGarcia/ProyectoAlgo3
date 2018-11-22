@@ -1,10 +1,10 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class Castillo extends Edificio{
 
     static final int VIDAMAXIMA = 1000;
 
-    Castillo(){
+    public Castillo(){
         this.vida = VIDAMAXIMA;
         this.tamanio = 8;
         this.estado = new Construido();

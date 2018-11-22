@@ -1,4 +1,6 @@
 package fiuba.algo3.tp2;
+
+import fiuba.algo3.tp2.modelo.*;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

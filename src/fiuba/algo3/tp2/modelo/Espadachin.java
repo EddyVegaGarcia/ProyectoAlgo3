@@ -1,8 +1,8 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 public class Espadachin extends Unidad {
 
-    Espadachin() {
+    public Espadachin() {
 
         this.vida = 100;
         this.costo = 50;

@@ -1,9 +1,9 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static fiuba.algo3.tp2.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Mapa {
 
