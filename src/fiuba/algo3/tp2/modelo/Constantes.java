@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 public class Constantes {
 
-    public static int LIMIT_HORIZONTAL = 35;
-    public static int LIMIT_VERTICAL = 40;
-
+    public static int FILA_DEFAULT_MAPA = 35;
+    public static int COLUMNA_DEFAULT_MAPA = 40;
+    
 }
