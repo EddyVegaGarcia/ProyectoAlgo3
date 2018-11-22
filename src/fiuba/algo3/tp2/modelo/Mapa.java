@@ -14,7 +14,7 @@ public class Mapa {
     public Mapa(int fila , int columna){
 
         this.coleccionUnidades = new HashMap<>();
-        this.coleccionEdificios = new HashMap<>()
+        this.coleccionEdificios = new HashMap<>();
         this.posicionMaxima = new Posicion(fila, columna);
 
     }
