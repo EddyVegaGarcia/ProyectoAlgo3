@@ -3,18 +3,19 @@ package fiuba.algo3.tp2.modelo;
 import java.util.HashMap;
 import java.util.Map;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Mapa {
 
     Map<Posicion, Unidad> coleccionUnidades,coleccionEdificios;
     Posicion posicionMaxima;
+    int fila;
+    int columna;
 
-    public Mapa(){
+    public Mapa(int fila , int columna){
 
         this.coleccionUnidades = new HashMap<>();
         this.coleccionEdificios = new HashMap<>()
-        this.posicionMaxima = new Posicion(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        this.posicionMaxima = new Posicion(fila, columna);
 
     }
 
@@ -27,7 +28,7 @@ public class Mapa {
     }
 
     public int getTamanio() {
-        return FILA_DEFAULT_MAPA * COLUMNA_DEFAULT_MAPA;
+        return (fila * columna);
     }
 
     public Unidad recuperarUnidad(Posicion posicion) {
