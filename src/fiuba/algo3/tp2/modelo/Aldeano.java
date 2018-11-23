@@ -40,4 +40,7 @@ public class Aldeano extends Unidad {
     public void atacar(Edificio edificio){
     }
 
+    public EstaTrabajando obtenerEstado() {
+        return estado;
+    }
 }

@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 public class Constantes {
 
     public static int FILA_DEFAULT_MAPA = 35;
@@ -29,5 +31,17 @@ public class Constantes {
     public static int COSTO_CUARTEL = 50;
     public static int COSTO_PLAZACENTRAL = 100;
 
+    /*VIDAS MAXIMAS*/
+    public static int VIDA_MAXIMA_ALDEANO = 50;
+    public static int VIDA_MAXIMA_ESPADACHIN = 100;
+    public static int VIDA_MAXIMA_ARQUERO = 75;
+    public static int VIDA_MAXIMA_ARMADEASEDIO = 150;
+    public static int VIDA_MAXIMA_PLAZACENTRAL = 450;
+    public static int VIDA_MAXIMA_CUARTEL = 250;
+    public static int VIDA_MAXIMA_CASTILLO = 1000;
+
+    /*TURNOS*/
+    public static int TURNOS_CONSTRUCCION = 3;
+    static final int VIDA_REPARACION = 15;
 
 }
