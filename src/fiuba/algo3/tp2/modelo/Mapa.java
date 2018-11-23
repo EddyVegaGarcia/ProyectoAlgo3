@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
+//import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,13 +41,23 @@ public class Mapa {
     }
 
     public Unidad recuperarUnidad(Posicion posicion) {
-        Unidad unaUnidad = null;
+        Unidad unidad = null;
         for (Posicion posActual : coleccionUnidades.keySet()) {
             if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
-                unaUnidad = coleccionUnidades.get(posActual);
+                unidad = coleccionUnidades.get(posActual);
             }
         }
-        return unaUnidad;
+        return unidad;
+    }
+
+    public Edificio recuperarEdificio(Posicion posicion) {
+        Edificio unEdificio = null;
+        for (Posicion posActual : coleccionEdificios.keySet()) {
+            if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
+                unEdificio = coleccionEdificios.get(posActual);
+            }
+        }
+        return unEdificio;
     }
 
     public void moverUnidadArriba(Unidad unaUnidad) {
@@ -72,6 +85,19 @@ public class Mapa {
     }
 
     public void colocarEdificio(Edificio unEdificio, Posicion posicionPlaza) {
+        List<Posicion> celdasDeEdificio = new ArrayList<>();
+        int coordenadaFila = posicionPlaza.getFila();
+        int coordenadaColumna = posicionPlaza.getColumna();
+        for (int i = coordenadaFila ; i < (coordenadaFila + 2) ; i++) {
+            for (int j = coordenadaColumna ; j < (coordenadaColumna+2) ; j++) {
+                //Posicion posActual = new Posicion(i, j);
+                celdasDeEdificio.add(new Posicion(i, j));
+            }
+        }
+
+        for (Posicion posActual : celdasDeEdificio) {
+            coleccionEdificios.put(posActual, unEdificio);
+        }
     }
 
     public void ColocarCastilo(Castillo castillo, Posicion posicionCastillo) {

@@ -151,6 +151,18 @@ public class MapaTest {
         //excepciones
     }
 
+    @Test
+    public void testColocarEdificioCorrectamente() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        PlazaCentral unaPlaza = new PlazaCentral();
+        Posicion posicionPlaza = new Posicion(3,3);
+
+        mapa.colocarEdificio(unaPlaza, posicionPlaza);
+        assertEquals(mapa.recuperarEdificio(posicionPlaza), unaPlaza);
+        assertEquals(mapa.recuperarEdificio(new Posicion(3,4)), unaPlaza);
+        assertEquals(mapa.recuperarEdificio(new Posicion(4,3)), unaPlaza);
+        assertEquals(mapa.recuperarEdificio(new Posicion(4,4)), unaPlaza);
+    }
 
 
 
