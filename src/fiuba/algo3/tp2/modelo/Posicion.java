@@ -26,7 +26,7 @@ public class Posicion {
     }
 
     public boolean estaContenidaEnDimensiones(int dimensionFilas, int dimensionColumas) {
-        return (!(posicionFila <= 0) || (posicionColumna <=0) || (posicionFila > dimensionFilas) || (posicionColumna > dimensionColumas));
+        return ((posicionFila > 0) && (posicionColumna > 0) && (posicionFila <= dimensionFilas) && (posicionColumna <= dimensionColumas));
 
     }
 /*

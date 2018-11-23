@@ -6,7 +6,8 @@ import java.util.Map;
 
 public class Mapa {
 
-    Map<Posicion, Unidad> coleccionUnidades,coleccionEdificios;
+    HashMap<Posicion, Unidad> coleccionUnidades;
+    HashMap<Posicion, Edificio> coleccionEdificios;
     int dimension_filas;
     int dimension_columnas;
 
@@ -37,7 +38,13 @@ public class Mapa {
     }
 
     public Unidad recuperarUnidad(Posicion posicion) {
-        return coleccionUnidades.get(posicion);
+        Unidad unaUnidad = null;
+        for (Posicion posActual : coleccionUnidades.keySet()) {
+            if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
+                unaUnidad = coleccionUnidades.get(posActual);
+            }
+        }
+        return unaUnidad;
     }
 
     public void moverUnidadArriba(Unidad unaUnidad) {
@@ -47,11 +54,21 @@ public class Mapa {
                 posicionAnterior = posActual;
             }
         }
-
-        coleccionUnidades.remove(posicionAnterior, unaUnidad);
-        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() -1 , posicionAnterior.getColumna());
+        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        coleccionUnidades.put(posicionNueva, unaUnidad);
+        this.colocarUnidad(unaUnidad, posicionNueva);
+    }
+
+    public void moverUnidadAbajo(Unidad unaUnidad) {
+        Posicion posicionAnterior = new Posicion(14,22);
+        for (Posicion posActual : coleccionUnidades.keySet()) {
+            if (coleccionUnidades.get(posActual) == unaUnidad) {
+                posicionAnterior = posActual;
+            }
+        }
+        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() + 1 , posicionAnterior.getColumna());
+        this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
+        this.colocarUnidad(unaUnidad, posicionNueva);
     }
 
     public void colocarEdificio(Edificio unEdificio, Posicion posicionPlaza) {
