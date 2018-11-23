@@ -21,5 +21,13 @@ public class Constantes {
     public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(2,34);
     public static Posicion POSICION_DEFAULT_ALDEANO3_2= new Posicion(3,34);
 
+    /* PRECIOS DE LAS UNIDADES Y EDIFCIOS*/
+    public static int COSTO_ALDEANO = 25;
+    public static int COSTO_ARQUERO = 75;
+    public static int COSTO_ESPADACHIN = 50;
+    public static int COSTO_ARMADEASEDIO = 200;
+    public static int COSTO_CUARTEL = 50;
+    public static int COSTO_PLAZACENTRAL = 100;
+
 
 }
