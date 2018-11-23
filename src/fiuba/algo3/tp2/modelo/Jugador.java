@@ -105,7 +105,7 @@ public class Jugador {
 
     private void cobrar(int costo) {
         if (oro < costo) {
-            throw new NoHaySuficienteOroException();
+            throw new OroInsuficienteException();
         }
         this.oro = oro - costo;
     }
