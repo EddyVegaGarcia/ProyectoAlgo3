@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public abstract class Edificio implements Atacable{
-    
+
     int vida;
     int costo;
     EstadoDeEdificio estado;
@@ -25,6 +25,7 @@ public abstract class Edificio implements Atacable{
             this.estado = estado.cambiar();
         }
     }
+
     public void recibirDanio(int danio){
         if(vida == this.vidaMaxima()){
             this.estado = estado.cambiar();
@@ -40,4 +41,3 @@ public abstract class Edificio implements Atacable{
 
     protected abstract void darleVida();
 }
-

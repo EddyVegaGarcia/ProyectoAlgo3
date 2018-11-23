@@ -32,4 +32,9 @@ public class Castillo extends Edificio{
         ArmaDeAsedio arma = new ArmaDeAsedio();
         return arma;
     }
+
+    @Override
+    protected void darleVida() {
+
+    }
 }
