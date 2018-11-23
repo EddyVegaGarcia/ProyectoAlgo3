@@ -1,6 +1,6 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
-import fiuba.algo3.tp2.modelo.*;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class Jugador {
     }
 
     public boolean castilloDestruido() {
-        return castillo != null;
+        return castillo == null;
     }
 
     public int cantidadDePoblacion() {
@@ -88,9 +88,7 @@ public class Jugador {
         this.agregarEdificio(plaza, posicion);
     }
 
-    public boolean tenesCastillo() {
-        return castillo != null;
-    }
+
 
     /*METODO PRIVADOS*/
 
@@ -107,7 +105,7 @@ public class Jugador {
 
     private void cobrar(int costo) {
         if (oro < costo) {
-            throw new NoHaySuficienteOroException();
+            throw new OroInsuficienteException();
         }
         this.oro = oro - costo;
     }

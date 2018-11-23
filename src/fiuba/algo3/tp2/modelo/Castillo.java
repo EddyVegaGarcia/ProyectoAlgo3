@@ -29,7 +29,7 @@ public class Castillo extends Edificio{
     }
 
     public Unidad crearArmaAsedio() {
-        ArmaAsedio arma = new ArmaAsedio();
+        ArmaDeAsedio arma = new ArmaDeAsedio();
         return arma;
     }
 }

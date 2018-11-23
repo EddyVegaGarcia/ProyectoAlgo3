@@ -33,8 +33,8 @@ public class JugadorTest {
         Assert.assertEquals(25, jugador.obtenerOro());
     }
 
-    @Test(expected = NoHaySuficienteOroException.class)
-    public void testJugadorCompraAldeanoYEdificio() {
+    @Test(expected = OroInsuficienteException.class)
+    public void testJugadorCompraAldeanoYEdificioLanzaError() {
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
         jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
         jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
@@ -43,6 +43,7 @@ public class JugadorTest {
         jugador.construirPlazaCentral(new Posicion(27,5));
 
     }
+
 
 
 }
