@@ -46,7 +46,7 @@ public class Jugador {
 
     }
 
-    public void ubicarEdificios(Posicion posicionCastillo, Posicion posicionPlaza){
+    public static void ubicarEdificios(Posicion posicionCastillo, Posicion posicionPlaza){
         PlazaCentral plaza = new PlazaCentral();
         this.edificios.add(plaza);
 
