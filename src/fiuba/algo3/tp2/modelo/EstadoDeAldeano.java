@@ -8,6 +8,8 @@ public abstract class EstadoDeAldeano {
     public EstadoDeAldeano trabajando(){
         return new EstaTrabajando();
     }
+
+    public abstract String getEstado();
 }
 
 

@@ -11,12 +11,16 @@ public class AldeanoTest {
     public void AldeanoConstruyeCuartel() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Aldeano aldeano = new Aldeano();
+        Cuartel unCuartel = new Cuartel();
 
         Posicion posicionAldeano = new Posicion(29, 13);
-        Posicion posicionCuartel = new Posicion(28, 13)
+        Posicion posicionCuartel = new Posicion(28, 13);
 
         mapa.colocarUnidad(aldeano, posicionAldeano);
-        mapa.construirEdificio(posicionAldeano, posicionCuartel);
-        Assert.assertEquals(new EstaTrabajando(),aldeano.obtenerEstado());
+        mapa.colocarEdificio(unCuartel, posicionCuartel);
+
+        aldeano.construir(unCuartel);
+
+        Assert.assertEquals(new EstaTrabajando().getEstado(),aldeano.obtenerEstado().getEstado());
     }
 }

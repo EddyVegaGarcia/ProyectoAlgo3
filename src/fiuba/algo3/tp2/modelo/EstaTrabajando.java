@@ -12,4 +12,8 @@ public class EstaTrabajando extends EstadoDeAldeano {
         return new EnReposo();
     }
 
+    @Override
+    public String getEstado() {
+        return "EstaTrabajando";
+    }
 }
