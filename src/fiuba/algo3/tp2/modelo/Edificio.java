@@ -1,8 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
+import static fiuba.algo3.tp2.modelo.Constantes.*;
+
 public abstract class Edificio {
 
-    private static final int REPARACION = 15;
+
 
     int vida;
     int costo;
@@ -11,13 +13,16 @@ public abstract class Edificio {
     int turnosConstruccion;
 
 
-    public  abstract void construir();
-
-    protected abstract int vidaMaxima();
-
+    public void construir() {
+        if(turnosConstruccion == TURNOS_CONSTRUCCION){
+            this.estado = estado.cambiar();
+            this.darleVida();
+        }
+        this.turnosConstruccion = turnosConstruccion + 1;
+    }
 
     public void reparar(){
-        this.vida = vida + REPARACION;
+        this.vida = vida + VIDA_REPARACION;
         if (vida == this.vidaMaxima()){
             this.estado = estado.cambiar();
         }
@@ -33,5 +38,9 @@ public abstract class Edificio {
     public int obtenerVida() {
         return vida;
     }
+
+    protected abstract int vidaMaxima();
+
+    protected abstract void darleVida();
 }
 

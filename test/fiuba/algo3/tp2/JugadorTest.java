@@ -44,6 +44,20 @@ public class JugadorTest {
 
     }
 
+    @Test
+    public void testJugadorConstruyeCorrectamente(){
+        Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
+        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
+        Posicion posicionAldeano = new Posicion(26,5);
+        Posicion posicionCuartel = new Posicion(27,5)
+        jugador.comprarAldeano(posicionAldeano);
+        jugador.construirCuartel(posicionCuartel);
+        jugador.construirEficio(posicionCuartel, posicionAldeano);
+
+        Assert.assertEquals(2, jugador.cantidadDeEdificios() );
+
+    }
 
 }

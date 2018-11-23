@@ -1,8 +1,9 @@
 package fiuba.algo3.tp2.modelo;
 
+import static fiuba.algo3.tp2.modelo.Constantes.*;
+
 public class PlazaCentral extends Edificio {
-    static final int VIDAMAXIMA = 450;
-    static final int TURNOSCOMPLETOS = 2;
+
 
 
     public PlazaCentral(){
@@ -14,17 +15,12 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public void construir() {
-        if(turnosConstruccion == TURNOSCOMPLETOS){
-           this.estado = estado.cambiar();
-           this.vida = VIDAMAXIMA;
-        }
-        this.turnosConstruccion = turnosConstruccion + 1;
+    protected void darleVida() {
+        this.vida = VIDA_MAXIMA_PLAZACENTRAL;
     }
-
-      @Override
+    @Override
     protected int vidaMaxima(){
-        return VIDAMAXIMA;
+        return VIDA_MAXIMA_PLAZACENTRAL;
     }
 
     public Aldeano crearAldeano() {

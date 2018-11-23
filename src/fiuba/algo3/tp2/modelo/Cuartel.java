@@ -1,30 +1,26 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Cuartel extends Edificio {
-    static final int VIDAMAXIMA = 250;
-    static final int TURNOSCOMPLETOS = 2;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-    public Cuartel(){
+public class Cuartel extends Edificio {
+
+
+    public Cuartel() {
         this.costo = 50;
         this.vida = 0;
         this.tamanio = 4;
         this.estado = new EnConstruccion();
         this.turnosConstruccion = 0;
-
-    }
-
-    @Override
-    public void construir() {
-        if(turnosConstruccion == TURNOSCOMPLETOS){
-            this.estado = estado.cambiar();
-            this.vida = VIDAMAXIMA;
-        }
-        this.turnosConstruccion = turnosConstruccion + 1;
     }
 
     @Override
     protected int vidaMaxima() {
-        return VIDAMAXIMA;
+        return VIDA_MAXIMA_CUARTEL;
+    }
+
+    @Override
+    protected void darleVida(){
+        this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
     public Espadachin crearEspadachin() {
