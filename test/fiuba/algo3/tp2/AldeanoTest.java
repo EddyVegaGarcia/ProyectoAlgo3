@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-public class AldeanoConstruccionTest {
+public class AldeanoTest {
 
     @Test
     public void AldeanoConstruyeCuartel() {
