@@ -13,8 +13,8 @@ public class Posicion {
     }
 */
     public Posicion(int unaPosicionFila, int unaPosicionColumna) {
-        posicionFila = unaPosicionFila;
-        posicionColumna = unaPosicionColumna;
+        this.posicionFila = unaPosicionFila;
+        this.posicionColumna = unaPosicionColumna;
     }
 
     public int getColumna() {
@@ -25,11 +25,9 @@ public class Posicion {
         return posicionFila;
     }
 
-    public void contiene(int unaPosicionFila, int unaPosicionColumna) {
-        if( !((unaPosicionFila > 0)&&(unaPosicionColumna > 0) &&
-                (unaPosicionFila <= posicionFila) && (unaPosicionColumna <= posicionColumna))){
-            throw new UbicacionErroneaException();
-        }
+    public boolean estaContenidaEnDimensiones(int dimensionFilas, int dimensionColumas) {
+        return (!(posicionFila <= 0) || (posicionColumna <=0) || (posicionFila > dimensionFilas) || (posicionColumna > dimensionColumas));
+
     }
 /*
     public boolean esIgualA(String pos) {

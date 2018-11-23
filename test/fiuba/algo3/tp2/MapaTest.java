@@ -77,13 +77,12 @@ public class MapaTest {
     @Test
     public void moverUnidadHaciaArriba() {
         Mapa mapa = new Mapa();
-        Posicion posicionAnterior = new Posicion(20,25);
+        Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
-        mapa.colocarUnidad(unAldeano, posicionAnterior);
-        Posicion posicionNueva = new Posicion(19,25);
+        mapa.colocarUnidad(unAldeano, posicion);
 
-        mapa.moverUnidadA(unAldeano, posicionAnterior, posicionNueva);
-        assertEquals(mapa.recuperarUnidad(posicionNueva), unAldeano);
+        mapa.moverUnidadArriba(unAldeano);
+        assertEquals(mapa.recuperarUnidad(new Posicion(19,25)), unAldeano);
     }
 
 
