@@ -1,6 +1,6 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.modelo;
 
-import fiuba.algo3.tp2.modelo.*;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import java.util.ArrayList;
@@ -87,6 +87,7 @@ public class Jugador {
         PlazaCentral plaza = new PlazaCentral();
         this.agregarEdificio(plaza, posicion);
     }
+
 
 
     /*METODO PRIVADOS*/
