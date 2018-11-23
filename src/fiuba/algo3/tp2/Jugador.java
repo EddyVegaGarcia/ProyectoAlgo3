@@ -63,7 +63,7 @@ public class Jugador {
     }
 
     public boolean castilloDestruido() {
-        return castillo != null;
+        return castillo == null;
     }
 
     public int cantidadDePoblacion() {
@@ -88,9 +88,6 @@ public class Jugador {
         this.agregarEdificio(plaza, posicion);
     }
 
-    public boolean tenesCastillo() {
-        return castillo != null;
-    }
 
     /*METODO PRIVADOS*/
 
