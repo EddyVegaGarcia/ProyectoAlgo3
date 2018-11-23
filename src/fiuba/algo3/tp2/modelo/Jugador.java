@@ -111,9 +111,9 @@ public class Jugador {
     }
 
 
-    public void construirEficio(Posicion posicionCuartel, Posicion posicionAldeano) {
+    /*public void construirEficio(Posicion posicionCuartel, Posicion posicionAldeano) {
         this.mapa.construirEdificio(posicionCuartel,posicionAldeano);
-    }
+    }*/
 
     public int cantidadDeEdificios() {
         return edificios.size();

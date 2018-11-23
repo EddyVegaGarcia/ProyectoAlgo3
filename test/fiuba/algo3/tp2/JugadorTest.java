@@ -51,10 +51,10 @@ public class JugadorTest {
         jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
         Posicion posicionAldeano = new Posicion(26,5);
-        Posicion posicionCuartel = new Posicion(27,5)
+        Posicion posicionCuartel = new Posicion(27,5);
         jugador.comprarAldeano(posicionAldeano);
         jugador.construirCuartel(posicionCuartel);
-        jugador.construirEficio(posicionCuartel, posicionAldeano);
+        //jugador.construirEficio(posicionCuartel, posicionAldeano);
 
         Assert.assertEquals(2, jugador.cantidadDeEdificios() );
 
