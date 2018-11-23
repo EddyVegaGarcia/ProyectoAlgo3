@@ -3,13 +3,14 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.modelo.*;
 import org.junit.Assert;
 import org.junit.Test;
-import fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
+
 public class JugadorTest {
 
 
     @Test
     public void testJugadorInicializacion(){
-        Jugador jugador = new Jugador("victor", new Mapa(FILA));
+        Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
         Assert.assertEquals("victor", jugador.nombre());
     }
 

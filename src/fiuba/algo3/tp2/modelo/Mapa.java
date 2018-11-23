@@ -39,4 +39,10 @@ public class Mapa {
         coleccionUnidades.remove(posicionAnterior, unaUnidad);
         coleccionUnidades.put(posicionNueva, unaUnidad);
     }
+
+    public void colocarEdificio(PlazaCentral plaza, Posicion posicionPlaza) {
+    }
+
+    public void ColocarCastilo(Castillo castillo, Posicion posicionCastillo) {
+    }
 }
