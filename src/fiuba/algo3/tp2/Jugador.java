@@ -54,69 +54,63 @@ public class Jugador {
         this.mapa.ColocarCastilo(castillo, posicionCastillo);
     }
 
-    public void crearEdificio(int costo) {
-        if (oro < costo) throw new NoHaySuficienteOroException();
-        oro = oro - costo;
+    public String obtenerNombre() {
+        return nombre;
     }
 
-    public void crearUnidad(int costo){
-        int poblacion = aldeanos.size() + espadachines.size() + arqueros.size() + armas.size();
-        if( poblacion == limitePoblacion ) throw new ExcedeElLimiteDePoblacionPosibleException();
-        crearEdificio(costo);
-    }
-
-    public int oro() {
+    public int obtenerOro() {
         return oro;
     }
 
-    public int cantidadDeAdeanos() {
-        return aldeanos.size();
+    public boolean castilloDestruido() {
+        return castillo != null;
     }
 
-    public int cantidadDePlazas() {
-        return plazas.size();
+    public int cantidadDePoblacion() {
+        return poblacion;
     }
 
-    public void recaudarOro() {
-        oro = oro + (aldeanos.size() * 20);
+    public void comprarAldeano(Posicion posicion) {
+        this.cobrar(COSTO_ALDEANO);
+        Aldeano aldeano = new Aldeano();
+        this.agregarUnidad(aldeano,posicion);
     }
 
-    public void agregarAldeano(Aldeano unAldeano) {
-        aldeanos.add(unAldeano);
+    public void construirCuartel(Posicion posicion) {
+        this.cobrar(COSTO_CUARTEL);
+        Cuartel cuartel = new Cuartel();
+        this.agregarEdificio(cuartel,posicion);
     }
 
-    public void agregarEspadachin(Espadachin espadachin) {
-        espadachines.add(espadachin);
+    public void construirPlazaCentral(Posicion posicion){
+        this.cobrar(COSTO_PLAZACENTRAL);
+        PlazaCentral plaza = new PlazaCentral();
+        this.agregarEdificio(plaza, posicion);
     }
-
-    public int cantidadEspadachin() {
-        return espadachines.size();
-    }
-
-    public void agregarArquero(Arquero arquero) {
-        arqueros.add(arquero);
-    }
-
-    public int cantidadArqueros() {
-        return arqueros.size();
-    }
-
-    public void agregarArmaAsedio(ArmaAsedio armaAsedio) {
-        armas.add(armaAsedio);
-    }
-
-    public int cantidadArmaAsedio() { return armas.size(); }
 
     public boolean tenesCastillo() {
         return castillo != null;
     }
 
-    public void castilloDestruido() {
-        castillo = null;
-        juego.perdi(this);
+    /*METODO PRIVADOS*/
+
+    private void agregarEdificio(Edificio edificio, Posicion posicion){
+        this.edificios.add(edificio);
+        this.mapa.colocarEdificio(edificio,posicion);
     }
 
-    public String nombre() {
-        return nombre;
+    private void agregarUnidad(Unidad unidad, Posicion posicion){
+        this.unidades.add(unidad);
+        this.poblacion = poblacion + 1;
+        this.mapa.colocarUnidad(unidad,posicion);
     }
+
+    private void cobrar(int costo) {
+        if (oro < costo) {
+            throw new NoHaySuficienteOroException();
+        }
+        this.oro = oro - costo;
+    }
+
+
 }

@@ -11,123 +11,38 @@ public class JugadorTest {
     @Test
     public void testJugadorInicializacion(){
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
-        Assert.assertEquals("victor", jugador.nombre());
+        /* UBICO POR DEFAULT A SU CASTILLO, PLAZA Y SUS ALDEANOS*/
+        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+
+        Assert.assertEquals("victor", jugador.obtenerNombre());
+        Assert.assertEquals(100, jugador.obtenerOro());
+        Assert.assertEquals(3, jugador.cantidadDePoblacion());
+        Assert.assertFalse(jugador.castilloDestruido());
     }
 
     @Test
-    public void testJugadorIniciaCon100deOro() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        Assert.assertEquals(100, jugador.oro());
-    }
+    public void testJugadorCompraAldeanoYEdificioValido() {
+        Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
+        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
-    @Test
-    public void testJugadorIniciaCon3Aldeanos() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        Assert.assertEquals(3, jugador.cantidadDeAdeanos());
-    }
+        jugador.comprarAldeano(new Posicion(26,5));
+        jugador.construirCuartel(new Posicion(27,5));
 
-    @Test
-    public void testJugadorIniciaConUnCastillo() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        Assert.assertTrue(jugador.tenesCastillo());
-    }
-
-    @Test
-    public void testJugadorIniciaConUnaPlazaCentral() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        Assert.assertEquals(1, jugador.cantidadDePlazas());
-    }
-
-    @Test
-    public void testJugadorCrearUnaUnidadRestaElCostoDeLaMisma() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.crearUnidad(25);
-        Assert.assertEquals(75, jugador.oro());
+        Assert.assertEquals(25, jugador.obtenerOro());
     }
 
     @Test(expected = NoHaySuficienteOroException.class)
-    public void testJugadorNohaySuficienteOroParaCrearUnidadLanzaException() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.crearUnidad(150);
+    public void testJugadorCompraAldeanoYEdificio() {
+        Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
+        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+
+        jugador.comprarAldeano(new Posicion(26,5));
+        jugador.construirPlazaCentral(new Posicion(27,5));
+
     }
 
-    @Test(expected = ExcedeElLimiteDePoblacionPosibleException.class)
-    public void testJugadorCrearUnidadCuandoEstaEnElimiteDePoblacionLanzaException() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        for (int i = 0; i < 47; i++) {
-            jugador.agregarAldeano(new Aldeano());
-        }
-        jugador.crearUnidad(25);
-    }
-
-    @Test
-    public void testJugadorCrearUnEdificioRestaElCostoDeLMismo() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.crearEdificio(50);
-        Assert.assertEquals(50, jugador.oro());
-    }
-
-    @Test(expected = NoHaySuficienteOroException.class)
-    public void testJugadorNohaySuficienteOroParaCrearEdificioLanzaException() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.crearEdificio(200);
-    }
-
-    @Test
-    public void testJugadorRecauda20DeOroPorAldeano() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.recaudarOro();
-        Assert.assertEquals(160, jugador.oro());
-    }
-
-    @Test
-    public void testJugadorAgragaUnAldeano() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarAldeano(new Aldeano());
-        Assert.assertEquals(4, jugador.cantidadDeAdeanos());
-    }
-
-    @Test
-    public void testJugadorAgragaUnEspadachin() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarEspadachin(new Espadachin());
-        Assert.assertEquals(1, jugador.cantidadEspadachin());
-    }
-
-    @Test
-    public void testJugadorAgragaUnArquero() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarArquero(new Arquero());
-        Assert.assertEquals(1, jugador.cantidadArqueros());
-    }
-
-    @Test
-    public void testJugadorAgragaUnArmaAsedio() {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.agregarArmaAsedio(new ArmaAsedio());
-        Assert.assertEquals(1, jugador.cantidadArmaAsedio());
-    }
-
-    @Test
-    public void testJugadorCastilloDestruidoNoTieneCastillo(){
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("victor", juego);
-        jugador.castilloDestruido();
-        Assert.assertFalse( jugador.tenesCastillo());
-    }
 
 }
