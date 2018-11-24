@@ -26,6 +26,7 @@ public abstract class Edificio implements Atacable{
         }
     }
 
+    @Override
     public void recibirDanio(int danio){
         if(vida == this.vidaMaxima()){
             this.estado = estado.cambiar();

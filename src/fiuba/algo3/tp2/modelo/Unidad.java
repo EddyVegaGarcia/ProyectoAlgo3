@@ -12,6 +12,9 @@ public abstract class Unidad implements Atacable{
         return vida;
     }
 
-
+    @Override
+    public void recibirDanio(int danio) {
+        this.vida = vida - danio;
+    }
 }
 
