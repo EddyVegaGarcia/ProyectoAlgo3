@@ -1,11 +1,11 @@
 package fiuba.algo3.tp2.modelo;
 
+import static fiuba.algo3.tp2.modelo.Constantes.*;
+
 public class Castillo extends Edificio{
 
-    static final int VIDAMAXIMA = 1000;
-
     public Castillo(){
-        this.vida = VIDAMAXIMA;
+        this.vida = VIDA_MAXIMA_CASTILLO;
         this.tamanio = 8;
         this.estado = new Construido();
     }
@@ -17,7 +17,7 @@ public class Castillo extends Edificio{
 
     @Override
     protected int vidaMaxima() {
-        return VIDAMAXIMA;
+        return VIDA_MAXIMA_CASTILLO;
     }
 
     @Override
@@ -28,9 +28,8 @@ public class Castillo extends Edificio{
         this.vida = vida + 15;
     }
 
-    public Unidad crearArmaAsedio() {
-        ArmaDeAsedio arma = new ArmaDeAsedio();
-        return arma;
+    public Unidad crearArmaDeAsedio() {
+        return (new ArmaDeAsedio());
     }
 
     @Override
