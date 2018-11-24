@@ -11,9 +11,9 @@ public class CuartelTest {
     @Test
     public void testCuartelCreaEspadachin() {
 
-        Cuartel cuartel = new Cuartel();
+        Edificio cuartel = new Cuartel();
 
-        Unidad espadachin = cuartel.crearEspadachin();
+        Unidad espadachin = ((Cuartel) cuartel).crearEspadachin();
 
         int vidaEsperada = 100;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -22,9 +22,9 @@ public class CuartelTest {
     @Test
     public void testCuartelCreaArquero() {
 
-        Cuartel cuartel = new Cuartel();
+        Edificio cuartel = new Cuartel();
 
-        Unidad arquero = cuartel.crearArquero();
+        Unidad arquero = ((Cuartel) cuartel).crearArquero();
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, arquero.obtenerVida());

@@ -11,9 +11,9 @@ public class PlazaCentralTest {
     @Test
     public void testPlazaCentralCreaAldeano(){
 
-        PlazaCentral plaza = new PlazaCentral();
+        Edificio plaza = new PlazaCentral();
 
-        Unidad aldeano = plaza.crearAldeano();
+        Unidad aldeano = ((PlazaCentral) plaza).crearAldeano();
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
