@@ -50,7 +50,7 @@ public class Constantes {
     public static int ATAQUE_ESPADACHIN_A_EDIFICIO = 15;
     public static int ATAQUE_ARQUERO_A_UNIDAD = 15;
     public static int ATAQUE_ARQUERO_A_EDIFICIO = 10;
-    public static int ATAQUE_ARMA_DE_ASEDIO = 75;
+    public static int ATAQUE_ARMADEASEDIO = 75;
     public static int ATAQUE_CASTILLO = 20;
 
 }

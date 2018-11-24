@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public abstract class Unidad {
+public abstract class Unidad implements Atacable{
 
     int vida;
     Posicion posicion;
