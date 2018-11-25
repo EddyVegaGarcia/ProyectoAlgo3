@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
 
+import javafx.geometry.Pos;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import java.util.ArrayList;
@@ -9,9 +11,9 @@ import java.util.List;
 public class Jugador {
 
     int oro;
-    private List<Unidad> unidades;
+    private List<Pieza> piezas;
     private Castillo castillo;
-    private List<Edificio> edificios;
+
     private int limitePoblacion, poblacion;
     private String nombre;
     private Mapa mapa;
@@ -23,26 +25,35 @@ public class Jugador {
         this.nombre = unNombre;
         this.oro = CANTIDAD_DE_ORO_INICIAL;
         this.limitePoblacion = LIMITE_POBLACION;
-        this.unidades = new ArrayList<>();
-        this.edificios = new ArrayList<>();
+        this.piezas = new ArrayList<>();
         this.poblacion = POBLACION_INICIAL;
         this.mapa = mapa;
 
     }
 
-    public void ubicarAldeanos(Posicion posicion1, Posicion posicion2, Posicion posicion3) {
+    public void ubicarAldeanosPorDefault(Posicion posicion1, Posicion posicion2, Posicion posicion3) {
         Aldeano aldeano1 = new Aldeano();
         Aldeano aldeano2 = new Aldeano();
         Aldeano aldeano3 = new Aldeano();
-        PlazaCentral plaza = new PlazaCentral();
-        this.unidades.add(aldeano1);
-        this.unidades.add(aldeano2);
-        this.unidades.add(aldeano3);
-        this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
 
-        this.mapa.colocarPiezaNoAtacante(aldeano1,posicion1);
-        this.mapa.colocarPiezaNoAtacante(aldeano2,posicion2);
-        this.mapa.colocarPiezaNoAtacante(aldeano3,posicion3);
+        this.piezas.add(aldeano1);
+        this.piezas.add(aldeano2);
+        this.piezas.add(aldeano3);
+        this.ubicarEnElMapaPiezaNoAtacante(aldeano1,posicion1);
+        this.ubicarEnElMapaPiezaNoAtacante(aldeano2,posicion2);
+        this.ubicarEnElMapaPiezaNoAtacante(aldeano3,posicion3);
+
+        this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
+    }
+
+
+
+    public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
+        PlazaCentral plaza = new PlazaCentral();
+        this.piezas.add(plaza);
+
+        this.ubicarEnElMapaPiezaAtacante(castillo,posicionCastillo);
+        mapa.colocarPiezaNoAtacante(plaza,posicionPlaza);
 
     }
 
@@ -62,36 +73,23 @@ public class Jugador {
         return poblacion;
     }
 
-    public void comprarAldeano(Posicion posicion) {
-        this.cobrar(COSTO_ALDEANO);
-        Aldeano aldeano = new Aldeano();
-        this.agregarUnidad(aldeano,posicion);
-    }
-
-    public void construirCuartel(Posicion posicion) {
-        this.cobrar(COSTO_CUARTEL);
-        Cuartel cuartel = new Cuartel();
-        this.agregarEdificio(cuartel,posicion);
-    }
-
-    public void construirPlazaCentral(Posicion posicion){
-        this.cobrar(COSTO_PLAZACENTRAL);
-        PlazaCentral plaza = new PlazaCentral();
-        this.agregarEdificio(plaza, posicion);
-    }
 
 
 
     /*METODO PRIVADOS*/
-    private void agregarEdificio(Edificio edificio, Posicion posicion){
-        this.edificios.add(edificio);
-        this.mapa.colocarPiezaNoAtacante(edificio,posicion);
+
+    private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
+        this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
 
-    private void agregarUnidad(Unidad unidad, Posicion posicion){
-        this.unidades.add(unidad);
+    private void ubicarEnElMapaPiezaAtacante(Atacante atacante, Posicion posicion){
+        this.mapa.colocarPiezaAtacante(atacante,posicion);
+    }
+
+    private void agregarPiezaAtacante(Pieza pieza, Posicion posicion){
+        this.piezas.add(pieza);
         this.poblacion = poblacion + 1;
-        this.mapa.colocarUnidad(unidad,posicion);
+        this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
 
     private void cobrar(int costo) {
@@ -101,16 +99,4 @@ public class Jugador {
         this.oro = oro - costo;
     }
 
-    public void ubicarEdificios(Posicion posicionCastillo, Posicion posicionPlaza){
-        PlazaCentral plaza = new PlazaCentral();
-        this.edificios.add(plaza);
-
-        this.mapa.colocarEdificio(plaza, posicionPlaza);
-        this.mapa.colocarEdificio(castillo, posicionCastillo);
-    }
-
-
-    public int cantidadDeEdificios() {
-        return edificios.size();
-    }
 }

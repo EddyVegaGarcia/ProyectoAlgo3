@@ -12,8 +12,8 @@ public class JugadorTest {
     public void testJugadorInicializacion(){
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
         /* UBICO POR DEFAULT A SU CASTILLO, PLAZA Y SUS ALDEANOS*/
-        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
-        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+        jugador.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
         Assert.assertEquals("victor", jugador.obtenerNombre());
         Assert.assertEquals(100, jugador.obtenerOro());
@@ -24,8 +24,8 @@ public class JugadorTest {
     @Test
     public void testJugadorCompraAldeanoYEdificioValido() {
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
-        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
-        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+        jugador.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
         jugador.comprarAldeano(new Posicion(26,5));
         jugador.construirCuartel(new Posicion(27,5));
@@ -36,8 +36,8 @@ public class JugadorTest {
     @Test(expected = OroInsuficienteException.class)
     public void testJugadorCompraAldeanoYEdificioLanzaError() {
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
-        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
-        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+        jugador.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
         jugador.comprarAldeano(new Posicion(26,5));
         jugador.construirPlazaCentral(new Posicion(27,5));
@@ -47,8 +47,8 @@ public class JugadorTest {
     @Test
     public void testJugadorConstruyeCorrectamente(){
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
-        jugador.ubicarAldeanos(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
-        jugador.ubicarEdificios(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
+        jugador.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,POSICION_DEFAULT_ALDEANO2_1,POSICION_DEFAULT_ALDEANO3_1);
+        jugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1,POSICION_DEFAULT_PLAZA1);
 
         Posicion posicionAldeano = new Posicion(26,5);
         Posicion posicionCuartel = new Posicion(27,5);

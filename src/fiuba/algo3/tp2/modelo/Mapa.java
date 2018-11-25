@@ -82,7 +82,7 @@ public class Mapa {
             for (int j = posicion.getColumna() ; j <= (unAtacante.obtenerTamanio() / 4) ; j++) {
                 Posicion posActual = new Posicion(i, j);
                 this.validarPosicion(posActual);
-                piezasDelMapa.put(posActual, unAtacante);
+                piezasDelMapa.put(posActual, (Pieza) unAtacante); /* casteo porque no me deja agregar al hash*/
                 rango.filtrarPosicion(posActual);
             }
         }
