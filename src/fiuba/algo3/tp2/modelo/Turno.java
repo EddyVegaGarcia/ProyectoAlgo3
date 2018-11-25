@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.controlador;
+package fiuba.algo3.tp2.modelo;
 
 
 import fiuba.algo3.tp2.modelo.*;
