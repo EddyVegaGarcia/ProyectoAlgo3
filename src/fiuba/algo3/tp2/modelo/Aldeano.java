@@ -38,10 +38,7 @@ public class Aldeano extends Unidad {
     public void ganarMonedas(){
        estado.ganarOro(this);
     }
-
-    @Override
-    public void atacar(Edificio edificio){
-    }
+    
 
     public EstadoDeAldeano obtenerEstado() {
         return estado;

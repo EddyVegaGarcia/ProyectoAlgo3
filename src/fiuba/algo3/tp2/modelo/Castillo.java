@@ -64,7 +64,7 @@ public class Castillo extends Edificio implements Atacante {
 
     public void atacar(Mapa mapa) {
         List<Posicion> posicionesDeEnemigos = new ArrayList<>();
-        
+
 
     }
 }
