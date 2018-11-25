@@ -2,7 +2,6 @@ package fiuba.algo3.tp2.vista;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -15,8 +14,8 @@ public class Main extends Application {
         stage.setTitle("Algo3Age Of Empires");
 
 
-        StackPane layout = new StackPane();
-        Scene escenaJuego = new Scene(layout);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+        Scene escenaJuego = new Scene(contenedorPrincipal);
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
 
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1920, 1080);
