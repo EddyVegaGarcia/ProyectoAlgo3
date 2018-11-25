@@ -158,11 +158,48 @@ public class MapaTest {
         Posicion posicionPlaza = new Posicion(3,3);
 
         mapa.colocarEdificio(unaPlaza, posicionPlaza);
-        assertEquals(mapa.recuperarEdificio(posicionPlaza), unaPlaza);
+
+        for (int i = posicionPlaza.getFila(); i <= (unaPlaza.obtenerTamanio() / 4) ; i++) {
+            for (int j = posicionPlaza.getColumna(); j <= (unaPlaza.obtenerTamanio() / 4) ; j++) {
+                assertEquals(mapa.recuperarEdificio(new Posicion(i, j)), unaPlaza);
+            }
+        }
+
+        /*assertEquals(mapa.recuperarEdificio(posicionPlaza), unaPlaza);
         assertEquals(mapa.recuperarEdificio(new Posicion(3,4)), unaPlaza);
         assertEquals(mapa.recuperarEdificio(new Posicion(4,3)), unaPlaza);
-        assertEquals(mapa.recuperarEdificio(new Posicion(4,4)), unaPlaza);
+        assertEquals(mapa.recuperarEdificio(new Posicion(4,4)), unaPlaza);*/
     }
+
+    @Test
+    public void testColocarCastilloCorrectamente() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+
+        Castillo unCastillo = new Castillo();
+        mapa.colocarEdificio(unCastillo, POSICION_DEFAULT_CASTILLO1);
+
+        for (int i = POSICION_DEFAULT_CASTILLO1.getFila(); i <= (unCastillo.obtenerTamanio() / 4) ; i++) {
+            for (int j = POSICION_DEFAULT_CASTILLO1.getColumna(); j <= (unCastillo.obtenerTamanio() / 4) ; j++) {
+                assertEquals(mapa.recuperarEdificio(new Posicion(i, j)), unCastillo);
+            }
+        }
+
+    }
+
+    /*@Test
+    public void testCastilloAtaca() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Castillo castillo = new Castillo();
+        Aldeano aldeanoEnemigo = new Aldeano();
+
+        mapa.colocarEdificio(castillo, POSICION_DEFAULT_CASTILLO1);
+        mapa.colocarUnidad(aldeanoEnemigo, new Posicion(5,3));
+
+        castillo.atacar();
+        int vidaEsperada = 30;
+        assertEquals(aldeanoEnemigo.obtenerVida(), vidaEsperada);
+
+    }*/
 
 
 

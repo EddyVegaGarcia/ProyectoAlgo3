@@ -84,22 +84,15 @@ public class Mapa {
         this.colocarUnidad(unaUnidad, posicionNueva);
     }
 
-    public void colocarEdificio(Edificio unEdificio, Posicion posicionPlaza) {
-        List<Posicion> celdasDeEdificio = new ArrayList<>();
-        int coordenadaFila = posicionPlaza.getFila();
-        int coordenadaColumna = posicionPlaza.getColumna();
-        for (int i = coordenadaFila ; i < (coordenadaFila + 2) ; i++) {
-            for (int j = coordenadaColumna ; j < (coordenadaColumna+2) ; j++) {
-                //Posicion posActual = new Posicion(i, j);
-                celdasDeEdificio.add(new Posicion(i, j));
+    public void colocarEdificio(Edificio unEdificio, Posicion posicionEdificio) {
+        int coordenadaFila = posicionEdificio.getFila();
+        int coordenadaColumna = posicionEdificio.getColumna();
+        for (int i = coordenadaFila ; i <= (unEdificio.obtenerTamanio() / 4) ; i++) {
+            for (int j = coordenadaColumna ; j <= (unEdificio.obtenerTamanio() / 4) ; j++) {
+
+                coleccionEdificios.put(new Posicion(i,j), unEdificio);
             }
         }
-
-        for (Posicion posActual : celdasDeEdificio) {
-            coleccionEdificios.put(posActual, unEdificio);
-        }
     }
 
-    public void ColocarCastilo(Castillo castillo, Posicion posicionCastillo) {
-    }
 }

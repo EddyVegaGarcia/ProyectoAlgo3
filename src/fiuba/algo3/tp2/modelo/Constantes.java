@@ -44,4 +44,13 @@ public class Constantes {
     public static int TURNOS_CONSTRUCCION = 3;
     static final int VIDA_REPARACION = 15;
 
+
+    /*ATAQUES DE LAS UNIDADES Y CASTILLO*/
+    public static int ATAQUE_ESPADACHIN_A_UNIDAD = 25;
+    public static int ATAQUE_ESPADACHIN_A_EDIFICIO = 15;
+    public static int ATAQUE_ARQUERO_A_UNIDAD = 15;
+    public static int ATAQUE_ARQUERO_A_EDIFICIO = 10;
+    public static int ATAQUE_ARMADEASEDIO = 75;
+    public static int ATAQUE_CASTILLO = 20;
+
 }
