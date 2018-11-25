@@ -58,56 +58,8 @@ public class Posicion {
         return (x <= dimensionMapa[0]) && (y <= dimensionMapa[1]);
     }
 
-    public void moverArriba(String dimensionMapa) {
-        String nuevaPosicion = this.convertirIntAString(x - 1, y);
-        Posicion posicionAMover = new Posicion(nuevaPosicion);
-        if (posicionAMover.esPosicionValida(dimensionMapa)) {
-            this.x = x - 1;
-        } else {
-            throw new RuntimeException();
-        }
 
-    }
-    public void moverAbajo(String dimensionMapa) {
-        String nuevaPosicion = this.convertirIntAString(x+1, y);
-        Posicion posicionAMover = new Posicion(nuevaPosicion);
-        if (posicionAMover.esPosicionValida(dimensionMapa)) {
-            this.x = x+1;
-        } else {
-            throw new RuntimeException();
-        }
-    }
 
-    public void moverIzquierda(String dimensionMapa) {
-        String nuevaPosicion = this.convertirIntAString(x, y-1);
-        Posicion posicionAMover = new Posicion(nuevaPosicion);
-        if (posicionAMover.esPosicionValida(dimensionMapa)) {
-            this.y = y-1;
-        } else {
-            throw new RuntimeException();
-        }
-    }
-
-    public void moverDerecha(String dimensionMapa) {
-        String nuevaPosicion = this.convertirIntAString(x, y+1);
-        Posicion posicionAMover = new Posicion(nuevaPosicion);
-        if (posicionAMover.esPosicionValida(dimensionMapa)) {
-            this.y = y+1;
-        } else {
-            throw new RuntimeException();
-        }
-    }
-
-    public void moverSuperiorIzquierda(String dimensionMapa) {
-        String nuevaPosicion = this.convertirIntAString(x-1, y-1);
-        Posicion posicionAMover = new Posicion(nuevaPosicion);
-        if (posicionAMover.esPosicionValida(dimensionMapa)) {
-            this.x = x-1;
-            this.y = y-1;
-        } else {
-            throw new RuntimeException();
-        }
-    }
 
     public void moverSuperiorDerecha(String dimensionMapa) {
         String nuevaPosicion = this.convertirIntAString(x-1, y+1);

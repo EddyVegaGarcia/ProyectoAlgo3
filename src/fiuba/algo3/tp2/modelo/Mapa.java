@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
 //import java.lang.reflect.Array;
+import javafx.geometry.Pos;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -9,30 +11,24 @@ import java.util.Map;
 
 public class Mapa {
 
-    HashMap<Posicion, Unidad> coleccionUnidades;
-    HashMap<Posicion, Edificio> coleccionEdificios;
+    HashMap<Posicion, Pieza> piezasDelMapa;
     int dimension_filas;
     int dimension_columnas;
 
     public Mapa(int fila , int columna){
 
-        this.coleccionUnidades = new HashMap<>();
-        this.coleccionEdificios = new HashMap<>();
+        this.piezasDelMapa = new HashMap<>();
         this.dimension_filas = fila;
         this.dimension_columnas = columna;
 
     }
 
-    public void colocarUnidad(Unidad unaUnidad, Posicion unaPosicion) {
-        this.validarPosicion(unaPosicion);
-        coleccionUnidades.put(unaPosicion, unaUnidad);
-    }
 
     private void validarPosicion(Posicion unaPosicion) {
         if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
             throw new UbicacionErroneaException();
 
-        if(coleccionUnidades.containsKey(unaPosicion))
+        if(piezasDelMapa.containsKey(unaPosicion))
             throw new UbicacionOcupadaException();
     }
 
@@ -40,36 +36,30 @@ public class Mapa {
         return (dimension_filas * dimension_columnas);
     }
 
-    public Unidad recuperarUnidad(Posicion posicion) {
-        Unidad unidad = null;
-        for (Posicion posActual : coleccionUnidades.keySet()) {
+    public int getFilas() { return dimension_filas; }
+
+    public int getColumnas() { return dimension_columnas; }
+
+    public Pieza recuperarPieza(Posicion posicion) {
+        Pieza pieza = null;
+        for (Posicion posActual : piezasDelMapa.keySet()) {
             if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
-                unidad = coleccionUnidades.get(posActual);
+                pieza = piezasDelMapa.get(posActual);
             }
         }
-        return unidad;
+        return pieza;
     }
 
-    public Edificio recuperarEdificio(Posicion posicion) {
-        Edificio unEdificio = null;
-        for (Posicion posActual : coleccionEdificios.keySet()) {
-            if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
-                unEdificio = coleccionEdificios.get(posActual);
-            }
-        }
-        return unEdificio;
-    }
-
-    public void moverUnidadArriba(Unidad unaUnidad) {
+    /*public void moverUnidadArriba(Unidad unaUnidad) {
         Posicion posicionAnterior = new Posicion(15,15);
-        for (Posicion posActual : coleccionUnidades.keySet()) {
-            if (coleccionUnidades.get(posActual) == unaUnidad) {
+        for (Posicion posActual : piezasDelMapa.keySet()) {
+            if (piezasDelMapa.get(posActual) == unaUnidad) {
                 posicionAnterior = posActual;
             }
         }
         Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        this.colocarUnidad(unaUnidad, posicionNueva);
+        this.(unaUnidad, posicionNueva);
     }
 
     public void moverUnidadAbajo(Unidad unaUnidad) {
@@ -82,17 +72,39 @@ public class Mapa {
         Posicion posicionNueva = new Posicion(posicionAnterior.getFila() + 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
         this.colocarUnidad(unaUnidad, posicionNueva);
+    }*/
+
+    public void colocarPiezaAtacante(Atacante unAtacante, Posicion posicion) {
+        RangoDeAtaque rango = new RangoDeAtaque(this);
+        rango.calcularRangoDeAtaque(unAtacante, posicion);
+
+        for (int i = posicion.getFila() ; i <= (unAtacante.obtenerTamanio() / 4) ; i++) {
+            for (int j = posicion.getColumna() ; j <= (unAtacante.obtenerTamanio() / 4) ; j++) {
+                Posicion posActual = new Posicion(i, j);
+                this.validarPosicion(posActual);
+                piezasDelMapa.put(posActual, unAtacante);
+                rango.filtrarPosicion(posActual);
+            }
+        }
+
+        unAtacante.guardarRangoDeAtaque(rango);
     }
 
-    public void colocarEdificio(Edificio unEdificio, Posicion posicionEdificio) {
-        int coordenadaFila = posicionEdificio.getFila();
-        int coordenadaColumna = posicionEdificio.getColumna();
-        for (int i = coordenadaFila ; i <= (unEdificio.obtenerTamanio() / 4) ; i++) {
-            for (int j = coordenadaColumna ; j <= (unEdificio.obtenerTamanio() / 4) ; j++) {
-
-                coleccionEdificios.put(new Posicion(i,j), unEdificio);
+    public void colocarPiezaNoAtacante(Pieza unaPieza, Posicion posicion) {
+        for (int i = posicion.getFila() ; i <= (unaPieza.obtenerTamanio() / 4) ; i++) {
+            for (int j = posicion.getColumna() ; j <= (unaPieza.obtenerTamanio() / 4) ; j++) {
+                this.validarPosicion(posicion);
+                Posicion posActual = new Posicion(i, j);
+                piezasDelMapa.put(posActual, unaPieza);
             }
         }
     }
 
+    public void moverAldeano(Posicion posicion, Direccion direccion) {
+        Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
+        this.validarPosicion(nuevaPosicion);
+        Aldeano aldeano = piezasDelMapa.get(posicion);
+        piezasDelMapa.remove(posicion);
+        piezasDelMapa.put(nuevaPosicion, aldeano);
+    }
 }

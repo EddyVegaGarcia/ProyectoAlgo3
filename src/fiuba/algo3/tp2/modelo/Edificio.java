@@ -2,14 +2,10 @@ package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-public abstract class Edificio implements Atacable{
+public abstract class Edificio extends Pieza {
 
-    int vida;
-    int costo;
     EstadoDeEdificio estado;
-    int tamanio;
     int turnosConstruccion;
-
 
     public void construir() {
         if(turnosConstruccion == TURNOS_CONSTRUCCION){
@@ -33,12 +29,6 @@ public abstract class Edificio implements Atacable{
         }
         this.vida = vida - danio;
     }
-
-    public int obtenerVida() {
-        return vida;
-    }
-
-    public int obtenerTamanio() { return tamanio; }
 
     protected abstract int vidaMaxima();
 

@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Arquero extends Unidad {
+public class Arquero extends Unidad implements Atacante {
 
     public Arquero(){
         this.vida = 75;
@@ -8,12 +8,13 @@ public class Arquero extends Unidad {
 
     }
 
-    public int vida() {
-        return vida;
+    public void atacarUnidad(Unidad unaUnidad) {
+        int danio = 15;
+        unaUnidad.recibirDanio(danio);
     }
 
-    @Override
-    public void atacar(Edificio edificio) {
-
+    public void atacarEdificio(Edificio unEdificio) {
+        int danio = 10;
+        unEdificio.recibirDanio(danio);
     }
 }

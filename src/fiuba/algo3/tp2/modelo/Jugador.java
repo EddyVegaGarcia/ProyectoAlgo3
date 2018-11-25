@@ -40,9 +40,9 @@ public class Jugador {
         this.unidades.add(aldeano3);
         this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
 
-        this.mapa.colocarUnidad(aldeano1,posicion1);
-        this.mapa.colocarUnidad(aldeano2,posicion2);
-        this.mapa.colocarUnidad(aldeano3,posicion3);
+        this.mapa.colocarPiezaNoAtacante(aldeano1,posicion1);
+        this.mapa.colocarPiezaNoAtacante(aldeano2,posicion2);
+        this.mapa.colocarPiezaNoAtacante(aldeano3,posicion3);
 
     }
 
@@ -85,7 +85,7 @@ public class Jugador {
     /*METODO PRIVADOS*/
     private void agregarEdificio(Edificio edificio, Posicion posicion){
         this.edificios.add(edificio);
-        this.mapa.colocarEdificio(edificio,posicion);
+        this.mapa.colocarPiezaNoAtacante(edificio,posicion);
     }
 
     private void agregarUnidad(Unidad unidad, Posicion posicion){

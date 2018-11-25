@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class ArmaDeAsedio extends Unidad {
+public class ArmaDeAsedio extends Unidad implements Atacante {
 
     public ArmaDeAsedio(){
         this.vida = 150;
@@ -8,13 +8,12 @@ public class ArmaDeAsedio extends Unidad {
 
     }
 
+    public void atacarUnidad(Unidad unaUnidad) {
 
-    public int vida() {
-        return 150;
     }
 
-    @Override
-    public void atacar(Edificio edificio) {
-
+    public void atacarEdificio(Edificio unEdificio) {
+        int danio = 75;
+        unEdificio.recibirDanio(danio);
     }
 }

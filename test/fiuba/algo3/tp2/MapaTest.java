@@ -40,10 +40,9 @@ public class MapaTest {
 
         Aldeano unAldeano = new Aldeano();
 
-        //se coloca al aldeano en la parcela de fila:35 y columna:35
-        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
 
-        assertEquals(mapa.recuperarUnidad(posicion), unAldeano);
+        assertEquals(mapa.recuperarPieza(posicion), unAldeano);
 
     }
 
@@ -55,7 +54,7 @@ public class MapaTest {
 
         Posicion posicion = new Posicion(40,45);
 
-        mapa.colocarUnidad(new Aldeano(), posicion);
+        mapa.colocarPiezaNoAtacante(new Aldeano(), posicion);
     }
 
     @Test ( expected = UbicacionOcupadaException.class)
@@ -67,24 +66,24 @@ public class MapaTest {
         Posicion posicion = new Posicion(20,25);
 
         Aldeano unAldeano = new Aldeano();
-        Espadachin unEspadachin = new Espadachin();
+        Aldeano otroAldeano = new Aldeano();
 
-        //Unidad Aldeano, espadachin, arquero, arma de asedio (1 parcela)
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.colocarUnidad(unEspadachin, posicion);
+        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.colocarPiezaNoAtacante(otroAldeano, posicion);
     }
 
     @Test
-    public void moverUnidadHaciaArriba() {
+    public void moverAldeanoHaciaArriba() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.moverUnidadArriba(unAldeano);
+        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+
+        mapa.moverAldeano(posicion, new DireccionArriba());
 
         Posicion posicionNueva = new Posicion(19,25);
-        assertEquals(mapa.recuperarUnidad(posicionNueva), unAldeano);
+        assertEquals(mapa.recuperarPieza(posicionNueva), unAldeano);
     }
 
 
@@ -152,23 +151,18 @@ public class MapaTest {
     }
 
     @Test
-    public void testColocarEdificioCorrectamente() {
+    public void testColocarEdificioNoAtacanteCorrectamente() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         PlazaCentral unaPlaza = new PlazaCentral();
         Posicion posicionPlaza = new Posicion(3,3);
 
-        mapa.colocarEdificio(unaPlaza, posicionPlaza);
+        mapa.colocarPiezaNoAtacante(unaPlaza, posicionPlaza);
 
         for (int i = posicionPlaza.getFila(); i <= (unaPlaza.obtenerTamanio() / 4) ; i++) {
             for (int j = posicionPlaza.getColumna(); j <= (unaPlaza.obtenerTamanio() / 4) ; j++) {
-                assertEquals(mapa.recuperarEdificio(new Posicion(i, j)), unaPlaza);
+                assertEquals(mapa.recuperarPieza(new Posicion(i, j)), unaPlaza);
             }
         }
-
-        /*assertEquals(mapa.recuperarEdificio(posicionPlaza), unaPlaza);
-        assertEquals(mapa.recuperarEdificio(new Posicion(3,4)), unaPlaza);
-        assertEquals(mapa.recuperarEdificio(new Posicion(4,3)), unaPlaza);
-        assertEquals(mapa.recuperarEdificio(new Posicion(4,4)), unaPlaza);*/
     }
 
     @Test
@@ -176,32 +170,28 @@ public class MapaTest {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
 
         Castillo unCastillo = new Castillo();
-        mapa.colocarEdificio(unCastillo, POSICION_DEFAULT_CASTILLO1);
+        mapa.colocarPiezaAtacante(unCastillo, POSICION_DEFAULT_CASTILLO1);
 
         for (int i = POSICION_DEFAULT_CASTILLO1.getFila(); i <= (unCastillo.obtenerTamanio() / 4) ; i++) {
             for (int j = POSICION_DEFAULT_CASTILLO1.getColumna(); j <= (unCastillo.obtenerTamanio() / 4) ; j++) {
-                assertEquals(mapa.recuperarEdificio(new Posicion(i, j)), unCastillo);
+                assertEquals(mapa.recuperarPieza(new Posicion(i, j)), unCastillo);
             }
         }
 
     }
 
-    /*@Test
+    @Test
     public void testCastilloAtaca() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Castillo castillo = new Castillo();
         Aldeano aldeanoEnemigo = new Aldeano();
 
-        mapa.colocarEdificio(castillo, POSICION_DEFAULT_CASTILLO1);
-        mapa.colocarUnidad(aldeanoEnemigo, new Posicion(5,3));
+        mapa.colocarPiezaAtacante(castillo, POSICION_DEFAULT_CASTILLO1);
+        mapa.colocarPiezaNoAtacante(aldeanoEnemigo, new Posicion(5, 3));
 
-        castillo.atacar();
+        castillo.atacar(mapa);
         int vidaEsperada = 30;
         assertEquals(aldeanoEnemigo.obtenerVida(), vidaEsperada);
 
-    }*/
-
-
-
-
+    }
 }
