@@ -38,6 +38,8 @@ public abstract class Edificio implements Atacable{
         return vida;
     }
 
+    public int obtenerTamanio() { return tamanio; }
+
     protected abstract int vidaMaxima();
 
     protected abstract void darleVida();

@@ -46,14 +46,6 @@ public class Jugador {
 
     }
 
-    public void ubicarEdificios(Posicion posicionCastillo, Posicion posicionPlaza){
-        PlazaCentral plaza = new PlazaCentral();
-        this.edificios.add(plaza);
-
-        this.mapa.colocarEdificio(plaza, posicionPlaza);
-        this.mapa.ColocarCastilo(castillo, posicionCastillo);
-    }
-
     public String obtenerNombre() {
         return nombre;
     }
@@ -91,7 +83,6 @@ public class Jugador {
 
 
     /*METODO PRIVADOS*/
-
     private void agregarEdificio(Edificio edificio, Posicion posicion){
         this.edificios.add(edificio);
         this.mapa.colocarEdificio(edificio,posicion);
@@ -110,10 +101,14 @@ public class Jugador {
         this.oro = oro - costo;
     }
 
+    public void ubicarEdificios(Posicion posicionCastillo, Posicion posicionPlaza){
+        PlazaCentral plaza = new PlazaCentral();
+        this.edificios.add(plaza);
 
-    /*public void construirEficio(Posicion posicionCuartel, Posicion posicionAldeano) {
-        this.mapa.construirEdificio(posicionCuartel,posicionAldeano);
-    }*/
+        this.mapa.colocarEdificio(plaza, posicionPlaza);
+        this.mapa.colocarEdificio(castillo, posicionCastillo);
+    }
+
 
     public int cantidadDeEdificios() {
         return edificios.size();

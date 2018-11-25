@@ -4,9 +4,9 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Castillo extends Edificio{
 
-    public Castillo(){
+    public Castillo() {
         this.vida = VIDA_MAXIMA_CASTILLO;
-        this.tamanio = 8;
+        this.tamanio = 16;
         this.estado = new Construido();
     }
 
