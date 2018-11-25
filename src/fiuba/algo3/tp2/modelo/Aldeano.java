@@ -38,7 +38,7 @@ public class Aldeano extends Unidad {
     public void ganarMonedas(){
        estado.ganarOro(this);
     }
-    
+
 
     public EstadoDeAldeano obtenerEstado() {
         return estado;
