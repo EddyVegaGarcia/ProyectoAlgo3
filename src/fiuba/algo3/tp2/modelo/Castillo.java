@@ -57,13 +57,14 @@ public class Castillo extends Edificio implements Atacante {
 
     public void atacarUnidad(Unidad unidad) {}
 
+    @Override
+    public void atacarEdificio(Edificio unEdificio) {
+
+    }
+
     public void atacar(Mapa mapa) {
         List<Posicion> posicionesDeEnemigos = new ArrayList<>();
-
-        posicionesDeEnemigos = this.obtenerPosicionesDeEnemigos(mapa);
-
-
-
+        
 
     }
 }

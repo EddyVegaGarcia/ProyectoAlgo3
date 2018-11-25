@@ -103,7 +103,7 @@ public class Mapa {
     public void moverAldeano(Posicion posicion, Direccion direccion) {
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
         this.validarPosicion(nuevaPosicion);
-        Aldeano aldeano = piezasDelMapa.get(posicion);
+        Pieza aldeano = piezasDelMapa.get(posicion);
         piezasDelMapa.remove(posicion);
         piezasDelMapa.put(nuevaPosicion, aldeano);
     }
