@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -10,61 +11,34 @@ public class MapaTest {
 
     @Test
     public void testIniciarMapaBaseCorrespondiente() {
-
         //Mapa Base se inicia con 35 * 40 = 1400 espacios
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
 
-        int tamanio = 1400;
-
-        assertEquals(mapa.getTamanio(), tamanio);
+        Assert.assertEquals(FILA_DEFAULT_MAPA*COLUMNA_DEFAULT_MAPA,mapa.getTamanio());
     }
 
     @Test
-    public void testIniciarMapaBaseNoCorrespondiente() {
-
-        //Mapa Base se inicia con 35 * 40 = 1400 espacios
+    public void testColocarUnidadEnPosicionCorrectamente() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
-
-        int tamanio = 1000;
-
-        assertNotEquals(mapa.getTamanio(), tamanio);
-    }
-
-    @Test
-    public void testColocarUnidadEnParcelaCorrectamente() {
-
-        //Mapa Base ubica una unidad en una celda correspondiente
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
-
         Posicion posicion = new Posicion(35,15);
-
         Aldeano unAldeano = new Aldeano();
-
         mapa.colocarPiezaNoAtacante(unAldeano, posicion);
 
-        assertEquals(mapa.recuperarPieza(posicion), unAldeano);
+        Assert.assertEquals(unAldeano,mapa.recuperarPieza(posicion));
 
     }
 
     @Test (expected = UbicacionErroneaException.class)
     public void testColocarUnidadEnUnaUbicacionErronea() {
-
-        //Mapa Base ubica una unidad en una celda correspondiente
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
-
         Posicion posicion = new Posicion(40,45);
-
         mapa.colocarPiezaNoAtacante(new Aldeano(), posicion);
     }
 
     @Test ( expected = UbicacionOcupadaException.class)
     public void testColocarUnidadEnUnaOcupada() {
-
-        //Mapa Base ubica una unidad en una celda correspondiente
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
-
         Posicion posicion = new Posicion(20,25);
-
         Aldeano unAldeano = new Aldeano();
         Aldeano otroAldeano = new Aldeano();
 
@@ -79,10 +53,9 @@ public class MapaTest {
         Aldeano unAldeano = new Aldeano();
 
         mapa.colocarPiezaNoAtacante(unAldeano, posicion);
-
         mapa.moverAldeano(posicion, new DireccionArriba());
-
         Posicion posicionNueva = new Posicion(19,25);
+
         assertEquals(mapa.recuperarPieza(posicionNueva), unAldeano);
     }
 
@@ -93,22 +66,22 @@ public class MapaTest {
         Posicion posicion = new Posicion(1,18);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.moverUnidadArriba(unAldeano);
+        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.moverAldeano(posicion, new DireccionArriba());
     }
-
+/*
     @Test
     public void moverUnidadHaciaAbajo() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Posicion posicion = new Posicion(20,25);
-        Aldeano unAldeano = new Aldeano();
+        Espadachin espadachin = new Espadachin();
 
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.moverUnidadAbajo(unAldeano);
+        mapa.colocarPiezaNoAtacante(espadachin, posicion);
+        mapa.moverAtacante(posicion, new DireccionAbajo());
 
         Posicion posicionNueva = new Posicion(21,25);
         assertEquals(mapa.recuperarUnidad(posicionNueva), unAldeano);
-    }
+    }*/
 
     @Test (expected = UbicacionErroneaException.class)
     public void moverUnidadHaciaAbajoInvalido() {
@@ -116,8 +89,8 @@ public class MapaTest {
         Posicion posicion = new Posicion(35,25);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.moverUnidadAbajo(unAldeano);
+        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.moverAldeano(posicion, new DireccionAbajo());
     }
 
     @Test
