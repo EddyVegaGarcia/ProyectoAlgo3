@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
+import org.junit.Assert;
 import org.junit.Test;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;
@@ -17,12 +18,14 @@ public class AldeanoTest {
         Posicion posicionAldeano = new Posicion(29, 13);
         Posicion posicionCuartel = new Posicion(28, 13);
 
-        mapa.colocarUnidad(aldeano, posicionAldeano);
-        mapa.colocarEdificio(unCuartel, posicionCuartel);
+        mapa.colocarPiezaNoAtacante(aldeano, posicionAldeano);
+        mapa.colocarPiezaNoAtacante(unCuartel, posicionCuartel);
 
         aldeano.construir(unCuartel);
+        aldeano.construir(unCuartel);
+        aldeano.construir(unCuartel);
 
-        assertEquals(new EstaTrabajando().getEstado(),aldeano.obtenerEstado().getEstado());
+        Assert.assertEquals(VIDA_MAXIMA_CUARTEL, unCuartel.obtenerVida());
 
     }
 
@@ -68,10 +71,9 @@ public class AldeanoTest {
         Unidad aldeano = new Aldeano();
 
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        aldeano.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
-        aldeano.recibirDanio(ATAQUE_CASTILLO);
+        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
 
-        int vidaEsperada = -10;
+        int vidaEsperada = 0;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
 
     }

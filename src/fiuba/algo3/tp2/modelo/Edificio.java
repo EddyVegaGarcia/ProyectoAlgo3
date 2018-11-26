@@ -8,11 +8,11 @@ public abstract class Edificio extends Pieza {
     int turnosConstruccion;
 
     public void construir() {
+        this.turnosConstruccion = turnosConstruccion + 1;
         if(turnosConstruccion == TURNOS_CONSTRUCCION){
             this.estado = estado.cambiar();
             this.darleVida();
         }
-        this.turnosConstruccion = turnosConstruccion + 1;
     }
 
     public void reparar(){
