@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 
 public class Mapa {
@@ -106,5 +107,13 @@ public class Mapa {
         Pieza aldeano = piezasDelMapa.get(posicion);
         piezasDelMapa.remove(posicion);
         piezasDelMapa.put(nuevaPosicion, aldeano);
+    }
+
+    public void ubicarUnidadEnPosicionValida(Pieza pieza, Posicion posicionPlaza,int tamanio) {
+        Posicion posicionNueva = posicionPlaza.calcularPosicionDeUnRango(tamanio,this);
+    }
+
+    public boolean estaDisponible(Posicion posicion) {
+        return !piezasDelMapa.containsKey(posicion);
     }
 }

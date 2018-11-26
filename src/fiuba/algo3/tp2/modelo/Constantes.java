@@ -55,5 +55,13 @@ public class Constantes {
 
     /*DISTANCIAS DE ATAQUES */
     public static int DISTANCIA_ATAQUE_CASTILLO = 3;
+    public static int DISTANCIA_ATAQUE_ARQUERO = 3;
+    public static int DISTANCIA_ATAQUE_ESPADACHIN = 1;
+    public static int DISTANCIA_ATAQUE_ARMADEASEDIO = 5;
+
+    /*TAMAÑO DE LOS EDIFICIO*/
+    public static int TAMANIO_PLAZA = 4;
+    public static int TAMANIO_CUARTEL = 4;
+    public static int TAMANIO_CASTILLO = 16;
 
 }

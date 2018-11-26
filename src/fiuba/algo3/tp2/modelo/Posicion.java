@@ -29,6 +29,24 @@ public class Posicion {
         return ((posicionFila > 0) && (posicionColumna > 0) && (posicionFila <= dimensionFilas) && (posicionColumna <= dimensionColumas));
 
     }
+
+
+    public Posicion calcularPosicionDeUnRango(int tamanio, Mapa mapa) {
+            int filaInferior = posicionFila + (tamanio/ 4);
+            int columnaDerecha = posicionColumna + (tamanio / 4);
+
+            for (int i = posicionColumna + tamanio; i <= columnaDerecha + tamanio; i++) {
+                for (int j = posicionFila + tamanio; j <= filaInferior + tamanio; j++) {
+                    Posicion posActual = new Posicion(i, j);
+                    if (estaContenidaEnDimensiones(mapa.getFilas(),mapa.getColumnas()) && mapa.estaDisponible(posActual)) {
+                        return posActual;
+                    }
+                }
+            }
+            return null;
+
+    }
+}
 /*
     public boolean esIgualA(String pos) {
         int[] posicionActual = this.convertirStringAint(pos);
@@ -94,6 +112,3 @@ public class Posicion {
             throw new RuntimeException();
         }
     }*/
-
-
-}

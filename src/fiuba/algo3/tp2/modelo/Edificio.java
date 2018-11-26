@@ -33,4 +33,5 @@ public abstract class Edificio extends Pieza {
     protected abstract int vidaMaxima();
 
     protected abstract void darleVida();
+
 }

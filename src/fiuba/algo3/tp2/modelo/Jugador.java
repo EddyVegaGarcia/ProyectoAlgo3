@@ -57,6 +57,21 @@ public class Jugador {
 
     }
 
+    public void comprarAldeano(Posicion posicionPlaza) {
+        this.cobrar(COSTO_ALDEANO);
+        PlazaCentral plaza = (PlazaCentral) mapa.recuperarPieza(posicionPlaza);
+        Pieza aldeano = plaza.crearAldeano();
+        this.mapa.ubicarUnidadEnPosicionValida(aldeano,posicionPlaza,TAMANIO_PLAZA);
+        this.poblacion = poblacion +1;
+
+    }
+
+    public void comprarPlazaCentral(Posicion posicion) {
+        this.cobrar(COSTO_PLAZACENTRAL);
+        Pieza plaza = new PlazaCentral();
+        this.mapa.colocarPiezaNoAtacante(plaza,posicion);
+    }
+
     public String obtenerNombre() {
         return nombre;
     }
@@ -98,5 +113,4 @@ public class Jugador {
         }
         this.oro = oro - costo;
     }
-
 }

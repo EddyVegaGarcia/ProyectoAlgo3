@@ -17,6 +17,8 @@ public class PlazaCentral extends Edificio {
     protected void darleVida() {
         this.vida = VIDA_MAXIMA_PLAZACENTRAL;
     }
+
+
     @Override
     protected int vidaMaxima(){
         return VIDA_MAXIMA_PLAZACENTRAL;
