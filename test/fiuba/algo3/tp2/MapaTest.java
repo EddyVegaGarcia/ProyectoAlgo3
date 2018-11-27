@@ -22,9 +22,9 @@ public class MapaTest {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Posicion posicion = new Posicion(35,15);
         Aldeano unAldeano = new Aldeano();
-        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.colocarUnidad(unAldeano, posicion);
 
-        Assert.assertEquals(unAldeano,mapa.recuperarPieza(posicion));
+        Assert.assertEquals(unAldeano, mapa.recuperarPieza(posicion));
 
     }
 
@@ -32,7 +32,7 @@ public class MapaTest {
     public void testColocarUnidadEnUnaUbicacionErronea() {
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         Posicion posicion = new Posicion(40,45);
-        mapa.colocarPiezaNoAtacante(new Aldeano(), posicion);
+        mapa.colocarUnidad(new Aldeano(), posicion);
     }
 
     @Test ( expected = UbicacionOcupadaException.class)
@@ -42,8 +42,8 @@ public class MapaTest {
         Aldeano unAldeano = new Aldeano();
         Aldeano otroAldeano = new Aldeano();
 
-        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
-        mapa.colocarPiezaNoAtacante(otroAldeano, posicion);
+        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarUnidad(otroAldeano, posicion);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class MapaTest {
         Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.colocarUnidad(unAldeano, posicion);
         mapa.moverAldeano(posicion, new DireccionArriba());
         Posicion posicionNueva = new Posicion(19,25);
 
@@ -66,7 +66,7 @@ public class MapaTest {
         Posicion posicion = new Posicion(1,18);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarPiezaNoAtacante(unAldeano, posicion);
+        mapa.colocarUnidad(unAldeano, posicion);
         mapa.moverAldeano(posicion, new DireccionArriba());
     }
 /*
@@ -113,8 +113,40 @@ public class MapaTest {
     //te falta agregar 4 test (los de pisar unidades)
 
     @Test
-    public void borrarUnidad() { //borrar o destruir unidad
+    public void aldeanoRecibeAtaquesYSeLoBorraDelMapa() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Aldeano unAldeano = new Aldeano();
+        Espadachin unEspadachin = new Espadachin();
 
+        Posicion unaPosicion = new Posicion(7,7);
+        Posicion otraPosicion = new Posicion(8,7);
+
+        mapa.colocarUnidad(unAldeano, unaPosicion);
+        mapa.colocarUnidad(unEspadachin, otraPosicion);
+
+        try {
+            unEspadachin.atacarUnidad(unAldeano);
+            unEspadachin.atacarUnidad(unAldeano);
+        }
+
+        catch (PiezaDestruidaException piezaDestruida) {
+            mapa.borrarUnidad(unAldeano, unaPosicion);
+        }
+
+        assertEquals(null, mapa.recuperarPieza(unaPosicion));
+
+    }
+
+    @Test
+    public void borrarUnidad() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Arquero arquero = new Arquero();
+        Posicion posicion = new Posicion(4,5);
+
+        mapa.colocarUnidad(arquero, posicion);
+        mapa.borrarUnidad(arquero, posicion);
+
+        assertEquals(null, mapa.recuperarPieza(posicion));
     }
 
     @Test

@@ -42,6 +42,7 @@ public class Mapa {
     public int getColumnas() { return dimension_columnas; }
 
     public Pieza recuperarPieza(Posicion posicion) {
+        // Si la pieza no está en el mapa, se devuelve null.
         Pieza pieza = null;
         for (Posicion posActual : piezasDelMapa.keySet()) {
             if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
@@ -91,6 +92,11 @@ public class Mapa {
         unAtacante.guardarRangoDeAtaque(rango);
     }
 
+    public void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
+        this.validarPosicion(posicion);
+        piezasDelMapa.put(posicion, unaUnidad);
+    }
+
     public void colocarPiezaNoAtacante(Pieza unaPieza, Posicion posicion) {
         for (int i = posicion.getFila() ; i <= (unaPieza.obtenerTamanio() / 4) ; i++) {
             for (int j = posicion.getColumna() ; j <= (unaPieza.obtenerTamanio() / 4) ; j++) {
@@ -115,5 +121,9 @@ public class Mapa {
 
     public boolean estaDisponible(Posicion posicion) {
         return !piezasDelMapa.containsKey(posicion);
+    }
+
+    public void borrarUnidad(Unidad unidad, Posicion unaPosicion) {
+        piezasDelMapa.remove(unaPosicion, unidad);
     }
 }
