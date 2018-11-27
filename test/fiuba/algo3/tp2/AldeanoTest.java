@@ -65,16 +65,12 @@ public class AldeanoTest {
 
     }
 
-    @Test
-    public void testAldeanoRecibirDanioDeEspadachinArqueroYCastillo() {
+    @Test (expected = PiezaDestruidaException.class)
+    public void testAldeanoRecibeDanioDeEspadachinDosVecesYMuere() {
 
         Unidad aldeano = new Aldeano();
 
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-
-        int vidaEsperada = 0;
-        assertEquals(vidaEsperada, aldeano.obtenerVida());
-
     }
 }

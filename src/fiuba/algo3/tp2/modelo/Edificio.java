@@ -9,7 +9,7 @@ public abstract class Edificio extends Pieza {
 
     public void construir() {
         this.turnosConstruccion = turnosConstruccion + 1;
-        if(turnosConstruccion == TURNOS_CONSTRUCCION){
+        if (turnosConstruccion == TURNOS_CONSTRUCCION) {
             this.estado = estado.cambiar();
             this.darleVida();
         }
@@ -23,10 +23,15 @@ public abstract class Edificio extends Pieza {
     }
 
     @Override
-    public void recibirDanio(int danio){
-        if(vida == this.vidaMaxima()){
+    public void recibirDanio(int danio) {
+        if ((vida - danio) <= 0) {
+            throw new PiezaDestruidaException();
+        }
+
+        if (vida == this.vidaMaxima()) {
             this.estado = estado.cambiar();
         }
+
         this.vida = vida - danio;
     }
 
