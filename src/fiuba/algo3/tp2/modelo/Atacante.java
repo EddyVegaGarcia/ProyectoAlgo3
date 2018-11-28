@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-interface Atacante {
+public interface Atacante {
 
     void atacarUnidad(Unidad unaUnidad);
 
