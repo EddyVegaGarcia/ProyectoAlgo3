@@ -4,18 +4,19 @@ import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.List;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class RangoDeAtaque {
 
-    Mapa mapa;
     List<Posicion> posicionesDeAtaque;
+    Posicion posicionPrincipalDeCastillo;
 
-    public RangoDeAtaque(Mapa mapa) {
-        this.mapa = mapa;
+    public RangoDeAtaque(Posicion posicion) {
+        this.posicionPrincipalDeCastillo = posicion;
         this.posicionesDeAtaque = new ArrayList<>();
     }
 
-    public void calcularRangoDeAtaque(Atacante unAtacante, Posicion posicionEdificio) {
+    public List<Posicion> obtenerRangoDeAtaque(Atacante unAtacante, Posicion posicionEdificio) {
         int filaSuperior = posicionEdificio.getFila();
         int columnaIzquierda = posicionEdificio.getColumna();
         int filaInferior = filaSuperior + (unAtacante.obtenerTamanio() / 4);
@@ -24,13 +25,12 @@ public class RangoDeAtaque {
 
         for (int i = columnaIzquierda - distanciaAtaque; i <= columnaDerecha + distanciaAtaque; i++) {
             for (int j = filaSuperior - distanciaAtaque; j <= filaInferior + distanciaAtaque; j++) {
-                Posicion posActual = new Posicion(i, j);
-                if (posActual.estaContenidaEnDimensiones(mapa.getFilas(), mapa.getColumnas())) {
-                    posicionesDeAtaque.add(posActual);
-                }
+                posicionesDeAtaque.add(new Posicion(i, j));
             }
         }
+        return posicionesDeAtaque;
     }
+
 
     public void filtrarPosicion(Posicion posicion) {
         posicionesDeAtaque.remove(posicion);

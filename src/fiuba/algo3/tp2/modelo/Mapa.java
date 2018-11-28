@@ -77,19 +77,14 @@ public class Mapa {
     }*/
 
     public void colocarPiezaAtacante(Atacante unAtacante, Posicion posicion) {
-        RangoDeAtaque rango = new RangoDeAtaque(this);
-        rango.calcularRangoDeAtaque(unAtacante, posicion);
 
         for (int i = posicion.getFila() ; i <= (unAtacante.obtenerTamanio() / 4) ; i++) {
             for (int j = posicion.getColumna() ; j <= (unAtacante.obtenerTamanio() / 4) ; j++) {
                 Posicion posActual = new Posicion(i, j);
                 this.validarPosicion(posActual);
                 piezasDelMapa.put(posActual, (Pieza) unAtacante); /* casteo porque no me deja agregar al hash*/
-                rango.filtrarPosicion(posActual);
             }
         }
-
-        unAtacante.guardarRangoDeAtaque(rango);
     }
 
     public void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
@@ -124,6 +119,11 @@ public class Mapa {
     }
 
     public void borrarUnidad(Unidad unidad, Posicion unaPosicion) {
-        piezasDelMapa.remove(unaPosicion, unidad);
+        if (piezasDelMapa.containsKey(unaPosicion)) {
+            piezasDelMapa.remove(unaPosicion, unidad);
+        }
+        else {
+            throw new UnidadInexistenteException();
+        }
     }
 }

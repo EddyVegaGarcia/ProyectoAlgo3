@@ -18,7 +18,7 @@ public class Castillo extends Edificio implements Atacante {
         this.estado = new Construido();
 
         this.distanciaDeAtaque = 3;
-        this.rangoDeAtaque = null;
+        this.rangoDeAtaque = new RangoDeAtaque(POSICION_DEFAULT_CASTILLO1);
     }
 
     @Override
@@ -55,15 +55,24 @@ public class Castillo extends Edificio implements Atacante {
         this.rangoDeAtaque = rango;
     }
 
-    public void atacarUnidad(Unidad unidad) {}
+    public void atacarUnidad(Unidad unidad) {
+        int danio = 20;
+        unidad.recibirDanio(danio);
+    }
 
     @Override
     public void atacarEdificio(Edificio unEdificio) {
 
     }
 
-    public void atacar(Mapa mapa) {
-        List<Posicion> posicionesDeEnemigos = new ArrayList<>();
+    public void atacar() {
+        List<Posicion> posicionesDeEnemigos = rangoDeAtaque.obtenerRangoDeAtaque(this, POSICION_DEFAULT_CASTILLO1);
+
+        for (Posicion posActual : posicionesDeEnemigos) {
+
+
+        }
+
 
 
     }

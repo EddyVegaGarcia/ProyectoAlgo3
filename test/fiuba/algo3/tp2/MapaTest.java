@@ -146,13 +146,14 @@ public class MapaTest {
         mapa.colocarUnidad(arquero, posicion);
         mapa.borrarUnidad(arquero, posicion);
 
-        assertEquals(null, mapa.recuperarPieza(posicion));
+        assertNull(mapa.recuperarPieza(posicion));
     }
 
-    @Test
+    @Test (expected = UnidadInexistenteException.class)
     public void borrarUnidadInexistente() {
+        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
 
-        //excepciones
+        mapa.borrarUnidad(new Arquero(), new Posicion(7,7));
     }
 
     @Test
@@ -192,9 +193,9 @@ public class MapaTest {
         Aldeano aldeanoEnemigo = new Aldeano();
 
         mapa.colocarPiezaAtacante(castillo, POSICION_DEFAULT_CASTILLO1);
-        mapa.colocarPiezaNoAtacante(aldeanoEnemigo, new Posicion(5, 3));
+        mapa.colocarUnidad(aldeanoEnemigo, new Posicion(5, 3));
 
-        castillo.atacar(mapa);
+        castillo.atacar();
         int vidaEsperada = 30;
         assertEquals(aldeanoEnemigo.obtenerVida(), vidaEsperada);
 
