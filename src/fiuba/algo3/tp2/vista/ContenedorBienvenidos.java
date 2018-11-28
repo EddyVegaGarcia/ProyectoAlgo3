@@ -26,11 +26,11 @@ public class ContenedorBienvenidos extends StackPane{
         this.stage = stage;
         this.setAlignment(Pos.CENTER);
 
-        Image bgImage = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/s.jpg");
+        Image bgImage = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/AlgoEmpiresPresentacion.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(bgImage);
-        imageView.setFitHeight(1080);
-        imageView.setFitWidth(1920);
+        imageView.setFitHeight(768);
+        imageView.setFitWidth(1366);
         this.getChildren().add(imageView);
 
         VBox box = crearVBox(proximaEscena);
@@ -53,7 +53,7 @@ public class ContenedorBienvenidos extends StackPane{
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 50));
 
-        etiqueta.setText("Bienvenidos a Algo3Age of Empires");
+        etiqueta.setText("AlgoEmpires");
         etiqueta.setTextFill(Color.WHITE);
 
         BotonEntrarEvenHandler botonEntrarHandler =  new BotonEntrarEvenHandler(stage, proximaEscena);
