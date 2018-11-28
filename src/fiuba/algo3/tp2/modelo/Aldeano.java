@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Aldeano extends Unidad {
@@ -8,11 +10,12 @@ public class Aldeano extends Unidad {
     private EstadoDeAldeano estado;
 
 
-    public Aldeano() {
+    public Aldeano(ArrayList<Posicion> unasPosiciones) {
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
         this.oro = 0;
         this.estado = new EnReposo();
+        this.posiciones = unasPosiciones;
     }
 
     public void construir(Edificio edificio)  {
