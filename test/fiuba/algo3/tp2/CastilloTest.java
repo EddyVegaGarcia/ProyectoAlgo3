@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import org.junit.Test;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;

@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
 
 public class PlazaCentral extends Edificio {
 

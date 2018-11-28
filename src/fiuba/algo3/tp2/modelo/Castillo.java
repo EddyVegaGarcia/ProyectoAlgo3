@@ -1,8 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-import javafx.geometry.Pos;
-
-import java.util.ArrayList;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import java.util.List;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;

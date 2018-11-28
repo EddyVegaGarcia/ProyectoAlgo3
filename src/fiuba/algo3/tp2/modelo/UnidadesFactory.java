@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.modelo.Exception.*;
+
 public class UnidadesFactory {
 
     public static Unidad crearUnidad(UnidadType type) throws InvalidUnidadTypeException {

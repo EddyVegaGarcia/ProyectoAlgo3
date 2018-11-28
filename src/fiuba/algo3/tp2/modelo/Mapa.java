@@ -1,13 +1,9 @@
 package fiuba.algo3.tp2.modelo;
 
 //import java.lang.reflect.Array;
-import javafx.geometry.Pos;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
-import java.util.Map;
-import static fiuba.algo3.tp2.modelo.Constantes.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
 
 
 public class Mapa {
