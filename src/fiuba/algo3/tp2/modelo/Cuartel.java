@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
 public class Cuartel extends Edificio {
 
