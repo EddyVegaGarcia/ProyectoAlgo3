@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Exception.OroInsuficienteException;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Juego{
@@ -15,12 +17,21 @@ public class Juego{
         this.mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
         this.jugador1 = new Jugador(nombre1, mapa);
         this.jugador2 = new Jugador(nombre2, mapa);
-        this.turno = new Turno();
+        this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
     }
 
     public boolean estaFinalizado() {
         return ganador != null;
     }
+
+    public void jugar(){
+        while (!this.estaFinalizado()){
+
+
+        }
+    }
+
+    
 
 }

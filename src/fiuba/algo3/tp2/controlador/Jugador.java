@@ -59,7 +59,6 @@ public class Jugador {
     }
 
     public void comprarAldeano(PlazaCentral plaza) {
-        this.cobrar(COSTO_ALDEANO);
         Unidad aldeano = plaza.crearUnidad(UnidadType.UNIDAD_ALDEANO);
         this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
         this.poblacion = poblacion +1;
@@ -67,7 +66,6 @@ public class Jugador {
     }
 
     public void comprarPlazaCentral(Posicion posicion) {
-        this.cobrar(COSTO_PLAZACENTRAL);
         Pieza plaza = new PlazaCentral();
         this.mapa.colocarPiezaNoAtacante(plaza,posicion);
     }
@@ -107,10 +105,8 @@ public class Jugador {
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
 
-    private void cobrar(int costo) {
-        if (oro < costo) {
-            throw new OroInsuficienteException();
-        }
+
+    public void cobrarOro(int costo) {
         this.oro = oro - costo;
     }
 }
