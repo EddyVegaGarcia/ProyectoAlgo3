@@ -15,6 +15,7 @@ public class Main extends Application {
 
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+
         Scene escenaJuego = new Scene(contenedorPrincipal);
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
 
@@ -24,4 +25,5 @@ public class Main extends Application {
 
         stage.show();
     }
+
 }

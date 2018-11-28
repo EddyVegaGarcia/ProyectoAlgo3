@@ -20,7 +20,7 @@ public class JugadorTest {
         Assert.assertEquals(3, jugador.cantidadDePoblacion());
         Assert.assertFalse(jugador.castilloDestruido());
     }
-
+/*
     @Test
     public void testJugadorCompraAldeanoDeCuartel() {
         Jugador jugador = new Jugador("victor", new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA));
@@ -42,6 +42,6 @@ public class JugadorTest {
         jugador.comprarPlazaCentral(POSICION_DEFAULT_PLAZA2);
 
     }
-
+*/
 
 }
