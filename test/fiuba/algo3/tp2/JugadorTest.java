@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.controlador.*;
 import org.junit.Assert;
 import org.junit.Test;
 import static fiuba.algo3.tp2.modelo.Constantes.*;

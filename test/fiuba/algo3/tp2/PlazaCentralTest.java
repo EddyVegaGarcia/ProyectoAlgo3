@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -13,10 +15,19 @@ public class PlazaCentralTest {
 
         Edificio plaza = new PlazaCentral();
 
-        Unidad aldeano = ((PlazaCentral) plaza).crearAldeano();
+        Unidad aldeano = plaza.crearUnidad(UnidadType.UNIDAD_ALDEANO);
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
+
+    }
+
+    @Test (expected = InvalidUnidadTypeException.class)
+    public void testCrearUnidadIncorrectaDeEspadachinEnPlazaCentral() {
+
+        Edificio plazaCentral = new PlazaCentral();
+
+        Unidad aldeano = plazaCentral.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
 
     }
 

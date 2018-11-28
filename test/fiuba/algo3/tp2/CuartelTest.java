@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -13,7 +15,7 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        Unidad espadachin = ((Cuartel) cuartel).crearEspadachin();
+        Unidad espadachin = cuartel.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
 
         int vidaEsperada = 100;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -24,10 +26,19 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = ((Cuartel) cuartel).crearArquero();
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARQUERO);
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, arquero.obtenerVida());
+    }
+
+    @Test (expected = InvalidUnidadTypeException.class)
+    public void testCrearUnidadIncorrectaDeArmaDeAsedioEnCuartel() {
+
+        Edificio cuartel = new Cuartel();
+
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO);
+
     }
 
     @Test

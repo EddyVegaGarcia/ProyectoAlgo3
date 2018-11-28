@@ -53,7 +53,7 @@ public class ContenedorBienvenidos extends StackPane{
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 50));
 
         etiqueta.setText("AlgoEmpires");
-        etiqueta.setTextFill(Color.WHITE);
+        etiqueta.setTextFill(Color.BLACK);
 
         BotonEntrarEventHandler botonEntrarHandler =  new BotonEntrarEventHandler(stage, proximaEscena);
         botonEntrar.setOnAction(botonEntrarHandler);

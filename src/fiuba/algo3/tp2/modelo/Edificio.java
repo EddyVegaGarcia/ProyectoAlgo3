@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
 
 public abstract class Edificio extends Pieza {
 
@@ -34,6 +36,8 @@ public abstract class Edificio extends Pieza {
 
         this.vida = vida - danio;
     }
+
+    public abstract Unidad crearUnidad(UnidadType unidadType);
 
     protected abstract int vidaMaxima();
 

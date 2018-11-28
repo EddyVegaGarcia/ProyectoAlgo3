@@ -1,7 +1,8 @@
-package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.controlador;
 
-
-import javafx.geometry.Pos;
+import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+import fiuba.algo3.tp2.modelo.*;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
@@ -59,7 +60,7 @@ public class Jugador {
 
     public void comprarAldeano(PlazaCentral plaza) {
         this.cobrar(COSTO_ALDEANO);
-        Aldeano aldeano = plaza.crearAldeano();
+        Unidad aldeano = plaza.crearUnidad(UnidadType.UNIDAD_ALDEANO);
         this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
         this.poblacion = poblacion +1;
 

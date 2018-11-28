@@ -1,8 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
-import javafx.geometry.Pos;
-
-import java.util.ArrayList;
+import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import java.util.List;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -42,10 +41,6 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public int obtenerDistanciaAtaque() { return distanciaDeAtaque; }
 
-    public Unidad crearArmaDeAsedio() {
-        return (new ArmaDeAsedio());
-    }
-
     @Override
     protected void darleVida() {
 
@@ -73,7 +68,13 @@ public class Castillo extends Edificio implements Atacante {
 
         }
 
+    }
 
-
+    @Override
+    public Unidad crearUnidad(UnidadType unidadType) {
+        if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO)
+            return UnidadesFactory.crearUnidad(unidadType);
+        else
+            throw new InvalidUnidadTypeException();
     }
 }
