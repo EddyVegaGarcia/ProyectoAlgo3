@@ -110,8 +110,9 @@ public class Mapa {
         piezasDelMapa.put(nuevaPosicion, aldeano);
     }
 
-    public void ubicarUnidadEnPosicionValida(Pieza pieza, Posicion posicionPlaza,int tamanio) {
-        Posicion posicionNueva = posicionPlaza.calcularPosicionDeUnRango(tamanio,this);
+    public void ubicarUnidadAlrededorDeEdificio(Unidad unidad, Edificio edificio) {
+
+
     }
 
     public boolean estaDisponible(Posicion posicion) {
