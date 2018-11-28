@@ -59,7 +59,7 @@ public class Jugador {
 
     public void comprarAldeano(PlazaCentral plaza) {
         this.cobrar(COSTO_ALDEANO);
-        Aldeano aldeano = plaza.crearAldeano();
+        Unidad aldeano = plaza.crearUnidad(UnidadType.UNIDAD_ALDEANO);
         this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
         this.poblacion = poblacion +1;
 

@@ -13,7 +13,7 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        Unidad espadachin = ((Cuartel) cuartel).crearEspadachin();
+        Unidad espadachin = cuartel.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
 
         int vidaEsperada = 100;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -24,10 +24,19 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = ((Cuartel) cuartel).crearArquero();
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARQUERO);
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, arquero.obtenerVida());
+    }
+
+    @Test (expected = InvalidUnidadTypeException.class)
+    public void testCrearUnidadIncorrectaDeArmaDeAsedioEnCuartel() {
+
+        Edificio cuartel = new Cuartel();
+
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO);
+
     }
 
     @Test

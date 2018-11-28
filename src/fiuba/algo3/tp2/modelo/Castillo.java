@@ -42,10 +42,6 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public int obtenerDistanciaAtaque() { return distanciaDeAtaque; }
 
-    public Unidad crearArmaDeAsedio() {
-        return (new ArmaDeAsedio());
-    }
-
     @Override
     protected void darleVida() {
 
@@ -73,7 +69,13 @@ public class Castillo extends Edificio implements Atacante {
 
         }
 
+    }
 
-
+    @Override
+    public Unidad crearUnidad(UnidadType unidadType) {
+        if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO)
+            return UnidadesFactory.crearUnidad(unidadType);
+        else
+            throw new InvalidUnidadTypeException();
     }
 }

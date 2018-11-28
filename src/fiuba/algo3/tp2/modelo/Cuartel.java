@@ -22,11 +22,13 @@ public class Cuartel extends Edificio {
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
-    public Espadachin crearEspadachin() {
-        return new Espadachin();
-    }
+    @Override
+    public Unidad crearUnidad(UnidadType unidadType) {
 
-    public Arquero crearArquero() {
-        return new Arquero();
+        if ((unidadType == UnidadType.UNIDAD_ESPADACHIN) || (unidadType == UnidadType.UNIDAD_ARQUERO))
+            return UnidadesFactory.crearUnidad(unidadType);
+        else
+            throw new InvalidUnidadTypeException();
+
     }
 }

@@ -35,6 +35,8 @@ public abstract class Edificio extends Pieza {
         this.vida = vida - danio;
     }
 
+    public abstract Unidad crearUnidad(UnidadType unidadType);
+
     protected abstract int vidaMaxima();
 
     protected abstract void darleVida();

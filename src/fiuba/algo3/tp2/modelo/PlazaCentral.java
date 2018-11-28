@@ -4,13 +4,12 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class PlazaCentral extends Edificio {
 
-
-
     public PlazaCentral(){
         this.costo = 100;
         this.estado = new EnConstruccion();
         this.tamanio = 4;
         this.turnosConstruccion = 0;
+
     }
 
     @Override
@@ -24,7 +23,13 @@ public class PlazaCentral extends Edificio {
         return VIDA_MAXIMA_PLAZACENTRAL;
     }
 
-    public Aldeano crearAldeano() {
-        return new Aldeano();
+    @Override
+    public Unidad crearUnidad(UnidadType unidadType){
+
+        if(unidadType == UnidadType.UNIDAD_ALDEANO)
+            return UnidadesFactory.crearUnidad(unidadType);
+        else
+            throw new InvalidUnidadTypeException();
+
     }
 }

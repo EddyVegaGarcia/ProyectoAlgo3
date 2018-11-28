@@ -12,10 +12,19 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        Unidad armaDeAsedio = ((Castillo) castillo).crearArmaDeAsedio();
+        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO);
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
+
+    }
+
+    @Test (expected = InvalidUnidadTypeException.class)
+    public void testCrearUnidadIncorrectaDeEspadachinEnCastillo() {
+
+        Edificio castillo = new Castillo();
+
+        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
 
     }
 

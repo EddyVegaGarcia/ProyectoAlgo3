@@ -13,10 +13,19 @@ public class PlazaCentralTest {
 
         Edificio plaza = new PlazaCentral();
 
-        Unidad aldeano = ((PlazaCentral) plaza).crearAldeano();
+        Unidad aldeano = plaza.crearUnidad(UnidadType.UNIDAD_ALDEANO);
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
+
+    }
+
+    @Test (expected = InvalidUnidadTypeException.class)
+    public void testCrearUnidadIncorrectaDeEspadachinEnPlazaCentral() {
+
+        Edificio plazaCentral = new PlazaCentral();
+
+        Unidad aldeano = plazaCentral.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
 
     }
 
