@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -56,7 +55,7 @@ public class ContenedorBienvenidos extends StackPane{
         etiqueta.setText("AlgoEmpires");
         etiqueta.setTextFill(Color.WHITE);
 
-        BotonEntrarEvenHandler botonEntrarHandler =  new BotonEntrarEvenHandler(stage, proximaEscena);
+        BotonEntrarEventHandler botonEntrarHandler =  new BotonEntrarEventHandler(stage, proximaEscena);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         box.getChildren().addAll(etiqueta, botonEntrar);
