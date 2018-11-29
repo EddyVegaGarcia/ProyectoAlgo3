@@ -23,4 +23,10 @@ public class Turno {
         jugador.cobrarOro(costo);
     }
 
+    public Jugador jugar() {
+        jugador1.jugar();
+        jugador2.jugar();
+
+    }
+
 }

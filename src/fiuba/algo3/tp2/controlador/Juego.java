@@ -23,14 +23,20 @@ public class Juego{
         jugador1.asignarEstadoHabilitado();
     }
 
-    public boolean estaFinalizado() {
-        return ganador != null;
-    }
 
     public void jugar(){
-        while (!this.estaFinalizado()){
+        while (this.ganador == null) {
+            turno.jugar();
+            this.verificarGanador();
+        }
+    }
 
-
+    private void verificarGanador() {
+        if (jugador1.castilloDestruido()) {
+            this.ganador = jugador2;
+        }
+        else if (jugador2.castilloDestruido()) {
+            this.ganador = jugador1;
         }
     }
 
