@@ -8,9 +8,7 @@ public class EstaTrabajando extends EstadoDeAldeano {
     }
 
     @Override
-    public EstadoDeAldeano cambiar() {
-        return new EnReposo();
-    }
+    public EstadoDeAldeano cambiar() { return new EnReposo(); }
 
     @Override
     public String getEstado() {

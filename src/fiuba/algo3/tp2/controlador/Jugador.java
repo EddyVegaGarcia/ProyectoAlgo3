@@ -19,6 +19,8 @@ public class Jugador {
     private String nombre;
     private Mapa mapa;
 
+    public EstadoDeJugador estado;
+
 
     public Jugador(String unNombre, Mapa mapa) {
 
@@ -29,6 +31,7 @@ public class Jugador {
         this.piezas = new ArrayList<>();
         this.poblacion = POBLACION_INICIAL;
         this.mapa = mapa;
+        this.estado = new NoHabilitadoParaJugar();
 
     }
 
@@ -108,5 +111,14 @@ public class Jugador {
 
     public void cobrarOro(int costo) {
         this.oro = oro - costo;
+    }
+
+    public void asignarEstadoHabilitado() {
+        // Esta la necesitamos para comenzar el juego con un jugador habilitado.
+        this.estado = new HabilitadoParaJugar();
+    }
+
+    public void cambiarEstadoDeJugador() {
+        this.estado = estado.cambiarEstado();
     }
 }

@@ -19,6 +19,8 @@ public class Juego{
         this.jugador2 = new Jugador(nombre2, mapa);
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
+
+        jugador1.asignarEstadoHabilitado();
     }
 
     public boolean estaFinalizado() {

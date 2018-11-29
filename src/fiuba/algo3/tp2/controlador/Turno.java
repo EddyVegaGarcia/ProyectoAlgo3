@@ -11,6 +11,7 @@ public class Turno {
     public Turno(Jugador jugador1, Jugador jugador2){
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+
     }
 
 
