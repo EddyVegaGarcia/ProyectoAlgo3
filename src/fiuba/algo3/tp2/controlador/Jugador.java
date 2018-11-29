@@ -89,8 +89,22 @@ public class Jugador {
         return poblacion;
     }
 
+    public void cobrarOro(int costo) {
+        this.oro = oro - costo;
+    }
 
+    public void asignarEstadoHabilitado() {
+        // Esta la necesitamos para comenzar el juego con un jugador habilitado.
+        this.estado = new HabilitadoParaJugar();
+    }
 
+    public void cambiarEstadoDeJugador() {
+        this.estado = estado.cambiarEstado();
+    }
+
+    public void jugar() {
+        estado.jugar(this);
+    }
 
     /*METODO PRIVADOS*/
 
@@ -108,17 +122,4 @@ public class Jugador {
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
 
-
-    public void cobrarOro(int costo) {
-        this.oro = oro - costo;
-    }
-
-    public void asignarEstadoHabilitado() {
-        // Esta la necesitamos para comenzar el juego con un jugador habilitado.
-        this.estado = new HabilitadoParaJugar();
-    }
-
-    public void cambiarEstadoDeJugador() {
-        this.estado = estado.cambiarEstado();
-    }
 }
