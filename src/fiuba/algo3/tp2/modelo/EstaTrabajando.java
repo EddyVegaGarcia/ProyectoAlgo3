@@ -4,7 +4,6 @@ public class EstaTrabajando extends EstadoDeAldeano {
 
     @Override
     public void ganarOro(Aldeano aldeano){
-
     }
 
     @Override

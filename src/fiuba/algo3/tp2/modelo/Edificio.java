@@ -6,8 +6,8 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 
 public abstract class Edificio extends Pieza {
 
-    EstadoDeEdificio estado;
-    int turnosConstruccion;
+    public EstadoDeEdificio estado;
+    protected int turnosConstruccion;
 
     public void construir() {
         this.turnosConstruccion = turnosConstruccion + 1;

@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+
+
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class Constantes {

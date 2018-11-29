@@ -6,8 +6,8 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Aldeano extends Unidad {
 
-    int oro;
-    private EstadoDeAldeano estado;
+    public int oro;
+    public EstadoDeAldeano estado;
 
 
     public Aldeano(ArrayList<Posicion> unasPosiciones) {
@@ -38,8 +38,7 @@ public class Aldeano extends Unidad {
         this.oro = oro + 20;
     }
 
-    public void ganarMonedas(){
-       estado.ganarOro(this);
+    public void ganarMonedas(){ estado.ganarOro(this);
     }
 
 
