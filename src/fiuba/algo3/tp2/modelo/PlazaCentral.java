@@ -13,19 +13,10 @@ public class PlazaCentral extends Edificio {
         this.estado = new EnConstruccion();
         this.tamanio = TAMANIO_PLAZA;
         this.posiciones = posiciones;
-
-    }
-
-    @Override
-    protected void darleVida() {
         this.vida = VIDA_MAXIMA_PLAZACENTRAL;
+
     }
 
-
-    @Override
-    protected int vidaMaxima(){
-        return VIDA_MAXIMA_PLAZACENTRAL;
-    }
 
     @Override
     public Unidad crearUnidad(UnidadType unidadType){

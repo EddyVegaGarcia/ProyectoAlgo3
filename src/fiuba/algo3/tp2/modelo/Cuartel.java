@@ -14,15 +14,6 @@ public class Cuartel extends Edificio {
         this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnConstruccion();
         this.posiciones = posiciones;
-    }
-
-    @Override
-    protected int vidaMaxima() {
-        return VIDA_MAXIMA_CUARTEL;
-    }
-
-    @Override
-    protected void darleVida(){
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 

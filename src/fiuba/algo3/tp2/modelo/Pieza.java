@@ -14,6 +14,6 @@ public abstract class Pieza {
 
     public int obtenerTamanio() { return tamanio; }
 
-    public abstract void recibirDanio(int danio);
+
 
 }

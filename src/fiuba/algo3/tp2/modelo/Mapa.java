@@ -23,10 +23,10 @@ public class Mapa {
     /*  METODOS PUBLICOS*/
 
     public void colocarEdificio(Edificio edificio, Posicion posicion) {
-        this.validarPosicion(posicion);
         for (int i = posicion.getFila() ; i <= (edificio.obtenerTamanio() / 4) ; i++) {
             for (int j = posicion.getColumna() ; j <= (edificio.obtenerTamanio() / 4) ; j++) {
                 Posicion posActual = new Posicion(i, j);
+                this.validarPosicion(posActual);
                 piezasDelMapa.put(posActual, edificio);
             }
         }

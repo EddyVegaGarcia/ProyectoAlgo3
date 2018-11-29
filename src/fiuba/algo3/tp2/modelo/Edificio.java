@@ -13,7 +13,6 @@ public abstract class Edificio extends Pieza {
         this.turnosConstruccion = turnosConstruccion + 1;
         if (turnosConstruccion == TURNOS_CONSTRUCCION) {
             this.estado = estado.cambiar();
-            this.darleVida();
         }
     }
 
@@ -24,23 +23,6 @@ public abstract class Edificio extends Pieza {
         }
     }
 
-    @Override
-    public void recibirDanio(int danio) {
-        if ((vida - danio) <= 0) {
-            throw new PiezaDestruidaException();
-        }
-
-        if (vida == this.vidaMaxima()) {
-            this.estado = estado.cambiar();
-        }
-
-        this.vida = vida - danio;
-    }
-
     public abstract Unidad crearUnidad(UnidadType unidadType);
-
-    protected abstract int vidaMaxima();
-
-    protected abstract void darleVida();
 
 }

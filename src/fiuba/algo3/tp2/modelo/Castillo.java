@@ -18,16 +18,12 @@ public class Castillo extends Edificio implements Atacante {
         this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
         this.posiciones = posiciones;
+        this.vida = VIDA_MAXIMA_CASTILLO;
     }
 
     @Override
     public void construir() {
         /* NO SE PUEDEN CONSTRUIR CASTILLOS*/
-    }
-
-    @Override
-    protected int vidaMaxima() {
-        return VIDA_MAXIMA_CASTILLO;
     }
 
     @Override
@@ -43,41 +39,11 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     public void guardarRangoDeAtaque(RangoDeAtaque rango) {
-
-    }
-
-    @Override
-    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
-
-    }
-
-    @Override
-    protected void darleVida() {
-
-    }
-
-    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
         this.rangoDeAtaque = rango;
     }
 
     public void atacarUnidad(Unidad unidad) {
-        int danio = 20;
-        unidad.recibirDanio(danio);
-    }
-
-    @Override
-    public void atacarUnidad(Unidad unaUnidad) {
-
-    }
-
-    @Override
-    public void atacarUnidad(Unidad unaUnidad) {
-
-    }
-
-    @Override
-    public void atacarEdificio(Edificio unEdificio) {
-
+        unidad.recibirDanio(ATAQUE_CASTILLO);
     }
 
     public void atacar() {
