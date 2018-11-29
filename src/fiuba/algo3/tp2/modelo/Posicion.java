@@ -4,14 +4,15 @@ public class Posicion {
 
     private int posicionFila;
     private int posicionColumna;
-/*
-    Posicion(String pos) {
 
-        int[] posicion = this.convertirStringAint(pos);
-        this.x = posicion[0];
-        this.y = posicion[1];
-    }
-*/
+    /*
+        Posicion(String pos) {
+
+            int[] posicion = this.convertirStringAint(pos);
+            this.x = posicion[0];
+            this.y = posicion[1];
+        }
+    */
     public Posicion(int unaPosicionFila, int unaPosicionColumna) {
         this.posicionFila = unaPosicionFila;
         this.posicionColumna = unaPosicionColumna;
@@ -29,8 +30,9 @@ public class Posicion {
         return ((posicionFila > 0) && (posicionColumna > 0) && (posicionFila <= dimensionFilas) && (posicionColumna <= dimensionColumas));
 
     }
+}
 
-
+    /*
     public Posicion calcularPosicionDeUnRango(int tamanio, Mapa mapa) {
             int filaInferior = posicionFila + (tamanio/ 4);
             int columnaDerecha = posicionColumna + (tamanio / 4);
@@ -47,7 +49,7 @@ public class Posicion {
 
     }
 }
-/*
+
     public boolean esIgualA(String pos) {
         int[] posicionActual = this.convertirStringAint(pos);
         return (posicionActual[0] == x) && (posicionActual[1] == y);

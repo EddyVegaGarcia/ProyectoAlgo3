@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -11,13 +13,11 @@ public class Castillo extends Edificio implements Atacante {
     public int distanciaDeAtaque;
     public RangoDeAtaque rangoDeAtaque;
 
-    public Castillo() {
+    public Castillo(ArrayList posiciones) {
         this.vida = VIDA_MAXIMA_CASTILLO;
-        this.tamanio = 16;
+        this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
-
-        this.distanciaDeAtaque = 3;
-        this.rangoDeAtaque = new RangoDeAtaque(POSICION_DEFAULT_CASTILLO1);
+        this.posiciones = posiciones;
     }
 
     @Override
@@ -42,6 +42,16 @@ public class Castillo extends Edificio implements Atacante {
     public int obtenerDistanciaAtaque() { return distanciaDeAtaque; }
 
     @Override
+    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
+
+    }
+
+    @Override
+    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
+
+    }
+
+    @Override
     protected void darleVida() {
 
     }
@@ -53,6 +63,16 @@ public class Castillo extends Edificio implements Atacante {
     public void atacarUnidad(Unidad unidad) {
         int danio = 20;
         unidad.recibirDanio(danio);
+    }
+
+    @Override
+    public void atacarUnidad(Unidad unaUnidad) {
+
+    }
+
+    @Override
+    public void atacarUnidad(Unidad unaUnidad) {
+
     }
 
     @Override

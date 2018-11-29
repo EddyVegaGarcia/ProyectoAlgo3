@@ -4,14 +4,16 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
+import java.util.ArrayList;
+
 public class Cuartel extends Edificio {
 
 
-    public Cuartel() {
+    public Cuartel(ArrayList posiciones) {
         this.costo = 50;
-        this.tamanio = 4;
+        this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnConstruccion();
-        this.turnosConstruccion = 0;
+        this.posiciones = posiciones;
     }
 
     @Override

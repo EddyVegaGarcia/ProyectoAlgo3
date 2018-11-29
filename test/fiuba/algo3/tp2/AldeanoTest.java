@@ -4,6 +4,9 @@ import fiuba.algo3.tp2.modelo.*;
 import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.tp2.modelo.Exception.*;
+
+import java.util.ArrayList;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;
 
@@ -13,18 +16,21 @@ public class AldeanoTest {
     public void AldeanoConstruyeCuartel() {
 
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
-        Aldeano aldeano = new Aldeano();
-        Cuartel unCuartel = new Cuartel();
 
-        Posicion posicionAldeano = new Posicion(29, 13);
-        Posicion posicionCuartel = new Posicion(28, 13);
+       ArrayList posicionAldeano = new ArrayList<Posicion>();
+       ArrayList posicionCuartel = new ArrayList<Posicion>();
+       Posicion posicion1 = new Posicion(29, 13);
+       Posicion posicion2 = new Posicion(27, 13);
+       posicionAldeano.add(posicionAldeano);
+       posicionCuartel.add(posicion2);
 
-        mapa.colocarPiezaNoAtacante(aldeano, posicionAldeano);
-        mapa.colocarPiezaNoAtacante(unCuartel, posicionCuartel);
+       Aldeano aldeano = new Aldeano(posicionAldeano);
+       Cuartel unCuartel = new Cuartel(posicionCuartel);
 
-        aldeano.construir(unCuartel);
-        aldeano.construir(unCuartel);
-        aldeano.construir(unCuartel);
+
+        mapa.colocarUnidad(aldeano,posicion1);
+        mapa.colocarEdificio(unCuartel, posicion2);
+
 
         Assert.assertEquals(VIDA_MAXIMA_CUARTEL, unCuartel.obtenerVida());
 

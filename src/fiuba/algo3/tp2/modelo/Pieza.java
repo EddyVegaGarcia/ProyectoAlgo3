@@ -1,14 +1,14 @@
 package fiuba.algo3.tp2.modelo;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Pieza {
 
     protected int vida;
     protected int costo;
     protected int tamanio;
-    protected List<Posicion> posiciones;
+    protected ArrayList<Posicion> posiciones;
 
     public int obtenerVida(){ return vida; }
 

@@ -20,13 +20,43 @@ public class Mapa {
 
     }
 
+    /*  METODOS PUBLICOS*/
 
+    public void colocarEdificio(Edificio edificio, Posicion posicion) {
+        this.validarPosicion(posicion);
+        for (int i = posicion.getFila() ; i <= (edificio.obtenerTamanio() / 4) ; i++) {
+            for (int j = posicion.getColumna() ; j <= (edificio.obtenerTamanio() / 4) ; j++) {
+                Posicion posActual = new Posicion(i, j);
+                piezasDelMapa.put(posActual, edificio);
+            }
+        }
+    }
+
+    public void colocarUnidad(Unidad unidad, Posicion posicion) {
+        this.validarPosicion(posicion);
+        piezasDelMapa.put(posicion, unidad);
+    }
+
+
+    /*   METODOS PRIVADOS  */
     private void validarPosicion(Posicion unaPosicion) {
         if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
             throw new UbicacionErroneaException();
 
         if(piezasDelMapa.containsKey(unaPosicion))
             throw new UbicacionOcupadaException();
+    }
+
+    public void moverUnidadArriba(Unidad unaUnidad) {
+        Posicion posicionAnterior = new Posicion(15,15);
+        for (Posicion posActual : piezasDelMapa.keySet()) {
+            if (piezasDelMapa.get(posActual) == unaUnidad) {
+                posicionAnterior = posActual;
+            }
+        }
+        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
+        this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
+        this.(unaUnidad, posicionNueva);
     }
 
     public int getTamanio() {
@@ -48,18 +78,6 @@ public class Mapa {
         return pieza;
     }
 
-    /*public void moverUnidadArriba(Unidad unaUnidad) {
-        Posicion posicionAnterior = new Posicion(15,15);
-        for (Posicion posActual : piezasDelMapa.keySet()) {
-            if (piezasDelMapa.get(posActual) == unaUnidad) {
-                posicionAnterior = posActual;
-            }
-        }
-        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
-        this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        this.(unaUnidad, posicionNueva);
-    }
-
     public void moverUnidadAbajo(Unidad unaUnidad) {
         Posicion posicionAnterior = new Posicion(14,22);
         for (Posicion posActual : coleccionUnidades.keySet()) {
@@ -70,7 +88,7 @@ public class Mapa {
         Posicion posicionNueva = new Posicion(posicionAnterior.getFila() + 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
         this.colocarUnidad(unaUnidad, posicionNueva);
-    }*/
+    }
 
     public void colocarPiezaAtacante(Atacante unAtacante, Posicion posicion) {
 
@@ -79,21 +97,6 @@ public class Mapa {
                 Posicion posActual = new Posicion(i, j);
                 this.validarPosicion(posActual);
                 piezasDelMapa.put(posActual, (Pieza) unAtacante); /* casteo porque no me deja agregar al hash*/
-            }
-        }
-    }
-
-    public void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
-        this.validarPosicion(posicion);
-        piezasDelMapa.put(posicion, unaUnidad);
-    }
-
-    public void colocarPiezaNoAtacante(Pieza unaPieza, Posicion posicion) {
-        for (int i = posicion.getFila() ; i <= (unaPieza.obtenerTamanio() / 4) ; i++) {
-            for (int j = posicion.getColumna() ; j <= (unaPieza.obtenerTamanio() / 4) ; j++) {
-                this.validarPosicion(posicion);
-                Posicion posActual = new Posicion(i, j);
-                piezasDelMapa.put(posActual, unaPieza);
             }
         }
     }

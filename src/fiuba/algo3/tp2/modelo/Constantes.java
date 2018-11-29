@@ -13,6 +13,14 @@ public class Constantes {
     public static int POBLACION_INICIAL = 0;
     public static int CANTIDAD_DE_ALDEANOS_INICIAL = 3;
 
+    /*TAMAÑO DE LAS PIEZAS*/
+    public static int TAMANIO_PLAZA = 4;
+    public static int TAMANIO_CUARTEL = 4;
+    public static int TAMANIO_CASTILLO = 16;
+    public static int TAMANIO_UNIDAD = 1;
+
+
+
     /*POSICIONES POR DEAFULT DE CASTILLOS, PLAZAS Y ALDEANOS INICIALES*/
     public static Posicion POSICION_DEFAULT_CASTILLO1 = new Posicion(1,1);
     public static Posicion POSICION_DEFAULT_PLAZA1 = new Posicion(10,1);
@@ -61,9 +69,5 @@ public class Constantes {
     public static int DISTANCIA_ATAQUE_ESPADACHIN = 1;
     public static int DISTANCIA_ATAQUE_ARMADEASEDIO = 5;
 
-    /*TAMAÑO DE LOS EDIFICIO*/
-    public static int TAMANIO_PLAZA = 4;
-    public static int TAMANIO_CUARTEL = 4;
-    public static int TAMANIO_CASTILLO = 16;
 
 }

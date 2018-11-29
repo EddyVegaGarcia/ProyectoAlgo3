@@ -16,11 +16,11 @@ public class Aldeano extends Unidad {
         this.oro = 0;
         this.estado = new EnReposo();
         this.posiciones = unasPosiciones;
+        this.tamanio = TAMANIO_UNIDAD;
     }
 
     public void construir(Edificio edificio)  {
-        this.estado = estado.trabajando();
-        edificio.construir();
+        estado.construir(edificio)
     }
 
 
