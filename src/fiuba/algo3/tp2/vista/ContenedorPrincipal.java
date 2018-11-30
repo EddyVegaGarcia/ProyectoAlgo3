@@ -26,7 +26,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-    public Juego inicializarJuego() {
+    public void inicializarJuego() {
         myStage.setTitle("> Nombre de los Jugadores <");
 
         TextField primerJugador = new TextField();

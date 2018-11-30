@@ -52,8 +52,4 @@ public class Aldeano extends Unidad {
         return estado.estaTrabajando();
     }
 
-    @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
 }

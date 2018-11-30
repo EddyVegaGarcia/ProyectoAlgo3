@@ -75,6 +75,6 @@ public class AldeanoTest {
 
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        
+
     }
 }

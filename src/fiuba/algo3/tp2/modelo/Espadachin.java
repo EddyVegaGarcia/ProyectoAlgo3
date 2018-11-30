@@ -33,8 +33,4 @@ public class Espadachin extends Unidad implements Atacante {
         this.rango = rango;
     }
 
-    @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
 }
