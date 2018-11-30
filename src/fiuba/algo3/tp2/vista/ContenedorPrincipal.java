@@ -26,7 +26,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-    public void inicializarJuego() {
+    public Juego inicializarJuego() {
         myStage.setTitle("> Nombre de los Jugadores <");
 
         TextField primerJugador = new TextField();
@@ -66,6 +66,8 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setCenter(contenedorVertical);
         this.setRight(contenedorEnviar);
+
+        return new Juego(botonEnviarEventHandler.obtenerNombrePrimerJugador(), botonEnviarEventHandler.obtenerNombreSegundoJugador());
     }
 
 

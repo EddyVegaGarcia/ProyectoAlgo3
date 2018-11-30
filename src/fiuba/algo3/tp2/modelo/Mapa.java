@@ -4,6 +4,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 
 public class Mapa {
@@ -11,6 +12,15 @@ public class Mapa {
     HashMap<Posicion, Pieza> piezasDelMapa;
     int dimension_filas;
     int dimension_columnas;
+
+
+    public Mapa() {
+
+        this.piezasDelMapa = new HashMap<>();
+        this.dimension_filas = FILA_DEFAULT_MAPA;
+        this.dimension_columnas = COLUMNA_DEFAULT_MAPA;
+
+    }
 
     public Mapa(int fila , int columna){
 

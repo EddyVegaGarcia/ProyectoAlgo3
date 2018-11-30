@@ -19,7 +19,7 @@ public class Main extends Application {
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
 
-        //Juego juego = contenedorPrincipal.inicializarJuego();
+        Juego juego = contenedorPrincipal.inicializarJuego();
 
         Controlador controlador = new Controlador();
        // controlador.crearJuego(juego);

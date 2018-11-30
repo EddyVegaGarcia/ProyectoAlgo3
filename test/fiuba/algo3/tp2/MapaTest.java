@@ -13,14 +13,15 @@ public class MapaTest {
     @Test
     public void testIniciarMapaBaseCorrespondiente() {
         //Mapa Base se inicia con 35 * 40 = 1400 espacios
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
 
         Assert.assertEquals(FILA_DEFAULT_MAPA*COLUMNA_DEFAULT_MAPA,mapa.getTamanio());
     }
 
     @Test
     public void testColocarUnidadEnPosicionCorrectamente() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(35,15);
         Aldeano unAldeano = new Aldeano();
         mapa.colocarUnidad(unAldeano, posicion);
@@ -31,25 +32,28 @@ public class MapaTest {
 
     @Test (expected = UbicacionErroneaException.class)
     public void testColocarUnidadEnUnaUbicacionErronea() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(40,45);
         mapa.colocarUnidad(new Aldeano(), posicion);
+
     }
 
     @Test ( expected = UbicacionOcupadaException.class)
     public void testColocarUnidadEnUnaOcupada() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
         Aldeano otroAldeano = new Aldeano();
 
         mapa.colocarUnidad(unAldeano, posicion);
         mapa.colocarUnidad(otroAldeano, posicion);
+
     }
 
     @Test
     public void moverAldeanoHaciaArriba() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
 
@@ -63,7 +67,7 @@ public class MapaTest {
 
     @Test (expected = UbicacionErroneaException.class)
     public void moverUnidadHaciaArribaInvalido() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(1,18);
         Aldeano unAldeano = new Aldeano();
 
@@ -86,7 +90,7 @@ public class MapaTest {
 
     @Test (expected = UbicacionErroneaException.class)
     public void moverUnidadHaciaAbajoInvalido() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(35,25);
         Aldeano unAldeano = new Aldeano();
 
@@ -115,7 +119,7 @@ public class MapaTest {
 
     @Test
     public void aldeanoRecibeAtaquesYSeLoBorraDelMapa() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Aldeano unAldeano = new Aldeano();
         Espadachin unEspadachin = new Espadachin();
 
@@ -140,7 +144,7 @@ public class MapaTest {
 
     @Test
     public void borrarUnidad() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         Arquero arquero = new Arquero();
         Posicion posicion = new Posicion(4,5);
 
@@ -152,14 +156,14 @@ public class MapaTest {
 
     @Test (expected = UnidadInexistenteException.class)
     public void borrarUnidadInexistente() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
 
         mapa.borrarUnidad(new Arquero(), new Posicion(7,7));
     }
 
     @Test
     public void testColocarEdificioNoAtacanteCorrectamente() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         PlazaCentral unaPlaza = new PlazaCentral();
         Posicion posicionPlaza = new Posicion(3,3);
 
@@ -174,7 +178,7 @@ public class MapaTest {
 
     @Test
     public void testColocarCastilloCorrectamente() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
 
         /*Castillo unCastillo = new Castillo();
         mapa.colocarPiezaAtacante(unCastillo, POSICION_DEFAULT_CASTILLO1);
@@ -189,7 +193,7 @@ public class MapaTest {
 
     @Test
     public void testCastilloAtaca() {
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Mapa mapa = new Mapa();
         /*Castillo castillo = new Castillo();
         Aldeano aldeanoEnemigo = new Aldeano();
 

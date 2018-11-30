@@ -18,6 +18,5 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         stage.setScene(proximaEscena);
-        stage.setFullScreen(true);
     }
 }
