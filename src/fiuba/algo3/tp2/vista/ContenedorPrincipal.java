@@ -66,9 +66,8 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setCenter(contenedorVertical);
         this.setRight(contenedorEnviar);
-
-        return botonEnviarEventHandler.inicializarJuego();
     }
+
 
 
 }

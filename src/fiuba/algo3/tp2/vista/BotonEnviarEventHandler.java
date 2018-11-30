@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
+import javax.naming.NameClassPair;
+
 public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
 
     private TextField nombreJugador1;
@@ -42,8 +44,12 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
 
     }
 
-    public Juego inicializarJuego() {
-        Juego juego = new Juego(this.nombreJugador1.getText(), this.etiquetaNombreJugador2.getText());
-        return juego;
+    public String obtenerNombrePrimerJugador() {
+        return this.nombreJugador1.getText();
     }
+
+    public String obtenerNombreSegundoJugador() {
+        return this.nombreJugador2.getText();
+    }
+
 }
