@@ -10,9 +10,6 @@ public class EstaTrabajando extends EstadoDeAldeano {
     }
 
     @Override
-    public EstadoDeAldeano cambiar() { return new EnReposo(); }
-
-    @Override
     public boolean estaTrabajando() {
         return true;
     }
@@ -24,5 +21,10 @@ public class EstaTrabajando extends EstadoDeAldeano {
             return new EnReposo();
         }
         return this;
+    }
+
+    @Override
+    public void reparar(EstadoDeAldeano unEstado) {
+
     }
 }

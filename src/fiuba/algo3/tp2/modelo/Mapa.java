@@ -56,7 +56,7 @@ public class Mapa {
         }
         Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        this.(unaUnidad, posicionNueva);
+        //this.(unaUnidad, posicionNueva);
     }
 
     public int getTamanio() {
@@ -80,14 +80,18 @@ public class Mapa {
 
     public void moverUnidadAbajo(Unidad unaUnidad) {
         Posicion posicionAnterior = new Posicion(14,22);
-        for (Posicion posActual : coleccionUnidades.keySet()) {
-            if (coleccionUnidades.get(posActual) == unaUnidad) {
+        for (Posicion posActual : piezasDelMapa.keySet()) {
+            if (piezasDelMapa.get(posActual) == unaUnidad) {
                 posicionAnterior = posActual;
             }
         }
         Posicion posicionNueva = new Posicion(posicionAnterior.getFila() + 1 , posicionAnterior.getColumna());
         this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
         this.colocarUnidad(unaUnidad, posicionNueva);
+    }
+
+    public void colocarPiezaNoAtacante(Pieza unPieza, Posicion unPosicion) {
+
     }
 
     public void colocarPiezaAtacante(Atacante unAtacante, Posicion posicion) {

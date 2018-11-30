@@ -13,25 +13,10 @@ public class Castillo extends Edificio implements Atacante {
     public int distanciaDeAtaque;
     public RangoDeAtaque rangoDeAtaque;
 
-    public Castillo(ArrayList posiciones) {
+    public Castillo() {
         this.vida = VIDA_MAXIMA_CASTILLO;
         this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
-        this.posiciones = posiciones;
-        this.vida = VIDA_MAXIMA_CASTILLO;
-    }
-
-    @Override
-    public void construir() {
-        /* NO SE PUEDEN CONSTRUIR CASTILLOS*/
-    }
-
-    @Override
-    public void reparar() {
-        if(vida == 1000){
-            throw new RuntimeException();
-        }
-        this.vida = vida + 15;
     }
 
     @Override
@@ -47,13 +32,13 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     public void atacar() {
-        List<Posicion> posicionesDeEnemigos = rangoDeAtaque.obtenerRangoDeAtaque(this, POSICION_DEFAULT_CASTILLO1);
+      /*  List<Posicion> posicionesDeEnemigos = rangoDeAtaque.obtenerRangoDeAtaque(this, POSICION_DEFAULT_CASTILLO1);
 
         for (Posicion posActual : posicionesDeEnemigos) {
 
 
         }
-
+        */
     }
 
     @Override
@@ -62,5 +47,20 @@ public class Castillo extends Edificio implements Atacante {
             return UnidadesFactory.crearUnidad(unidadType);
         else
             throw new InvalidUnidadTypeException();
+    }
+
+    @Override
+    public void recibirDanio(int unDanio) {
+        this.vida = vida - unDanio;
+    }
+
+    @Override
+    public void atacarEdificio(Edificio unEdificio) {
+
+    }
+
+    @Override
+    public void darVidaPorReparacion() {
+        this.vida = vida + VIDA_REPARACION;
     }
 }

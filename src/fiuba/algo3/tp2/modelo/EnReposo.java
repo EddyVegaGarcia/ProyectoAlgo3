@@ -1,15 +1,12 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
+
 public class EnReposo extends EstadoDeAldeano {
 
     @Override
     public void ganarOro(Aldeano aldeano){
         aldeano.sumarOro();
-    }
-
-    @Override
-    public EstadoDeAldeano cambiar() {
-        return new EstaTrabajando();
     }
 
     @Override
@@ -24,6 +21,11 @@ public class EnReposo extends EstadoDeAldeano {
             return new EstaTrabajando();
         }
         throw new EdificioConstruidoException();
+    }
+
+    @Override
+    public void reparar(EstadoDeAldeano unEstado) {
+        unEstado = new EstaTrabajando();
     }
 }
 

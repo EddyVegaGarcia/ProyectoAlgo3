@@ -17,17 +17,11 @@ public class AldeanoTest {
 
         Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
 
-       ArrayList posicionAldeano = new ArrayList<Posicion>();
-       ArrayList posicionCuartel = new ArrayList<Posicion>();
-       Posicion posicion1 = new Posicion(29, 13);
-       Posicion posicion2 = new Posicion(27, 13);
-       posicionAldeano.add(posicionAldeano);
-       posicionCuartel.add(posicion2);
+        Posicion posicion1 = new Posicion(29, 13);
+        Posicion posicion2 = new Posicion(27, 13);
 
-       Aldeano aldeano = new Aldeano(posicionAldeano);
-       Cuartel unCuartel = new Cuartel(posicionCuartel);
-
-        Assert.assertFalse(aldeano.estaTrabajando());
+        Aldeano aldeano = new Aldeano();
+        Cuartel unCuartel = new Cuartel();
 
         mapa.colocarUnidad(aldeano,posicion1);
         mapa.colocarEdificio(unCuartel, posicion2);
@@ -81,5 +75,6 @@ public class AldeanoTest {
 
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        
     }
 }

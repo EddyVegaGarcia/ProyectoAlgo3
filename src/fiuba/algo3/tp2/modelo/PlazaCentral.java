@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 
-    public PlazaCentral(ArrayList posiciones){
+    public PlazaCentral(){
         this.costo = 100;
         this.estado = new EnConstruccion();
         this.tamanio = TAMANIO_PLAZA;
-        this.posiciones = posiciones;
         this.vida = VIDA_MAXIMA_PLAZACENTRAL;
 
     }
@@ -26,5 +25,15 @@ public class PlazaCentral extends Edificio {
         else
             throw new InvalidUnidadTypeException();
 
+    }
+
+    @Override
+    public void darVidaPorReparacion() {
+        this.vida = vida + VIDA_REPARACION;
+    }
+
+    @Override
+    public void recibirDanio(int unDanio) {
+        this.vida = vida - unDanio;
     }
 }

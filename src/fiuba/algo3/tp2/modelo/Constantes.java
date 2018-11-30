@@ -22,13 +22,55 @@ public class Constantes {
 
 
     /*POSICIONES POR DEAFULT DE CASTILLOS, PLAZAS Y ALDEANOS INICIALES*/
-    public static Posicion POSICION_DEFAULT_CASTILLO1 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_PLAZA1 = new Posicion(10,1);
+        /*Castillo1*/
+    public static Posicion POSICION_DEFAULT_CASTILLO1_1 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_2 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_3 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_4 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_5 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_6 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_7 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_8 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_9 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_10 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_11 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_12 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_13 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_14 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_15 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO1_16 = new Posicion(1,1);
+        /*Castillo2*/
+    public static Posicion POSICION_DEFAULT_CASTILLO2_1 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_2 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_3 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_4 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_5 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_6 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_7 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_8 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_9 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_10 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_11 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_12 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_13 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_14 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_15 = new Posicion(1,1);
+    public static Posicion POSICION_DEFAULT_CASTILLO2_16 = new Posicion(1,1);
+        /*Plaza1*/
+    public static Posicion POSICION_DEFAULT_PLAZA1_1 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA1_2 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA1_3 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA1_4 = new Posicion(10,1);
+        /*Plaza2*/
+    public static Posicion POSICION_DEFAULT_PLAZA2_1 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA2_2 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA2_3 = new Posicion(10,1);
+    public static Posicion POSICION_DEFAULT_PLAZA2_4 = new Posicion(10,1);
+
     public static Posicion POSICION_DEFAULT_ALDEANO1_1 = new Posicion(1,9);
     public static Posicion POSICION_DEFAULT_ALDEANO2_1= new Posicion(2,9);
     public static Posicion POSICION_DEFAULT_ALDEANO3_1= new Posicion(3,9);
-    public static Posicion POSICION_DEFAULT_CASTILLO2 = new Posicion(1,35);
-    public static Posicion POSICION_DEFAULT_PLAZA2 = new Posicion(10,35);
+
     public static Posicion POSICION_DEFAULT_ALDEANO1_2 = new Posicion(1,34);
     public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(2,34);
     public static Posicion POSICION_DEFAULT_ALDEANO3_2= new Posicion(3,34);

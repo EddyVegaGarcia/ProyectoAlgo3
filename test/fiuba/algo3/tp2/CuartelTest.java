@@ -47,7 +47,7 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         for(int i = 0; i < 4; i++){
-            cuartel.construir();
+            //cuartel.construir();
         }
         cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
 
@@ -62,7 +62,7 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         for(int i = 0; i < 4; i++){
-            cuartel.construir();
+           // cuartel.construir();
         }
         cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
 
@@ -77,7 +77,7 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         for(int i = 0; i < 4; i++){
-            cuartel.construir();
+            //cuartel.construir();
         }
         cuartel.recibirDanio(ATAQUE_ARMADEASEDIO);
 
@@ -92,7 +92,7 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         for(int i = 0; i < 4; i++){
-            cuartel.construir();
+            //cuartel.construir();
         }
         cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
         cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);

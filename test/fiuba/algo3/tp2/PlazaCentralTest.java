@@ -37,7 +37,7 @@ public class PlazaCentralTest {
         Edificio plazaCentral = new PlazaCentral();
 
         for(int i = 0; i < 4; i++){
-            plazaCentral.construir();
+            //plazaCentral.construir();
         }
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
 
@@ -52,7 +52,7 @@ public class PlazaCentralTest {
         Edificio plazaCentral = new PlazaCentral();
 
         for(int i = 0; i < 4; i++){
-            plazaCentral.construir();
+            //plazaCentral.construir();
         }
         plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
 
@@ -67,7 +67,7 @@ public class PlazaCentralTest {
         Edificio plazaCentral = new PlazaCentral();
 
         for(int i = 0; i < 4; i++){
-            plazaCentral.construir();
+            //plazaCentral.construir();
         }
         plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
 
@@ -82,7 +82,7 @@ public class PlazaCentralTest {
         Edificio plazaCentral = new PlazaCentral();
 
         for(int i = 0; i < 4; i++){
-            plazaCentral.construir();
+            //plazaCentral.construir();
         }
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
         plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);

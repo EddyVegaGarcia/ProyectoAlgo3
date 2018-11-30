@@ -11,12 +11,11 @@ public class Aldeano extends Unidad {
     int turnosConstruccion;
 
 
-    public Aldeano(ArrayList<Posicion> unasPosiciones) {
+    public Aldeano() {
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
         this.oro = 0;
         this.estado = new EnReposo();
-        this.posiciones = unasPosiciones;
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
     }
@@ -31,8 +30,11 @@ public class Aldeano extends Unidad {
 
 
     public void reparar(Edificio edificio) {
-        this.estado = estado.trabajando();
-        edificio.reparar();
+
+        this.estado.reparar(this.estado);
+
+        edificio.darVidaPorReparacion();
+
     }
 
     public int obtenerOroTotal() {
@@ -48,5 +50,10 @@ public class Aldeano extends Unidad {
 
     public boolean estaTrabajando() {
         return estado.estaTrabajando();
+    }
+
+    @Override
+    public void recibirDanio(int unDanio) {
+        this.vida = vida - unDanio;
     }
 }

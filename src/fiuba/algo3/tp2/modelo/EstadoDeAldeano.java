@@ -14,6 +14,7 @@ public abstract class EstadoDeAldeano {
 
     public abstract EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion);
 
+    public abstract void reparar(EstadoDeAldeano unEstado);
 }
 
 

@@ -22,4 +22,5 @@ public abstract class Edificio extends Pieza {
         return estado.estaConstruido();
     }
 
+    public abstract void darVidaPorReparacion();
 }

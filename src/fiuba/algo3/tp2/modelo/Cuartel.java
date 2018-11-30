@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Cuartel extends Edificio {
 
 
-    public Cuartel(ArrayList posiciones) {
+    public Cuartel() {
         this.costo = 50;
         this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnConstruccion();
-        this.posiciones = posiciones;
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
@@ -25,5 +24,16 @@ public class Cuartel extends Edificio {
         else
             throw new InvalidUnidadTypeException();
 
+    }
+
+    @Override
+    public void darVidaPorReparacion() {
+        this.vida = vida + VIDA_REPARACION;
+    }
+
+
+    @Override
+    public void recibirDanio(int unDanio) {
+        this.vida = vida - unDanio;
     }
 }

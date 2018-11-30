@@ -26,7 +26,7 @@ public class Juego{
 
     public void jugar(){
         while (this.ganador == null) {
-            turno.jugar();
+            //turno.jugar();
             this.verificarGanador();
         }
     }
