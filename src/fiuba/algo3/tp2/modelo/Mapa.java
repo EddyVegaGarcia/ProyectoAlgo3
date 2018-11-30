@@ -30,9 +30,21 @@ public class Mapa {
 
     }
 
-    /*  METODOS PUBLICOS*/
 
-    public void colocarEdificio(Edificio edificio, Posicion posicion) {
+    /*  METODOS PUBLICOS*/
+    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
+
+        if(unaPieza.obtenerTamanio() > 1){
+            this.colocarEdificio((Edificio) unaPieza, unaPosicion);
+        }
+        else
+            this.colocarUnidad((Unidad)unaPieza, unaPosicion);
+
+    }
+
+    /*   METODOS PRIVADOS  */
+
+    private void colocarEdificio(Edificio edificio, Posicion posicion) {
         for (int i = posicion.getFila() ; i <= (edificio.obtenerTamanio() / 4) ; i++) {
             for (int j = posicion.getColumna() ; j <= (edificio.obtenerTamanio() / 4) ; j++) {
                 Posicion posActual = new Posicion(i, j);
@@ -42,13 +54,10 @@ public class Mapa {
         }
     }
 
-    public void colocarUnidad(Unidad unidad, Posicion posicion) {
+    private void colocarUnidad(Unidad unidad, Posicion posicion) {
         this.validarPosicion(posicion);
         piezasDelMapa.put(posicion, unidad);
     }
-
-
-    /*   METODOS PRIVADOS  */
     private void validarPosicion(Posicion unaPosicion) {
         if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
             throw new UbicacionErroneaException();

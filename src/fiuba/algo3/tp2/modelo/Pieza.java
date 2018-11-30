@@ -16,4 +16,5 @@ public abstract class Pieza {
 
 
     public abstract void recibirDanio(int unDanio);
+
 }

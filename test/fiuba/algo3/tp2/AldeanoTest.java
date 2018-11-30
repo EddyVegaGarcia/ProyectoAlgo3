@@ -23,8 +23,8 @@ public class AldeanoTest {
         Aldeano aldeano = new Aldeano();
         Cuartel unCuartel = new Cuartel();
 
-        mapa.colocarUnidad(aldeano,posicion1);
-        mapa.colocarEdificio(unCuartel, posicion2);
+        mapa.colocarPieza(aldeano,posicion1);
+        mapa.colocarPieza(unCuartel, posicion2);
 
         aldeano.construir(unCuartel);
 

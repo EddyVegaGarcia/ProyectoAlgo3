@@ -24,7 +24,7 @@ public class MapaTest {
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(35,15);
         Aldeano unAldeano = new Aldeano();
-        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarPieza(unAldeano, posicion);
 
         Assert.assertEquals(unAldeano, mapa.recuperarPieza(posicion));
 
@@ -35,7 +35,7 @@ public class MapaTest {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(40,45);
-        mapa.colocarUnidad(new Aldeano(), posicion);
+        mapa.colocarPieza(new Aldeano(), posicion);
 
     }
 
@@ -46,8 +46,8 @@ public class MapaTest {
         Aldeano unAldeano = new Aldeano();
         Aldeano otroAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
-        mapa.colocarUnidad(otroAldeano, posicion);
+        mapa.colocarPieza(unAldeano, posicion);
+        mapa.colocarPieza(otroAldeano, posicion);
 
     }
 
@@ -57,7 +57,7 @@ public class MapaTest {
         Posicion posicion = new Posicion(20,25);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarPieza(unAldeano, posicion);
         mapa.moverAldeano(posicion, new DireccionArriba());
         Posicion posicionNueva = new Posicion(19,25);
 
@@ -71,7 +71,7 @@ public class MapaTest {
         Posicion posicion = new Posicion(1,18);
         Aldeano unAldeano = new Aldeano();
 
-        mapa.colocarUnidad(unAldeano, posicion);
+        mapa.colocarPieza(unAldeano, posicion);
         mapa.moverAldeano(posicion, new DireccionArriba());
     }
 /*
@@ -126,8 +126,8 @@ public class MapaTest {
         Posicion unaPosicion = new Posicion(7,7);
         Posicion otraPosicion = new Posicion(8,7);
 
-        mapa.colocarUnidad(unAldeano, unaPosicion);
-        mapa.colocarUnidad(unEspadachin, otraPosicion);
+        mapa.colocarPieza(unAldeano, unaPosicion);
+        mapa.colocarPieza(unEspadachin, otraPosicion);
 
         try {
             unEspadachin.atacarUnidad(unAldeano);
@@ -148,7 +148,7 @@ public class MapaTest {
         Arquero arquero = new Arquero();
         Posicion posicion = new Posicion(4,5);
 
-        mapa.colocarUnidad(arquero, posicion);
+        mapa.colocarPieza(arquero, posicion);
         mapa.borrarUnidad(arquero, posicion);
 
         assertNull(mapa.recuperarPieza(posicion));
