@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 //import java.lang.reflect.Array;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -45,19 +46,38 @@ public class Mapa {
     /*   METODOS PRIVADOS  */
 
     private void colocarEdificio(Edificio edificio, Posicion posicion) {
-        for (int i = posicion.getFila() ; i <= (edificio.obtenerTamanio() / 4) ; i++) {
-            for (int j = posicion.getColumna() ; j <= (edificio.obtenerTamanio() / 4) ; j++) {
-                Posicion posActual = new Posicion(i, j);
-                this.validarPosicion(posActual);
-                piezasDelMapa.put(posActual, edificio);
-            }
-        }
+
+        ArrayList<Posicion> unaLista = new ArrayList<>();
+
+        unaLista.add(posicion);
+        unaLista.add(new Posicion(posicion.getFila(), posicion.getColumna() + 1));
+        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna()));
+        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna() + 1));
+
+        this.agregarPiezaAMapa(unaLista, edificio);
+        edificio.agregarPosicion(unaLista);
+
     }
 
-    private void colocarUnidad(Unidad unidad, Posicion posicion) {
-        this.validarPosicion(posicion);
-        piezasDelMapa.put(posicion, unidad);
+    private void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
+
+        ArrayList<Posicion> unaLista = new ArrayList<>();
+        unaLista.add(posicion);
+        this.agregarPiezaAMapa(unaLista, unaUnidad);
+        unaUnidad.agregarPosicion(unaLista);
     }
+
+    private void agregarPiezaAMapa(ArrayList<Posicion> unaListaPiezas, Pieza unaPieza){
+
+        for(Posicion unaPosicion : unaListaPiezas){
+
+            this.validarPosicion(unaPosicion);
+            piezasDelMapa.put(unaPosicion, unaPieza);
+
+        }
+
+    }
+
     private void validarPosicion(Posicion unaPosicion) {
         if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
             throw new UbicacionErroneaException();
