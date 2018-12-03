@@ -16,4 +16,7 @@ public abstract class Pieza {
 
 
     public abstract void recibirDanio(int unDanio);
+
+    public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
+
 }

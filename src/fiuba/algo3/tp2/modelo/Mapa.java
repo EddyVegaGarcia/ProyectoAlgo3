@@ -2,8 +2,10 @@ package fiuba.algo3.tp2.modelo;
 
 //import java.lang.reflect.Array;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 
 public class Mapa {
@@ -11,6 +13,15 @@ public class Mapa {
     HashMap<Posicion, Pieza> piezasDelMapa;
     int dimension_filas;
     int dimension_columnas;
+
+
+    public Mapa() {
+
+        this.piezasDelMapa = new HashMap<>();
+        this.dimension_filas = FILA_DEFAULT_MAPA;
+        this.dimension_columnas = COLUMNA_DEFAULT_MAPA;
+
+    }
 
     public Mapa(int fila , int columna){
 
@@ -20,25 +31,53 @@ public class Mapa {
 
     }
 
+
     /*  METODOS PUBLICOS*/
+    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
 
-    public void colocarEdificio(Edificio edificio, Posicion posicion) {
-        for (int i = posicion.getFila() ; i <= (edificio.obtenerTamanio() / 4) ; i++) {
-            for (int j = posicion.getColumna() ; j <= (edificio.obtenerTamanio() / 4) ; j++) {
-                Posicion posActual = new Posicion(i, j);
-                this.validarPosicion(posActual);
-                piezasDelMapa.put(posActual, edificio);
-            }
+        if(unaPieza.obtenerTamanio() > 1){
+            this.colocarEdificio((Edificio) unaPieza, unaPosicion);
         }
-    }
+        else
+            this.colocarUnidad((Unidad)unaPieza, unaPosicion);
 
-    public void colocarUnidad(Unidad unidad, Posicion posicion) {
-        this.validarPosicion(posicion);
-        piezasDelMapa.put(posicion, unidad);
     }
-
 
     /*   METODOS PRIVADOS  */
+
+    private void colocarEdificio(Edificio edificio, Posicion posicion) {
+
+        ArrayList<Posicion> unaLista = new ArrayList<>();
+
+        unaLista.add(posicion);
+        unaLista.add(new Posicion(posicion.getFila(), posicion.getColumna() + 1));
+        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna()));
+        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna() + 1));
+
+        this.agregarPiezaAMapa(unaLista, edificio);
+        edificio.agregarPosicion(unaLista);
+
+    }
+
+    private void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
+
+        ArrayList<Posicion> unaLista = new ArrayList<>();
+        unaLista.add(posicion);
+        this.agregarPiezaAMapa(unaLista, unaUnidad);
+        unaUnidad.agregarPosicion(unaLista);
+    }
+
+    private void agregarPiezaAMapa(ArrayList<Posicion> unaListaPiezas, Pieza unaPieza){
+
+        for(Posicion unaPosicion : unaListaPiezas){
+
+            this.validarPosicion(unaPosicion);
+            piezasDelMapa.put(unaPosicion, unaPieza);
+
+        }
+
+    }
+
     private void validarPosicion(Posicion unaPosicion) {
         if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
             throw new UbicacionErroneaException();
