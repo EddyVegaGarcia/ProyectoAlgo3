@@ -2,22 +2,28 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.controlador.Juego;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class ContenedorPrincipal extends BorderPane {
 
     Stage myStage;
+    private Juego juego;
+    public double height;
+    public double width;
 
     public ContenedorPrincipal(Stage stage){
         this.myStage = stage;
-        this.setMenu();
+        //this.setMenu();
+        this.nombreDeLosJugadores();
     }
 
     private void setMenu() {
@@ -26,48 +32,74 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-    public void inicializarJuego() {
-        myStage.setTitle("> Nombre de los Jugadores <");
+    public void nombreDeLosJugadores() {
 
-        TextField primerJugador = new TextField();
-        primerJugador.setPromptText("Ingrese nombre del Jugador 1: ");
+        Label etiquetaJugador1 = new Label();
+        etiquetaJugador1.setText("Jugador 1 : ");
 
-        Label etiquetaPrimerJugador = new Label();
-        etiquetaPrimerJugador.setText(primerJugador.getText());
+        TextField campoJugador1 = new TextField();
+        campoJugador1.setPromptText("Ingrese un nombre");
+        campoJugador1.setFocusTraversable(false);
 
-        TextField segundoJugador = new TextField();
-        segundoJugador.setPromptText("Ingrese nombre del Jugador 2: ");
+        HBox contenedorHorizontalJugador1 = new HBox();
+        contenedorHorizontalJugador1.getChildren().addAll(etiquetaJugador1, campoJugador1);
 
-        Label etiquetaSegundoJugador = new Label();
-        etiquetaSegundoJugador.setText(segundoJugador.getText());
+        Label etiquetaJugador2 = new Label();
+        etiquetaJugador2.setText("Jugador 2 : ");
+
+        TextField campoJugador2 = new TextField();
+        campoJugador2.setPromptText("Ingrese un nombre");
+        campoJugador2.setFocusTraversable(false);
+
+        HBox contenedorHorizontalJugador2 = new HBox();
+        contenedorHorizontalJugador2.getChildren().addAll(etiquetaJugador2, campoJugador2);
 
         Button botonEnviar = new Button();
-        botonEnviar.setText("Enviar");
+        botonEnviar.setText(" Enviar ");
 
-        HBox contenedorEnviar = new HBox(botonEnviar);
+        Label mensajeJugador1 = new Label();
+        Label mensajeJugador2 = new Label();
 
-        contenedorEnviar.setSpacing(10);
-        contenedorEnviar.setPadding(new Insets(15));
-        contenedorEnviar.setAlignment(Pos.BASELINE_CENTER);
-
-
-        VBox contenedorVertical = new VBox(primerJugador, segundoJugador, etiquetaPrimerJugador, etiquetaSegundoJugador);
-
-        contenedorVertical.setSpacing(5);
-        contenedorVertical.setPadding(new Insets(10));
-        contenedorVertical.setAlignment(Pos.BASELINE_CENTER);
-
-        BotonEnviarEventHandler botonEnviarEventHandler = new BotonEnviarEventHandler(primerJugador, segundoJugador, etiquetaPrimerJugador, etiquetaSegundoJugador);
+        BotonEnviarEventHandler botonEnviarEventHandler = new BotonEnviarEventHandler(campoJugador1, campoJugador2, mensajeJugador1, mensajeJugador2, this);
         botonEnviar.setOnAction(botonEnviarEventHandler);
 
-        TextoEventHandler textoEventHandler = new TextoEventHandler(botonEnviar);
-        primerJugador.setOnKeyPressed(textoEventHandler);
-        segundoJugador.setOnKeyPressed(textoEventHandler);
+        VBox contenedorVertical = new VBox(10);
+        contenedorVertical.setPadding(new Insets(20));
+        contenedorVertical.getChildren().addAll(contenedorHorizontalJugador1, contenedorHorizontalJugador2, botonEnviar, mensajeJugador1, mensajeJugador2);
 
         this.setCenter(contenedorVertical);
-        this.setRight(contenedorEnviar);
     }
 
 
+    public void iniciarJuego(String nombreJugador1, String nombreJugador2) {
 
+        juego = new Juego(nombreJugador1, nombreJugador2);
+
+        height = Screen.getPrimary().getVisualBounds().getHeight()*0.9;
+        width = Screen.getPrimary().getVisualBounds().getWidth()*0.9;
+
+        setBackground();
+        setButton();
+        CastilloView castillo = new CastilloView(this, 2, 1);
+    }
+
+    private void setButton() {
+
+        VBox contenedorVertical = new VBox();
+
+        Button botonTerminarFase = new Button();
+        botonTerminarFase.setText("Terminar Turno");
+
+        contenedorVertical.getChildren().addAll(botonTerminarFase);
+
+        this.setLeft(contenedorVertical);
+    }
+
+    private void setBackground() {
+        ImageView background = new ImageView();
+        background.setImage(new Image("file:src/fiuba/algo3/tp2/vista/imagenes/arenaDeCombate.jpg"));
+        background.setFitHeight(height);
+        background.setFitWidth(width);
+        this.setCenter(background);
+    }
 }

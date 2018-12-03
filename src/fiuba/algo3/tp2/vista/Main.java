@@ -1,11 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.controlador.Controlador;
-import fiuba.algo3.tp2.controlador.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -21,8 +17,8 @@ public class Main extends Application {
 
         //Juego juego = contenedorPrincipal.inicializarJuego();
 
-        Controlador controlador = new Controlador();
-       // controlador.crearJuego(juego);
+        //Controlador controlador = new Controlador();
+        //controlador.crearJuego(juego);
 
 
         Scene escenaJuego = new Scene(contenedorPrincipal);
