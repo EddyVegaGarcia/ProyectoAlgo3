@@ -20,6 +20,12 @@ public class Juego{
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
 
+        jugador1.ubicarAldeanosPorDefault(new Posicion(39, 16),
+                                          new Posicion(39, 14),
+                                          new Posicion(39, 18));
+        jugador1.ubicarEdificiosPorDefault(new Posicion(40,17),
+                                           new Posicion(40,25));
+
         jugador1.asignarEstadoHabilitado();
     }
 
@@ -40,6 +46,8 @@ public class Juego{
         }
     }
 
-    
 
+    public Jugador jugador1() {
+        return jugador1;
+    }
 }

@@ -121,5 +121,4 @@ public class Jugador {
         this.poblacion = poblacion + 1;
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
-
 }

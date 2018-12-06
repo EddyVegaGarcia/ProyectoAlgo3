@@ -17,6 +17,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        stage.setMaximized(false);
         stage.setScene(proximaEscena);
     }
 }

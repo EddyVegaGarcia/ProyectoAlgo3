@@ -22,12 +22,12 @@ public class Main extends Application {
 
 
         Scene escenaJuego = new Scene(contenedorPrincipal);
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+        /*ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
 
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1920, 1080);
 
-        stage.setScene(escenaBienvenidos);
-
+        stage.setScene(escenaBienvenidos);*/
+        stage.setScene(escenaJuego);
         stage.show();
     }
 

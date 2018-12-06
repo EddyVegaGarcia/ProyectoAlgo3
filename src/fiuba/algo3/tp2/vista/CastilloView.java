@@ -1,27 +1,23 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.controlador.Jugador;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class CastilloView {
-    private final ContenedorPrincipal root;
-    private final double positionX;
-    private final double positionY;
-    private final double playerScale = 0.1;
-    private final ImageView castilloImage;
+    private final Canvas canvas;
+    private final double posicionX;
+    private final double posicionY;
+    private final Image imagen;
 
-    public CastilloView(ContenedorPrincipal contenedorPrincipal, int a, int b) {
-        this.root = contenedorPrincipal;
-        positionX = contenedorPrincipal.width/a;
-        positionY = contenedorPrincipal.height-600;
+    public CastilloView(Canvas canvas, int posicionX, int posicionY) {
 
-        castilloImage = new ImageView();
-        castilloImage.setTranslateX(positionX);
-        castilloImage.setTranslateY(positionY);
-        castilloImage.setScaleX(playerScale);
-        castilloImage.setScaleY(playerScale);
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
+        this.canvas = canvas;
 
-        castilloImage.setImage(new Image("file:src/fiuba/algo3/tp2/vista/imagenes/castillo.png"));
-        root.getChildren().add(castilloImage);
+        imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/castillo.png");
+        canvas.getGraphicsContext2D().drawImage(imagen, (posicionX*1080/40),(posicionY*720/35),(4*1080/40),(4*720/35));
     }
 }
