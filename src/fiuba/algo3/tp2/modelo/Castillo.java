@@ -31,7 +31,9 @@ public class Castillo extends Edificio implements Atacante {
         unidad.recibirDanio(ATAQUE_CASTILLO);
     }
 
-    public void atacar() {
+    public void atacar(ArrayList<Pieza> unasPiezas) {
+
+
       /*  List<Posicion> posicionesDeEnemigos = rangoDeAtaque.obtenerRangoDeAtaque(this, POSICION_DEFAULT_CASTILLO1);
 
         for (Posicion posActual : posicionesDeEnemigos) {

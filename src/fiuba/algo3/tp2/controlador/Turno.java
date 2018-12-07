@@ -14,7 +14,7 @@ public class Turno {
 
     }
 
-
+/*
     private void cobrar(int costo, Jugador jugador) {
         int oro = jugador.obtenerOro();
         if (oro < costo) {
@@ -22,7 +22,7 @@ public class Turno {
         }
         jugador.cobrarOro(costo);
     }
-
+*/
     /*public Jugador jugar() {
         jugador1.jugar();
         jugador2.jugar();
