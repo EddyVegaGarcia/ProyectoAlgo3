@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.controlador.BotonTerminarFase;
 import fiuba.algo3.tp2.controlador.Juego;
 import fiuba.algo3.tp2.controlador.UbicarEdificios;
 import javafx.geometry.Insets;
@@ -8,27 +9,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import static fiuba.algo3.tp2.modelo.Constantes.COLUMNA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.Constantes.FILA_DEFAULT_MAPA;
 
 public class ContenedorPrincipal extends BorderPane {
 
     Stage myStage;
     private Juego juego;
-    public double height;
-    public double width;
+    public int height = 900;
+    public int width = 1300;
 
     public ContenedorPrincipal(Stage stage){
         this.myStage = stage;
         //this.setMenu();
-        this.nombreDeLosJugadores();
+        //this.nombreDeLosJugadores();
+        this.iniciarJuego("alpha", "beta");
     }
 
     private void setMenu() {
@@ -38,6 +35,8 @@ public class ContenedorPrincipal extends BorderPane {
 
 
     public void nombreDeLosJugadores() {
+
+        myStage.setTitle("Nombre de los Jugadores");
 
         Label etiquetaJugador1 = new Label();
         etiquetaJugador1.setText("Jugador 1 : ");
@@ -82,31 +81,28 @@ public class ContenedorPrincipal extends BorderPane {
 
         juego = new Juego(nombreJugador1, nombreJugador2);
 
-        Canvas canvasCentral = new Canvas(1080,720);
+        Canvas canvasCentral = new Canvas(width, height);
 
         setMapa(canvasCentral);
-        setButton();
+        setBotones();
 
         UbicarEdificios ubicarEdificios = new UbicarEdificios(juego, canvasCentral);
 
         this.setCenter(canvasCentral);
     }
 
-    private void setButton() {
+    private void setBotones() {
 
         VBox contenedorVertical = new VBox();
 
-        Button botonTerminarFase = new Button();
-        botonTerminarFase.setText("Terminar Turno");
-
-        contenedorVertical.getChildren().addAll(botonTerminarFase);
+        BotonTerminarFase boton = new BotonTerminarFase(contenedorVertical, juego);
 
         this.setLeft(contenedorVertical);
     }
 
     private void setMapa(Canvas canvas) {
 
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/arenaDeCombate.jpg");
-        canvas.getGraphicsContext2D().drawImage(imagen,0,0, 1080, 720);
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/fondo.jpeg");
+        canvas.getGraphicsContext2D().drawImage(imagen,0,0, width, height);
     }
 }

@@ -1,23 +1,34 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.vista.CastilloView;
+import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
+
+import java.awt.geom.RoundRectangle2D;
+
+import static fiuba.algo3.tp2.modelo.Constantes.COLUMNA_DEFAULT_MAPA;
+import static fiuba.algo3.tp2.modelo.Constantes.FILA_DEFAULT_MAPA;
 
 public class UbicarEdificios {
     private final Jugador jugador1;
     private final Canvas canvasCentral;
+    private final double widht;
+    private final double height;
 
     public UbicarEdificios(Juego juego, Canvas canvasCentral) {
         jugador1 = juego.jugador1();
 
         this.canvasCentral = canvasCentral;
 
+        widht = canvasCentral.getWidth();
+        height = canvasCentral.getHeight();
+
         ubicarCastilloDeJugador(jugador1);
     }
 
     private void ubicarCastilloDeJugador(Jugador jugador1) {
-        int posicionX = 17;
-        int posicionY = 0;
+        double posicionX = (18*widht/COLUMNA_DEFAULT_MAPA);
+        double posicionY = (31*height/FILA_DEFAULT_MAPA);
         CastilloView castillo = new CastilloView(canvasCentral, posicionX, posicionY);
     }
 }
