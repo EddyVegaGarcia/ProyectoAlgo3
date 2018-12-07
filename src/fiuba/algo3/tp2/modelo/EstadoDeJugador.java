@@ -2,7 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 public abstract class EstadoDeJugador {
 
-    public abstract EstadoDeJugador cambiarEstado();
+    public abstract EstadoDeJugador empezarTurno(Jugador jugador);
 
-    public abstract void jugar(Jugador jugador);
+    public abstract EstadoDeJugador finalizarTurno(Jugador jugador);
+
 }

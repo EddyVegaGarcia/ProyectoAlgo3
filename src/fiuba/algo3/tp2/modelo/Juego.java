@@ -11,11 +11,15 @@ public class Juego{
 
     public Juego(String nombre1, String nombre2) {
 
-        this.mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        this.mapa = new Mapa();
         this.jugador1 = new Jugador(nombre1, mapa);
         this.jugador2 = new Jugador(nombre2, mapa);
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
+
+        //jugador1.ubicarCastilloPorDefault();
+        //jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
+         //       POSICION_DEFAULT_ALDEANO1_2, POSICION_DEFAULT_ALDEANO1_3);
 
 
         jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),

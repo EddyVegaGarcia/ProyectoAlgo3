@@ -32,6 +32,7 @@ public class Jugador {
     }
 
     public void ubicarAldeanosPorDefault(Posicion posicion1, Posicion posicion2, Posicion posicion3) {
+
         Aldeano aldeano1 = new Aldeano();
         Aldeano aldeano2 = new Aldeano();
         Aldeano aldeano3 = new Aldeano();
@@ -39,11 +40,11 @@ public class Jugador {
         this.piezas.add(aldeano1);
         this.piezas.add(aldeano2);
         this.piezas.add(aldeano3);
-        /*
-        this.ubicarEnElMapaPiezaNoAtacante(aldeano1,posicion1);
-        this.ubicarEnElMapaPiezaNoAtacante(aldeano2,posicion2);
-        this.ubicarEnElMapaPiezaNoAtacante(aldeano3,posicion3);
-        */
+
+        this.mapa.colocarPieza(aldeano1,posicion1);
+        this.mapa.colocarPieza(aldeano2,posicion2);
+        this.mapa.colocarPieza(aldeano3,posicion3);
+
         this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
     }
 
@@ -54,6 +55,7 @@ public class Jugador {
     public String nombre() {
         return nombre;
     }
+
 
     public String oro() {
         return Integer.toString(oro);
@@ -123,12 +125,12 @@ public class Jugador {
     public void cambiarEstadoDeJugador() {
         this.estado = estado.cambiarEstado();
     }
-
+*/
     public void jugar() {
-        estado.jugar(this);
+
     }
 
-
+/*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
