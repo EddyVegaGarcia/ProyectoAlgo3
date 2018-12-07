@@ -11,7 +11,7 @@ public class BotonTerminarFase extends Button {
 
     private Juego juego;
     private VBox contenedor;
-    private int x = 10;
+    private String nombreDelJugadorDeTurno;
 
     public BotonTerminarFase(VBox contenedor, Juego juego){
 
@@ -22,18 +22,19 @@ public class BotonTerminarFase extends Button {
     }
 
     private void colocarBoton() {
-        //String nombreDelJugadorDeTurno = "victor";
+        nombreDelJugadorDeTurno = juego.nombreDelJugadorDeTuno();
+
         Label etiqueta = new Label();
-        etiqueta.setText("Turno del Jugador : " + x);
+        etiqueta.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
 
         Button boton = new Button();
         boton.setText("Terminar turno");
         boton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //juego.terminarTurno
-                x+=10;
-                etiqueta.setText("Turno del Jugador : " + x);
+                juego.terminarTurno();
+                nombreDelJugadorDeTurno = juego.nombreDelJugadorDeTuno();
+                etiqueta.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
             }
         });
 

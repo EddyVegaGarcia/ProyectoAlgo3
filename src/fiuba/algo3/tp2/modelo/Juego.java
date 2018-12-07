@@ -54,4 +54,12 @@ public class Juego{
     public Jugador jugador2() {
             return jugador2;
     }
+
+    public String nombreDelJugadorDeTuno() {
+        return turno.turnoJugador().nombre();
+    }
+
+    public void terminarTurno() {
+        turno.jugar();
+    }
 }
