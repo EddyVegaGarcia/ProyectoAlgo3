@@ -43,14 +43,15 @@ public class Jugador {
         this.piezas.add(aldeano1);
         this.piezas.add(aldeano2);
         this.piezas.add(aldeano3);
+        /*
         this.ubicarEnElMapaPiezaNoAtacante(aldeano1,posicion1);
         this.ubicarEnElMapaPiezaNoAtacante(aldeano2,posicion2);
         this.ubicarEnElMapaPiezaNoAtacante(aldeano3,posicion3);
-
+        */
         this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
     }
 
-
+/*
 
     public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
         PlazaCentral plaza = new PlazaCentral();
@@ -106,7 +107,7 @@ public class Jugador {
         estado.jugar(this);
     }
 
-    /*METODO PRIVADOS*/
+
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
@@ -121,4 +122,5 @@ public class Jugador {
         this.poblacion = poblacion + 1;
         this.mapa.colocarPiezaNoAtacante(pieza,posicion);
     }
+    */
 }

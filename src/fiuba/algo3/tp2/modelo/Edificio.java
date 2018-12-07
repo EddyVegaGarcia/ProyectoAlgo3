@@ -23,4 +23,10 @@ public abstract class Edificio extends Pieza {
     }
 
     public abstract void darVidaPorReparacion();
+
+    @Override
+    public void cambiarPosicion(Posicion nuevaPosicion) {
+
+    }
+
 }

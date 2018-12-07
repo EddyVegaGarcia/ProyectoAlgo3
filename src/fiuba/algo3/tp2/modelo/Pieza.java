@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo;
 
-
 import java.util.ArrayList;
 
 public abstract class Pieza {
@@ -14,8 +13,11 @@ public abstract class Pieza {
 
     public int obtenerTamanio() { return tamanio; }
 
-
     public abstract void recibirDanio(int unDanio);
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
+
+    public abstract void cambiarPosicion(Posicion nuevaPosicion);
+
+    //protected abstract ArrayList<> obtenerPosicion();
 }

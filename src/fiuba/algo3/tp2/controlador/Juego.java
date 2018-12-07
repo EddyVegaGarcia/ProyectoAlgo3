@@ -20,20 +20,21 @@ public class Juego{
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
 
-        jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),
+
+        /*jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),
                                            new Posicion(40,25));
 
-        jugador1.asignarEstadoHabilitado();
+        jugador1.asignarEstadoHabilitado();*/
     }
 
-
+/*
     public void jugar(){
         while (this.ganador == null) {
             //turno.jugar();
             this.verificarGanador();
         }
-    }
 
+    }
     private void verificarGanador() {
         if (jugador1.castilloDestruido()) {
             this.ganador = jugador2;
@@ -42,9 +43,9 @@ public class Juego{
             this.ganador = jugador1;
         }
     }
+    */
 
-
-    public Jugador jugador1() {
+        public Jugador jugador1() {
         return jugador1;
     }
 }

@@ -1,49 +1,43 @@
 package fiuba.algo3.tp2.modelo;
 
-//import java.lang.reflect.Array;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-
 public class Mapa {
 
     HashMap<Posicion, Pieza> piezasDelMapa;
-    int dimension_filas;
-    int dimension_columnas;
-
+    Posicion posicionLimite;
 
     public Mapa() {
 
         this.piezasDelMapa = new HashMap<>();
-        this.dimension_filas = FILA_DEFAULT_MAPA;
-        this.dimension_columnas = COLUMNA_DEFAULT_MAPA;
+        this.posicionLimite = new Posicion(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
 
     }
 
     public Mapa(int fila , int columna){
 
         this.piezasDelMapa = new HashMap<>();
-        this.dimension_filas = fila;
-        this.dimension_columnas = columna;
+        this.posicionLimite = new Posicion(fila,columna);
 
     }
 
-
-    /*  METODOS PUBLICOS*/
     public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
 
         if(unaPieza.obtenerTamanio() > 1){
             this.colocarEdificio((Edificio) unaPieza, unaPosicion);
         }
         else
-            this.colocarUnidad((Unidad)unaPieza, unaPosicion);
+            this.colocarUnidad((Unidad) unaPieza, unaPosicion);
 
     }
 
-    /*   METODOS PRIVADOS  */
+    public int getTamanio() {
+        return (posicionLimite.obtenerTamanioLimite());
+    }
+
 
     private void colocarEdificio(Edificio edificio, Posicion posicion) {
 
@@ -65,6 +59,7 @@ public class Mapa {
         unaLista.add(posicion);
         this.agregarPiezaAMapa(unaLista, unaUnidad);
         unaUnidad.agregarPosicion(unaLista);
+
     }
 
     private void agregarPiezaAMapa(ArrayList<Posicion> unaListaPiezas, Pieza unaPieza){
@@ -79,94 +74,69 @@ public class Mapa {
     }
 
     private void validarPosicion(Posicion unaPosicion) {
-        if (!unaPosicion.estaContenidaEnDimensiones(dimension_filas, dimension_columnas))
+
+        if (!unaPosicion.estaContenidaEnDimensiones(posicionLimite))
             throw new UbicacionErroneaException();
 
-        if(piezasDelMapa.containsKey(unaPosicion))
-            throw new UbicacionOcupadaException();
-    }
-
-    public void moverUnidadArriba(Unidad unaUnidad) {
-        Posicion posicionAnterior = new Posicion(15,15);
         for (Posicion posActual : piezasDelMapa.keySet()) {
-            if (piezasDelMapa.get(posActual) == unaUnidad) {
-                posicionAnterior = posActual;
-            }
+
+            if (posActual.compararPosicion(unaPosicion))
+                throw new UbicacionOcupadaException();
+
         }
-        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() - 1 , posicionAnterior.getColumna());
-        this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        //this.(unaUnidad, posicionNueva);
+
     }
 
-    public int getTamanio() {
-        return (dimension_filas * dimension_columnas);
-    }
+    public Pieza recuperarPieza(Posicion unaPosicion) {
 
-    public int getFilas() { return dimension_filas; }
+        Pieza unaPieza = null;
 
-    public int getColumnas() { return dimension_columnas; }
-
-    public Pieza recuperarPieza(Posicion posicion) {
-        // Si la pieza no está en el mapa, se devuelve null.
-        Pieza pieza = null;
         for (Posicion posActual : piezasDelMapa.keySet()) {
-            if ((posActual.getFila() == posicion.getFila()) && (posActual.getColumna() == posicion.getColumna())) {
-                pieza = piezasDelMapa.get(posActual);
+
+            if (posActual.compararPosicion(unaPosicion)){
+
+                unaPieza = piezasDelMapa.get(posActual);
+
             }
+
+
         }
-        return pieza;
-    }
 
-    public void moverUnidadAbajo(Unidad unaUnidad) {
-        Posicion posicionAnterior = new Posicion(14,22);
-        for (Posicion posActual : piezasDelMapa.keySet()) {
-            if (piezasDelMapa.get(posActual) == unaUnidad) {
-                posicionAnterior = posActual;
-            }
-        }
-        Posicion posicionNueva = new Posicion(posicionAnterior.getFila() + 1 , posicionAnterior.getColumna());
-        this.validarPosicion(posicionNueva); // Esto puede lanzar excepciones si ya está ocupada la celda o no es válida
-        this.colocarUnidad(unaUnidad, posicionNueva);
-    }
-
-    public void colocarPiezaNoAtacante(Pieza unPieza, Posicion unPosicion) {
+        return unaPieza;
 
     }
 
-    public void colocarPiezaAtacante(Atacante unAtacante, Posicion posicion) {
 
-        for (int i = posicion.getFila() ; i <= (unAtacante.obtenerTamanio() / 4) ; i++) {
-            for (int j = posicion.getColumna() ; j <= (unAtacante.obtenerTamanio() / 4) ; j++) {
-                Posicion posActual = new Posicion(i, j);
-                this.validarPosicion(posActual);
-                piezasDelMapa.put(posActual, (Pieza) unAtacante); /* casteo porque no me deja agregar al hash*/
-            }
-        }
-    }
+    public void moverUnidad(Posicion posicion, Direccion direccion) {
 
-    public void moverAldeano(Posicion posicion, Direccion direccion) {
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
         this.validarPosicion(nuevaPosicion);
-        Pieza aldeano = piezasDelMapa.get(posicion);
+        Pieza aldeano = this.recuperarPieza(posicion);
         piezasDelMapa.remove(posicion);
         piezasDelMapa.put(nuevaPosicion, aldeano);
-    }
+        aldeano.cambiarPosicion(nuevaPosicion);
 
-    public void ubicarUnidadAlrededorDeEdificio(Unidad unidad, Edificio edificio) {
-
-
-    }
-
-    public boolean estaDisponible(Posicion posicion) {
-        return !piezasDelMapa.containsKey(posicion);
     }
 
     public void borrarUnidad(Unidad unidad, Posicion unaPosicion) {
-        if (piezasDelMapa.containsKey(unaPosicion)) {
-            piezasDelMapa.remove(unaPosicion, unidad);
+
+        try {
+
+            this.validarPosicion(unaPosicion);
+
         }
-        else {
-            throw new UnidadInexistenteException();
+        catch (UbicacionOcupadaException e) {
+
+            for (Posicion posActual : piezasDelMapa.keySet()) {
+
+                if (posActual.compararPosicion(unaPosicion)){
+                    piezasDelMapa.remove(posActual, unidad);
+                }
+
+            }
+
         }
+
     }
+
 }

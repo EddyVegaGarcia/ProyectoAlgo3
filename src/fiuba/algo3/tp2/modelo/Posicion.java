@@ -26,9 +26,18 @@ public class Posicion {
         return posicionFila;
     }
 
-    public boolean estaContenidaEnDimensiones(int dimensionFilas, int dimensionColumas) {
-        return ((posicionFila > 0) && (posicionColumna > 0) && (posicionFila <= dimensionFilas) && (posicionColumna <= dimensionColumas));
+    public boolean estaContenidaEnDimensiones(Posicion unaPosicionLimite) {
+        return ((posicionFila > 0) && (posicionColumna > 0)
+                && (posicionFila <= unaPosicionLimite.getFila()) && (posicionColumna <= unaPosicionLimite.getColumna()));
 
+    }
+
+    public boolean compararPosicion(Posicion unaPosicion) {
+        return ( posicionFila == unaPosicion.getFila()) && (posicionColumna == unaPosicion.getColumna());
+    }
+
+    public int obtenerTamanioLimite() {
+        return posicionFila * posicionColumna;
     }
 }
 
