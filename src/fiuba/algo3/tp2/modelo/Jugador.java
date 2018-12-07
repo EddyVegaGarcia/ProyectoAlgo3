@@ -55,8 +55,25 @@ public class Jugador {
         return nombre;
     }
 
-/*
+    public String oro() {
+        return Integer.toString(oro);
+    }
 
+    public Castillo castillo() {
+        return castillo;
+    }
+
+
+    public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
+        PlazaCentral plaza = new PlazaCentral();
+        this.piezas.add(plaza);
+
+        mapa.colocarPieza(castillo,posicionCastillo);
+        mapa.colocarPieza(plaza,posicionPlaza);
+
+    }
+
+/*
     public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
         PlazaCentral plaza = new PlazaCentral();
         this.piezas.add(plaza);

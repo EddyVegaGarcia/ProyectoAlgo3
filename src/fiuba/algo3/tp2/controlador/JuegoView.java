@@ -66,21 +66,19 @@ public class JuegoView {
         contenedorJugador2.setSpacing(10);
 
         //etiqueta para la vida de los jugadores
-        Label etiquetaVidaCastilloJugador1 = new Label();
-        Label etiquetaVidaCastilloJugador2 = new Label();
+        Label etiquetaVidaCastilloJugador1 = crearEtiquetaConTexto("vida : " + jugador1.vida());
+        Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
 
-        etiquetaVidaCastilloJugador1.setText("vida : " + jugador1.vida());
-        etiquetaVidaCastilloJugador2.setText("vida : " + jugador2.vida());
+        //etiqueta para el oro de los jugadores
+        Label etiquetaOroJugador1 = crearEtiquetaConTexto("Oro : " + jugador1.oro());
+        Label etiquetaOroJugador2 = crearEtiquetaConTexto("Oro : " + jugador2.oro());
 
         //etiqueta para los nombres de los jugadores
-        Label nombreJugador1 = new Label();
-        Label nombreJugador2 = new Label();
+        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.nombre());
+        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.nombre());
 
-        nombreJugador1.setText(jugador1.nombre());
-        nombreJugador2.setText(jugador2.nombre());
-
-        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
-        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);
+        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1, etiquetaOroJugador1);
+        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2, etiquetaOroJugador2);
 
         HBox contenedorHorizontal = new HBox();
         contenedorHorizontal.setSpacing(10);
@@ -91,5 +89,17 @@ public class JuegoView {
 
     private void setEstadoDelJuego(Canvas canvasCentral) {
         setBotones();
+        setPiezasJugador(jugador1,canvasCentral);
+        setPiezasJugador(jugador2, canvasCentral);
+    }
+
+    private void setPiezasJugador(Jugador jugador, Canvas canvasCentral) {
+        UbicarCastillo ubicarCastillo = new UbicarCastillo(jugador, canvasCentral);
+    }
+
+    private Label crearEtiquetaConTexto(String texto){
+        Label etiqueta = new Label();
+        etiqueta.setText(texto);
+        return etiqueta;
     }
 }

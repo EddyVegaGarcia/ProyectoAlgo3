@@ -19,5 +19,9 @@ public abstract class Pieza {
 
     public abstract void cambiarPosicion(Posicion nuevaPosicion);
 
+    public Posicion obtenerPosicion(){
+        return posiciones.get(0);
+    }
+
     //protected abstract ArrayList<> obtenerPosicion();
 }

@@ -18,10 +18,11 @@ public class Juego{
         this.ganador = null;
 
 
-        /*jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),
-                                           new Posicion(40,25));
+        jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),
+                                           new Posicion(20,25));
 
-        jugador1.asignarEstadoHabilitado();*/
+        jugador2.ubicarEdificiosPorDefault(new Posicion(1,17),
+                                           new Posicion(15,25));
     }
 
 /*

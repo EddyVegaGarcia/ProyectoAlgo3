@@ -37,12 +37,6 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
 
         } else {
 
-            this.mensaje.setText("Nombre del primer jugador: " + this.campoJugador1.getText());
-            this.mensaje.setTextFill(Color.BLUEVIOLET);
-
-            this.mensaje2.setText("Nombre del segundo jugador: " + this.campoJugador2.getText());
-            this.mensaje2.setTextFill(Color.BLUEVIOLET);
-
             contenedorPrincipal.iniciarJuego(campoJugador1.getText(), campoJugador2.getText());
         }
 
