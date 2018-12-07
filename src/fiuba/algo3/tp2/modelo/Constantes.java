@@ -4,6 +4,8 @@ package fiuba.algo3.tp2.modelo;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import java.util.ArrayList;
+
 public class Constantes {
 
     public static int FILA_DEFAULT_MAPA = 35;
@@ -68,12 +70,12 @@ public class Constantes {
     public static Posicion POSICION_DEFAULT_PLAZA2_4 = new Posicion(10,1);
 
     public static Posicion POSICION_DEFAULT_ALDEANO1_1 = new Posicion(1,9);
-    public static Posicion POSICION_DEFAULT_ALDEANO2_1= new Posicion(2,9);
-    public static Posicion POSICION_DEFAULT_ALDEANO3_1= new Posicion(3,9);
+    public static Posicion POSICION_DEFAULT_ALDEANO1_2= new Posicion(2,9);
+    public static Posicion POSICION_DEFAULT_ALDEANO1_3= new Posicion(3,9);
 
-    public static Posicion POSICION_DEFAULT_ALDEANO1_2 = new Posicion(1,34);
+    public static Posicion POSICION_DEFAULT_ALDEANO2_1 = new Posicion(1,34);
     public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(2,34);
-    public static Posicion POSICION_DEFAULT_ALDEANO3_2= new Posicion(3,34);
+    public static Posicion POSICION_DEFAULT_ALDEANO2_3= new Posicion(3,34);
 
     /* PRECIOS DE LAS UNIDADES Y EDIFCIOS*/
     public static int COSTO_ALDEANO = 25;
@@ -110,6 +112,5 @@ public class Constantes {
     public static int DISTANCIA_ATAQUE_ARQUERO = 3;
     public static int DISTANCIA_ATAQUE_ESPADACHIN = 1;
     public static int DISTANCIA_ATAQUE_ARMADEASEDIO = 5;
-
 
 }

@@ -4,13 +4,11 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Castillo extends Edificio implements Atacante {
 
-    public int distanciaDeAtaque;
     public RangoDeAtaque rangoDeAtaque;
 
     public Castillo() {
@@ -20,7 +18,7 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public int obtenerDistanciaAtaque() { return distanciaDeAtaque; }
+    public int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
 
     @Override
     public void guardarRangoDeAtaque(RangoDeAtaque rango) {

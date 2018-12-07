@@ -1,11 +1,9 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
-import junit.framework.JUnit4TestAdapter;
-import org.junit.Assert;
+
 import org.junit.Test;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import static org.junit.Assert.*;
 
@@ -236,4 +234,14 @@ public class MapaTest {
 
     }
 
+    @Test(expected = UbicacionErroneaException.class)
+    public void testColocarEdificioIncorrectamente() {
+
+        Mapa mapa = new Mapa();
+        PlazaCentral unaPlaza = new PlazaCentral();
+        Posicion posicionPlaza = new Posicion(35,40);
+
+        mapa.colocarPieza(unaPlaza, posicionPlaza);
+
+    }
 }
