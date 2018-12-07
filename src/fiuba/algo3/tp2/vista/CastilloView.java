@@ -1,9 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.controlador.Jugador;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class CastilloView {
     private final Canvas canvas;

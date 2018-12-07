@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.controlador.Juego;
-import fiuba.algo3.tp2.vista.ContenedorPrincipal;
+import fiuba.algo3.tp2.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

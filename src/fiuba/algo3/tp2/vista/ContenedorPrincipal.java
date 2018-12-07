@@ -1,8 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.controlador.BotonTerminarFase;
-import fiuba.algo3.tp2.controlador.Juego;
-import fiuba.algo3.tp2.controlador.UbicarEdificios;
+import fiuba.algo3.tp2.controlador.*;
+import fiuba.algo3.tp2.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -17,15 +16,11 @@ import javafx.stage.Stage;
 public class ContenedorPrincipal extends BorderPane {
 
     Stage myStage;
-    private Juego juego;
-    public int height = 900;
-    public int width = 1300;
 
     public ContenedorPrincipal(Stage stage){
         this.myStage = stage;
         //this.setMenu();
-        //this.nombreDeLosJugadores();
-        this.iniciarJuego("alpha", "beta");
+        this.nombreDeLosJugadores();
     }
 
     private void setMenu() {
@@ -78,31 +73,8 @@ public class ContenedorPrincipal extends BorderPane {
     public void iniciarJuego(String nombreJugador1, String nombreJugador2) {
 
         myStage.setMaximized(true);
+        myStage.setTitle("Algo3Age of Empires");
 
-        juego = new Juego(nombreJugador1, nombreJugador2);
-
-        Canvas canvasCentral = new Canvas(width, height);
-
-        setMapa(canvasCentral);
-        setBotones();
-
-        UbicarEdificios ubicarEdificios = new UbicarEdificios(juego, canvasCentral);
-
-        this.setCenter(canvasCentral);
-    }
-
-    private void setBotones() {
-
-        VBox contenedorVertical = new VBox();
-
-        BotonTerminarFase boton = new BotonTerminarFase(contenedorVertical, juego);
-
-        this.setLeft(contenedorVertical);
-    }
-
-    private void setMapa(Canvas canvas) {
-
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/fondo.jpeg");
-        canvas.getGraphicsContext2D().drawImage(imagen,0,0, width, height);
+        JuegoView vistaJuego = new JuegoView(this, nombreJugador1, nombreJugador2);
     }
 }

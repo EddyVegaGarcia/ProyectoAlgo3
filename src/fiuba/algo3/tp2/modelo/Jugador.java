@@ -1,8 +1,4 @@
-package fiuba.algo3.tp2.controlador;
-
-import fiuba.algo3.tp2.modelo.Exception.*;
-import fiuba.algo3.tp2.modelo.UnidadFactory.*;
-import fiuba.algo3.tp2.modelo.*;
+package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
@@ -49,6 +45,14 @@ public class Jugador {
         this.ubicarEnElMapaPiezaNoAtacante(aldeano3,posicion3);
         */
         this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
+    }
+
+    public int vida() {
+        return castillo.vida;
+    }
+
+    public String nombre() {
+        return nombre;
     }
 
 /*

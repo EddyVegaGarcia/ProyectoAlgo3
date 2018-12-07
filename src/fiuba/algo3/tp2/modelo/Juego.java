@@ -1,7 +1,4 @@
-package fiuba.algo3.tp2.controlador;
-
-import fiuba.algo3.tp2.modelo.*;
-import fiuba.algo3.tp2.modelo.Exception.OroInsuficienteException;
+package fiuba.algo3.tp2.modelo;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
@@ -45,7 +42,11 @@ public class Juego{
     }
     */
 
-        public Jugador jugador1() {
+    public Jugador jugador1() {
         return jugador1;
+    }
+
+    public Jugador jugador2() {
+            return jugador2;
     }
 }
