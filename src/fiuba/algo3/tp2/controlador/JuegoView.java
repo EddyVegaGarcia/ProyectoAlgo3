@@ -2,15 +2,20 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class JuegoView {
 
+    private VBox contenedorParaUnaPieza;
+    private VBox contenedorVertical;
     private Jugador jugador2;
     private Jugador jugador1;
     private ContenedorPrincipal contenedorPrincipal;
@@ -27,11 +32,18 @@ public class JuegoView {
         jugador2 = juego.jugador2();
 
         Canvas canvasCentral = new Canvas(width, height);
+        canvasCentral.setOnMousePressed(new MauseEventHandler(this, juego, canvasCentral));
+
+        contenedorVertical = new VBox();
+        contenedorVertical.setSpacing(10);
+        contenedorVertical.setPadding(new Insets(10));
+
+        contenedorParaUnaPieza = new VBox();
+        contenedorParaUnaPieza.setSpacing(10);
+        contenedorParaUnaPieza.setPadding(new Insets(10));
 
         setMapa(canvasCentral);
 
-      //  UbicarEdificios ubicarEdificios = new UbicarEdificios(juego, canvasCentral);
-       // UbicarUnidades ubicarUnidades = new UbicarUnidades(juego, canvasCentral);
         setEstadoDelJuego(canvasCentral);
 
         contenedorPrincipal.setCenter(canvasCentral);
@@ -44,15 +56,13 @@ public class JuegoView {
 
     private void setBotones() {
 
-        VBox contenedorVertical = new VBox();
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(10));
-
         agregarEtiquetasDeVidasDeJugadores(contenedorVertical);
 
         BotonTerminarFase boton = new BotonTerminarFase(contenedorVertical, juego);
 
         contenedorPrincipal.setLeft(contenedorVertical);
+
+        contenedorVertical.getChildren().add(contenedorParaUnaPieza);
     }
 
     private void agregarEtiquetasDeVidasDeJugadores(VBox contenedorVertical) {
@@ -96,5 +106,20 @@ public class JuegoView {
         Label etiqueta = new Label();
         etiqueta.setText(texto);
         return etiqueta;
+    }
+
+    public void activarBotoneraDeCastillo() {
+
+        Label etiqueta = new Label();
+        etiqueta.setText("Selecciono : Castillo");
+
+        Button boton = new Button();
+        boton.setText("Atacar");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton);
+    }
+
+    public void vaciarOpcionesDePieza() {
+        contenedorParaUnaPieza.getChildren().clear();
     }
 }
