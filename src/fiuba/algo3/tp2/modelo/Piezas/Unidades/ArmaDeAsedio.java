@@ -1,8 +1,9 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
-import fiuba.algo3.tp2.modelo.Exception.ArmaDeAsedioMontadaException;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Exception.AtaqueInvalidoException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -26,13 +27,20 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     }
 
-    private void validarMontura(){
+    private void validarAtaqueMontura() {
 
         if(!estado.estaMontado())
-            throw new ArmaDeAsedioMontadaException();
+            throw new ArmaDeAsedioDesmontadaSinAtaqueException();
 
         if(tiempoEsperadoDeMontura < TIEMPO_ESPERADO_DE_MONTURA)
             throw new AtaqueInvalidoException();
+
+    }
+
+    private void validarMovimientoDesmontura(){
+
+        if(estado.estaMontado())
+            throw new ArmaDeAsedioMontadaSinMovimientoException();
 
     }
 
@@ -42,7 +50,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     public void atacarEdificio(Edificio unEdificio) {
 
-        this.validarMontura();
+        this.validarAtaqueMontura();
         this.montar();
         unEdificio.recibirDanio(ATAQUE_ARMADEASEDIO);
 
@@ -83,5 +91,12 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
         this.estado = estado.desmontar(this);
 
+    }
+
+    @Override
+    public void cambiarPosicion(Posicion nuevaPosicion) {
+
+        this.validarMovimientoDesmontura();
+        super.cambiarPosicion(nuevaPosicion);
     }
 }

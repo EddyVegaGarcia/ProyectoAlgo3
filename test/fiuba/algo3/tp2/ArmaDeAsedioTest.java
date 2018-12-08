@@ -1,10 +1,13 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.modelo.Campo.Mapa;
+import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Exception.PiezaDestruidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Montable;
-import fiuba.algo3.tp2.modelo.Piezas.Unidad;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
@@ -84,6 +87,21 @@ public class ArmaDeAsedioTest {
 
         int tiempoEsperado = 0;
         assertEquals(tiempoEsperado, ((ArmaDeAsedio) armaDeAsedio).obtenerTiempoEsperado());
+
+    }
+
+    @Test(expected = ArmaDeAsedioMontadaSinMovimientoException.class)
+    public void testMoverArmaDeAsedioEnEstadoMontado() {
+
+        Mapa mapa = new Mapa();
+        Posicion posicion = new Posicion(24,30);
+        Montable unArmaDeAsedio = new ArmaDeAsedio();
+
+        mapa.colocarPieza((Pieza)unArmaDeAsedio, posicion);
+
+        unArmaDeAsedio.montar();
+
+        mapa.moverUnidad(posicion, new DireccionIzquierda());
 
     }
 }

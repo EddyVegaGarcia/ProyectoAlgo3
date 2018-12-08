@@ -100,9 +100,9 @@ public class Mapa {
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
         this.validarPosicion(nuevaPosicion);
         Pieza aldeano = this.recuperarPieza(posicion);
+        aldeano.cambiarPosicion(nuevaPosicion);
         piezasDelMapa.remove(posicion);
         piezasDelMapa.put(nuevaPosicion, aldeano);
-        aldeano.cambiarPosicion(nuevaPosicion);
 
     }
 
