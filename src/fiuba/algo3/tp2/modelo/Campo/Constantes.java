@@ -9,6 +9,8 @@ public class Constantes {
     public static int CANTIDAD_DE_ORO_INICIAL = 100;
     public static int POBLACION_INICIAL = 0;
     public static int CANTIDAD_DE_ALDEANOS_INICIAL = 3;
+    public static int TIEMPO_INICIAL_DE_MONTURA = 0;
+    public static int TIEMPO_ESPERADO_DE_MONTURA =1;
 
     /*TAMAÑO DE LAS PIEZAS*/
     public static int TAMANIO_PLAZA = 4;

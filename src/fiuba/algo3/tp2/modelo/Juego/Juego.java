@@ -11,7 +11,7 @@ public class Juego{
     private Mapa mapa;
     private Turno turno;
 
-    private void colocarUnidadesPorDefault(){
+    private void colocarPiezasPorDefault(){
 
         jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
                 POSICION_DEFAULT_ALDEANO1_2,
@@ -34,7 +34,7 @@ public class Juego{
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
 
-        this.colocarUnidadesPorDefault();
+        this.colocarPiezasPorDefault();
 
     }
 

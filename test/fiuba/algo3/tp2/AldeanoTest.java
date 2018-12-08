@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.modelo.*;
-
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
