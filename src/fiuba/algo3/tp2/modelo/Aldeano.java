@@ -12,6 +12,7 @@ public class Aldeano extends Unidad {
 
 
     public Aldeano() {
+
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
         this.oro = 0;

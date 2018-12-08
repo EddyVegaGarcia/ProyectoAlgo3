@@ -7,9 +7,11 @@ public class Arquero extends Unidad implements Atacante {
     RangoDeAtaque rango;
 
     public Arquero(){
-        this.vida = 75;
-        this.costo = 75;
-        this.distanciaDeAtaque = 3;
+
+        this.tamanio = TAMANIO_UNIDAD;
+        this.vida = VIDA_MAXIMA_ARQUERO;
+        this.costo = COSTO_ARQUERO;
+        this.distanciaDeAtaque = DISTANCIA_ATAQUE_ARQUERO;
     }
 
     public void atacarUnidad(Unidad unaUnidad) {

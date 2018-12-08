@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static java.lang.Math.sqrt;
 
 public class Mapa {
 
@@ -24,41 +25,25 @@ public class Mapa {
 
     }
 
-    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
-
-        if(unaPieza.obtenerTamanio() > 1){
-            this.colocarEdificio((Edificio) unaPieza, unaPosicion);
-        }
-        else
-            this.colocarUnidad((Unidad) unaPieza, unaPosicion);
-
-    }
-
     public int getTamanio() {
         return (posicionLimite.obtenerTamanioLimite());
     }
 
-
-    private void colocarEdificio(Edificio edificio, Posicion posicion) {
-
-        ArrayList<Posicion> unaLista = new ArrayList<>();
-
-        unaLista.add(posicion);
-        unaLista.add(new Posicion(posicion.getFila(), posicion.getColumna() + 1));
-        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna()));
-        unaLista.add(new Posicion(posicion.getFila() + 1, posicion.getColumna() + 1));
-
-        this.agregarPiezaAMapa(unaLista, edificio);
-        edificio.agregarPosicion(unaLista);
-
-    }
-
-    private void colocarUnidad(Unidad unaUnidad, Posicion posicion) {
+    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
 
         ArrayList<Posicion> unaLista = new ArrayList<>();
-        unaLista.add(posicion);
-        this.agregarPiezaAMapa(unaLista, unaUnidad);
-        unaUnidad.agregarPosicion(unaLista);
+
+        for(int i = 0; i < sqrt(unaPieza.obtenerTamanio()); i++){
+            for(int j = 0; j < sqrt(unaPieza.obtenerTamanio()); j++){
+
+                unaLista.add(new Posicion(unaPosicion.getFila() + i,
+                        unaPosicion.getColumna() + j));
+
+            }
+        }
+
+        this.agregarPiezaAMapa(unaLista, unaPieza);
+        unaPieza.agregarPosicion(unaLista);
 
     }
 

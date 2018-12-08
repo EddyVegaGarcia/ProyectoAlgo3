@@ -1,11 +1,5 @@
 package fiuba.algo3.tp2.modelo;
 
-
-
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import java.util.ArrayList;
-
 public class Constantes {
 
     public static int FILA_DEFAULT_MAPA = 35;
@@ -22,57 +16,26 @@ public class Constantes {
     public static int TAMANIO_UNIDAD = 1;
 
 
-
     /*POSICIONES POR DEAFULT DE CASTILLOS, PLAZAS Y ALDEANOS INICIALES*/
-        /*Castillo1*/
-    public static Posicion POSICION_DEFAULT_CASTILLO1_1 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_2 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_3 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_4 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_5 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_6 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_7 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_8 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_9 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_10 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_11 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_12 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_13 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_14 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_15 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO1_16 = new Posicion(1,1);
-        /*Castillo2*/
-    public static Posicion POSICION_DEFAULT_CASTILLO2_1 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_2 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_3 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_4 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_5 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_6 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_7 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_8 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_9 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_10 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_11 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_12 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_13 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_14 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_15 = new Posicion(1,1);
-    public static Posicion POSICION_DEFAULT_CASTILLO2_16 = new Posicion(1,1);
-        /*Plaza1*/
-    public static Posicion POSICION_DEFAULT_PLAZA1_1 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA1_2 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA1_3 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA1_4 = new Posicion(10,1);
-        /*Plaza2*/
-    public static Posicion POSICION_DEFAULT_PLAZA2_1 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA2_2 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA2_3 = new Posicion(10,1);
-    public static Posicion POSICION_DEFAULT_PLAZA2_4 = new Posicion(10,1);
 
+        /*Castillo1*/
+    public static Posicion POSICION_DEFAULT_CASTILLO1 = new Posicion(31,17);
+
+        /*Castillo2*/
+    public static Posicion POSICION_DEFAULT_CASTILLO2 = new Posicion(1,17);
+
+        /*Plaza1*/
+    public static Posicion POSICION_DEFAULT_PLAZA1 = new Posicion(20,25);
+
+        /*Plaza2*/
+    public static Posicion POSICION_DEFAULT_PLAZA2 = new Posicion(15,25);
+
+        /*Aldeano 1 Jugador*/
     public static Posicion POSICION_DEFAULT_ALDEANO1_1 = new Posicion(1,9);
     public static Posicion POSICION_DEFAULT_ALDEANO1_2= new Posicion(2,9);
     public static Posicion POSICION_DEFAULT_ALDEANO1_3= new Posicion(3,9);
 
+        /*Aldeano 2 Jugador*/
     public static Posicion POSICION_DEFAULT_ALDEANO2_1 = new Posicion(1,34);
     public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(2,34);
     public static Posicion POSICION_DEFAULT_ALDEANO2_3= new Posicion(3,34);

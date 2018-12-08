@@ -3,13 +3,16 @@ package fiuba.algo3.tp2.modelo;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class ArmaDeAsedio extends Unidad implements Atacante {
+
     int distanciaDeAtaque;
     RangoDeAtaque rango;
 
     public ArmaDeAsedio(){
-        this.vida = 150;
-        this.costo = 200;
-        this.distanciaDeAtaque = 5;
+
+        this.tamanio = TAMANIO_UNIDAD;
+        this.vida = VIDA_MAXIMA_ARMADEASEDIO;
+        this.costo = COSTO_ARMADEASEDIO;
+        this.distanciaDeAtaque = DISTANCIA_ATAQUE_ARMADEASEDIO;
     }
 
     public void atacarUnidad(Unidad unaUnidad) {

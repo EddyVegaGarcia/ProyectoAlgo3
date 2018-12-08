@@ -210,6 +210,7 @@ public class MapaTest {
 
     @Test
     public void borrarUnidad() {
+
         Mapa mapa = new Mapa();
         Arquero arquero = new Arquero();
         Posicion posicion = new Posicion(4,5);

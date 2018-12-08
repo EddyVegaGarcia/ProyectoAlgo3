@@ -31,7 +31,7 @@ public class Jugador {
 
     }
 
-    public void ubicarAldeanosPorDefault(Posicion posicion1, Posicion posicion2, Posicion posicion3) {
+    public void ubicarAldeanosPorDefault(Posicion posicionAldeano1, Posicion posicionAldeano2, Posicion posicionAldeano3) {
 
         Aldeano aldeano1 = new Aldeano();
         Aldeano aldeano2 = new Aldeano();
@@ -41,9 +41,9 @@ public class Jugador {
         this.piezas.add(aldeano2);
         this.piezas.add(aldeano3);
 
-        this.mapa.colocarPieza(aldeano1,posicion1);
-        this.mapa.colocarPieza(aldeano2,posicion2);
-        this.mapa.colocarPieza(aldeano3,posicion3);
+        this.mapa.colocarPieza(aldeano1,posicionAldeano1);
+        this.mapa.colocarPieza(aldeano2,posicionAldeano2);
+        this.mapa.colocarPieza(aldeano3,posicionAldeano3);
 
         this.poblacion = poblacion + CANTIDAD_DE_ALDEANOS_INICIAL;
     }
@@ -67,8 +67,10 @@ public class Jugador {
 
 
     public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
+
         PlazaCentral plaza = new PlazaCentral();
         this.piezas.add(plaza);
+        this.piezas.add(castillo);
 
         mapa.colocarPieza(castillo,posicionCastillo);
         mapa.colocarPieza(plaza,posicionPlaza);

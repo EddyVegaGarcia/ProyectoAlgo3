@@ -4,12 +4,11 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
-import java.util.ArrayList;
-
 public class PlazaCentral extends Edificio {
 
     public PlazaCentral(){
-        this.costo = 100;
+
+        this.costo = COSTO_PLAZACENTRAL;
         this.estado = new EnConstruccion();
         this.tamanio = TAMANIO_PLAZA;
         this.vida = VIDA_MAXIMA_PLAZACENTRAL;

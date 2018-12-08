@@ -9,6 +9,21 @@ public class Juego{
     private Mapa mapa;
     private Turno turno;
 
+    private void colocarUnidadesPorDefault(){
+
+        jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
+                POSICION_DEFAULT_ALDEANO1_2,
+                POSICION_DEFAULT_ALDEANO1_3);
+
+        jugador2.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO2_1,
+                POSICION_DEFAULT_ALDEANO2_2,
+                POSICION_DEFAULT_ALDEANO2_3);
+
+        jugador1.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1, POSICION_DEFAULT_PLAZA1);
+        jugador2.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO2, POSICION_DEFAULT_PLAZA2);
+
+    }
+
     public Juego(String nombre1, String nombre2) {
 
         this.mapa = new Mapa();
@@ -17,16 +32,8 @@ public class Juego{
         this.turno = new Turno(jugador1, jugador2);
         this.ganador = null;
 
-        //jugador1.ubicarCastilloPorDefault();
-        //jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
-         //       POSICION_DEFAULT_ALDEANO1_2, POSICION_DEFAULT_ALDEANO1_3);
+        this.colocarUnidadesPorDefault();
 
-
-        jugador1.ubicarEdificiosPorDefault(new Posicion(31,17),
-                                           new Posicion(20,25));
-
-        jugador2.ubicarEdificiosPorDefault(new Posicion(1,17),
-                                           new Posicion(15,25));
     }
 
 /*
@@ -52,7 +59,7 @@ public class Juego{
     }
 
     public Jugador jugador2() {
-            return jugador2;
+        return jugador2;
     }
 
     public String nombreDelJugadorDeTuno() {

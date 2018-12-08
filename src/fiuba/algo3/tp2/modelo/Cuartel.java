@@ -10,7 +10,7 @@ public class Cuartel extends Edificio {
 
 
     public Cuartel() {
-        this.costo = 50;
+        this.costo = COSTO_CUARTEL;
         this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnConstruccion();
         this.vida = VIDA_MAXIMA_CUARTEL;
