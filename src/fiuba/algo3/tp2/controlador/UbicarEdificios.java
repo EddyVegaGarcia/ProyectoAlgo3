@@ -1,12 +1,11 @@
 package fiuba.algo3.tp2.controlador;
 
-import fiuba.algo3.tp2.modelo.Juego;
-import fiuba.algo3.tp2.modelo.Jugador;
+import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.vista.CastilloView;
 import javafx.scene.canvas.Canvas;
 
-import static fiuba.algo3.tp2.modelo.Constantes.COLUMNA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.Constantes.FILA_DEFAULT_MAPA;
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+
 
 public class UbicarEdificios {
     private final Jugador jugador1;

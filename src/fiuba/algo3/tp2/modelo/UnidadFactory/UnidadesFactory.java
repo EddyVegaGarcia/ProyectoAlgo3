@@ -1,7 +1,8 @@
 package fiuba.algo3.tp2.modelo.UnidadFactory;
 
-import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 
 public class UnidadesFactory {
 

@@ -1,22 +1,25 @@
 package fiuba.algo3.tp2.modelo;
 
-import javafx.geometry.Pos;
+import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 
 import java.util.ArrayList;
 import java.util.List;
-import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class RangoDeAtaque {
 
-    List<Posicion> posicionesDeAtaque;
-    Posicion posicionPrincipalDeCastillo;
+    public List<Posicion> posicionesDeAtaque;
+    private Posicion posicionPrincipalDeCastillo;
 
     public RangoDeAtaque(Posicion posicion) {
+
         this.posicionPrincipalDeCastillo = posicion;
         this.posicionesDeAtaque = new ArrayList<>();
+
     }
 
     public List<Posicion> obtenerRangoDeAtaque(Atacante unAtacante, Posicion posicionEdificio) {
+
         int filaSuperior = posicionEdificio.getFila();
         int columnaIzquierda = posicionEdificio.getColumna();
         int filaInferior = filaSuperior + (unAtacante.obtenerTamanio() / 4);

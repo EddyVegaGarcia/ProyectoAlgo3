@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Interfaces;
 
-import fiuba.algo3.tp2.modelo.Posicion;
+import fiuba.algo3.tp2.modelo.Campo.*;
 
 public interface Direccion {
 

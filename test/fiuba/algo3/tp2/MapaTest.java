@@ -1,7 +1,10 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.modelo.*;
-
+import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.Exception.*;

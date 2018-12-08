@@ -1,11 +1,12 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 import static org.junit.Assert.assertEquals;
 
 public class CuartelTest {

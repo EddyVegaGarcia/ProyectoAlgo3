@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.controlador;
 
-import fiuba.algo3.tp2.modelo.Juego;
-import fiuba.algo3.tp2.modelo.Jugador;
+import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;

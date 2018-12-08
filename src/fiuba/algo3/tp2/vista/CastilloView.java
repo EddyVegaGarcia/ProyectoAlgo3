@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.vista;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 public class CastilloView {
     private double tamanio;

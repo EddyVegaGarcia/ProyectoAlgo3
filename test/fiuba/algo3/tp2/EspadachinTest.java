@@ -1,9 +1,10 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import org.junit.Test;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 import static org.junit.Assert.assertEquals;
 
 public class EspadachinTest {

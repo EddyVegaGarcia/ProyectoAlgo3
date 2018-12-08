@@ -3,11 +3,14 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.modelo.*;
 
 import fiuba.algo3.tp2.modelo.Interfaces.*;
+import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.Exception.*;
 
-import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
