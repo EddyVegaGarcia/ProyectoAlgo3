@@ -20,8 +20,8 @@ public class Arquero extends Unidad implements Atacante {
     }
 
     public void atacarUnidad(Unidad unaUnidad) {
-        int danio = 15;
-        unaUnidad.recibirDanio(danio);
+
+        unaUnidad.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
     }
 
     public void atacarEdificio(Edificio unEdificio) {

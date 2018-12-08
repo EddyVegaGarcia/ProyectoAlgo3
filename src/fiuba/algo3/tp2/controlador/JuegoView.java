@@ -69,8 +69,8 @@ public class JuegoView {
         Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
 
         //etiqueta para los nombres de los jugadores
-        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.nombre());
-        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.nombre());
+        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.obtenerNombre());
+        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.obtenerNombre());
 
         contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
         contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);

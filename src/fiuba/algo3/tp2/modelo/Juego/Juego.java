@@ -66,6 +66,7 @@ public class Juego{
 
     public Jugador jugadorDeTuno() {
         return turno.jugadorDeTurno();
+
     }
 
     public void terminarTurno() {

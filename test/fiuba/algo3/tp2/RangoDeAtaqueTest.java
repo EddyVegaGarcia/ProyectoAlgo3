@@ -25,11 +25,11 @@ public class RangoDeAtaqueTest {
         Posicion unaPosicion_1 = new Posicion(20,20);
         Posicion unaPosicion_2 = new Posicion(30,30);
         Posicion unaPosicion_3 = new Posicion(40, 40);
-
+/*
         unAldeano.cambiarPosicion(unaPosicion_1);
         unEspadachin.cambiarPosicion(unaPosicion_2);
         unaArmaDeAsedio.cambiarPosicion(unaPosicion_3);
-
+*/
         ArrayList<Pieza> unaLista = new ArrayList<>();
 
         unaLista.add(unAldeano);

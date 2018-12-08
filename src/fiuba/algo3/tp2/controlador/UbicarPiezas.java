@@ -29,7 +29,7 @@ public class UbicarPiezas {
 
 
         ubicarAledanos(jugador.getAldeanos());
-        ubicarCastillo(jugador.castillo());
+        ubicarCastillo(jugador.obtenerCastillo());
         ubicarPlazas(jugador.getPlazas());
     }
 
