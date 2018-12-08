@@ -28,7 +28,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testAldeanoRecibirDanioDeArquero() {
+    public void testArmaDeAsedioRecibirDanioDeArquero() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -40,7 +40,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testAldeanoRecibirDanioDeCastillo() {
+    public void testArmaDeAsedioRecibirDanioDeCastillo() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -52,7 +52,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = PiezaDestruidaException.class)
-    public void testAldeanoRecibeDanioDeEspadachinDosVecesYMuere() {
+    public void testArmaDeAsedioRecibeDanioDeEspadachinDosVecesYMuere() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
