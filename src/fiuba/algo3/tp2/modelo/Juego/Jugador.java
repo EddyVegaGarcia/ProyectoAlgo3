@@ -78,7 +78,7 @@ public class Jugador {
 
         PlazaCentral plaza = new PlazaCentral();
         this.piezas.add(plaza);
-        this.piezas.add(castillo);
+       // this.piezas.add(castillo);
 
         mapa.colocarPieza(castillo,posicionCastillo);
         mapa.colocarPieza(plaza,posicionPlaza);
@@ -138,6 +138,26 @@ public class Jugador {
 */
     public void jugar() {
 
+    }
+
+    public ArrayList<PlazaCentral> getPlazas() {
+        ArrayList<PlazaCentral> plazas = new ArrayList<PlazaCentral>();
+        for(Pieza pieza : piezas){
+            if( pieza.sosPlazaCentral() ){
+                plazas.add((PlazaCentral) pieza);
+            }
+        }
+        return plazas;
+    }
+
+    public ArrayList<Aldeano> getAldeanos() {
+        ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
+        for(Pieza pieza : piezas){
+            if( pieza.sosAldeano() ){
+                aldeanos.add((Aldeano)pieza);
+            }
+        }
+        return aldeanos;
     }
 
 /*

@@ -25,5 +25,9 @@ public abstract class Pieza {
         return posiciones.get(0);
     }
 
+    public abstract boolean sosPlazaCentral();
+
+    public abstract boolean sosAldeano();
+
     //protected abstract ArrayList<> obtenerPosicion();
 }

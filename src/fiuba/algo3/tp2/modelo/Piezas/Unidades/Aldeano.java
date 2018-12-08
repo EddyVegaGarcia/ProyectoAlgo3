@@ -67,4 +67,13 @@ public class Aldeano extends Unidad implements Constructor {
         return estado.estaTrabajando();
     }
 
+    @Override
+    public boolean sosPlazaCentral() {
+        return false;
+    }
+
+    @Override
+    public boolean sosAldeano() {
+        return true;
+    }
 }

@@ -40,4 +40,13 @@ public class Espadachin extends Unidad implements Atacante {
         this.rango = rango;
     }
 
+    @Override
+    public boolean sosPlazaCentral() {
+        return false;
+    }
+
+    @Override
+    public boolean sosAldeano() {
+        return false;
+    }
 }

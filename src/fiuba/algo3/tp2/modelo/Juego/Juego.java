@@ -65,10 +65,10 @@ public class Juego{
     }
 
     public String nombreDelJugadorDeTuno() {
-        return turno.turnoJugador().nombre();
+        return turno.jugadorDeTurno().nombre();
     }
 
     public void terminarTurno() {
-        turno.jugar();
+        turno.termiarTurno();
     }
 }

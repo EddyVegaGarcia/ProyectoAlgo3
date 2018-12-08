@@ -37,4 +37,14 @@ public class Cuartel extends Edificio {
     public void recibirDanio(int unDanio) {
         this.vida = vida - unDanio;
     }
+
+    @Override
+    public boolean sosPlazaCentral() {
+        return false;
+    }
+
+    @Override
+    public boolean sosAldeano() {
+        return false;
+    }
 }
