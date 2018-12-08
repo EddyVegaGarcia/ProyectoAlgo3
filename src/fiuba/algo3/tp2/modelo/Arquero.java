@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Arquero extends Unidad implements Atacante {

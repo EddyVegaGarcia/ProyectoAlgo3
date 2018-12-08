@@ -1,12 +1,11 @@
 package fiuba.algo3.tp2.modelo;
 
 import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
-
-import java.util.ArrayList;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-public class Aldeano extends Unidad implements Constructor{
+public class Aldeano extends Unidad implements Constructor {
 
     public int oro;
     public EstadoDeAldeano estado;

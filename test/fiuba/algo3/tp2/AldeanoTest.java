@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
 
+import fiuba.algo3.tp2.modelo.Interfaces.*;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.Exception.*;

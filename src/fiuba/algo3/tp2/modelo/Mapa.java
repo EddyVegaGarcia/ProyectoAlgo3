@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static java.lang.Math.sqrt;
 

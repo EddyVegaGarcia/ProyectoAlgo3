@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
-public class DireccionArribaDerecha extends Direccion {
+import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
+
+public class DireccionArribaDerecha implements Direccion {
 
     public Posicion obtenerNuevaPosicion(Posicion posAnterior) {
         int nuevaFila = posAnterior.getFila() - 1;

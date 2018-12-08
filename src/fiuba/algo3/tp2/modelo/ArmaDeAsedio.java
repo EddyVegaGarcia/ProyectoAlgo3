@@ -1,11 +1,14 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.modelo.Interfaces.*;
+
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class ArmaDeAsedio extends Unidad implements Atacante {
 
     int distanciaDeAtaque;
     RangoDeAtaque rango;
+    EstadoDeArmaDeAsedio estado;
 
     public ArmaDeAsedio(){
 
@@ -13,6 +16,14 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
         this.vida = VIDA_MAXIMA_ARMADEASEDIO;
         this.costo = COSTO_ARMADEASEDIO;
         this.distanciaDeAtaque = DISTANCIA_ATAQUE_ARMADEASEDIO;
+        this.estado = new Desmontado();
+
+    }
+
+    private void validarMontura(){
+
+
+
     }
 
     public void atacarUnidad(Unidad unaUnidad) {
@@ -21,6 +32,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante {
 
     public void atacarEdificio(Edificio unEdificio) {
 
+        //this.validarMontura();
         unEdificio.recibirDanio(ATAQUE_ARMADEASEDIO);
 
     }
