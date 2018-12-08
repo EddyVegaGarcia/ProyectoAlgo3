@@ -53,7 +53,7 @@ public class MapaTest {
     }
 
     @Test
-    public void moverAldeanoHaciaArriba() {
+    public void testMoverAldeanoHaciaArriba() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(20,25);
@@ -68,7 +68,7 @@ public class MapaTest {
 
 
     @Test (expected = UbicacionErroneaException.class)
-    public void moverUnidadHaciaArribaInvalido() {
+    public void testMoverUnidadHaciaArribaInvalido() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(1,18);
@@ -80,7 +80,7 @@ public class MapaTest {
     }
 
     @Test
-    public void moverUnidadHaciaAbajo() {
+    public void testMoverUnidadHaciaAbajo() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(20,25);
@@ -95,7 +95,7 @@ public class MapaTest {
     }
 
     @Test (expected = UbicacionErroneaException.class)
-    public void moverUnidadHaciaAbajoInvalido() {
+    public void testMoverUnidadHaciaAbajoInvalido() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(35,25);
@@ -107,7 +107,7 @@ public class MapaTest {
     }
 
     @Test
-    public void moverUnidadHaciaIzquierda() {
+    public void testMoverUnidadHaciaIzquierda() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(24,30);
@@ -122,7 +122,7 @@ public class MapaTest {
     }
 
     @Test(expected = UbicacionErroneaException.class)
-    public void moverUnidadHaciaIzquierdaInvalido() {
+    public void testMoverUnidadHaciaIzquierdaInvalido() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(20,1);
@@ -135,7 +135,7 @@ public class MapaTest {
     }
 
     @Test
-    public void moverUnidadHaciaDerecha() {
+    public void testMoverUnidadHaciaDerecha() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(21,25);
@@ -150,7 +150,7 @@ public class MapaTest {
     }
 
     @Test(expected = UbicacionErroneaException.class)
-    public void moverUnidadHaciaDerechaInvalido() {
+    public void testMoverUnidadHaciaDerechaInvalido() {
 
         Mapa mapa = new Mapa();
         Posicion posicion = new Posicion(21,40);
@@ -209,7 +209,7 @@ public class MapaTest {
     }
 
     @Test
-    public void borrarUnidad() {
+    public void testBorrarUnidad() {
 
         Mapa mapa = new Mapa();
         Arquero arquero = new Arquero();
@@ -219,6 +219,7 @@ public class MapaTest {
         mapa.borrarUnidad(arquero, posicion);
 
         assertNull(mapa.recuperarPieza(posicion));
+        
     }
 
 
