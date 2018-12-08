@@ -18,7 +18,6 @@ public class PlazaCentral extends Edificio {
 
     }
 
-
     @Override
     public Unidad crearUnidad(UnidadType unidadType){
 

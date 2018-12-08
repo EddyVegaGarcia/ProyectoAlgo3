@@ -19,8 +19,6 @@ public abstract class Pieza {
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 
-    public abstract void cambiarPosicion(Posicion nuevaPosicion);
-
     public Posicion obtenerPosicion(){
         return posiciones.get(0);
     }

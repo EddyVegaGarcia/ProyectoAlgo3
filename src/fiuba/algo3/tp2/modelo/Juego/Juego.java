@@ -65,7 +65,7 @@ public class Juego{
     }
 
     public String nombreDelJugadorDeTuno() {
-        return turno.turnoJugador().nombre();
+        return turno.turnoJugador().obtenerNombre();
     }
 
     public void terminarTurno() {

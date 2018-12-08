@@ -28,7 +28,7 @@ public class UbicarCastillo {
     }
 
     private void ubicarCastilloDeJugador() {
-        Castillo castillo = jugador.castillo();
+        Castillo castillo = jugador.obtenerCastillo();
         Posicion posicion = castillo.obtenerPosicion();
 
         double posicionX = (posicion.getColumna()*widht/COLUMNA_DEFAULT_MAPA);
