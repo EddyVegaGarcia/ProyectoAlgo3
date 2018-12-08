@@ -1,10 +1,12 @@
 package fiuba.algo3.tp2.modelo;
 
+import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
+
 import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 
-public class Aldeano extends Unidad {
+public class Aldeano extends Unidad implements Constructor{
 
     public int oro;
     public EstadoDeAldeano estado;
@@ -21,12 +23,22 @@ public class Aldeano extends Unidad {
         this.turnosConstruccion = 0;
     }
 
-    public void construir(Edificio edificio)  {
+    public void construir(Edificio unEdificio)  {
+
+        this.ValidarEdificio(unEdificio);
+
         this.turnosConstruccion++;
-        this.estado = estado.construir(edificio,turnosConstruccion);
+        this.estado = estado.construir(unEdificio,turnosConstruccion);
         if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
             this.turnosConstruccion = 0;
         }
+    }
+
+    private void ValidarEdificio(Edificio unEdificio) {
+
+        if(unEdificio.obtenerTamanio() == 16)
+            throw new ConstruccionCastilloException();
+
     }
 
 

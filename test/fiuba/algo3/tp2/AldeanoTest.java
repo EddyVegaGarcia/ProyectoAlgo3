@@ -1,34 +1,36 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.*;
-import org.junit.Assert;
+
 import org.junit.Test;
+
 import fiuba.algo3.tp2.modelo.Exception.*;
 
-import java.util.ArrayList;
-
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class AldeanoTest {
 
     @Test
-    public void AldeanoConstruyeCuartel() {
+    public void testAldeanoConstruyeCuartelYCambiaDeEstadoAEstaTrabajando() {
 
-        Mapa mapa = new Mapa(FILA_DEFAULT_MAPA, COLUMNA_DEFAULT_MAPA);
+        Constructor unAldeano = new Aldeano();
+        Edificio unCuartel = new Cuartel();
 
-        Posicion posicion1 = new Posicion(29, 13);
-        Posicion posicion2 = new Posicion(27, 13);
+        unAldeano.construir(unCuartel);
 
-        Aldeano aldeano = new Aldeano();
-        Cuartel unCuartel = new Cuartel();
+        assertTrue(unAldeano.estaTrabajando());
 
-        mapa.colocarPieza(aldeano,posicion1);
-        mapa.colocarPieza(unCuartel, posicion2);
+    }
 
-        aldeano.construir(unCuartel);
+    @Test(expected = ConstruccionCastilloException.class)
+    public void testAldeanoNoPuedeConstruirCastilloYaQueNoEsUnEdificioConstruible() {
 
-        Assert.assertTrue(aldeano.estaTrabajando());
+        Constructor unAldeano = new Aldeano();
+        Edificio unCastillo = new Castillo();
+
+        unAldeano.construir(unCastillo);
 
     }
 
