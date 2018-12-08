@@ -99,4 +99,14 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         this.validarMovimientoDesmontura();
         super.cambiarPosicion(nuevaPosicion);
     }
+
+    @Override
+    public boolean sosPlazaCentral() {
+        return false;
+    }
+
+    @Override
+    public boolean sosAldeano() {
+        return false;
+    }
 }

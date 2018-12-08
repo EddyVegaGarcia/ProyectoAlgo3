@@ -138,6 +138,26 @@ public class Jugador {
 
     }
 
+    public ArrayList<PlazaCentral> getPlazas() {
+        ArrayList<PlazaCentral> plazas = new ArrayList<PlazaCentral>();
+        for(Pieza pieza : piezas){
+            if( pieza.sosPlazaCentral() ){
+                plazas.add((PlazaCentral) pieza);
+            }
+        }
+        return plazas;
+    }
+
+    public ArrayList<Aldeano> getAldeanos() {
+        ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
+        for(Pieza pieza : piezas){
+            if( pieza.sosAldeano() ){
+                aldeanos.add((Aldeano)pieza);
+            }
+        }
+        return aldeanos;
+    }
+
 /*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {

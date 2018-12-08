@@ -15,7 +15,7 @@ public class Turno {
 
     }
 
-    public Jugador turnoJugador(){
+    public Jugador jugadorDeTurno(){
 
         return jugadorEnJuego;
 
@@ -42,6 +42,13 @@ public class Turno {
 
         return jugadorEnJuego;
 
+    }
+
+    public void termiarTurno(){
+        if( jugadorEnJuego == jugador1 )
+            jugadorEnJuego = jugador2;
+        else
+            jugadorEnJuego = jugador1;
     }
 
 }

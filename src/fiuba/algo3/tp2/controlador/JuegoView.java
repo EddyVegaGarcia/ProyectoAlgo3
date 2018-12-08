@@ -15,7 +15,7 @@ public class JuegoView {
     private Jugador jugador1;
     private ContenedorPrincipal contenedorPrincipal;
     private Canvas canvasCentral;
-    public int height = 900;
+    public int height = 700;
     public int width = 1300;
     private Juego juego;
 
@@ -93,7 +93,7 @@ public class JuegoView {
     }
 
     private void setPiezasJugador(Jugador jugador, Canvas canvasCentral) {
-        UbicarCastillo ubicarCastillo = new UbicarCastillo(jugador, canvasCentral);
+        UbicarPiezas ubicarPiezas = new UbicarPiezas(jugador, canvasCentral);
     }
 
     private Label crearEtiquetaConTexto(String texto){

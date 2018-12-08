@@ -3,7 +3,6 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
-import fiuba.algo3.tp2.vista.CastilloView;
 import javafx.scene.canvas.Canvas;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
@@ -34,6 +33,6 @@ public class UbicarCastillo {
         double posicionX = (posicion.getColumna()*widht/COLUMNA_DEFAULT_MAPA);
         double posicionY = (posicion.getFila()*height/FILA_DEFAULT_MAPA);
 
-        CastilloView castilloView = new CastilloView(canvasCentral, posicionX, posicionY);
+        //CastilloView castilloView = new CastilloView(canvasCentral, posicionX, posicionY);
     }
 }
