@@ -68,16 +68,12 @@ public class JuegoView {
         Label etiquetaVidaCastilloJugador1 = crearEtiquetaConTexto("vida : " + jugador1.vida());
         Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
 
-        //etiqueta para el oro de los jugadores
-        Label etiquetaOroJugador1 = crearEtiquetaConTexto("Oro : " + jugador1.oro());
-        Label etiquetaOroJugador2 = crearEtiquetaConTexto("Oro : " + jugador2.oro());
-
         //etiqueta para los nombres de los jugadores
         Label nombreJugador1 = crearEtiquetaConTexto(jugador1.nombre());
         Label nombreJugador2 = crearEtiquetaConTexto(jugador2.nombre());
 
-        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1, etiquetaOroJugador1);
-        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2, etiquetaOroJugador2);
+        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
+        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);
 
         HBox contenedorHorizontal = new HBox();
         contenedorHorizontal.setSpacing(10);
