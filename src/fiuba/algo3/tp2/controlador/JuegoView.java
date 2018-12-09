@@ -1,6 +1,9 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Juego.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -31,7 +34,7 @@ public class JuegoView {
         jugador1 = juego.jugador1();
         jugador2 = juego.jugador2();
 
-        Canvas canvasCentral = new Canvas(width, height);
+        canvasCentral = new Canvas(width, height);
         canvasCentral.setOnMousePressed(new MauseEventHandler(this, juego, canvasCentral));
 
         contenedorVertical = new VBox();
@@ -42,8 +45,7 @@ public class JuegoView {
         contenedorParaUnaPieza.setSpacing(10);
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
-        setMapa(canvasCentral);
-
+        setBotones();
         setEstadoDelJuego(canvasCentral);
 
         contenedorPrincipal.setCenter(canvasCentral);
@@ -93,7 +95,8 @@ public class JuegoView {
     }
 
     private void setEstadoDelJuego(Canvas canvasCentral) {
-        setBotones();
+        setMapa(canvasCentral);
+        //setBotones();
         setPiezasJugador(jugador1,canvasCentral);
         setPiezasJugador(jugador2, canvasCentral);
     }
@@ -108,7 +111,8 @@ public class JuegoView {
         return etiqueta;
     }
 
-    public void activarBotoneraDeCastillo() {
+    public void activarBotoneraDeCastillo(Castillo castillo) {
+        vaciarOpcionesDePieza();
 
         Label etiqueta = new Label();
         etiqueta.setText("Selecciono : Castillo");
@@ -127,6 +131,8 @@ public class JuegoView {
     }
 
     public void activarBotoneraDeArquero() {
+        vaciarOpcionesDePieza();
+
         Label etiqueta = new Label();
         etiqueta.setText("Selecciono : Arquero");
 
@@ -149,6 +155,8 @@ public class JuegoView {
     }
 
     public void activarBotoneraDeArmaAsedio() {
+        vaciarOpcionesDePieza();
+
         Label etiqueta = new Label();
         etiqueta.setText("Selecciono : Arma de Asedio");
 
@@ -161,9 +169,14 @@ public class JuegoView {
         contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonDesmontar);
     }
 
-    public void activarBotoneraAldeano() {
+    public void activarBotoneraAldeano(Aldeano aldeano) {
+        vaciarOpcionesDePieza();
+
         Label etiqueta = new Label();
         etiqueta.setText("Selecciono : Aldeano");
+
+        Label etiquetaVida = new Label();
+        etiquetaVida.setText("Vida : " + aldeano.obtenerVida());
 
         Button boton = new Button();
         boton.setText("Construir");
@@ -172,27 +185,41 @@ public class JuegoView {
         botonReparar.setText("Reparar");
 
         Button botonMoverIzq = new Button();
+        botonMoverIzq.setOnAction(new MoverIzqEventHandler(this, juego, aldeano));
         botonMoverIzq.setText("Mover Izquierda");
 
         Button botonMoverDer = new Button();
+        botonMoverDer.setOnAction(new MoverDerEventHandler(this, juego, aldeano));
         botonMoverDer.setText("Mover Derecha");
 
         Button botonMoverArriba = new Button();
+        botonMoverArriba.setOnAction(new MoverArribaEventHandler(this, juego, aldeano));
         botonMoverArriba.setText("Mover Arriba");
 
         Button botonMoverAbajo = new Button();
+        botonMoverAbajo.setOnAction(new MoverAbajoEventHandler(this, juego, aldeano));
         botonMoverAbajo.setText("Mover Abajo");
 
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonReparar, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton, botonReparar, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
     }
 
-    public void activarBotoneraPlaza() {
+    public void activarBotoneraPlaza(PlazaCentral plaza) {
+        vaciarOpcionesDePieza();
+
         Label etiqueta = new Label();
         etiqueta.setText("Selecciono : Plaza Central");
+
+        Label etiquetaVida = new Label();
+        etiquetaVida.setText("Vida : " + plaza.obtenerVida());
 
         Button boton = new Button();
         boton.setText("Crear Aldeano");
 
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton);
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton);
+    }
+
+    public void actualizar() {
+        canvasCentral.getGraphicsContext2D().clearRect(0,0, canvasCentral.getWidth(), canvasCentral.getHeight());
+        setEstadoDelJuego(canvasCentral);
     }
 }

@@ -72,7 +72,7 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.castillo();
+        mauseEventHandler.castillo(this);
     }
 
     @Override

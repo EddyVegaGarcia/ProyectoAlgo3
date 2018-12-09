@@ -3,7 +3,10 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -42,24 +45,20 @@ public class MauseEventHandler implements EventHandler<MouseEvent> {
         }
     }
 
-    public void castillo(){
-        juegoView.vaciarOpcionesDePieza();
-        juegoView.activarBotoneraDeCastillo();
+    public void castillo(Castillo castillo){
+        juegoView.activarBotoneraDeCastillo(castillo);
     }
 
     public void arquero() {
-        juegoView.vaciarOpcionesDePieza();
         juegoView.activarBotoneraDeArquero();
     }
 
     public void armaAsedio() {
-        juegoView.vaciarOpcionesDePieza();
         juegoView.activarBotoneraDeArmaAsedio();
     }
 
-    public void aldeano() {
-        juegoView.vaciarOpcionesDePieza();
-        juegoView.activarBotoneraAldeano();
+    public void aldeano(Aldeano aldeano) {
+        juegoView.activarBotoneraAldeano(aldeano);
     }
 
     public void espadachin() {
@@ -68,8 +67,7 @@ public class MauseEventHandler implements EventHandler<MouseEvent> {
     public void cuartel() {
     }
 
-    public void plaza() {
-        juegoView.vaciarOpcionesDePieza();
-        juegoView.activarBotoneraPlaza();
+    public void plaza(PlazaCentral plaza) {
+        juegoView.activarBotoneraPlaza(plaza);
     }
 }

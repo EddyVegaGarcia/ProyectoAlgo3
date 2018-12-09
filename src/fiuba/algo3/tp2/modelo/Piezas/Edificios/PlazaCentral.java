@@ -51,6 +51,6 @@ public class PlazaCentral extends Edificio {
 
     @Override
     public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.plaza();
+        mauseEventHandler.plaza(this);
     }
 }

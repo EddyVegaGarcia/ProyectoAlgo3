@@ -80,6 +80,6 @@ public class Aldeano extends Unidad implements Constructor {
 
     @Override
     public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.aldeano();
+        mauseEventHandler.aldeano(this);
     }
 }
