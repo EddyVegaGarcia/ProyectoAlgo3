@@ -1,6 +1,9 @@
 package fiuba.algo3.tp2.controlador;
 
+import fiuba.algo3.tp2.modelo.Campo.Mapa;
+import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -11,6 +14,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
 
 public class MauseEventHandler implements EventHandler<MouseEvent> {
 
+    private Mapa mapa;
     private JuegoView juegoView;
     private double height;
     private double widht;
@@ -20,6 +24,8 @@ public class MauseEventHandler implements EventHandler<MouseEvent> {
         height = canvas.getHeight();
 
         this.juegoView = juegoView;
+
+        mapa = juego.mapa();
     }
 
     @Override
@@ -29,14 +35,41 @@ public class MauseEventHandler implements EventHandler<MouseEvent> {
         double x = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
         double y = event.getY()*FILA_DEFAULT_MAPA/height;
 
-        if( (x <= 21 && x >= 17) && (y >= 1 && y <= 5) ){
-            juegoView.vaciarOpcionesDePieza();
-            juegoView.activarBotoneraDeCastillo();
-        }
+        Pieza pieza = mapa.recuperarPieza(new Posicion((int)y,(int)x));
 
-        else{
-            juegoView.vaciarOpcionesDePieza();
+        if( pieza != null ){
+            pieza.queTipoSos(this);
         }
+    }
 
+    public void castillo(){
+        juegoView.vaciarOpcionesDePieza();
+        juegoView.activarBotoneraDeCastillo();
+    }
+
+    public void arquero() {
+        juegoView.vaciarOpcionesDePieza();
+        juegoView.activarBotoneraDeArquero();
+    }
+
+    public void armaAsedio() {
+        juegoView.vaciarOpcionesDePieza();
+        juegoView.activarBotoneraDeArmaAsedio();
+    }
+
+    public void aldeano() {
+        juegoView.vaciarOpcionesDePieza();
+        juegoView.activarBotoneraAldeano();
+    }
+
+    public void espadachin() {
+    }
+
+    public void cuartel() {
+    }
+
+    public void plaza() {
+        juegoView.vaciarOpcionesDePieza();
+        juegoView.activarBotoneraPlaza();
     }
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
+import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -46,5 +47,10 @@ public class PlazaCentral extends Edificio {
     @Override
     public boolean sosAldeano() {
         return false;
+    }
+
+    @Override
+    public void queTipoSos(MauseEventHandler mauseEventHandler) {
+        mauseEventHandler.plaza();
     }
 }

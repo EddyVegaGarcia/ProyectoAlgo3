@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas;
 
+import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.Campo.*;
 
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public abstract class Pieza {
     public abstract boolean sosPlazaCentral();
 
     public abstract boolean sosAldeano();
+
+    public abstract void queTipoSos(MauseEventHandler mauseEventHandler);
 
     //protected abstract ArrayList<> obtenerPosicion();
 }

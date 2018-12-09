@@ -116,10 +116,83 @@ public class JuegoView {
         Button boton = new Button();
         boton.setText("Atacar");
 
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton);
+        Button botonCrearArmaAsedio = new Button();
+        botonCrearArmaAsedio.setText("Crear Arma de Asedio");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonCrearArmaAsedio);
     }
 
     public void vaciarOpcionesDePieza() {
         contenedorParaUnaPieza.getChildren().clear();
+    }
+
+    public void activarBotoneraDeArquero() {
+        Label etiqueta = new Label();
+        etiqueta.setText("Selecciono : Arquero");
+
+        Button boton = new Button();
+        boton.setText("Atacar");
+
+        Button botonMoverIzq = new Button();
+        botonMoverIzq.setText("Mover Izquierda");
+
+        Button botonMoverDer = new Button();
+        botonMoverDer.setText("Mover Derecha");
+
+        Button botonMoverArriba = new Button();
+        botonMoverArriba.setText("Mover Arriba");
+
+        Button botonMoverAbajo = new Button();
+        botonMoverAbajo.setText("Mover Abajo");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
+    }
+
+    public void activarBotoneraDeArmaAsedio() {
+        Label etiqueta = new Label();
+        etiqueta.setText("Selecciono : Arma de Asedio");
+
+        Button boton = new Button();
+        boton.setText("Atacar");
+
+        Button botonDesmontar = new Button();
+        boton.setText("Desmontar");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonDesmontar);
+    }
+
+    public void activarBotoneraAldeano() {
+        Label etiqueta = new Label();
+        etiqueta.setText("Selecciono : Aldeano");
+
+        Button boton = new Button();
+        boton.setText("Construir");
+
+        Button botonReparar = new Button();
+        botonReparar.setText("Reparar");
+
+        Button botonMoverIzq = new Button();
+        botonMoverIzq.setText("Mover Izquierda");
+
+        Button botonMoverDer = new Button();
+        botonMoverDer.setText("Mover Derecha");
+
+        Button botonMoverArriba = new Button();
+        botonMoverArriba.setText("Mover Arriba");
+
+        Button botonMoverAbajo = new Button();
+        botonMoverAbajo.setText("Mover Abajo");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonReparar, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
+    }
+
+    public void activarBotoneraPlaza() {
+        Label etiqueta = new Label();
+        etiqueta.setText("Selecciono : Plaza Central");
+
+        Button boton = new Button();
+        boton.setText("Crear Aldeano");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton);
     }
 }

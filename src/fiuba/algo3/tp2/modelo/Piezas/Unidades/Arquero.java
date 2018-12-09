@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
+import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
@@ -47,5 +48,10 @@ public class Arquero extends Unidad implements Atacante {
     @Override
     public boolean sosAldeano() {
         return false;
+    }
+
+    @Override
+    public void queTipoSos(MauseEventHandler mauseEventHandler) {
+        mauseEventHandler.arquero();
     }
 }

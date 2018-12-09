@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
+import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -67,6 +68,11 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public boolean sosAldeano() {
         return false;
+    }
+
+    @Override
+    public void queTipoSos(MauseEventHandler mauseEventHandler) {
+        mauseEventHandler.castillo();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
+import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
@@ -75,5 +76,10 @@ public class Aldeano extends Unidad implements Constructor {
     @Override
     public boolean sosAldeano() {
         return true;
+    }
+
+    @Override
+    public void queTipoSos(MauseEventHandler mauseEventHandler) {
+        mauseEventHandler.aldeano();
     }
 }

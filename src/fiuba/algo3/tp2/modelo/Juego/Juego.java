@@ -72,4 +72,8 @@ public class Juego{
     public void terminarTurno() {
         turno.termiarTurno();
     }
+
+    public Mapa mapa() {
+        return mapa;
+    }
 }
