@@ -19,6 +19,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
 
 public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
+    private Canvas canvas;
     private Juego juego;
     private UnidadType unidadType;
     private Edificio edificio;
@@ -36,6 +37,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         this.edificio = edificioCreador;
         this.unidadType = unidadType;
         this.juego = juego;
+        this.canvas = canvas;
     }
 
     @Override
@@ -55,5 +57,6 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         unaUnidad.agregarPosicion(list);
 
         juegoView.actualizar();
+        canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
     }
 }
