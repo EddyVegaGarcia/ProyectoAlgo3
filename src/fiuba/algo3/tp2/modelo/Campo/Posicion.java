@@ -39,6 +39,11 @@ public class Posicion {
     public int obtenerTamanioLimite() {
         return posicionFila * posicionColumna;
     }
+
+    public boolean estaContenidaEn(Posicion unaPosicion, int unTamanio) {
+        return((posicionFila <= (unaPosicion.getFila()+unTamanio)) && (posicionColumna <= (unaPosicion.getColumna()+unTamanio))
+                && (posicionFila >= unaPosicion.getFila()) && (posicionColumna >= unaPosicion.getColumna()));
+    }
 }
 
     /*

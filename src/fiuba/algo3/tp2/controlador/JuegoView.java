@@ -1,21 +1,20 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
-import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import static fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType.*;
 
 public class JuegoView {
 
@@ -37,7 +36,7 @@ public class JuegoView {
         jugador2 = juego.jugador2();
 
         canvasCentral = new Canvas(width, height);
-        canvasCentral.setOnMousePressed(new MauseEventHandler(this, juego, canvasCentral));
+        canvasCentral.setOnMousePressed(new MouseEventHandler(this, juego, canvasCentral));
 
         contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
@@ -122,10 +121,11 @@ public class JuegoView {
         Button boton = new Button();
         boton.setText("Atacar");
 
-        Button botonCrearArmaAsedio = new Button();
-        botonCrearArmaAsedio.setText("Crear Arma de Asedio");
+        Button botonCrearArmaDeAsedio = new Button();
+        botonCrearArmaDeAsedio.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, castillo, UNIDAD_ARMADEASEDIO ));
+        botonCrearArmaDeAsedio.setText("Crear Arma de Asedio");
 
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonCrearArmaAsedio);
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonCrearArmaDeAsedio);
     }
 
     public void vaciarOpcionesDePieza() {

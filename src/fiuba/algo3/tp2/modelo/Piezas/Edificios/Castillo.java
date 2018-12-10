@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import fiuba.algo3.tp2.controlador.MauseEventHandler;
+import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -49,10 +49,12 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     public Unidad crearUnidad(UnidadType unidadType) {
+
         if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO)
             return UnidadesFactory.crearUnidad(unidadType);
         else
             throw new InvalidUnidadTypeException();
+
     }
 
     @Override
@@ -71,8 +73,8 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.castillo(this);
+    public void queTipoSos(MouseEventHandler mouseEventHandler) {
+        mouseEventHandler.castillo(this);
     }
 
     @Override

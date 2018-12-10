@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
-import fiuba.algo3.tp2.controlador.MauseEventHandler;
+import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -50,7 +50,7 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.cuartel();
+    public void queTipoSos(MouseEventHandler mouseEventHandler) {
+        mouseEventHandler.cuartel();
     }
 }

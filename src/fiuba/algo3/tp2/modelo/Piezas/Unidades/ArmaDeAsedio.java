@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MauseEventHandler;
+import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
@@ -112,7 +112,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     }
 
     @Override
-    public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.armaAsedio();
+    public void queTipoSos(MouseEventHandler mouseEventHandler) {
+        mouseEventHandler.armaAsedio();
     }
 }

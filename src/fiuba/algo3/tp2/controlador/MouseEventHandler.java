@@ -15,20 +15,20 @@ import javafx.scene.input.MouseEvent;
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
 
-public class MauseEventHandler implements EventHandler<MouseEvent> {
+public class MouseEventHandler implements EventHandler<MouseEvent> {
 
     private Mapa mapa;
     private JuegoView juegoView;
     private double height;
     private double widht;
 
-    public MauseEventHandler(JuegoView juegoView, Juego juego, Canvas canvas) {
-        widht = canvas.getWidth();
-        height = canvas.getHeight();
+    public MouseEventHandler(JuegoView juegoView, Juego juego, Canvas canvas) {
 
+        this.widht = canvas.getWidth();
+        this.height = canvas.getHeight();
         this.juegoView = juegoView;
+        this.mapa = juego.mapa();
 
-        mapa = juego.mapa();
     }
 
     @Override
@@ -43,6 +43,7 @@ public class MauseEventHandler implements EventHandler<MouseEvent> {
         if( pieza != null ){
             pieza.queTipoSos(this);
         }
+
     }
 
     public void castillo(Castillo castillo){

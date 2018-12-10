@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas;
 
-import fiuba.algo3.tp2.controlador.MauseEventHandler;
+import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 
@@ -35,7 +35,7 @@ public abstract class Pieza {
 
     public abstract boolean sosAldeano();
 
-    public abstract void queTipoSos(MauseEventHandler mauseEventHandler);
+    public abstract void queTipoSos(MouseEventHandler mouseEventHandler);
 
     protected void accionRealizada() {
         accionesRealizadas++;

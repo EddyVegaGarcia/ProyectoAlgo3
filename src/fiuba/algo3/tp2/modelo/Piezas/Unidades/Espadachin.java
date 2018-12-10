@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MauseEventHandler;
+import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
@@ -52,7 +52,7 @@ public class Espadachin extends Unidad implements Atacante {
     }
 
     @Override
-    public void queTipoSos(MauseEventHandler mauseEventHandler) {
-        mauseEventHandler.espadachin();
+    public void queTipoSos(MouseEventHandler mouseEventHandler) {
+        mouseEventHandler.espadachin();
     }
 }
