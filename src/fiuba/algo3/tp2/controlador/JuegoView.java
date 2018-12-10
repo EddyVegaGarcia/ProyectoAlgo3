@@ -1,9 +1,6 @@
 package fiuba.algo3.tp2.controlador;
 
-import fiuba.algo3.tp2.modelo.Direcciones.DireccionAbajo;
-import fiuba.algo3.tp2.modelo.Direcciones.DireccionArriba;
-import fiuba.algo3.tp2.modelo.Direcciones.DireccionDerecha;
-import fiuba.algo3.tp2.modelo.Direcciones.DireccionIzquierda;
+import fiuba.algo3.tp2.modelo.Direcciones.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
@@ -189,13 +186,13 @@ public class JuegoView {
         Button botonReparar = new Button();
         botonReparar.setText("Reparar");
 
-        Button botonMoverIzq = new Button();
-        botonMoverIzq.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionIzquierda()));
-        botonMoverIzq.setText("Mover Izquierda");
+        Button botonMoverIzquierda = new Button();
+        botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionIzquierda()));
+        botonMoverIzquierda.setText("Mover Izquierda");
 
-        Button botonMoverDer = new Button();
-        botonMoverDer.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionDerecha()));
-        botonMoverDer.setText("Mover Derecha");
+        Button botonMoverDerecha = new Button();
+        botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionDerecha()));
+        botonMoverDerecha.setText("Mover Derecha");
 
         Button botonMoverArriba = new Button();
         botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArriba()));
@@ -205,7 +202,25 @@ public class JuegoView {
         botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajo()));
         botonMoverAbajo.setText("Mover Abajo");
 
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton, botonReparar, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
+        Button botonMoverArribaIzquierda = new Button();
+        botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArribaIzquierda()));
+        botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
+
+        Button botonMoverArribaDerecha = new Button();
+        botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArribaDerecha()));
+        botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
+
+        Button botonMoverAbajoIzquierda = new Button();
+        botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajoIzquierda()));
+        botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
+
+        Button botonMoverAbajoDerecha = new Button();
+        botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajoDerecha()));
+        botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton, botonReparar,
+                botonMoverArriba, botonMoverAbajo, botonMoverDerecha, botonMoverIzquierda,
+                botonMoverArribaDerecha, botonMoverArribaIzquierda, botonMoverAbajoDerecha, botonMoverAbajoIzquierda);
     }
 
     public void activarBotoneraPlaza(PlazaCentral plaza) {
