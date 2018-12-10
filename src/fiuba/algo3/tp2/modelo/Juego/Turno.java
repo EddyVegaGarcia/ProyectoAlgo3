@@ -32,7 +32,6 @@ public class Turno {
 */
     public Jugador jugar() {
 
-
         jugador1.jugar();
         jugador2.jugar();
 
@@ -44,11 +43,13 @@ public class Turno {
 
     }
 
-    public void termiarTurno(){
+    public void terminarTurno(){
+
         if( jugadorEnJuego == jugador1 )
             jugadorEnJuego = jugador2;
         else
             jugadorEnJuego = jugador1;
+
     }
 
 }

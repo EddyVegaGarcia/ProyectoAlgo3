@@ -38,6 +38,7 @@ public class Juego{
 
     }
 
+
 /*
     public void jugar(){
         while (this.ganador == null) {
@@ -55,6 +56,9 @@ public class Juego{
         }
     }
     */
+public Mapa mapa() {
+    return mapa;
+}
 
     public Jugador jugador1() {
         return jugador1;
@@ -64,16 +68,14 @@ public class Juego{
         return jugador2;
     }
 
-    public Jugador jugadorDeTuno() {
+    public Jugador jugadorDeTurno() {
+
         return turno.jugadorDeTurno();
 
     }
 
     public void terminarTurno() {
-        turno.termiarTurno();
-    }
 
-    public Mapa mapa() {
-        return mapa;
+        turno.terminarTurno();
     }
 }

@@ -19,7 +19,7 @@ public class BotonTerminarFase extends Button {
         this.juego = juego;
 
         this.colocarBoton();
-        this.colocarDatosDelJugador(juego.jugadorDeTuno());
+        this.colocarDatosDelJugador(juego.jugadorDeTurno());
     }
 
     private void colocarDatosDelJugador(Jugador jugadorDeTuno) {
@@ -30,7 +30,7 @@ public class BotonTerminarFase extends Button {
     }
 
     private void colocarBoton() {
-        nombreDelJugadorDeTurno = juego.jugadorDeTuno().obtenerNombre();
+        nombreDelJugadorDeTurno = juego.jugadorDeTurno().obtenerNombre();
 
         Label etiqueta = new Label();
         etiqueta.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
@@ -41,7 +41,7 @@ public class BotonTerminarFase extends Button {
             @Override
             public void handle(ActionEvent event) {
                 juego.terminarTurno();
-                nombreDelJugadorDeTurno = juego.jugadorDeTuno().obtenerNombre();
+                nombreDelJugadorDeTurno = juego.jugadorDeTurno().obtenerNombre();
                 etiqueta.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
             }
         });
