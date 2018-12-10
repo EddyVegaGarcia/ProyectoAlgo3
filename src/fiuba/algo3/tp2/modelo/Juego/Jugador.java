@@ -139,7 +139,8 @@ public class Jugador {
     }
 
     public ArrayList<PlazaCentral> getPlazas() {
-        ArrayList<PlazaCentral> plazas = new ArrayList<PlazaCentral>();
+
+        ArrayList<PlazaCentral> plazas = new ArrayList<>();
         for(Pieza pieza : piezas){
             if( pieza.sosPlazaCentral() ){
                 plazas.add((PlazaCentral) pieza);

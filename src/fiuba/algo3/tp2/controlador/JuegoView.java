@@ -1,5 +1,10 @@
 package fiuba.algo3.tp2.controlador;
 
+import fiuba.algo3.tp2.modelo.Direcciones.DireccionAbajo;
+import fiuba.algo3.tp2.modelo.Direcciones.DireccionArriba;
+import fiuba.algo3.tp2.modelo.Direcciones.DireccionDerecha;
+import fiuba.algo3.tp2.modelo.Direcciones.DireccionIzquierda;
+import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
@@ -185,19 +190,19 @@ public class JuegoView {
         botonReparar.setText("Reparar");
 
         Button botonMoverIzq = new Button();
-        botonMoverIzq.setOnAction(new MoverIzqEventHandler(this, juego, aldeano));
+        botonMoverIzq.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionIzquierda()));
         botonMoverIzq.setText("Mover Izquierda");
 
         Button botonMoverDer = new Button();
-        botonMoverDer.setOnAction(new MoverDerEventHandler(this, juego, aldeano));
+        botonMoverDer.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionDerecha()));
         botonMoverDer.setText("Mover Derecha");
 
         Button botonMoverArriba = new Button();
-        botonMoverArriba.setOnAction(new MoverArribaEventHandler(this, juego, aldeano));
+        botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArriba()));
         botonMoverArriba.setText("Mover Arriba");
 
         Button botonMoverAbajo = new Button();
-        botonMoverAbajo.setOnAction(new MoverAbajoEventHandler(this, juego, aldeano));
+        botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajo()));
         botonMoverAbajo.setText("Mover Abajo");
 
         contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton, botonReparar, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);

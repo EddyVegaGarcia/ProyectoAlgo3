@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.controlador.MauseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
+import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
 import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -24,17 +25,21 @@ public class Aldeano extends Unidad implements Constructor {
         this.estado = new EnReposo();
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
+
     }
 
     public void construir(Edificio unEdificio)  {
 
         this.ValidarEdificio(unEdificio);
+        this.validarAcciones();
 
         this.turnosConstruccion++;
         this.estado = estado.construir(unEdificio,turnosConstruccion);
         if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
             this.turnosConstruccion = 0;
         }
+
+        this.accionRealizada();
     }
 
     private void ValidarEdificio(Edificio unEdificio) {
@@ -44,6 +49,11 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
+    @Override
+    public void validarAcciones() {
+        if(accionesRealizadas == 1 && !estado.estaTrabajando())
+            throw new AccionUnicaRealizadaException();
+    }
 
     public void reparar(Edificio edificio) {
 

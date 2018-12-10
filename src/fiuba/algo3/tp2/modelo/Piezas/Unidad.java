@@ -19,10 +19,15 @@ public abstract class Unidad extends Pieza {
 
     public void cambiarPosicion(Posicion nuevaPosicion){
 
+        this.validarAcciones();
+
         posiciones.remove(0);
         posiciones.add(nuevaPosicion);
 
+        this.accionRealizada();
+
     }
+
 
 }
 
