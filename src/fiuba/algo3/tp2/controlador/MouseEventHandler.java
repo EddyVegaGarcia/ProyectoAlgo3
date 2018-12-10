@@ -43,7 +43,6 @@ public class MouseEventHandler implements EventHandler<MouseEvent> {
         if( pieza != null ){
             pieza.queTipoSos(this);
         }
-
     }
 
     public void castillo(Castillo castillo){
@@ -70,5 +69,9 @@ public class MouseEventHandler implements EventHandler<MouseEvent> {
 
     public void plaza(PlazaCentral plaza) {
         juegoView.activarBotoneraPlaza(plaza);
+    }
+
+    public void imprimir() {
+        System.out.print("Entro a mouse\n");
     }
 }

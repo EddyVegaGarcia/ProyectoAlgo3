@@ -92,4 +92,9 @@ public class Aldeano extends Unidad implements Constructor {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.aldeano(this);
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
 }

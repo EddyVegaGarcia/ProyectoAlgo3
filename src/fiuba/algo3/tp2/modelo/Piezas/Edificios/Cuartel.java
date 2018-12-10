@@ -53,4 +53,9 @@ public class Cuartel extends Edificio {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.cuartel();
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
 }

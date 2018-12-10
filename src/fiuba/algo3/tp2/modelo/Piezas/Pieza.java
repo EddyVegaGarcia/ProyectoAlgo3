@@ -40,4 +40,6 @@ public abstract class Pieza {
     protected void accionRealizada() {
         accionesRealizadas++;
     }
+
+    public abstract boolean sosArmaAsedio();
 }

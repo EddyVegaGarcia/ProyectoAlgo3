@@ -115,4 +115,9 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.armaAsedio();
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return true;
+    }
 }

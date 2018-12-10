@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
 import java.util.ArrayList;
@@ -157,6 +158,21 @@ public class Jugador {
             }
         }
         return aldeanos;
+    }
+
+    public ArrayList<ArmaDeAsedio> getArmas() {
+        ArrayList<ArmaDeAsedio> armas = new ArrayList<ArmaDeAsedio>();
+        for(Pieza pieza : piezas){
+            if( pieza.sosArmaAsedio() ){
+                armas.add((ArmaDeAsedio) pieza);
+            }
+        }
+        System.out.print("aparecio en get armas\n");
+        return armas;
+    }
+
+    public void agregaPieza(Unidad unaUnidad) {
+        piezas.add(unaUnidad);
     }
 
 /*

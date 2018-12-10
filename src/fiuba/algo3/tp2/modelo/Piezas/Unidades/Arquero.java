@@ -54,4 +54,9 @@ public class Arquero extends Unidad implements Atacante {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.arquero();
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
 }

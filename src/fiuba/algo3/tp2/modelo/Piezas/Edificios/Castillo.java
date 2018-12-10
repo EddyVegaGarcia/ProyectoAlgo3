@@ -78,6 +78,11 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
+
+    @Override
     public void atacarEdificio(Edificio unEdificio) {
 
     }

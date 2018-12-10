@@ -53,4 +53,9 @@ public class PlazaCentral extends Edificio {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.plaza(this);
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
 }

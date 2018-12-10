@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
@@ -32,6 +33,7 @@ public class UbicarPiezas {
         ubicarAledanos(jugador.getAldeanos());
         ubicarCastillo(jugador.obtenerCastillo());
         ubicarPlazas(jugador.getPlazas());
+        ubicarArmasDeAsedios(jugador.getArmas());
     }
 
     public UbicarPiezas(Canvas canvasCentral){
@@ -76,15 +78,15 @@ public class UbicarPiezas {
         }
     }
 
-    public void UbicarArmasDeAsedios(Unidad unaUnidad){
+    public void ubicarArmasDeAsedios(ArrayList<ArmaDeAsedio> armas){
 
         Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/ArmaDeAsedio.jpg");
         double tamanio = Math.sqrt(TAMANIO_UNIDAD);
 
-        Posicion posicion = unaUnidad.obtenerPosicion();
-        ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(),tamanio);
-
-
+        for(Unidad arma : armas) {
+            Posicion posicion = arma.obtenerPosicion();
+            ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(), tamanio);
+        }
     }
 
     private void ubicarPieza(Image imagen, int columna, int fila, double tamanio) {

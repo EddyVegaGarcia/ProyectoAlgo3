@@ -11,7 +11,9 @@ import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 
@@ -49,23 +51,19 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
+    public void handle(ActionEvent event) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral));
-        Unidad unaUnidad = edificioCreador.crearUnidad(unidadType);
-        this.generarPosicionClikeada();
-        unaUnidad.cambiarPosicion(nuevaPosicionCreada);
-        this.ubicarPiezas.UbicarArmasDeAsedios(unaUnidad);
+        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral, edificioCreador, unidadType));
 
     }
 
-    private void generarPosicionClikeada() {
+   /* private void generarPosicionClikeada() {
 
         ActionEvent accion = new ActionEvent();
 
         this.handle(accion);
 
-    }
+    }*/
 /*
     @Override
     public void handle(MouseEvent event) {
@@ -83,13 +81,4 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
 
     }
 */
-    private void validarDistanciaDeCreacion(Posicion unaPosicion) {
-
-        Posicion actual = edificioCreador.obtenerPosicion();
-
-        if( !( (!actual.estaContenidaEn(unaPosicion, edificioCreador.obtenerTamanio()) )
-            && ( ((unaPosicion.getFila() - actual.getFila()) == -1) || ((unaPosicion.getFila() - actual.getFila())  == 4))
-            && ( ((unaPosicion.getColumna() - actual.getColumna()) == -1) || ((unaPosicion.getColumna() - actual.getColumna()) == 4)) ))
-            throw new PosicionDeCreacionInvalidaException();
-    }
 }

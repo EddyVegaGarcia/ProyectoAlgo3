@@ -55,4 +55,9 @@ public class Espadachin extends Unidad implements Atacante {
     public void queTipoSos(MouseEventHandler mouseEventHandler) {
         mouseEventHandler.espadachin();
     }
+
+    @Override
+    public boolean sosArmaAsedio() {
+        return false;
+    }
 }
