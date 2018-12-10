@@ -25,7 +25,7 @@ public class MapaTest {
     public void testColocarUnidadEnPosicionCorrectamente() {
 
         Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(35,15);
+        Posicion posicion = new Posicion(34,15);
         Unidad unAldeano = new Aldeano();
         mapa.colocarPieza(unAldeano, posicion);
 
@@ -74,7 +74,7 @@ public class MapaTest {
     public void testMoverUnidadHaciaArribaInvalido() {
 
         Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(1,18);
+        Posicion posicion = new Posicion(0,18);
         Unidad unAldeano = new Aldeano();
 
         mapa.colocarPieza(unAldeano, posicion);
@@ -128,7 +128,7 @@ public class MapaTest {
     public void testMoverUnidadHaciaIzquierdaInvalido() {
 
         Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(20,1);
+        Posicion posicion = new Posicion(20,0);
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
         mapa.colocarPieza(armaDeAsedio, posicion);

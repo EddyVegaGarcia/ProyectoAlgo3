@@ -27,8 +27,8 @@ public class Posicion {
     }
 
     public boolean estaContenidaEnDimensiones(Posicion unaPosicionLimite) {
-        return ((posicionFila > 0) && (posicionColumna > 0)
-                && (posicionFila <= unaPosicionLimite.getFila()) && (posicionColumna <= unaPosicionLimite.getColumna()));
+        return ((posicionFila >= 0) && (posicionColumna >= 0)
+                && (posicionFila < unaPosicionLimite.getFila()) && (posicionColumna < unaPosicionLimite.getColumna()));
 
     }
 
