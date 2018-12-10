@@ -40,11 +40,11 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent event) {
-        double x = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
-        double y = event.getY()*FILA_DEFAULT_MAPA/height;
+        double columna = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
+        double fila = event.getY()*FILA_DEFAULT_MAPA/height;
 
         Unidad unaUnidad = edificio.crearUnidad(unidadType);
-        Posicion posicion = new Posicion((int)x, (int)y);
+        Posicion posicion = new Posicion((int)fila, (int)columna);
         ArrayList<Posicion> list = new ArrayList<Posicion>();
         list.add(posicion);
         mapa.colocarPieza(unaUnidad, posicion);
