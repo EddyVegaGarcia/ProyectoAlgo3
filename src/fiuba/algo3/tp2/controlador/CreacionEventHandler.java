@@ -51,7 +51,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral, );
+        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral));
         Unidad unaUnidad = edificioCreador.crearUnidad(unidadType);
         this.generarPosicionClikeada();
         unaUnidad.cambiarPosicion(nuevaPosicionCreada);
