@@ -23,8 +23,8 @@ public class JuegoView {
     private Jugador jugador1;
     private ContenedorPrincipal contenedorPrincipal;
     private Canvas canvasCentral;
-    public int height = 700;
-    public int width = 1300;
+    public int height = 600;
+    public int width = 1100;
     private Juego juego;
 
     public JuegoView(ContenedorPrincipal contenedorPrincipal, String nombreJugador1, String nombreJugador2) {
@@ -52,7 +52,7 @@ public class JuegoView {
     }
 
     private void setMapa(Canvas canvasCentral) {
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/fondo.jpeg");
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/MapaBase7.jpg");
         canvasCentral.getGraphicsContext2D().drawImage(imagen,0,0, width, height);
     }
 

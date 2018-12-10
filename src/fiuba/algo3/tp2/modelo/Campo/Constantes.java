@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo.Campo;
 
 public class Constantes {
 
-    public static int FILA_DEFAULT_MAPA = 35;
+    public static int FILA_DEFAULT_MAPA = 32;
     public static int COLUMNA_DEFAULT_MAPA = 40;
     public static int LIMITE_POBLACION = 50;
     public static int CANTIDAD_DE_ORO_INICIAL = 100;
@@ -22,26 +22,26 @@ public class Constantes {
     /*POSICIONES POR DEAFULT DE CASTILLOS, PLAZAS Y ALDEANOS INICIALES*/
 
         /*Castillo1*/
-    public static Posicion POSICION_DEFAULT_CASTILLO1 = new Posicion(31,17);
+    public static Posicion POSICION_DEFAULT_CASTILLO1 = new Posicion(0,17);
 
         /*Castillo2*/
-    public static Posicion POSICION_DEFAULT_CASTILLO2 = new Posicion(1,17);
+    public static Posicion POSICION_DEFAULT_CASTILLO2 = new Posicion(28,17);
 
         /*Plaza1*/
-    public static Posicion POSICION_DEFAULT_PLAZA1 = new Posicion(20,25);
+    public static Posicion POSICION_DEFAULT_PLAZA1 = new Posicion(0,24);
 
         /*Plaza2*/
-    public static Posicion POSICION_DEFAULT_PLAZA2 = new Posicion(15,25);
+    public static Posicion POSICION_DEFAULT_PLAZA2 = new Posicion(28,12);
 
         /*Aldeano 1 Jugador*/
-    public static Posicion POSICION_DEFAULT_ALDEANO1_1 = new Posicion(1,9);
-    public static Posicion POSICION_DEFAULT_ALDEANO1_2= new Posicion(2,9);
-    public static Posicion POSICION_DEFAULT_ALDEANO1_3= new Posicion(3,9);
+    public static Posicion POSICION_DEFAULT_ALDEANO1_1 = new Posicion(2,15);
+    public static Posicion POSICION_DEFAULT_ALDEANO1_2= new Posicion(5,19);
+    public static Posicion POSICION_DEFAULT_ALDEANO1_3= new Posicion(2,22);
 
         /*Aldeano 2 Jugador*/
-    public static Posicion POSICION_DEFAULT_ALDEANO2_1 = new Posicion(1,34);
-    public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(2,34);
-    public static Posicion POSICION_DEFAULT_ALDEANO2_3= new Posicion(3,34);
+    public static Posicion POSICION_DEFAULT_ALDEANO2_1 = new Posicion(29,15);
+    public static Posicion POSICION_DEFAULT_ALDEANO2_2= new Posicion(26,19);
+    public static Posicion POSICION_DEFAULT_ALDEANO2_3= new Posicion(29,22);
 
     /* PRECIOS DE LAS UNIDADES Y EDIFCIOS*/
     public static int COSTO_ALDEANO = 25;

@@ -17,7 +17,7 @@ public class MapaTest {
         //Mapa Base se inicia con 35 * 40 = 1400 espacios
         Mapa mapa = new Mapa();
 
-        int espacioEsperado = 35 * 40;
+        int espacioEsperado = 32 * 40;
         assertEquals(espacioEsperado,mapa.getTamanio());
     }
 
@@ -25,7 +25,7 @@ public class MapaTest {
     public void testColocarUnidadEnPosicionCorrectamente() {
 
         Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(34,15);
+        Posicion posicion = new Posicion(30,15);
         Unidad unAldeano = new Aldeano();
         mapa.colocarPieza(unAldeano, posicion);
 

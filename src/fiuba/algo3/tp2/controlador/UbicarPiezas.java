@@ -34,7 +34,7 @@ public class UbicarPiezas {
     }
 
     private void ubicarPlazas(ArrayList<PlazaCentral> plazas) {
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/plaza.png");
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/PlazaCentral.png");
 
         double tamanio = Math.sqrt(TAMANIO_PLAZA);
 
@@ -49,14 +49,14 @@ public class UbicarPiezas {
 
         double tamanio = Math.sqrt(TAMANIO_CASTILLO);
 
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/castillo.png");
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/Castillo.png");
 
         ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(), tamanio);
     }
 
     private void ubicarAledanos(ArrayList<Aldeano> aldeanos) {
         
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/aldeano.png");
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/Aldeano.png");
         double tamanio = Math.sqrt(TAMANIO_UNIDAD);
 
         for(Aldeano aldeano : aldeanos){
