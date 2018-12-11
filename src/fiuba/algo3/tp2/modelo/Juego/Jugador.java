@@ -95,7 +95,7 @@ public class Jugador {
     /*
        public void comprarPieza(Edificio unEdificio) {
 
-           Unidad aldeano = unEdificio.crearUnidad(UnidadType.UNIDAD_ALDEANO);
+           Unidad aldeano = unEdificio.crearUnidad(PiezaType.UNIDAD_ALDEANO);
            this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
            this.poblacion = poblacion +1;
 

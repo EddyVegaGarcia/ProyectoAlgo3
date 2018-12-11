@@ -16,7 +16,7 @@ public abstract class Edificio extends Pieza {
         this.estado = new Construido();
     }
 
-    public abstract Unidad crearUnidad(UnidadType unidadType);
+    public abstract Unidad crearUnidad(PiezaType piezaType);
 
     public boolean estaConstruido(){
         return estado.estaConstruido();

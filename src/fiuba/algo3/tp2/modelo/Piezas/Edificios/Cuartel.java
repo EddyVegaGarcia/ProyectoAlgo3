@@ -19,13 +19,13 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    public Unidad crearUnidad(UnidadType unidadType) {
+    public Unidad crearUnidad(PiezaType piezaType) {
 
-        if ((unidadType == UnidadType.UNIDAD_ESPADACHIN) || (unidadType == UnidadType.UNIDAD_ARQUERO)) {
+        if ((piezaType == PiezaType.UNIDAD_ESPADACHIN) || (piezaType == PiezaType.UNIDAD_ARQUERO)) {
 
             this.validarAcciones();
             this.accionesRealizadas++;
-            return UnidadesFactory.crearUnidad(unidadType);
+            return PiezaFactory.crearUnidad(piezaType);
         }
         else
             throw new InvalidUnidadTypeException();

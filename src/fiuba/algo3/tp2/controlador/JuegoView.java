@@ -18,7 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import static fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class JuegoView {
 
@@ -183,7 +183,6 @@ public class JuegoView {
             }
             else if (type.equals(PiezaType.EDIFICIO_PLAZACENTRAL)){
 
-                agregarBotonDeAtaque(pieza);
                 agregarBotonCrearAldeano(pieza);
 
             }

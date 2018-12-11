@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
-import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
@@ -24,21 +24,21 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
     private Label etiquetaAlertas;
     private Canvas canvas;
     private Juego juego;
-    private UnidadType unidadType;
+    private PiezaType piezaType;
     private Pieza edificio;
     private Mapa mapa;
     private JuegoView juegoView;
     private double height;
     private double widht;
 
-    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Pieza edificioCreador, UnidadType unidadType, Label etiquetaAlertas) {
+    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Pieza edificioCreador, PiezaType piezaType, Label etiquetaAlertas) {
 
         this.widht = canvas.getWidth();
         this.height = canvas.getHeight();
         this.juegoView = juegoView;
         this.mapa = juego.mapa();
         this.edificio = edificioCreador;
-        this.unidadType = unidadType;
+        this.piezaType = piezaType;
         this.juego = juego;
         this.canvas = canvas;
         this.etiquetaAlertas = etiquetaAlertas;
@@ -52,7 +52,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         Unidad unaUnidad = null;
 
         try {
-            unaUnidad = ((Edificio) edificio).crearUnidad(unidadType);
+            unaUnidad = ((Edificio) edificio).crearUnidad(piezaType);
         }
         catch (AccionUnicaRealizadaException e){
 
