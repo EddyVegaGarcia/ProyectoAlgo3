@@ -10,9 +10,9 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
@@ -20,6 +20,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
 
 public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
+    private Label etiquetaAlertas;
     private Canvas canvas;
     private Juego juego;
     private UnidadType unidadType;
@@ -29,7 +30,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
     private double height;
     private double widht;
 
-    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Pieza edificioCreador, UnidadType unidadType) {
+    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Pieza edificioCreador, UnidadType unidadType, Label etiquetaAlertas) {
 
         this.widht = canvas.getWidth();
         this.height = canvas.getHeight();
@@ -39,6 +40,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         this.unidadType = unidadType;
         this.juego = juego;
         this.canvas = canvas;
+        this.etiquetaAlertas = etiquetaAlertas;
     }
 
     @Override

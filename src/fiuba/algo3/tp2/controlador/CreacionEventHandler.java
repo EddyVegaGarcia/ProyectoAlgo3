@@ -10,10 +10,12 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
 
 
 public class CreacionEventHandler implements EventHandler<ActionEvent> {
 
+    private Label etiquetaAlertas;
     private Mapa mapa;
     private JuegoView juegoView;
     private Juego juego;
@@ -25,7 +27,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private UnidadType unidadType;
     private Posicion nuevaPosicionCreada;
 
-    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Pieza unCastillo, UnidadType unaUnidadType) {
+    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Pieza unCastillo, UnidadType unaUnidadType, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
         this.edificioCreador = unCastillo;
@@ -33,6 +35,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
         this.canvasCentral = unCanvasCentral;
         this.unidadType = unaUnidadType;
         this.juego = unJuego;
+        this.etiquetaAlertas = etiquetaConsola;
 
         widht = unCanvasCentral.getWidth();
         height = unCanvasCentral.getHeight();
@@ -42,7 +45,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral, edificioCreador, unidadType));
+        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral, edificioCreador, unidadType, etiquetaAlertas));
 
     }
 

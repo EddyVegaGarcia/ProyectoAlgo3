@@ -11,11 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import static fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType.*;
 
 public class JuegoView {
 
+    private HBox contenedorInformacionDeJugadores;
+    private VBox contenedorConsola;
     private VBox contenedorParaUnaPieza;
     private VBox contenedorVertical;
     private Jugador jugador2;
@@ -25,6 +30,7 @@ public class JuegoView {
     public int height = 600;
     public int width = 1100;
     private Juego juego;
+    private Label etiquetaConsola;
 
     public JuegoView(ContenedorPrincipal contenedorPrincipal, String nombreJugador1, String nombreJugador2) {
 
@@ -44,10 +50,30 @@ public class JuegoView {
         contenedorParaUnaPieza.setSpacing(10);
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
+        contenedorConsola = new VBox();
+        contenedorConsola.setSpacing(10);
+        contenedorConsola.setPadding(new Insets(15));
+
+        contenedorInformacionDeJugadores = new HBox();
+        contenedorInformacionDeJugadores.setSpacing(10);
+        contenedorInformacionDeJugadores.setPadding(new Insets(15));
+
+        setConsola();
         setBotones();
         setEstadoDelJuego(canvasCentral);
 
         contenedorPrincipal.setCenter(canvasCentral);
+    }
+
+    private void setConsola() {
+        etiquetaConsola = new Label();
+        etiquetaConsola.setText("consola...");
+        etiquetaConsola.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+        etiquetaConsola.setTextFill(Color.WHITE);
+
+        contenedorConsola.getChildren().add(etiquetaConsola);
+        contenedorConsola.setStyle("-fx-background-color: black;");
+        contenedorPrincipal.setBottom(contenedorConsola);
     }
 
     private void setMapa(Canvas canvasCentral) {
@@ -57,40 +83,10 @@ public class JuegoView {
 
     private void setBotones() {
 
-        agregarEtiquetasDeVidasDeJugadores(contenedorVertical);
+        BotonTerminarFase boton = new BotonTerminarFase(contenedorInformacionDeJugadores, juego, this);
 
-        BotonTerminarFase boton = new BotonTerminarFase(contenedorVertical, juego);
-
-        contenedorPrincipal.setLeft(contenedorVertical);
-
-        contenedorVertical.getChildren().add(contenedorParaUnaPieza);
-    }
-
-    private void agregarEtiquetasDeVidasDeJugadores(VBox contenedorVertical) {
-        VBox contenedorJugador1 = new VBox();
-        contenedorJugador1.setPadding(new Insets(10));
-        contenedorJugador1.setSpacing(10);
-
-        VBox contenedorJugador2 = new VBox();
-        contenedorJugador2.setPadding(new Insets(10));
-        contenedorJugador2.setSpacing(10);
-
-        //etiqueta para la vida de los jugadores
-        Label etiquetaVidaCastilloJugador1 = crearEtiquetaConTexto("vida : " + jugador1.vida());
-        Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
-
-        //etiqueta para los nombres de los jugadores
-        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.obtenerNombre());
-        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.obtenerNombre());
-
-        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
-        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);
-
-        HBox contenedorHorizontal = new HBox();
-        contenedorHorizontal.setSpacing(10);
-        contenedorHorizontal.getChildren().addAll(contenedorJugador1, contenedorJugador2);
-
-        contenedorVertical.getChildren().addAll(contenedorHorizontal);
+        contenedorPrincipal.setTop(contenedorInformacionDeJugadores);
+        contenedorPrincipal.setLeft(contenedorParaUnaPieza);
     }
 
     private void setEstadoDelJuego(Canvas canvasCentral) {
@@ -161,7 +157,7 @@ public class JuegoView {
     private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
         if(pieza.podesConstruirArmaDeAsedio()) {
             Button boton = new Button();
-            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza, UNIDAD_ARMADEASEDIO ));
+            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
             boton.setText("Construir Arma de Asedio");
 
             contenedorParaUnaPieza.getChildren().add(boton);
@@ -183,35 +179,35 @@ public class JuegoView {
         if(pieza.podesMoverte()) {
 
             Button botonMoverIzquierda = new Button();
-            botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionIzquierda()));
+            botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionIzquierda(), etiquetaConsola));
             botonMoverIzquierda.setText("Mover Izquierda");
 
             Button botonMoverDerecha = new Button();
-            botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionDerecha()));
+            botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionDerecha(), etiquetaConsola));
             botonMoverDerecha.setText("Mover Derecha");
 
             Button botonMoverArriba = new Button();
-            botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArriba()));
+            botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArriba(), etiquetaConsola));
             botonMoverArriba.setText("Mover Arriba");
 
             Button botonMoverAbajo = new Button();
-            botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajo()));
+            botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajo(), etiquetaConsola));
             botonMoverAbajo.setText("Mover Abajo");
 
             Button botonMoverArribaIzquierda = new Button();
-            botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaIzquierda()));
+            botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaIzquierda(), etiquetaConsola));
             botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
 
             Button botonMoverArribaDerecha = new Button();
-            botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaDerecha()));
+            botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaDerecha(), etiquetaConsola));
             botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
 
             Button botonMoverAbajoIzquierda = new Button();
-            botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoIzquierda()));
+            botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoIzquierda(), etiquetaConsola));
             botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
 
             Button botonMoverAbajoDerecha = new Button();
-            botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoDerecha()));
+            botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoDerecha(), etiquetaConsola));
             botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
 
             contenedorParaUnaPieza.getChildren().addAll(botonMoverIzquierda, botonMoverDerecha, botonMoverArriba, botonMoverAbajo, botonMoverAbajoDerecha, botonMoverAbajoIzquierda, botonMoverArribaDerecha, botonMoverArribaIzquierda);
