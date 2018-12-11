@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -63,6 +64,17 @@ public class JuegoView {
         setEstadoDelJuego(canvasCentral);
 
         contenedorPrincipal.setCenter(canvasCentral);
+
+        informarQueJugadorEstaDeTurno();
+    }
+
+    private void informarQueJugadorEstaDeTurno() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Inicio Del Juego");
+        alert.setHeaderText("Jugador de Turno");
+        String mensaje = "Comienza el jugador " + juego.jugadorDeTurno().obtenerNombre() + ".";
+        alert.setContentText(mensaje);
+        alert.show();
     }
 
     private void setConsola() {
