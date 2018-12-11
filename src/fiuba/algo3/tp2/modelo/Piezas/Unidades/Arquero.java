@@ -95,4 +95,9 @@ public class Arquero extends Unidad implements Atacante {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public int oroRecolectado() {
+        return 0;
+    }
 }

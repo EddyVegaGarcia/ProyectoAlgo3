@@ -5,12 +5,10 @@ import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeAldeano;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.COSTO_ALDEANO;
+
 public class EnReposo implements EstadoDeAldeano {
 
-    @Override
-    public void ganarOro(Aldeano aldeano){
-        aldeano.sumarOro();
-    }
 
     @Override
     public boolean estaTrabajando() {
@@ -29,6 +27,11 @@ public class EnReposo implements EstadoDeAldeano {
     @Override
     public void reparar(EstadoDeAldeano unEstado) {
         unEstado = new EstaTrabajando();
+    }
+
+    @Override
+    public int oroRecolectado() {
+        return 20;
     }
 }
 

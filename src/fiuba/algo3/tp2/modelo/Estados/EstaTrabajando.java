@@ -8,9 +8,6 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 public class EstaTrabajando implements EstadoDeAldeano {
 
-    @Override
-    public void ganarOro(Aldeano aldeano){
-    }
 
     @Override
     public boolean estaTrabajando() {
@@ -29,5 +26,10 @@ public class EstaTrabajando implements EstadoDeAldeano {
     @Override
     public void reparar(EstadoDeAldeano unEstado) {
 
+    }
+
+    @Override
+    public int oroRecolectado() {
+        return 0;
     }
 }

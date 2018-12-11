@@ -72,6 +72,6 @@ public class ContenedorPrincipal extends BorderPane {
         myStage.setMaximized(true);
         myStage.setTitle("Algo3Age of Empires");
 
-        JuegoView vistaJuego = new JuegoView(this, nombreJugador1, nombreJugador2);
+        JuegoView vistaJuego = new JuegoView(this, nombreJugador1, nombreJugador2, myStage);
     }
 }

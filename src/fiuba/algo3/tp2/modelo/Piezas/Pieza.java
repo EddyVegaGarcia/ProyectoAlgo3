@@ -56,4 +56,6 @@ public abstract class Pieza {
     public abstract boolean podesReparar();
 
     public abstract double getTamanio();
+
+    public abstract int oroRecolectado();
 }

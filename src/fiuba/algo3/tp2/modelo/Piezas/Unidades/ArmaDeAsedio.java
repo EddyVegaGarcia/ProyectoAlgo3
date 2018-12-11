@@ -156,4 +156,9 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public int oroRecolectado() {
+        return 0;
+    }
 }

@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 import static fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType.*;
 
@@ -33,7 +34,7 @@ public class JuegoView {
     private Juego juego;
     private Label etiquetaConsola;
 
-    public JuegoView(ContenedorPrincipal contenedorPrincipal, String nombreJugador1, String nombreJugador2) {
+    public JuegoView(ContenedorPrincipal contenedorPrincipal, String nombreJugador1, String nombreJugador2, Stage myStage) {
 
         juego = new Juego(nombreJugador1, nombreJugador2);
         this.contenedorPrincipal = contenedorPrincipal;

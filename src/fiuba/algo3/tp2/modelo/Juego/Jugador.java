@@ -135,9 +135,6 @@ public class Jugador {
                this.estado = estado.cambiarEstado();
            }
        */
-    public void jugar() {
-
-    }
 
     public void agregaPieza(Unidad unaUnidad) {
         piezas.add(unaUnidad);
@@ -153,6 +150,12 @@ public class Jugador {
                 return true;
         }
         return false;
+    }
+
+    public void recolectarOro() {
+        for(Pieza piezaActual : piezas){
+            oro = oro + piezaActual.oroRecolectado();
+        }
     }
 
 /*

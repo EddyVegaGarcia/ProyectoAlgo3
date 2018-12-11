@@ -94,4 +94,10 @@ public class PlazaCentral extends Edificio {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public int oroRecolectado() {
+        return 0;
+    }
+
 }

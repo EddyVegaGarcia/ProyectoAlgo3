@@ -32,8 +32,8 @@ public class Turno {
 */
     public Jugador jugar() {
 
-        jugador1.jugar();
-        jugador2.jugar();
+        /*jugador1.jugar();
+        jugador2.jugar();*/
 
         Jugador ultimoJugador = jugador2;
 

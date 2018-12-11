@@ -12,7 +12,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 public class Aldeano extends Unidad implements Constructor {
 
-    public int oro;
+    //public int oro;
     public EstadoDeAldeano estado;
     int turnosConstruccion;
 
@@ -21,7 +21,7 @@ public class Aldeano extends Unidad implements Constructor {
 
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
-        this.oro = 0;
+        //this.oro = 0;
         this.estado = new EnReposo();
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
@@ -63,16 +63,16 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
-    public int obtenerOroTotal() {
+   /* public int obtenerOroTotal() {
         return oro;
     }
 
-    public void sumarOro(){
+   public void sumarOro(){
         this.oro = oro + 20;
     }
 
     public void ganarMonedas(){ estado.ganarOro(this);
-    }
+    }*/
 
     public boolean estaTrabajando() {
         return estado.estaTrabajando();
@@ -131,5 +131,10 @@ public class Aldeano extends Unidad implements Constructor {
     @Override
     public double getTamanio() {
         return tamanio;
+    }
+
+    @Override
+    public int oroRecolectado() {
+        return estado.oroRecolectado();
     }
 }
