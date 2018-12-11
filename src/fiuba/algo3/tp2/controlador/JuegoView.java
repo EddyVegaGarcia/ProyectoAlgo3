@@ -2,9 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
 import fiuba.algo3.tp2.modelo.Juego.*;
-import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
-import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -112,134 +110,120 @@ public class JuegoView {
         return etiqueta;
     }
 
-    public void activarBotoneraDeCastillo(Castillo castillo) {
-        vaciarOpcionesDePieza();
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Selecciono : Castillo");
-
-        Button boton = new Button();
-        boton.setText("Atacar");
-
-        Button botonCrearArmaDeAsedio = new Button();
-        botonCrearArmaDeAsedio.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, castillo, UNIDAD_ARMADEASEDIO ));
-        botonCrearArmaDeAsedio.setText("Crear Arma de Asedio");
-
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonCrearArmaDeAsedio);
-    }
-
     public void vaciarOpcionesDePieza() {
         contenedorParaUnaPieza.getChildren().clear();
-    }
-
-    public void activarBotoneraDeArquero() {
-        vaciarOpcionesDePieza();
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Selecciono : Arquero");
-
-        Button boton = new Button();
-        boton.setText("Atacar");
-
-        Button botonMoverIzq = new Button();
-        botonMoverIzq.setText("Mover Izquierda");
-
-        Button botonMoverDer = new Button();
-        botonMoverDer.setText("Mover Derecha");
-
-        Button botonMoverArriba = new Button();
-        botonMoverArriba.setText("Mover Arriba");
-
-        Button botonMoverAbajo = new Button();
-        botonMoverAbajo.setText("Mover Abajo");
-
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonMoverArriba, botonMoverAbajo, botonMoverDer, botonMoverIzq);
-    }
-
-    public void activarBotoneraDeArmaAsedio() {
-        vaciarOpcionesDePieza();
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Selecciono : Arma de Asedio");
-
-        Button boton = new Button();
-        boton.setText("Atacar");
-
-        Button botonDesmontar = new Button();
-        boton.setText("Desmontar");
-
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, boton, botonDesmontar);
-    }
-
-    public void activarBotoneraAldeano(Aldeano aldeano) {
-        vaciarOpcionesDePieza();
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Selecciono : Aldeano");
-
-        Label etiquetaVida = new Label();
-        etiquetaVida.setText("Vida : " + aldeano.obtenerVida());
-
-        Button boton = new Button();
-        boton.setText("Construir");
-
-        Button botonReparar = new Button();
-        botonReparar.setText("Reparar");
-
-        Button botonMoverIzquierda = new Button();
-        botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionIzquierda()));
-        botonMoverIzquierda.setText("Mover Izquierda");
-
-        Button botonMoverDerecha = new Button();
-        botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionDerecha()));
-        botonMoverDerecha.setText("Mover Derecha");
-
-        Button botonMoverArriba = new Button();
-        botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArriba()));
-        botonMoverArriba.setText("Mover Arriba");
-
-        Button botonMoverAbajo = new Button();
-        botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajo()));
-        botonMoverAbajo.setText("Mover Abajo");
-
-        Button botonMoverArribaIzquierda = new Button();
-        botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArribaIzquierda()));
-        botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
-
-        Button botonMoverArribaDerecha = new Button();
-        botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionArribaDerecha()));
-        botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
-
-        Button botonMoverAbajoIzquierda = new Button();
-        botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajoIzquierda()));
-        botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
-
-        Button botonMoverAbajoDerecha = new Button();
-        botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, aldeano, new DireccionAbajoDerecha()));
-        botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
-
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton, botonReparar,
-                botonMoverArriba, botonMoverAbajo, botonMoverDerecha, botonMoverIzquierda,
-                botonMoverArribaDerecha, botonMoverArribaIzquierda, botonMoverAbajoDerecha, botonMoverAbajoIzquierda);
-    }
-
-    public void activarBotoneraPlaza(PlazaCentral plaza) {
-        vaciarOpcionesDePieza();
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Selecciono : Plaza Central");
-
-        Label etiquetaVida = new Label();
-        etiquetaVida.setText("Vida : " + plaza.obtenerVida());
-
-        Button boton = new Button();
-        boton.setText("Crear Aldeano");
-
-        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida, boton);
     }
 
     public void actualizar() {
         canvasCentral.getGraphicsContext2D().clearRect(0,0, canvasCentral.getWidth(), canvasCentral.getHeight());
         setEstadoDelJuego(canvasCentral);
+    }
+
+    public void crearBotoneraParaPieza(Pieza pieza) {
+        vaciarOpcionesDePieza();
+
+        agregarInformacionDePieza(pieza);
+        agregarBotonesDeMovimiento(pieza);
+        agregarBotonDeAtaque(pieza);
+        agregarBotonConstruirArmaAsedio(pieza);
+        agregarBotonDesmontar(pieza);
+        agregarBotonCrearAldeano(pieza);
+        agregarBotonReparar(pieza);
+    }
+
+    private void agregarBotonReparar(Pieza pieza) {
+        if(pieza.podesReparar()) {
+            Button boton = new Button();
+            boton.setText("Reparar");
+
+            contenedorParaUnaPieza.getChildren().add(boton);
+        }
+    }
+
+    private void agregarBotonCrearAldeano(Pieza pieza) {
+        if(pieza.podesCrearUnAldeano()) {
+            Button boton = new Button();
+            boton.setText("Crear Aldeano");
+
+            contenedorParaUnaPieza.getChildren().add(boton);
+        }
+    }
+
+    private void agregarBotonDesmontar(Pieza pieza) {
+        if(pieza.podesDesmontarArmaAsedio()) {
+            Button boton = new Button();
+            boton.setText("Desmontar Arma de Asedio");
+
+            contenedorParaUnaPieza.getChildren().add(boton);
+        }
+    }
+
+    private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
+        if(pieza.podesConstruirArmaDeAsedio()) {
+            Button boton = new Button();
+            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza, UNIDAD_ARMADEASEDIO ));
+            boton.setText("Construir Arma de Asedio");
+
+            contenedorParaUnaPieza.getChildren().add(boton);
+        }
+    }
+
+    private void agregarBotonDeAtaque(Pieza pieza) {
+
+        if(pieza.podesAtacar()) {
+            Button boton = new Button();
+            boton.setText("Atacar");
+
+            contenedorParaUnaPieza.getChildren().add(boton);
+        }
+    }
+
+    private void agregarBotonesDeMovimiento(Pieza pieza) {
+
+        if(pieza.podesMoverte()) {
+
+            Button botonMoverIzquierda = new Button();
+            botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionIzquierda()));
+            botonMoverIzquierda.setText("Mover Izquierda");
+
+            Button botonMoverDerecha = new Button();
+            botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionDerecha()));
+            botonMoverDerecha.setText("Mover Derecha");
+
+            Button botonMoverArriba = new Button();
+            botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArriba()));
+            botonMoverArriba.setText("Mover Arriba");
+
+            Button botonMoverAbajo = new Button();
+            botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajo()));
+            botonMoverAbajo.setText("Mover Abajo");
+
+            Button botonMoverArribaIzquierda = new Button();
+            botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaIzquierda()));
+            botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
+
+            Button botonMoverArribaDerecha = new Button();
+            botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaDerecha()));
+            botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
+
+            Button botonMoverAbajoIzquierda = new Button();
+            botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoIzquierda()));
+            botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
+
+            Button botonMoverAbajoDerecha = new Button();
+            botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoDerecha()));
+            botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
+
+            contenedorParaUnaPieza.getChildren().addAll(botonMoverIzquierda, botonMoverDerecha, botonMoverArriba, botonMoverAbajo, botonMoverAbajoDerecha, botonMoverAbajoIzquierda, botonMoverArribaDerecha, botonMoverArribaIzquierda);
+        }
+    }
+
+    private void agregarInformacionDePieza(Pieza pieza) {
+
+        Label etiqueta = crearEtiquetaConTexto("Selecciono : " + pieza.nombre());
+
+        Label etiquetaVida = crearEtiquetaConTexto("Vida : " + pieza.obtenerVida());
+
+        contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida);
     }
 }

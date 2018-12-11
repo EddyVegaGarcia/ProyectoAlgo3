@@ -35,11 +35,25 @@ public abstract class Pieza {
 
     public abstract boolean sosAldeano();
 
-    public abstract void queTipoSos(MouseEventHandler mouseEventHandler);
-
     protected void accionRealizada() {
         accionesRealizadas++;
     }
 
     public abstract boolean sosArmaAsedio();
+
+    public abstract String nombre();
+
+    public abstract boolean podesMoverte();
+
+    public abstract boolean podesAtacar();
+
+    public abstract boolean podesConstruirArmaDeAsedio();
+
+    public abstract boolean podesDesmontarArmaAsedio();
+
+    public abstract boolean podesCrearUnAldeano();
+
+    public abstract boolean podesReparar();
+
+    public abstract double getTamanio();
 }

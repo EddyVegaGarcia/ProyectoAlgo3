@@ -2,11 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Juego.*;
-import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
-import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
-import fiuba.algo3.tp2.modelo.Piezas.Unidad;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
@@ -29,63 +25,18 @@ public class UbicarPiezas {
         widht = canvas.getWidth();
         height = canvas.getHeight();
 
-
-        ubicarAledanos(jugador.getAldeanos());
-        ubicarCastillo(jugador.obtenerCastillo());
-        ubicarPlazas(jugador.getPlazas());
-        ubicarArmasDeAsedios(jugador.getArmas());
+        ubicarPiezas(jugador.getPiezas());
     }
 
-    public UbicarPiezas(Canvas canvasCentral){
+    private void ubicarPiezas(ArrayList<Pieza> piezas) {
 
-        this.canvas = canvasCentral;
+        for(Pieza pieza : piezas){
+            Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/" + pieza.getClass().getSimpleName() + ".png");
 
-        widht = canvas.getWidth();
-        height = canvas.getHeight();
+            double tamanio = Math.sqrt(pieza.getTamanio());
 
-
-    }
-
-    private void ubicarPlazas(ArrayList<PlazaCentral> plazas) {
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/PlazaCentral.png");
-
-        double tamanio = Math.sqrt(TAMANIO_PLAZA);
-
-        for(PlazaCentral plaza : plazas){
-            Posicion posicion = plaza.obtenerPosicion();
+            Posicion posicion = pieza.obtenerPosicion();
             ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(),tamanio);
-        }
-    }
-
-    private void ubicarCastillo(Castillo castillo) {
-        Posicion posicion = castillo.obtenerPosicion();
-
-        double tamanio = Math.sqrt(TAMANIO_CASTILLO);
-
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/Castillo.png");
-
-        ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(), tamanio);
-    }
-
-    private void ubicarAledanos(ArrayList<Aldeano> aldeanos) {
-        
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/Aldeano.png");
-        double tamanio = Math.sqrt(TAMANIO_UNIDAD);
-
-        for(Aldeano aldeano : aldeanos){
-            Posicion posicion = aldeano.obtenerPosicion();
-            ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(),tamanio);
-        }
-    }
-
-    public void ubicarArmasDeAsedios(ArrayList<ArmaDeAsedio> armas){
-
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/ArmaDeAsedio.jpg");
-        double tamanio = Math.sqrt(TAMANIO_UNIDAD);
-
-        for(Unidad arma : armas) {
-            Posicion posicion = arma.obtenerPosicion();
-            ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(), tamanio);
         }
     }
 

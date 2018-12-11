@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
 import javafx.event.EventHandler;
@@ -22,13 +23,13 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
     private Canvas canvas;
     private Juego juego;
     private UnidadType unidadType;
-    private Edificio edificio;
+    private Pieza edificio;
     private Mapa mapa;
     private JuegoView juegoView;
     private double height;
     private double widht;
 
-    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Edificio edificioCreador, UnidadType unidadType) {
+    public MouseCreacionEventHandler(JuegoView juegoView, Juego juego, Canvas canvas, Pieza edificioCreador, UnidadType unidadType) {
 
         this.widht = canvas.getWidth();
         this.height = canvas.getHeight();
@@ -45,7 +46,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         double columna = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
         double fila = event.getY()*FILA_DEFAULT_MAPA/height;
 
-        Unidad unaUnidad = edificio.crearUnidad(unidadType);
+        Unidad unaUnidad = ((Edificio)edificio).crearUnidad(unidadType);
         Posicion posicion = new Posicion((int)fila, (int)columna);
         ArrayList<Posicion> list = new ArrayList<Posicion>();
         list.add(posicion);

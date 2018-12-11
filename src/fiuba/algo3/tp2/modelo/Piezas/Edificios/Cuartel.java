@@ -49,13 +49,49 @@ public class Cuartel extends Edificio {
         return false;
     }
 
-    @Override
-    public void queTipoSos(MouseEventHandler mouseEventHandler) {
-        mouseEventHandler.cuartel();
-    }
 
     @Override
     public boolean sosArmaAsedio() {
         return false;
+    }
+
+    @Override
+    public String nombre() {
+        return "Cuartel";
+    }
+
+    @Override
+    public boolean podesMoverte() {
+        return false;
+    }
+
+    @Override
+    public boolean podesAtacar() {
+        return false;
+    }
+
+    @Override
+    public boolean podesConstruirArmaDeAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesDesmontarArmaAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesCrearUnAldeano() {
+        return false;
+    }
+
+    @Override
+    public boolean podesReparar() {
+        return false;
+    }
+
+    @Override
+    public double getTamanio() {
+        return tamanio;
     }
 }

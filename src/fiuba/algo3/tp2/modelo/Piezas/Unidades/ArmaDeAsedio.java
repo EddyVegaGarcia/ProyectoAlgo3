@@ -111,13 +111,49 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         return false;
     }
 
-    @Override
-    public void queTipoSos(MouseEventHandler mouseEventHandler) {
-        mouseEventHandler.armaAsedio();
-    }
 
     @Override
     public boolean sosArmaAsedio() {
         return true;
+    }
+
+    @Override
+    public String nombre() {
+        return "Arma De Asedio";
+    }
+
+    @Override
+    public boolean podesMoverte() {
+        return true;
+    }
+
+    @Override
+    public boolean podesAtacar() {
+        return true;
+    }
+
+    @Override
+    public boolean podesConstruirArmaDeAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesDesmontarArmaAsedio() {
+        return true;
+    }
+
+    @Override
+    public boolean podesCrearUnAldeano() {
+        return false;
+    }
+
+    @Override
+    public boolean podesReparar() {
+        return false;
+    }
+
+    @Override
+    public double getTamanio() {
+        return tamanio;
     }
 }

@@ -89,12 +89,47 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public void queTipoSos(MouseEventHandler mouseEventHandler) {
-        mouseEventHandler.aldeano(this);
+    public boolean sosArmaAsedio() {
+        return false;
     }
 
     @Override
-    public boolean sosArmaAsedio() {
+    public String nombre() {
+        return "Aldeano";
+    }
+
+    @Override
+    public boolean podesMoverte() {
+        return true;
+    }
+
+    @Override
+    public boolean podesAtacar() {
         return false;
+    }
+
+    @Override
+    public boolean podesConstruirArmaDeAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesDesmontarArmaAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesCrearUnAldeano() {
+        return false;
+    }
+
+    @Override
+    public boolean podesReparar() {
+        return true;
+    }
+
+    @Override
+    public double getTamanio() {
+        return tamanio;
     }
 }

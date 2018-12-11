@@ -50,13 +50,49 @@ public class Arquero extends Unidad implements Atacante {
         return false;
     }
 
-    @Override
-    public void queTipoSos(MouseEventHandler mouseEventHandler) {
-        mouseEventHandler.arquero();
-    }
 
     @Override
     public boolean sosArmaAsedio() {
         return false;
+    }
+
+    @Override
+    public String nombre() {
+        return "Arquero";
+    }
+
+    @Override
+    public boolean podesMoverte() {
+        return true;
+    }
+
+    @Override
+    public boolean podesAtacar() {
+        return true;
+    }
+
+    @Override
+    public boolean podesConstruirArmaDeAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesDesmontarArmaAsedio() {
+        return false;
+    }
+
+    @Override
+    public boolean podesCrearUnAldeano() {
+        return false;
+    }
+
+    @Override
+    public boolean podesReparar() {
+        return false;
+    }
+
+    @Override
+    public double getTamanio() {
+        return tamanio;
     }
 }

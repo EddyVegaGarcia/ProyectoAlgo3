@@ -20,7 +20,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 public class Jugador {
 
     int oro;
-    private List<Pieza> piezas;
+    private ArrayList<Pieza> piezas;
     private List<Unidad> poblacion;
     private Castillo castillo;
 
@@ -139,40 +139,12 @@ public class Jugador {
 
     }
 
-    public ArrayList<PlazaCentral> getPlazas() {
-
-        ArrayList<PlazaCentral> plazas = new ArrayList<>();
-        for(Pieza pieza : piezas){
-            if( pieza.sosPlazaCentral() ){
-                plazas.add((PlazaCentral) pieza);
-            }
-        }
-        return plazas;
-    }
-
-    public ArrayList<Aldeano> getAldeanos() {
-        ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
-        for(Pieza pieza : piezas){
-            if( pieza.sosAldeano() ){
-                aldeanos.add((Aldeano)pieza);
-            }
-        }
-        return aldeanos;
-    }
-
-    public ArrayList<ArmaDeAsedio> getArmas() {
-        ArrayList<ArmaDeAsedio> armas = new ArrayList<ArmaDeAsedio>();
-        for(Pieza pieza : piezas){
-            if( pieza.sosArmaAsedio() ){
-                armas.add((ArmaDeAsedio) pieza);
-            }
-        }
-        System.out.print("aparecio en get armas\n");
-        return armas;
-    }
-
     public void agregaPieza(Unidad unaUnidad) {
         piezas.add(unaUnidad);
+    }
+
+    public ArrayList<Pieza> getPiezas() {
+        return piezas;
     }
 
 /*

@@ -2,24 +2,14 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
-import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
-import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
-import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.MouseEvent;
-
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType.*;
 
 
 public class CreacionEventHandler implements EventHandler<ActionEvent> {
@@ -27,7 +17,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private Mapa mapa;
     private JuegoView juegoView;
     private Juego juego;
-    private Edificio edificioCreador;
+    private Pieza edificioCreador;
     private Canvas canvasCentral;
     private UbicarPiezas ubicarPiezas;
     private double height;
@@ -35,13 +25,12 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private UnidadType unidadType;
     private Posicion nuevaPosicionCreada;
 
-    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Castillo unCastillo, UnidadType unaUnidadType) {
+    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Pieza unCastillo, UnidadType unaUnidadType) {
 
         this.mapa = unJuego.mapa();
         this.edificioCreador = unCastillo;
         this.juegoView = unJuegoView;
         this.canvasCentral = unCanvasCentral;
-        this.ubicarPiezas = new UbicarPiezas(unCanvasCentral);
         this.unidadType = unaUnidadType;
         this.juego = unJuego;
 

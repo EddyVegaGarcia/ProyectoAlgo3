@@ -41,37 +41,7 @@ public class MouseEventHandler implements EventHandler<MouseEvent> {
         Pieza pieza = mapa.recuperarPieza(new Posicion((int)y,(int)x));
 
         if( pieza != null ){
-            pieza.queTipoSos(this);
+            juegoView.crearBotoneraParaPieza(pieza);
         }
-    }
-
-    public void castillo(Castillo castillo){
-        juegoView.activarBotoneraDeCastillo(castillo);
-    }
-
-    public void arquero() {
-        juegoView.activarBotoneraDeArquero();
-    }
-
-    public void armaAsedio() {
-        juegoView.activarBotoneraDeArmaAsedio();
-    }
-
-    public void aldeano(Aldeano aldeano) {
-        juegoView.activarBotoneraAldeano(aldeano);
-    }
-
-    public void espadachin() {
-    }
-
-    public void cuartel() {
-    }
-
-    public void plaza(PlazaCentral plaza) {
-        juegoView.activarBotoneraPlaza(plaza);
-    }
-
-    public void imprimir() {
-        System.out.print("Entro a mouse\n");
     }
 }
