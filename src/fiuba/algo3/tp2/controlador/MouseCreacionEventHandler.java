@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
@@ -50,16 +51,36 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
         Unidad unaUnidad = ((Edificio)edificio).crearUnidad(unidadType);
         Posicion posicion = new Posicion((int)fila, (int)columna);
-        ArrayList<Posicion> list = new ArrayList<Posicion>();
-        list.add(posicion);
-        mapa.colocarPieza(unaUnidad, posicion);
-        Jugador jugador = juego.jugador1();
-        Jugador jugador2 = juego.jugador2();
-        //jugador.agregaPieza(unaUnidad);
-        jugador2.agregaPieza(unaUnidad);
-        unaUnidad.agregarPosicion(list);
+
+        try {
+            this.validarDistanciaDeCreacion(posicion);
+            ArrayList<Posicion> list = new ArrayList<>();
+            list.add(posicion);
+
+            mapa.colocarPieza(unaUnidad, posicion);
+            Jugador jugador = juego.jugadorDeTurno();
+
+            jugador.agregaPieza(unaUnidad);
+            unaUnidad.agregarPosicion(list);
+
+        }
+        catch (PosicionDeCreacionInvalidaException e){
+
+            etiquetaAlertas.setText("Colocacion de pieza fuera de rango 1 del edificio");
+        }
 
         juegoView.actualizar();
         canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+    }
+
+    private void validarDistanciaDeCreacion(Posicion posicion) {
+
+        Posicion unaPosicion = edificio.obtenerPosicion();
+
+
+        if( !posicion.validacionPosicionValida(unaPosicion, edificio.obtenerTamanio())) {
+
+            throw new PosicionDeCreacionInvalidaException();
+        }
     }
 }

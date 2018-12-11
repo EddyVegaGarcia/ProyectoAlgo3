@@ -27,8 +27,8 @@ public class JuegoView {
     private Jugador jugador1;
     private ContenedorPrincipal contenedorPrincipal;
     private Canvas canvasCentral;
-    public int height = 600;
-    public int width = 1100;
+    public int height = 550;
+    public int width = 1000;
     private Juego juego;
     private Label etiquetaConsola;
 
@@ -77,7 +77,7 @@ public class JuegoView {
     }
 
     private void setMapa(Canvas canvasCentral) {
-        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/MapaBase7.jpg");
+        Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/MapaBase2.jpg");
         canvasCentral.getGraphicsContext2D().drawImage(imagen,0,0, width, height);
     }
 
@@ -125,7 +125,7 @@ public class JuegoView {
             agregarBotonesDeMovimiento(pieza);
             agregarBotonDeAtaque(pieza);
             agregarBotonConstruirArmaAsedio(pieza);
-            agregarBotonDesmontar(pieza);
+            //agregarBotonDesmontar(pieza);
             agregarBotonCrearAldeano(pieza);
             agregarBotonReparar(pieza);
         }
@@ -146,12 +146,14 @@ public class JuegoView {
     private void agregarBotonCrearAldeano(Pieza pieza) {
         if(pieza.podesCrearUnAldeano()) {
             Button boton = new Button();
+            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza,
+                    UNIDAD_ALDEANO , etiquetaConsola));
             boton.setText("Crear Aldeano");
 
             contenedorParaUnaPieza.getChildren().add(boton);
         }
     }
-
+    /*
     private void agregarBotonDesmontar(Pieza pieza) {
         if(pieza.podesDesmontarArmaAsedio()) {
             Button boton = new Button();
@@ -160,11 +162,13 @@ public class JuegoView {
             contenedorParaUnaPieza.getChildren().add(boton);
         }
     }
+    */
 
     private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
         if(pieza.podesConstruirArmaDeAsedio()) {
             Button boton = new Button();
-            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
+            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,
+                    pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
             boton.setText("Construir Arma de Asedio");
 
             contenedorParaUnaPieza.getChildren().add(boton);

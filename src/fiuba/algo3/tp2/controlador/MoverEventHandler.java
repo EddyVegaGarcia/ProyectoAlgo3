@@ -33,14 +33,14 @@ public class MoverEventHandler implements EventHandler<ActionEvent> {
         try {
             mapa.moverUnidad(pieza.obtenerPosicion(), direccion);
         }
+        catch (AccionUnicaRealizadaException e){
+            etiquetaAvisos.setText("Cada pieza solo puede realizar una unica accion");
+        }
         catch (UbicacionOcupadaException e){
             etiquetaAvisos.setText("La ubicacion a la que se quiere mover esta ocupada por otra pieza");
         }
         catch (UbicacionErroneaException e){
             etiquetaAvisos.setText("La ubicacion esta fuera del mapa");
-        }
-        catch (AccionUnicaRealizadaException e){
-            etiquetaAvisos.setText("Cada pieza solo puede realizar una unica accion");
         }
 
         juegoView.actualizar();
