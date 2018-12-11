@@ -117,14 +117,21 @@ public class JuegoView {
 
     public void crearBotoneraParaPieza(Pieza pieza) {
         vaciarOpcionesDePieza();
+        etiquetaConsola.setText("");
 
-        agregarInformacionDePieza(pieza);
-        agregarBotonesDeMovimiento(pieza);
-        agregarBotonDeAtaque(pieza);
-        agregarBotonConstruirArmaAsedio(pieza);
-        agregarBotonDesmontar(pieza);
-        agregarBotonCrearAldeano(pieza);
-        agregarBotonReparar(pieza);
+        if( juego.jugadorDeTurno().sosDuenioDe(pieza)) {
+
+            agregarInformacionDePieza(pieza);
+            agregarBotonesDeMovimiento(pieza);
+            agregarBotonDeAtaque(pieza);
+            agregarBotonConstruirArmaAsedio(pieza);
+            agregarBotonDesmontar(pieza);
+            agregarBotonCrearAldeano(pieza);
+            agregarBotonReparar(pieza);
+        }
+        else{
+            etiquetaConsola.setText("La pieza seleccionada, no pertenece al jugador de turno");
+        }
     }
 
     private void agregarBotonReparar(Pieza pieza) {

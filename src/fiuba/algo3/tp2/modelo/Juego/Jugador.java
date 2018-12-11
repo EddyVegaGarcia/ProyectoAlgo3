@@ -147,6 +147,14 @@ public class Jugador {
         return piezas;
     }
 
+    public boolean sosDuenioDe(Pieza pieza) {
+        for (Pieza piezaActual : piezas){
+            if(piezaActual.equals(pieza))
+                return true;
+        }
+        return false;
+    }
+
 /*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
