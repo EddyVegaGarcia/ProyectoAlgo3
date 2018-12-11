@@ -2,8 +2,8 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
-import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
@@ -27,10 +27,11 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private UnidadType unidadType;
     private Posicion nuevaPosicionCreada;
 
-    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Pieza unCastillo, UnidadType unaUnidadType, Label etiquetaConsola) {
+    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
+                                Pieza unaPiezaCreadora, UnidadType unaUnidadType, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
-        this.edificioCreador = unCastillo;
+        this.edificioCreador = unaPiezaCreadora;
         this.juegoView = unJuegoView;
         this.canvasCentral = unCanvasCentral;
         this.unidadType = unaUnidadType;
@@ -45,17 +46,12 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral, edificioCreador, unidadType, etiquetaAlertas));
+        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral,
+                    edificioCreador, unidadType, etiquetaAlertas));
+
 
     }
 
-   /* private void generarPosicionClikeada() {
-
-        ActionEvent accion = new ActionEvent();
-
-        this.handle(accion);
-
-    }*/
 /*
     @Override
     public void handle(MouseEvent event) {

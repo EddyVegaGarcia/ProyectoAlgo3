@@ -21,4 +21,9 @@ public class Desmontado implements EstadoDeArmaDeAsedio {
     public Boolean estaMontado() {
         return false;
     }
+
+    @Override
+    public Boolean validacionMovimiento() {
+        return true;
+    }
 }

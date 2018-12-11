@@ -24,4 +24,9 @@ public class Montado implements EstadoDeArmaDeAsedio {
         return true;
     }
 
+
+    @Override
+    public Boolean validacionMovimiento() {
+        return false;
+    }
 }

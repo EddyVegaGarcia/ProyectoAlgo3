@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo.Campo;
 
+import static java.lang.Math.sqrt;
+
 public class Posicion {
 
     private int posicionFila;
@@ -35,6 +37,13 @@ public class Posicion {
     public boolean estaContenidaEn(Posicion unaPosicion, int unTamanio) {
         return((posicionFila <= (unaPosicion.getFila()+unTamanio)) && (posicionColumna <= (unaPosicion.getColumna()+unTamanio))
                 && (posicionFila >= unaPosicion.getFila()) && (posicionColumna >= unaPosicion.getColumna()));
+    }
+
+    public boolean validacionPosicionValida(Posicion unaPosicion, int tamanioDelEdificio){
+
+        return  ( (((( (unaPosicion.getFila() - posicionFila == 1)) || ( (unaPosicion.getFila() - posicionFila) == -sqrt(tamanioDelEdificio))))
+                || ( ((unaPosicion.getColumna() - posicionColumna) == 1) || (((unaPosicion.getColumna() - posicionColumna) == -sqrt(tamanioDelEdificio) ) ) ) ));
+
     }
 }
 

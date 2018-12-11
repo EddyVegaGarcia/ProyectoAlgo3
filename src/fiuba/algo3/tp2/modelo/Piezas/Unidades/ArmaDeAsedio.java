@@ -124,7 +124,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     @Override
     public boolean podesMoverte() {
-        return true;
+        return estado.validacionMovimiento();
     }
 
     @Override

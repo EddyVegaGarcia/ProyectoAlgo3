@@ -10,4 +10,6 @@ public interface EstadoDeArmaDeAsedio {
 
     Boolean estaMontado();
 
+    Boolean validacionMovimiento();
+
 }
