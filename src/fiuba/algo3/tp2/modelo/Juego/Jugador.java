@@ -158,6 +158,12 @@ public class Jugador {
         }
     }
 
+    public void refrescarPiezas() {
+        for(Pieza piezaActual : piezas){
+            piezaActual.refrescar();
+        }
+    }
+
 /*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {

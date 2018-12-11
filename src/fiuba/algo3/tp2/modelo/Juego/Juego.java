@@ -35,7 +35,7 @@ public class Juego{
         this.ganador = null;
 
         this.colocarPiezasPorDefault();
-        turno.jugadorDeTurno().recolectarOro();
+        //turno.jugadorDeTurno().recolectarOro();
     }
 
 
@@ -76,6 +76,5 @@ public Mapa mapa() {
 
     public void terminarTurno() {
         turno.terminarTurno();
-        turno.jugadorDeTurno().recolectarOro();
     }
 }

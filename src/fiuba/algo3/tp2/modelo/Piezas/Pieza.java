@@ -43,4 +43,7 @@ public abstract class Pieza {
 
     public abstract int oroRecolectado();
 
+    public void refrescar(){
+        accionesRealizadas = 0;
+    }
 }

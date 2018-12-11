@@ -45,6 +45,8 @@ public class Turno {
 
     public void terminarTurno(){
 
+        jugadorEnJuego.recolectarOro();
+        jugadorEnJuego.refrescarPiezas();
         if( jugadorEnJuego == jugador1 )
             jugadorEnJuego = jugador2;
         else
