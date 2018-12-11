@@ -22,8 +22,11 @@ public class PlazaCentral extends Edificio {
     @Override
     public Unidad crearUnidad(UnidadType unidadType){
 
-        if(unidadType == UnidadType.UNIDAD_ALDEANO)
+        if(unidadType == UnidadType.UNIDAD_ALDEANO ){
+            this.validarAcciones();
+            this.accionesRealizadas++;
             return UnidadesFactory.crearUnidad(unidadType);
+        }
         else
             throw new InvalidUnidadTypeException();
 

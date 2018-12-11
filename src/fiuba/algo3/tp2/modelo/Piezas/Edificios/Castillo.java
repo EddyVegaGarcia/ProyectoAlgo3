@@ -52,8 +52,13 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public Unidad crearUnidad(UnidadType unidadType) {
 
-        if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO)
+        if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO) {
+
+            this.validarAcciones();
+            this.accionesRealizadas++;
             return UnidadesFactory.crearUnidad(unidadType);
+
+        }
         else
             throw new InvalidUnidadTypeException();
 
