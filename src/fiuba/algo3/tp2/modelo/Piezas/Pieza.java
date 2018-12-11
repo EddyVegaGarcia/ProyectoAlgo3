@@ -35,14 +35,6 @@ public abstract class Pieza {
         accionesRealizadas++;
     }
 
-    public abstract boolean podesAtacar();
-
-    public abstract boolean podesConstruirArmaDeAsedio();
-
-    public abstract boolean podesCrearUnAldeano();
-
-    public abstract boolean podesReparar();
-
     public abstract double getTamanio();
 
     public abstract PiezaType obtenerType();

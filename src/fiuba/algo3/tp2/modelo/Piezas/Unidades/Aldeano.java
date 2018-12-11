@@ -85,26 +85,6 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public boolean podesAtacar() {
-        return false;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return true;
-    }
-
-    @Override
     public double getTamanio() {
         return tamanio;
     }

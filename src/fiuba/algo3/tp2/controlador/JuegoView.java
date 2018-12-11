@@ -103,20 +103,25 @@ public class JuegoView {
     }
 
     private void setEstadoDelJuego(Canvas canvasCentral) {
+
         setMapa(canvasCentral);
-        //setBotones();
         setPiezasJugador(jugador1,canvasCentral);
         setPiezasJugador(jugador2, canvasCentral);
+
     }
 
     private void setPiezasJugador(Jugador jugador, Canvas canvasCentral) {
+
         UbicarPiezas ubicarPiezas = new UbicarPiezas(jugador, canvasCentral);
+
     }
 
     private Label crearEtiquetaConTexto(String texto){
+
         Label etiqueta = new Label();
         etiqueta.setText(texto);
         return etiqueta;
+
     }
 
     public void vaciarOpcionesDePieza() {
@@ -124,11 +129,14 @@ public class JuegoView {
     }
 
     public void actualizar() {
+
         canvasCentral.getGraphicsContext2D().clearRect(0,0, canvasCentral.getWidth(), canvasCentral.getHeight());
         setEstadoDelJuego(canvasCentral);
+
     }
 
     public void crearBotoneraParaPieza(Pieza pieza) {
+
         vaciarOpcionesDePieza();
         etiquetaConsola.setText("");
 
@@ -180,28 +188,31 @@ public class JuegoView {
             }
         }
         else{
+
             etiquetaConsola.setText("La pieza seleccionada, no pertenece al jugador de turno");
+
         }
+
     }
 
     private void agregarBotonReparar(Pieza pieza) {
-        if(pieza.podesReparar()) {
-            Button boton = new Button();
-            boton.setText("Reparar");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+        Button boton = new Button();
+        boton.setText("Reparar");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
 
     private void agregarBotonCrearAldeano(Pieza pieza) {
-        if(pieza.podesCrearUnAldeano()) {
-            Button boton = new Button();
-            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza,
-                    UNIDAD_ALDEANO , etiquetaConsola));
-            boton.setText("Crear Aldeano");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza,
+                UNIDAD_ALDEANO , etiquetaConsola));
+        boton.setText("Crear Aldeano");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
     /*
     private void agregarBotonDesmontar(Pieza pieza) {
@@ -215,24 +226,23 @@ public class JuegoView {
     */
 
     private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
-        if(pieza.podesConstruirArmaDeAsedio()) {
-            Button boton = new Button();
-            boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,
-                    pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
-            boton.setText("Construir Arma de Asedio");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,
+                pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
+        boton.setText("Construir Arma de Asedio");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
 
     private void agregarBotonDeAtaque(Pieza pieza) {
 
-        if(pieza.podesAtacar()) {
-            Button boton = new Button();
-            boton.setText("Atacar");
+        Button boton = new Button();
+        boton.setText("Atacar");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
 
     private void agregarBotonesDeMovimiento(Pieza pieza) {

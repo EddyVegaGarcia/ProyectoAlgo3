@@ -56,7 +56,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         }
         catch (AccionUnicaRealizadaException e){
 
-            etiquetaAlertas.setText("Cada pieza solo puede realizar una unica accion");
+            etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
             canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
 
@@ -67,7 +67,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         }
         catch (PosicionDeCreacionInvalidaException e){
 
-            etiquetaAlertas.setText("Colocacion de pieza fuera de rango 1 del edificio");
+            etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
             canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
 

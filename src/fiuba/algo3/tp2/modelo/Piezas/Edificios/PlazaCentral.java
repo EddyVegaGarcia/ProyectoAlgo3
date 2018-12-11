@@ -43,26 +43,6 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public boolean podesAtacar() {
-        return false;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return true;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
-    }
-
-    @Override
     public double getTamanio() {
         return tamanio;
     }

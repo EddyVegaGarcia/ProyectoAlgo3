@@ -116,26 +116,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     }
 
     @Override
-    public boolean podesAtacar() {
-        return true;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
-    }
-
-    @Override
     public double getTamanio() {
         return tamanio;
     }

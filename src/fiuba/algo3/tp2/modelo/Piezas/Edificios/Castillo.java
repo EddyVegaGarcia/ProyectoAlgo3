@@ -70,26 +70,6 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public boolean podesAtacar() {
-        return true;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return true;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
-    }
-
-    @Override
     public double getTamanio() {
         return tamanio;
     }
