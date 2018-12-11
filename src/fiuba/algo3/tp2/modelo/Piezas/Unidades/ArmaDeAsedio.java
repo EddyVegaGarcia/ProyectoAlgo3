@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
@@ -10,6 +9,9 @@ import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
+
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
@@ -38,9 +40,21 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     }
 
-    private void validarMovimientoDesmontura(){
+    public void activarMontura(){
 
-        if(estado.estaMontado())
+        tiempoEsperadoDeMontura = TIEMPO_ESPERADO_DE_MONTURA;
+
+    }
+
+    public  void desactivarMontura(){
+
+        tiempoEsperadoDeMontura = TIEMPO_INICIAL_DE_MONTURA;
+
+    }
+
+    public void movimientoPosible() {
+
+        if(!estado.validacionMovimiento())
             throw new ArmaDeAsedioMontadaSinMovimientoException();
 
     }
@@ -68,12 +82,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     }
 
-    public void cambiarTurnoDeEspera(int unTiempoNuevoDeEspera) {
-
-        tiempoEsperadoDeMontura = unTiempoNuevoDeEspera;
-
-    }
-
     public int obtenerTiempoEsperado(){
 
         return tiempoEsperadoDeMontura;
@@ -97,64 +105,24 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     @Override
     public void cambiarPosicion(Posicion nuevaPosicion) {
 
-        this.validarMovimientoDesmontura();
+        this.movimientoPosible();
         super.cambiarPosicion(nuevaPosicion);
+
     }
 
     @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return true;
-    }
-
-    @Override
-    public String nombre() {
-        return "Arma De Asedio";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return estado.validacionMovimiento();
-    }
-
-    @Override
-    public boolean podesAtacar() {
-        return true;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
-        return true;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
+    public PiezaType obtenerType() {
+        return UNIDAD_ARMADEASEDIO;
     }
 
     @Override
     public double getTamanio() {
         return tamanio;
+    }
+
+    @Override
+    public String obtenerNombre() {
+        return "Aldeano";
     }
 
     @Override

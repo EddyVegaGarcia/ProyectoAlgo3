@@ -2,11 +2,11 @@ package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class PlazaCentral extends Edificio {
 
@@ -22,8 +22,11 @@ public class PlazaCentral extends Edificio {
     @Override
     public Unidad crearUnidad(UnidadType unidadType){
 
-        if(unidadType == UnidadType.UNIDAD_ALDEANO)
+        if(unidadType == UnidadType.UNIDAD_ALDEANO ){
+            this.validarAcciones();
+            this.accionesRealizadas++;
             return UnidadesFactory.crearUnidad(unidadType);
+        }
         else
             throw new InvalidUnidadTypeException();
 
@@ -35,59 +38,8 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
-
-    @Override
-    public boolean sosPlazaCentral() {
-        return true;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public String nombre() {
-        return "Plaza Central";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return false;
-    }
-
-    @Override
-    public boolean podesAtacar() {
-        return false;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return true;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
+    public PiezaType obtenerType() {
+        return EDIFICIO_PLAZACENTRAL;
     }
 
     @Override
@@ -96,8 +48,12 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
+    public String obtenerNombre() {
+        return "Plaza Central";
+    }
+
+    @Override
     public int oroRecolectado() {
         return 0;
     }
-
 }

@@ -1,12 +1,13 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 
 public class Espadachin extends Unidad implements Atacante {
@@ -43,54 +44,8 @@ public class Espadachin extends Unidad implements Atacante {
     }
 
     @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public String nombre() {
-        return "Espadachin";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return true;
-    }
-
-    @Override
-    public boolean podesAtacar() {
-        return true;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
+    public PiezaType obtenerType() {
+        return UNIDAD_ESPADACHIN;
     }
 
     @Override
@@ -99,8 +54,12 @@ public class Espadachin extends Unidad implements Atacante {
     }
 
     @Override
+    public String obtenerNombre() {
+        return "Espadachin";
+    }
+
+    @Override
     public int oroRecolectado() {
         return 0;
     }
-
 }

@@ -2,11 +2,11 @@ package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Cuartel extends Edificio {
 
@@ -21,8 +21,12 @@ public class Cuartel extends Edificio {
     @Override
     public Unidad crearUnidad(UnidadType unidadType) {
 
-        if ((unidadType == UnidadType.UNIDAD_ESPADACHIN) || (unidadType == UnidadType.UNIDAD_ARQUERO))
+        if ((unidadType == UnidadType.UNIDAD_ESPADACHIN) || (unidadType == UnidadType.UNIDAD_ARQUERO)) {
+
+            this.validarAcciones();
+            this.accionesRealizadas++;
             return UnidadesFactory.crearUnidad(unidadType);
+        }
         else
             throw new InvalidUnidadTypeException();
 
@@ -33,66 +37,19 @@ public class Cuartel extends Edificio {
         this.vida = vida + VIDA_REPARACION;
     }
 
-
     @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
-
-    @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public String nombre() {
-        return "Cuartel";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return false;
-    }
-
-    @Override
-    public boolean podesAtacar() {
-        return false;
-    }
-
-    @Override
-    public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesCrearUnAldeano() {
-        return false;
-    }
-
-    @Override
-    public boolean podesReparar() {
-        return false;
+    public PiezaType obtenerType() {
+        return EDIFICIO_CUARTEL;
     }
 
     @Override
     public double getTamanio() {
         return tamanio;
+    }
+
+    @Override
+    public String obtenerNombre() {
+        return "Cuartel";
     }
 
     @Override

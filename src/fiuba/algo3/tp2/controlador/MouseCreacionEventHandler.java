@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
-import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
@@ -49,25 +49,37 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         double columna = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
         double fila = event.getY()*FILA_DEFAULT_MAPA/height;
 
-        Unidad unaUnidad = ((Edificio)edificio).crearUnidad(unidadType);
+        Unidad unaUnidad = null;
+
+        try {
+            unaUnidad = ((Edificio) edificio).crearUnidad(unidadType);
+        }
+        catch (AccionUnicaRealizadaException e){
+
+            etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
+            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+        }
+
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
         try {
             this.validarDistanciaDeCreacion(posicion);
-            ArrayList<Posicion> list = new ArrayList<>();
-            list.add(posicion);
-
-            mapa.colocarPieza(unaUnidad, posicion);
-            Jugador jugador = juego.jugadorDeTurno();
-
-            jugador.agregaPieza(unaUnidad);
-            unaUnidad.agregarPosicion(list);
-
         }
         catch (PosicionDeCreacionInvalidaException e){
 
-            etiquetaAlertas.setText("Colocacion de pieza fuera de rango 1 del edificio");
+            etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
+            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
+
+
+        ArrayList<Posicion> list = new ArrayList<>();
+        list.add(posicion);
+
+        mapa.colocarPieza(unaUnidad, posicion);
+        Jugador jugador = juego.jugadorDeTurno();
+
+        jugador.agregaPieza(unaUnidad);
+        unaUnidad.agregarPosicion(list);
 
         juegoView.actualizar();
         canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
