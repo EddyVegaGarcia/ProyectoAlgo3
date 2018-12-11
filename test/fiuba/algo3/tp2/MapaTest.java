@@ -25,7 +25,7 @@ public class MapaTest {
     public void testColocarUnidadEnPosicionCorrectamente() {
 
         Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(30,15);
+        Posicion posicion = new Posicion(10,15);
         Unidad unAldeano = new Aldeano();
         mapa.colocarPieza(unAldeano, posicion);
 
