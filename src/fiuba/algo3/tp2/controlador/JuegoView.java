@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Direcciones.*;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -134,12 +135,49 @@ public class JuegoView {
         if( juego.jugadorDeTurno().sosDuenioDe(pieza)) {
 
             agregarInformacionDePieza(pieza);
-            agregarBotonesDeMovimiento(pieza);
-            agregarBotonDeAtaque(pieza);
-            agregarBotonConstruirArmaAsedio(pieza);
-            //agregarBotonDesmontar(pieza);
-            agregarBotonCrearAldeano(pieza);
-            agregarBotonReparar(pieza);
+            PiezaType type = pieza.obtenerType();
+
+            if(type.equals(PiezaType.UNIDAD_ESPADACHIN)){
+
+                agregarBotonesDeMovimiento(pieza);
+
+            }
+            else if (type.equals(PiezaType.UNIDAD_ALDEANO)){
+
+                agregarBotonesDeMovimiento(pieza);
+                agregarBotonDeAtaque(pieza);
+                agregarBotonReparar(pieza);
+
+            }
+            else if (type.equals(PiezaType.UNIDAD_ARMADEASEDIO)){
+
+                agregarBotonesDeMovimiento(pieza);
+                agregarBotonDeAtaque(pieza);
+
+            }
+            else if (type.equals(PiezaType.UNIDAD_ARQUERO)){
+
+                agregarBotonesDeMovimiento(pieza);
+                agregarBotonDeAtaque(pieza);
+
+            }
+            else if (type.equals(PiezaType.EDIFICIO_CASTILLO)){
+
+                agregarBotonConstruirArmaAsedio(pieza);
+                agregarBotonDeAtaque(pieza);
+
+            }
+            else if (type.equals(PiezaType.EDIFICIO_CUARTEL)){
+
+                agregarBotonDeAtaque(pieza);
+
+            }
+            else if (type.equals(PiezaType.EDIFICIO_PLAZACENTRAL)){
+
+                agregarBotonDeAtaque(pieza);
+                agregarBotonCrearAldeano(pieza);
+
+            }
         }
         else{
             etiquetaConsola.setText("La pieza seleccionada, no pertenece al jugador de turno");
@@ -237,7 +275,7 @@ public class JuegoView {
 
     private void agregarInformacionDePieza(Pieza pieza) {
 
-        Label etiqueta = crearEtiquetaConTexto("Selecciono : " + pieza.nombre());
+        Label etiqueta = crearEtiquetaConTexto("Selecciono : " + pieza.obtenerNombre());
 
         Label etiquetaVida = crearEtiquetaConTexto("Vida : " + pieza.obtenerVida());
 

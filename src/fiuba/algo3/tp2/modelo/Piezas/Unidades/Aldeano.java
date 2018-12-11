@@ -1,14 +1,15 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
 import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Aldeano extends Unidad implements Constructor {
 
@@ -79,8 +80,8 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public String nombre() {
-        return "Aldeano";
+    public PiezaType obtenerType() {
+        return UNIDAD_ALDEANO;
     }
 
     @Override
@@ -107,4 +108,10 @@ public class Aldeano extends Unidad implements Constructor {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public String obtenerNombre() {
+        return "Aldeano";
+    }
+
 }

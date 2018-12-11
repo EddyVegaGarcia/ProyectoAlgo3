@@ -11,6 +11,7 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Castillo extends Edificio implements Atacante {
 
@@ -59,8 +60,8 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public String nombre() {
-        return "Castillo";
+    public PiezaType obtenerType() {
+        return EDIFICIO_CASTILLO;
     }
 
     @Override
@@ -96,5 +97,10 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public void darVidaPorReparacion() {
         this.vida = vida + VIDA_REPARACION;
+    }
+
+    @Override
+    public String obtenerNombre() {
+        return "Castillo";
     }
 }

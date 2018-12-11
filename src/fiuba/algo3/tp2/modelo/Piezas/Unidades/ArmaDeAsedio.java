@@ -9,6 +9,9 @@ import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
+
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
@@ -108,8 +111,8 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     }
 
     @Override
-    public String nombre() {
-        return "Arma De Asedio";
+    public PiezaType obtenerType() {
+        return UNIDAD_ARMADEASEDIO;
     }
 
     @Override
@@ -136,4 +139,10 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public String obtenerNombre() {
+        return "Aldeano";
+    }
+
 }

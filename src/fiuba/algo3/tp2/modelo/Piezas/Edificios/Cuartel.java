@@ -2,11 +2,11 @@ package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Cuartel extends Edificio {
 
@@ -34,8 +34,8 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    public String nombre() {
-        return "Cuartel";
+    public PiezaType obtenerType() {
+        return EDIFICIO_CUARTEL;
     }
 
     @Override
@@ -61,5 +61,10 @@ public class Cuartel extends Edificio {
     @Override
     public double getTamanio() {
         return tamanio;
+    }
+
+    @Override
+    public String obtenerNombre() {
+        return "Cuartel";
     }
 }

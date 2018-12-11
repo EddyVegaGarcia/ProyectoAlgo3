@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo.Piezas;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 import java.util.ArrayList;
 
@@ -34,8 +35,6 @@ public abstract class Pieza {
         accionesRealizadas++;
     }
 
-    public abstract String nombre();
-
     public abstract boolean podesAtacar();
 
     public abstract boolean podesConstruirArmaDeAsedio();
@@ -45,5 +44,9 @@ public abstract class Pieza {
     public abstract boolean podesReparar();
 
     public abstract double getTamanio();
+
+    public abstract PiezaType obtenerType();
+
+    public abstract String obtenerNombre();
 
 }

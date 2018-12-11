@@ -1,12 +1,13 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Arquero extends Unidad implements Atacante {
     int distanciaDeAtaque;
@@ -41,8 +42,8 @@ public class Arquero extends Unidad implements Atacante {
     }
 
     @Override
-    public String nombre() {
-        return "Arquero";
+    public PiezaType obtenerType() {
+        return UNIDAD_ARQUERO;
     }
 
     @Override
@@ -69,4 +70,10 @@ public class Arquero extends Unidad implements Atacante {
     public double getTamanio() {
         return tamanio;
     }
+
+    @Override
+    public String obtenerNombre() {
+        return "Arquero";
+    }
+
 }
