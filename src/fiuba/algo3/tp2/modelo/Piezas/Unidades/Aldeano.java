@@ -79,28 +79,8 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return true;
-    }
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
-    @Override
     public String nombre() {
         return "Aldeano";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return true;
     }
 
     @Override
@@ -110,11 +90,6 @@ public class Aldeano extends Unidad implements Constructor {
 
     @Override
     public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
         return false;
     }
 

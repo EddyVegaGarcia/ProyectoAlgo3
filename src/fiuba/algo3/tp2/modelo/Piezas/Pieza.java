@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.Piezas;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 
@@ -18,7 +17,7 @@ public abstract class Pieza {
 
     public int obtenerTamanio() { return tamanio; }
 
-    public abstract void recibirDanio(int unDanio);
+    public void recibirDanio(int unDanio) { this.vida = vida - unDanio;}
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 
@@ -31,29 +30,20 @@ public abstract class Pieza {
             throw new AccionUnicaRealizadaException();
     }
 
-    public abstract boolean sosPlazaCentral();
-
-    public abstract boolean sosAldeano();
-
     protected void accionRealizada() {
         accionesRealizadas++;
     }
 
-    public abstract boolean sosArmaAsedio();
-
     public abstract String nombre();
-
-    public abstract boolean podesMoverte();
 
     public abstract boolean podesAtacar();
 
     public abstract boolean podesConstruirArmaDeAsedio();
-
-    public abstract boolean podesDesmontarArmaAsedio();
 
     public abstract boolean podesCrearUnAldeano();
 
     public abstract boolean podesReparar();
 
     public abstract double getTamanio();
+
 }

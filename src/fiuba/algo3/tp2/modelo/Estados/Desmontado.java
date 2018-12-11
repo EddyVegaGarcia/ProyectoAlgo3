@@ -8,13 +8,15 @@ public class Desmontado implements EstadoDeArmaDeAsedio {
     @Override
     public EstadoDeArmaDeAsedio montar(ArmaDeAsedio unArmaDeAsedio) {
 
-        unArmaDeAsedio.cambiarTurnoDeEspera(1);
+        unArmaDeAsedio.activarMontura();
         return new Montado();
     }
 
     @Override
     public EstadoDeArmaDeAsedio desmontar(ArmaDeAsedio unArmaDeAsedio) {
+
         return this;
+
     }
 
     @Override

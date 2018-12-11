@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import fiuba.algo3.tp2.controlador.MouseEventHandler;
 import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -18,9 +17,11 @@ public class Castillo extends Edificio implements Atacante {
     public RangoDeAtaque rangoDeAtaque;
 
     public Castillo() {
+
         this.vida = VIDA_MAXIMA_CASTILLO;
         this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
+
     }
 
     @Override
@@ -58,34 +59,8 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
-
-    @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
-    @Override
     public String nombre() {
         return "Castillo";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return false;
     }
 
     @Override
@@ -96,11 +71,6 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     public boolean podesConstruirArmaDeAsedio() {
         return true;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
-        return false;
     }
 
     @Override

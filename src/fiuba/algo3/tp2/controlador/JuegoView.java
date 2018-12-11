@@ -187,42 +187,40 @@ public class JuegoView {
 
     private void agregarBotonesDeMovimiento(Pieza pieza) {
 
-        if(pieza.podesMoverte()) {
+        Button botonMoverIzquierda = new Button();
+        botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionIzquierda(), etiquetaConsola));
+        botonMoverIzquierda.setText("Mover Izquierda");
 
-            Button botonMoverIzquierda = new Button();
-            botonMoverIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionIzquierda(), etiquetaConsola));
-            botonMoverIzquierda.setText("Mover Izquierda");
+        Button botonMoverDerecha = new Button();
+        botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionDerecha(), etiquetaConsola));
+        botonMoverDerecha.setText("Mover Derecha");
 
-            Button botonMoverDerecha = new Button();
-            botonMoverDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionDerecha(), etiquetaConsola));
-            botonMoverDerecha.setText("Mover Derecha");
+        Button botonMoverArriba = new Button();
+        botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArriba(), etiquetaConsola));
+        botonMoverArriba.setText("Mover Arriba");
 
-            Button botonMoverArriba = new Button();
-            botonMoverArriba.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArriba(), etiquetaConsola));
-            botonMoverArriba.setText("Mover Arriba");
+        Button botonMoverAbajo = new Button();
+        botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajo(), etiquetaConsola));
+        botonMoverAbajo.setText("Mover Abajo");
 
-            Button botonMoverAbajo = new Button();
-            botonMoverAbajo.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajo(), etiquetaConsola));
-            botonMoverAbajo.setText("Mover Abajo");
+        Button botonMoverArribaIzquierda = new Button();
+        botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaIzquierda(), etiquetaConsola));
+        botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
 
-            Button botonMoverArribaIzquierda = new Button();
-            botonMoverArribaIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaIzquierda(), etiquetaConsola));
-            botonMoverArribaIzquierda.setText("Mover Arriba-Izquierda");
+        Button botonMoverArribaDerecha = new Button();
+        botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaDerecha(), etiquetaConsola));
+        botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
 
-            Button botonMoverArribaDerecha = new Button();
-            botonMoverArribaDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionArribaDerecha(), etiquetaConsola));
-            botonMoverArribaDerecha.setText("Mover Arriba-Derecha");
+        Button botonMoverAbajoIzquierda = new Button();
+        botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoIzquierda(), etiquetaConsola));
+        botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
 
-            Button botonMoverAbajoIzquierda = new Button();
-            botonMoverAbajoIzquierda.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoIzquierda(), etiquetaConsola));
-            botonMoverAbajoIzquierda.setText("Mover Abajo-Izquierda");
+        Button botonMoverAbajoDerecha = new Button();
+        botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoDerecha(), etiquetaConsola));
+        botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
 
-            Button botonMoverAbajoDerecha = new Button();
-            botonMoverAbajoDerecha.setOnAction(new MoverEventHandler(this, juego, pieza, new DireccionAbajoDerecha(), etiquetaConsola));
-            botonMoverAbajoDerecha.setText("Mover Abajo-Derecha");
+        contenedorParaUnaPieza.getChildren().addAll(botonMoverIzquierda, botonMoverDerecha, botonMoverArriba, botonMoverAbajo, botonMoverAbajoDerecha, botonMoverAbajoIzquierda, botonMoverArribaDerecha, botonMoverArribaIzquierda);
 
-            contenedorParaUnaPieza.getChildren().addAll(botonMoverIzquierda, botonMoverDerecha, botonMoverArriba, botonMoverAbajo, botonMoverAbajoDerecha, botonMoverAbajoIzquierda, botonMoverArribaDerecha, botonMoverArribaIzquierda);
-        }
     }
 
     private void agregarInformacionDePieza(Pieza pieza) {
@@ -233,4 +231,7 @@ public class JuegoView {
 
         contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida);
     }
+
+
+
 }

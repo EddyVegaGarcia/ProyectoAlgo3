@@ -33,36 +33,9 @@ public class Cuartel extends Edificio {
         this.vida = vida + VIDA_REPARACION;
     }
 
-
-    @Override
-    public void recibirDanio(int unDanio) {
-        this.vida = vida - unDanio;
-    }
-
-    @Override
-    public boolean sosPlazaCentral() {
-        return false;
-    }
-
-    @Override
-    public boolean sosAldeano() {
-        return false;
-    }
-
-
-    @Override
-    public boolean sosArmaAsedio() {
-        return false;
-    }
-
     @Override
     public String nombre() {
         return "Cuartel";
-    }
-
-    @Override
-    public boolean podesMoverte() {
-        return false;
     }
 
     @Override
@@ -72,11 +45,6 @@ public class Cuartel extends Edificio {
 
     @Override
     public boolean podesConstruirArmaDeAsedio() {
-        return false;
-    }
-
-    @Override
-    public boolean podesDesmontarArmaAsedio() {
         return false;
     }
 
