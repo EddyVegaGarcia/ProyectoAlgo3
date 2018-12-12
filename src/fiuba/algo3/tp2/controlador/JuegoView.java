@@ -124,12 +124,14 @@ public class JuegoView {
     }
 
     private void informarQueJugadorEstaDeTurno() {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inicio Del Juego");
         alert.setHeaderText("Jugador de Turno");
         String mensaje = "Comienza el jugador " + juego.jugadorDeTurno().obtenerNombre() + ".";
         alert.setContentText(mensaje);
         alert.show();
+
     }
 
     private void setConsola() {

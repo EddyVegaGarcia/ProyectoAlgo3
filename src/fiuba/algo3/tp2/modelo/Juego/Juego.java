@@ -47,13 +47,6 @@ public class Juego{
 
 
 /*
-    public void jugar(){
-        while (this.ganador == null) {
-            //turno.jugar();
-            this.verificarGanador();
-        }
-
-    }
     private void verificarGanador() {
         if (jugador1.castilloDestruido()) {
             this.ganador = jugador2;
@@ -63,7 +56,7 @@ public class Juego{
         }
     }
     */
-public Mapa mapa() {
+    public Mapa mapa() {
     return mapa;
 }
 
@@ -108,7 +101,7 @@ public Mapa mapa() {
         for(Posicion unaPosicion : unaLista){
 
             mapa.validarPosicion(unaPosicion);
-            
+
         }
 
         Edificio unEdificio = (Edificio) piezaConstructora.crearPieza(piezaType, jugadorDeTurno());
