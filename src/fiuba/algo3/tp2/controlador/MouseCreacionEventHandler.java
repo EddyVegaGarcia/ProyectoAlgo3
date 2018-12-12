@@ -51,25 +51,28 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
         try {
             juego.crearUnidad((Edificio)edificio, fila, columna, piezaType);
-            juegoView.actualizar();
+            //juegoView.actualizar();
         }
         catch (AccionUnicaRealizadaException e){
 
             etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
-            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+            //canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
         catch (PosicionDeCreacionInvalidaException e){
 
             etiquetaAlertas.setText("Ubicacion invalida para crear.");
-            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+            //canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
         catch (OroInsuficienteException e){
             etiquetaAlertas.setText("No tienes suficiente oro.");
-            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+          //  canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
         catch (UbicacionOcupadaException e){
             etiquetaAlertas.setText("La ubicacion donde se quiere crear, esta ocupada.");
-            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+          //  canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
+        juegoView.actualizar();
+        canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+
     }
 }

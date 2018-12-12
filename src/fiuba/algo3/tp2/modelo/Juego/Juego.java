@@ -95,6 +95,7 @@ public Mapa mapa() {
 
         mapa.colocarPieza(unaUnidad, posicion);
 
+        jugadorDeTurno().pagar(COSTO_ARMADEASEDIO);
         jugadorDeTurno().agregaPieza(unaUnidad);
         unaUnidad.agregarPosicion(list);
     }
