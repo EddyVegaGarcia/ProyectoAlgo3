@@ -53,9 +53,9 @@ public class PosicionTest {
     public void testPosicionEstaEncapuladaEnLosLimitesConTamanioDeterminado() {
 
         Posicion posicion1 = new Posicion(15,15);
-        Posicion posicion2 = new Posicion(20,20);
+        Posicion posicion2 = new Posicion(15,16);
 
-        int tamanioDeterminadoDeEncapsulamiento  = 6;
+        int tamanioDeterminadoDeEncapsulamiento  = 2;
         assertTrue(posicion2.estaContenidaEn(posicion1, tamanioDeterminadoDeEncapsulamiento));
 
     }

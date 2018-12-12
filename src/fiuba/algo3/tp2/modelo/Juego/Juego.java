@@ -88,7 +88,7 @@ public Mapa mapa() {
         Posicion posicion = new Posicion((int)fila, (int)columna);
         validarDistanciaDeCreacion(posicion, edificio);
 
-        Unidad unaUnidad = ((Edificio) edificio).crearUnidad(unidadType, jugadorDeTurno());
+        Unidad unaUnidad =  edificio.crearUnidad(unidadType, jugadorDeTurno());
 
         ArrayList<Posicion> list = new ArrayList<>();
         list.add(posicion);
@@ -103,7 +103,7 @@ public Mapa mapa() {
     private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
         Posicion unaPosicion = edificio.obtenerPosicion();
 
-        if( !posicion.validacionPosicionValida(unaPosicion, edificio.obtenerTamanio())) {
+        if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }

@@ -41,8 +41,9 @@ public class Posicion {
 
     public boolean validacionPosicionValida(Posicion unaPosicion, int tamanioDelEdificio){
 
-        return  ( (((( (unaPosicion.getFila() - posicionFila == 1)) || ( (unaPosicion.getFila() - posicionFila) == -sqrt(tamanioDelEdificio))))
-                || ( ((unaPosicion.getColumna() - posicionColumna) == 1) || (((unaPosicion.getColumna() - posicionColumna) == -sqrt(tamanioDelEdificio) ) ) ) ));
+        Posicion nuevaPosicion = new Posicion(posicionFila - 1 , posicionColumna - 1);
+
+        return  unaPosicion.estaContenidaEn(nuevaPosicion, (int) (sqrt(tamanioDelEdificio) + 1));
 
     }
 }

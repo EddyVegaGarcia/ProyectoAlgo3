@@ -14,10 +14,10 @@ public class MapaTest {
 
     @Test
     public void testIniciarMapaBaseCorrespondiente() {
-        //Mapa Base se inicia con 35 * 40 = 1400 espacios
+
         Mapa mapa = new Mapa();
 
-        int espacioEsperado = 32 * 40;
+        int espacioEsperado = 27 * 37;
         assertEquals(espacioEsperado,mapa.getTamanio());
     }
 
