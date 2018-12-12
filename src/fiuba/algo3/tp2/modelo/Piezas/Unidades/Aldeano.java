@@ -1,8 +1,7 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
-import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
-import fiuba.algo3.tp2.modelo.Exception.ConstruccionCastilloException;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
@@ -26,6 +25,15 @@ public class Aldeano extends Unidad implements Constructor {
         this.estado = new EnReposo();
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
+
+    }
+
+
+    @Override
+    public void validarOroSufiente(int cantidadOroActual) {
+
+        if( cantidadOroActual < COSTO_CUARTEL || cantidadOroActual < COSTO_PLAZACENTRAL )
+            throw new OroInsuficienteException();
 
     }
 

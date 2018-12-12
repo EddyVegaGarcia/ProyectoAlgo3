@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Castillo extends Edificio implements Atacante {
+public class Castillo extends Edificio implements Atacante, Creador {
 
     public RangoDeAtaque rangoDeAtaque;
 
@@ -49,17 +49,25 @@ public class Castillo extends Edificio implements Atacante {
         }
         */
     }
+    @Override
+    public void validarOroSufiente(int cantidadOroActual) {
+
+        if( cantidadOroActual < COSTO_ARMADEASEDIO )
+            throw new OroInsuficienteException();
+
+    }
 
     @Override
     public Unidad crearUnidad(PiezaType piezaType, Jugador jugador) {
 
-        if( jugador.oro < COSTO_ARMADEASEDIO ) throw new OroInsuficienteException();
+        this.validarOroSufiente(jugador.oro);
 
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
             this.validarAcciones();
             this.accionesRealizadas++;
-            
+
+            jugador.pagar(COSTO_ARMADEASEDIO);
             return PiezaFactory.crearUnidad(piezaType);
 
         }

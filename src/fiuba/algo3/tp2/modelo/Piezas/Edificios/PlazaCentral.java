@@ -4,12 +4,13 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Creador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class PlazaCentral extends Edificio {
+public class PlazaCentral extends Edificio implements Creador {
 
     public PlazaCentral(){
 
@@ -21,11 +22,24 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public Unidad crearUnidad(PiezaType piezaType, Jugador oro){
+    public void validarOroSufiente(int cantidadOroActual) {
 
-        if(piezaType == PiezaType.UNIDAD_ALDEANO ){
+        if( cantidadOroActual < COSTO_ALDEANO )
+            throw new OroInsuficienteException();
+
+    }
+
+    @Override
+    public Unidad crearUnidad(PiezaType piezaType, Jugador unJugador){
+
+        this.validarOroSufiente(unJugador.oro);
+
+        if(piezaType == UNIDAD_ALDEANO ){
             this.validarAcciones();
             this.accionesRealizadas++;
+
+            unJugador.pagar(COSTO_ALDEANO);
+
             return PiezaFactory.crearUnidad(piezaType);
         }
         else

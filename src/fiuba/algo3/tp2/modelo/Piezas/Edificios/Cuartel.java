@@ -4,12 +4,13 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Creador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Cuartel extends Edificio {
+public class Cuartel extends Edificio implements Creador {
 
 
     public Cuartel() {
@@ -19,13 +20,31 @@ public class Cuartel extends Edificio {
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
-    @Override
-    public Unidad crearUnidad(PiezaType piezaType, Jugador oro) {
 
-        if ((piezaType == PiezaType.UNIDAD_ESPADACHIN) || (piezaType == PiezaType.UNIDAD_ARQUERO)) {
+
+    @Override
+    public void validarOroSufiente(int cantidadOroActual) {
+
+        if( cantidadOroActual < COSTO_ARMADEASEDIO )
+            throw new OroInsuficienteException();
+
+    }
+
+    @Override
+    public Unidad crearUnidad(PiezaType piezaType, Jugador unJugador) {
+
+        this.validarOroSufiente(unJugador.oro);
+
+        if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 
             this.validarAcciones();
             this.accionesRealizadas++;
+
+            if(piezaType == UNIDAD_ESPADACHIN)
+                unJugador.pagar(COSTO_ESPADACHIN);
+            if(piezaType == UNIDAD_ARQUERO)
+                unJugador.pagar(COSTO_ARQUERO);
+
             return PiezaFactory.crearUnidad(piezaType);
         }
         else
