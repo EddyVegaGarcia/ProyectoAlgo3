@@ -3,25 +3,28 @@ package fiuba.algo3.tp2.modelo.Juego;
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 
-import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
+
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
-import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
-import fiuba.algo3.tp2.modelo.UnidadFactory.*;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Jugador {
 
     public int oro;
     private ArrayList<Pieza> piezas;
     private List<Unidad> poblacion;
+    private List<Constructor> aldeanos;
     private Castillo castillo;
 
     private int limitePoblacion;
@@ -39,6 +42,7 @@ public class Jugador {
         this.limitePoblacion = LIMITE_POBLACION;
         this.piezas = new ArrayList<>();
         this.poblacion = new ArrayList<>();
+        this.aldeanos = new ArrayList<>();
         this.mapa = mapa;
         this.estado = new NoHabilitadoParaJugar();
     }
@@ -73,6 +77,10 @@ public class Jugador {
         this.poblacion.add(aldeano1);
         this.poblacion.add(aldeano2);
         this.poblacion.add(aldeano3);
+
+        this.aldeanos.add(aldeano1);
+        this.aldeanos.add(aldeano2);
+        this.aldeanos.add(aldeano3);
 
         this.mapa.colocarPieza(aldeano1,posicionAldeano1);
         this.mapa.colocarPieza(aldeano2,posicionAldeano2);
@@ -135,8 +143,18 @@ public class Jugador {
            }
        */
 
+    public void agregarPoblacion(Unidad unaUnidad){
+
+        if(unaUnidad.obtenerType() == UNIDAD_ALDEANO)
+            this.aldeanos.add((Constructor) unaUnidad);
+
+        this.poblacion.add(unaUnidad);
+    }
+
     public void agregaPieza(Pieza unaPieza) {
+
         piezas.add(unaPieza);
+
     }
 
     public ArrayList<Pieza> getPiezas() {
@@ -152,8 +170,9 @@ public class Jugador {
     }
 
     public void recolectarOro() {
-        for(Pieza piezaActual : piezas){
-            oro = oro + piezaActual.oroRecolectado();
+        for(Constructor constructorActual : aldeanos){
+
+            oro = oro + constructorActual.oroRecolectado();
         }
     }
 
@@ -165,10 +184,7 @@ public class Jugador {
 
     public void pagar(int costo) {
 
-        if(oro - costo < 0)
-            oro = 0;
-        else
-            oro = oro - costo;
+        oro = oro - costo;
     }
 
 /*

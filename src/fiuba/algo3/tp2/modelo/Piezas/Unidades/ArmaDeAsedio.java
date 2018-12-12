@@ -124,8 +124,4 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         return "Aldeano";
     }
 
-    @Override
-    public int oroRecolectado() {
-        return 0;
-    }
 }

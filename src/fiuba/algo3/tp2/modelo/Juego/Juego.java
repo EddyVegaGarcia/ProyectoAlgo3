@@ -88,6 +88,7 @@ public class Juego{
 
         mapa.colocarPieza(unaUnidad, posicion);
 
+        jugadorDeTurno().agregarPoblacion(unaUnidad);
         jugadorDeTurno().agregaPieza(unaUnidad);
 
     }

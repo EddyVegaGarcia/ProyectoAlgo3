@@ -57,9 +57,4 @@ public class Arquero extends Unidad implements Atacante {
         return "Arquero";
     }
 
-
-    @Override
-    public int oroRecolectado() {
-        return 0;
-    }
 }

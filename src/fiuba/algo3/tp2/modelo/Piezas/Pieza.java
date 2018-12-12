@@ -41,8 +41,6 @@ public abstract class Pieza {
 
     public abstract String obtenerNombre();
 
-    public abstract int oroRecolectado();
-
     public void refrescar(){
         accionesRealizadas = 0;
     }

@@ -58,8 +58,4 @@ public class Espadachin extends Unidad implements Atacante {
         return "Espadachin";
     }
 
-    @Override
-    public int oroRecolectado() {
-        return 0;
-    }
 }

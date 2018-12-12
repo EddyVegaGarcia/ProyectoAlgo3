@@ -36,28 +36,6 @@ public class Turno {
 
     }
 
-/*
-    private void cobrar(int costo, Jugador jugador) {
-        int oro = jugador.obtenerOro();
-        if (oro < costo) {
-            throw new OroInsuficienteException();
-        }
-        jugador.cobrarOro(costo);
-    }
-*/
-    public Jugador jugar() {
-
-        /*jugador1.jugar();
-        jugador2.jugar();*/
-
-        Jugador ultimoJugador = jugador2;
-
-        jugadorEnJuego = ultimoJugador;
-
-        return jugadorEnJuego;
-
-    }
-
     public void terminarTurno(){
 
         jugadorEnJuego.recolectarOro();

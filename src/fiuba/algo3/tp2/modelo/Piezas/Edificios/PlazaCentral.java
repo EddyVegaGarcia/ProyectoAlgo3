@@ -4,13 +4,14 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.Creador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class PlazaCentral extends Edificio implements Creador {
+public class PlazaCentral extends Edificio implements Creador, Construible {
 
     public PlazaCentral(){
 
@@ -68,7 +69,7 @@ public class PlazaCentral extends Edificio implements Creador {
     }
 
     @Override
-    public int oroRecolectado() {
-        return 0;
+    public void verificarConstruccion() {
+        
     }
 }

@@ -10,5 +10,6 @@ public interface Constructor extends Diseñador{
 
     boolean estaTrabajando();
 
+    int oroRecolectado();
 
 }

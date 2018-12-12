@@ -87,12 +87,6 @@ public class Castillo extends Edificio implements Atacante, Creador {
     }
 
     @Override
-    public int oroRecolectado() {
-        return 0;
-    }
-
-
-    @Override
     public void atacarEdificio(Edificio unEdificio) {
 
     }

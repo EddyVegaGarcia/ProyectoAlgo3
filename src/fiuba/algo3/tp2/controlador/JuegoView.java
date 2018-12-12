@@ -335,6 +335,7 @@ public class JuegoView {
                 (Diseñador) pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
         boton.setText("Construir Arma de Asedio");
 
+
         contenedorParaUnaPieza.getChildren().add(boton);
 
     }
@@ -394,7 +395,6 @@ public class JuegoView {
 
         contenedorParaUnaPieza.getChildren().addAll(etiqueta, etiquetaVida);
     }
-
 
     public void acualizarContenedorDeInformacionDeJugadores() {
         contenedorInformacionDeJugadores.getChildren().clear();
