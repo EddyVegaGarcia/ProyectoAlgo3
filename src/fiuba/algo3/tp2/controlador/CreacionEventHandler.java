@@ -2,11 +2,10 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
-import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
-import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -24,17 +23,17 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private UbicarPiezas ubicarPiezas;
     private double height;
     private double widht;
-    private UnidadType unidadType;
+    private PiezaType piezaType;
     private Posicion nuevaPosicionCreada;
 
     public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
-                                Pieza unaPiezaCreadora, UnidadType unaUnidadType, Label etiquetaConsola) {
+                                Pieza unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
         this.edificioCreador = unaPiezaCreadora;
         this.juegoView = unJuegoView;
         this.canvasCentral = unCanvasCentral;
-        this.unidadType = unaUnidadType;
+        this.piezaType = unaPiezaType;
         this.juego = unJuego;
         this.etiquetaAlertas = etiquetaConsola;
 
@@ -47,7 +46,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral,
-                    edificioCreador, unidadType, etiquetaAlertas));
+                    edificioCreador, piezaType, etiquetaAlertas));
 
 
     }

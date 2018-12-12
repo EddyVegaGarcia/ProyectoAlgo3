@@ -4,8 +4,7 @@ import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
-import fiuba.algo3.tp2.modelo.UnidadFactory.UnidadType;
-
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
@@ -84,7 +83,7 @@ public Mapa mapa() {
         turno.terminarTurno();
     }
 
-    public void crearUnidad(Edificio edificio, double fila, double columna, UnidadType unidadType) {
+    public void crearUnidad(Edificio edificio, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
         validarDistanciaDeCreacion(posicion, edificio);

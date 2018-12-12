@@ -21,12 +21,12 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public Unidad crearUnidad(UnidadType unidadType, Jugador oro){
+    public Unidad crearUnidad(PiezaType piezaType, Jugador oro){
 
-        if(unidadType == UnidadType.UNIDAD_ALDEANO ){
+        if(piezaType == PiezaType.UNIDAD_ALDEANO ){
             this.validarAcciones();
             this.accionesRealizadas++;
-            return UnidadesFactory.crearUnidad(unidadType);
+            return PiezaFactory.crearUnidad(piezaType);
         }
         else
             throw new InvalidUnidadTypeException();

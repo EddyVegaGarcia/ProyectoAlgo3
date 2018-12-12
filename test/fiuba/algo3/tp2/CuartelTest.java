@@ -19,7 +19,7 @@ public class CuartelTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
-        Unidad espadachin = cuartel.crearUnidad(UnidadType.UNIDAD_ESPADACHIN, jugador);
+        Unidad espadachin = cuartel.crearUnidad(PiezaType.UNIDAD_ESPADACHIN, jugador);
 
         int vidaEsperada = 100;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -31,7 +31,7 @@ public class CuartelTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARQUERO, jugador);
+        Unidad arquero = cuartel.crearUnidad(PiezaType.UNIDAD_ARQUERO, jugador);
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -43,8 +43,7 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO, jugador);
-
+        Unidad arquero = cuartel.crearUnidad(PiezaType.UNIDAD_ARMADEASEDIO, jugador);
     }
 
     @Test

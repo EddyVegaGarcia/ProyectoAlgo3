@@ -51,16 +51,17 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    public Unidad crearUnidad(UnidadType unidadType, Jugador jugador) {
+    public Unidad crearUnidad(PiezaType piezaType, Jugador jugador) {
 
         if( jugador.oro < COSTO_ARMADEASEDIO ) throw new OroInsuficienteException();
 
-        if (unidadType == UnidadType.UNIDAD_ARMADEASEDIO) {
+        if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
             this.validarAcciones();
             this.accionesRealizadas++;
+
             jugador.pagar(COSTO_ARMADEASEDIO);
-            return UnidadesFactory.crearUnidad(unidadType);
+            return PiezaFactory.crearUnidad(piezaType);
 
         }
         else

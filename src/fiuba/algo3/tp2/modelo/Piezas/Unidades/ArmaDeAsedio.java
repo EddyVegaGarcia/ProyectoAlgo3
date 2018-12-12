@@ -7,11 +7,10 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Exception.AtaqueInvalidoException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
-
-import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
