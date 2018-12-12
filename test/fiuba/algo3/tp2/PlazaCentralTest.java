@@ -19,7 +19,7 @@ public class PlazaCentralTest {
 
         Edificio plaza = new PlazaCentral();
 
-        Unidad aldeano = plaza.crearUnidad(PiezaType.UNIDAD_ALDEANO, jugador);
+        Unidad aldeano = ((PlazaCentral) plaza).crearPieza(PiezaType.UNIDAD_ALDEANO, jugador);
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
@@ -32,7 +32,7 @@ public class PlazaCentralTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio plazaCentral = new PlazaCentral();
 
-        Unidad aldeano = plazaCentral.crearUnidad(PiezaType.UNIDAD_ESPADACHIN, jugador);
+        Unidad aldeano = ((PlazaCentral) plazaCentral).crearPieza(PiezaType.UNIDAD_ESPADACHIN, jugador);
     }
 
     @Test

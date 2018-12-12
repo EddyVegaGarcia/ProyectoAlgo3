@@ -94,7 +94,7 @@ public class Jugador {
     /*
        public void comprarPieza(Edificio unEdificio) {
 
-           Unidad aldeano = unEdificio.crearUnidad(PiezaType.UNIDAD_ALDEANO);
+           Unidad aldeano = unEdificio.crearPieza(PiezaType.UNIDAD_ALDEANO);
            this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
            this.poblacion = poblacion +1;
 
@@ -135,8 +135,8 @@ public class Jugador {
            }
        */
 
-    public void agregaPieza(Unidad unaUnidad) {
-        piezas.add(unaUnidad);
+    public void agregaPieza(Pieza unaPieza) {
+        piezas.add(unaPieza);
     }
 
     public ArrayList<Pieza> getPiezas() {

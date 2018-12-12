@@ -2,7 +2,9 @@ package fiuba.algo3.tp2.modelo.Juego;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class Juego{
         }
     }
     */
-public Mapa mapa() {
+    public Mapa mapa() {
     return mapa;
 }
 
@@ -83,26 +85,34 @@ public Mapa mapa() {
         turno.terminarTurno();
     }
 
-    public void crearUnidad(Edificio edificio, double fila, double columna, PiezaType unidadType) {
+    public void crearUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
-        validarDistanciaDeCreacion(posicion, edificio);
+        validarDistanciaDeCreacion(posicion, piezaConstructora);
 
-        Unidad unaUnidad =  edificio.crearUnidad(unidadType, jugadorDeTurno());
-
-        ArrayList<Posicion> list = new ArrayList<>();
-        list.add(posicion);
+        Pieza unaUnidad =  piezaConstructora.crearPieza(unidadType, jugadorDeTurno());
 
         mapa.colocarPieza(unaUnidad, posicion);
 
         jugadorDeTurno().agregaPieza(unaUnidad);
-        unaUnidad.agregarPosicion(list);
     }
 
-    private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
-        Posicion unaPosicion = edificio.obtenerPosicion();
+    public void crearEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
-        if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
+        Posicion posicion = new Posicion((int)fila, (int)columna);
+
+        Pieza unEdificio = piezaConstructora.crearPieza(piezaType, jugadorDeTurno());
+
+        mapa.colocarPieza(unEdificio, posicion);
+
+        jugadorDeTurno().agregaPieza(unEdificio);
+
+    }
+
+    private void validarDistanciaDeCreacion(Posicion posicion, Diseñador edificio) {
+        Posicion unaPosicion = ((Edificio)edificio).obtenerPosicion();
+
+        if( !unaPosicion.validacionPosicionValida(posicion, ((Edificio)edificio).obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }

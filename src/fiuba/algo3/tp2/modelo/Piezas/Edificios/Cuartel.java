@@ -25,13 +25,13 @@ public class Cuartel extends Edificio implements Creador {
     @Override
     public void validarOroSufiente(int cantidadOroActual) {
 
-        if( cantidadOroActual < COSTO_ARMADEASEDIO )
+        if( cantidadOroActual < COSTO_ESPADACHIN || cantidadOroActual < COSTO_ARQUERO )
             throw new OroInsuficienteException();
 
     }
 
     @Override
-    public Unidad crearUnidad(PiezaType piezaType, Jugador unJugador) {
+    public Unidad crearPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarOroSufiente(unJugador.oro);
 
@@ -45,7 +45,7 @@ public class Cuartel extends Edificio implements Creador {
             if(piezaType == UNIDAD_ARQUERO)
                 unJugador.pagar(COSTO_ARQUERO);
 
-            return PiezaFactory.crearUnidad(piezaType);
+            return (Unidad) PiezaFactory.crearPieza(piezaType);
         }
         else
             throw new InvalidUnidadTypeException();

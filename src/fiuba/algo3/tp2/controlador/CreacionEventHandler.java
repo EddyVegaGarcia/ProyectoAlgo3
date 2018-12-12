@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -18,7 +19,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private Mapa mapa;
     private JuegoView juegoView;
     private Juego juego;
-    private Pieza edificioCreador;
+    private Diseñador piezaConstructora;
     private Canvas canvasCentral;
     private UbicarPiezas ubicarPiezas;
     private double height;
@@ -27,10 +28,10 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     private Posicion nuevaPosicionCreada;
 
     public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
-                                Pieza unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
+                                Diseñador unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
-        this.edificioCreador = unaPiezaCreadora;
+        this.piezaConstructora = unaPiezaCreadora;
         this.juegoView = unJuegoView;
         this.canvasCentral = unCanvasCentral;
         this.piezaType = unaPiezaType;
@@ -46,7 +47,7 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral,
-                    edificioCreador, piezaType, etiquetaAlertas));
+                piezaConstructora, piezaType, etiquetaAlertas));
 
 
     }

@@ -18,7 +18,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        Unidad armaDeAsedio = castillo.crearUnidad(PiezaType.UNIDAD_ARMADEASEDIO, jugador);
+        Unidad armaDeAsedio = ((Castillo) castillo).crearPieza(PiezaType.UNIDAD_ARMADEASEDIO, jugador);
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -31,7 +31,7 @@ public class CastilloTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio castillo = new Castillo();
 
-        Unidad armaDeAsedio = castillo.crearUnidad(PiezaType.UNIDAD_ESPADACHIN, jugador);
+        Unidad armaDeAsedio = ((Castillo) castillo).crearPieza(PiezaType.UNIDAD_ESPADACHIN, jugador);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
@@ -201,18 +202,22 @@ public class JuegoView {
             if(type.equals(PiezaType.UNIDAD_ESPADACHIN)){
 
                 agregarBotonesDeMovimiento(pieza);
+                agregarBotonDeAtaque(pieza);
 
             }
             else if (type.equals(PiezaType.UNIDAD_ALDEANO)){
 
                 agregarBotonesDeMovimiento(pieza);
-                agregarBotonDeAtaque(pieza);
+                agregarBotonConstruirCuartel(pieza);
+                agregarBotonConstruirPlazaCentral(pieza);
                 agregarBotonReparar(pieza);
 
             }
             else if (type.equals(PiezaType.UNIDAD_ARMADEASEDIO)){
 
                 agregarBotonesDeMovimiento(pieza);
+                //agregarBotonMontarse(pieza);
+                //agregarBotonDesmontarse(pieza);
                 agregarBotonDeAtaque(pieza);
 
             }
@@ -225,12 +230,12 @@ public class JuegoView {
             else if (type.equals(PiezaType.EDIFICIO_CASTILLO)){
 
                 agregarBotonConstruirArmaAsedio(pieza);
-                agregarBotonDeAtaque(pieza);
 
             }
             else if (type.equals(PiezaType.EDIFICIO_CUARTEL)){
 
-                agregarBotonDeAtaque(pieza);
+                agregarBotonCrearEspadachin(pieza);
+                agregarBotonCrearArquero(pieza);
 
             }
             else if (type.equals(PiezaType.EDIFICIO_PLAZACENTRAL)){
@@ -247,6 +252,50 @@ public class JuegoView {
 
     }
 
+    private void agregarBotonCrearArquero(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,(Diseñador) pieza,
+                UNIDAD_ARQUERO , etiquetaConsola));
+        boton.setText("Crear Arquero");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
+    private void agregarBotonCrearEspadachin(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, (Diseñador)pieza,
+                UNIDAD_ESPADACHIN , etiquetaConsola));
+        boton.setText("Crear espadachin");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
+    private void agregarBotonConstruirPlazaCentral(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral, (Diseñador) pieza,
+                EDIFICIO_PLAZACENTRAL, etiquetaConsola));
+        boton.setText("Crear Plaza Central");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
+    private void agregarBotonConstruirCuartel(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral,(Diseñador) pieza,
+                EDIFICIO_CUARTEL, etiquetaConsola));
+        boton.setText("Crear Cuartel");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
     private void agregarBotonReparar(Pieza pieza) {
 
         Button boton = new Button();
@@ -259,7 +308,7 @@ public class JuegoView {
     private void agregarBotonCrearAldeano(Pieza pieza) {
 
         Button boton = new Button();
-        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, pieza,
+        boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, (Diseñador) pieza,
                 UNIDAD_ALDEANO , etiquetaConsola));
         boton.setText("Crear Aldeano");
 
@@ -281,7 +330,7 @@ public class JuegoView {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,
-                pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
+                (Diseñador) pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
         boton.setText("Construir Arma de Asedio");
 
         contenedorParaUnaPieza.getChildren().add(boton);

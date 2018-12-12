@@ -99,10 +99,10 @@ public class Mapa {
 
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
         this.validarPosicion(nuevaPosicion);
-        Unidad aldeano = (Unidad) this.recuperarPieza(posicion);
-        aldeano.cambiarPosicion(nuevaPosicion);
+        Unidad unaPieza = (Unidad) this.recuperarPieza(posicion);
+        unaPieza.cambiarPosicion(nuevaPosicion);
         piezasDelMapa.remove(posicion);
-        piezasDelMapa.put(nuevaPosicion, aldeano);
+        piezasDelMapa.put(nuevaPosicion, unaPieza);
 
     }
 

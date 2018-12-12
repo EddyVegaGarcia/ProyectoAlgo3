@@ -30,7 +30,7 @@ public class PlazaCentral extends Edificio implements Creador {
     }
 
     @Override
-    public Unidad crearUnidad(PiezaType piezaType, Jugador unJugador){
+    public Unidad crearPieza(PiezaType piezaType, Jugador unJugador){
 
         this.validarOroSufiente(unJugador.oro);
 
@@ -40,7 +40,7 @@ public class PlazaCentral extends Edificio implements Creador {
 
             unJugador.pagar(COSTO_ALDEANO);
 
-            return PiezaFactory.crearUnidad(piezaType);
+            return (Unidad) PiezaFactory.crearPieza(piezaType);
         }
         else
             throw new InvalidUnidadTypeException();
