@@ -32,18 +32,25 @@ public class Mapa {
         return (posicionLimite.obtenerTamanioLimite());
     }
 
-    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
+    public ArrayList<Posicion> generarLista(Posicion unaPosicion, int tamanio){
 
         ArrayList<Posicion> unaLista = new ArrayList<>();
 
-        for(int i = 0; i < sqrt(unaPieza.obtenerTamanio()); i++){
-            for(int j = 0; j < sqrt(unaPieza.obtenerTamanio()); j++){
+        for(int i = 0; i < sqrt(tamanio); i++){
+            for(int j = 0; j < sqrt(tamanio); j++){
 
                 unaLista.add(new Posicion(unaPosicion.getFila() + i,
                         unaPosicion.getColumna() + j));
 
             }
         }
+
+        return unaLista;
+    }
+
+    public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
+
+        ArrayList<Posicion> unaLista = this.generarLista(unaPosicion, unaPieza.obtenerTamanio());
 
         this.agregarPiezaAMapa(unaLista, unaPieza);
         unaPieza.agregarPosicion(unaLista);
@@ -61,7 +68,7 @@ public class Mapa {
 
     }
 
-    private void validarPosicion(Posicion unaPosicion) {
+    public void validarPosicion(Posicion unaPosicion) {
 
         if (!unaPosicion.estaContenidaEnDimensiones(posicionLimite))
             throw new UbicacionErroneaException();
@@ -99,10 +106,10 @@ public class Mapa {
 
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);
         this.validarPosicion(nuevaPosicion);
-        Unidad unaPieza = (Unidad) this.recuperarPieza(posicion);
-        unaPieza.cambiarPosicion(nuevaPosicion);
+        Unidad aldeano = (Unidad) this.recuperarPieza(posicion);
+        aldeano.cambiarPosicion(nuevaPosicion);
         piezasDelMapa.remove(posicion);
-        piezasDelMapa.put(nuevaPosicion, unaPieza);
+        piezasDelMapa.put(nuevaPosicion, aldeano);
 
     }
 

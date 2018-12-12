@@ -63,7 +63,7 @@ public class Juego{
         }
     }
     */
-    public Mapa mapa() {
+public Mapa mapa() {
     return mapa;
 }
 
@@ -88,20 +88,30 @@ public class Juego{
     public void crearUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
-        validarDistanciaDeCreacion(posicion, piezaConstructora);
+        validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
+        mapa.validarPosicion(posicion);
 
-        Pieza unaUnidad =  piezaConstructora.crearPieza(unidadType, jugadorDeTurno());
+        Unidad unaUnidad = (Unidad) piezaConstructora.crearPieza(unidadType, jugadorDeTurno());
 
         mapa.colocarPieza(unaUnidad, posicion);
 
         jugadorDeTurno().agregaPieza(unaUnidad);
+
     }
 
     public void crearEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        Pieza unEdificio = piezaConstructora.crearPieza(piezaType, jugadorDeTurno());
+        ArrayList<Posicion> unaLista = mapa.generarLista(posicion, TAMANIO_CUARTEL);
+
+        for(Posicion unaPosicion : unaLista){
+
+            mapa.validarPosicion(unaPosicion);
+            
+        }
+
+        Edificio unEdificio = (Edificio) piezaConstructora.crearPieza(piezaType, jugadorDeTurno());
 
         mapa.colocarPieza(unEdificio, posicion);
 
@@ -109,10 +119,10 @@ public class Juego{
 
     }
 
-    private void validarDistanciaDeCreacion(Posicion posicion, Diseñador edificio) {
-        Posicion unaPosicion = ((Edificio)edificio).obtenerPosicion();
+    private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
+        Posicion unaPosicion = edificio.obtenerPosicion();
 
-        if( !unaPosicion.validacionPosicionValida(posicion, ((Edificio)edificio).obtenerTamanio())) {
+        if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }

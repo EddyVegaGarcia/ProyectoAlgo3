@@ -12,15 +12,12 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Cuartel extends Edificio implements Creador {
 
-
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
         this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnConstruccion();
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
-
-
 
     @Override
     public void validarOroSufiente(int cantidadOroActual) {
@@ -49,6 +46,7 @@ public class Cuartel extends Edificio implements Creador {
         }
         else
             throw new InvalidUnidadTypeException();
+
 
     }
 

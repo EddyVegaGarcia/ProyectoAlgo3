@@ -164,7 +164,11 @@ public class Jugador {
     }
 
     public void pagar(int costo) {
-        oro = oro - costo;
+
+        if(oro - costo < 0)
+            oro = 0;
+        else
+            oro = oro - costo;
     }
 
 /*
