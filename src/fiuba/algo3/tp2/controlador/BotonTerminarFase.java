@@ -26,72 +26,10 @@ public class BotonTerminarFase extends Button {
         this.jugador1 = juego.jugador1();
         this.jugador2 = juego.jugador2();
 
-        this.actualizarContenedor();
+        colocarBoton();
     }
 
-    private void actualizarContenedor() {
-        contenedor.getChildren().clear();
-        colocarDatosDelJugador(juego.jugadorDeTurno());
-        //colocarBoton(contenedorVertical);
-        agregarEtiquetasDeVidasDeJugadores();
-
-    }
-
-    private void agregarEtiquetasDeVidasDeJugadores() {
-        VBox contenedorJugador1 = new VBox();
-        contenedorJugador1.setPadding(new Insets(10));
-        contenedorJugador1.setSpacing(10);
-
-        VBox contenedorJugador2 = new VBox();
-        contenedorJugador2.setPadding(new Insets(10));
-        contenedorJugador2.setSpacing(10);
-
-        //etiqueta para la vida de los jugadores
-        Label etiquetaVidaCastilloJugador1 = crearEtiquetaConTexto("vida : " + jugador1.vida());
-        Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
-
-        //etiqueta para los nombres de los jugadores
-        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.obtenerNombre());
-        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.obtenerNombre());
-
-        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
-        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);
-
-        /*HBox contenedorHorizontal = new HBox();
-        contenedorHorizontal.setSpacing(10);
-        contenedorHorizontal.getChildren().addAll(contenedorJugador1, contenedorJugador2);*/
-        contenedor.getChildren().addAll(contenedorJugador1, contenedorJugador2);
-
-        //contenedorVertical.getChildren().addAll(contenedorHorizontal);
-    }
-
-    private Label crearEtiquetaConTexto(String nombre) {
-        Label etiqueta = new Label();
-        etiqueta.setText(nombre);
-        return etiqueta;
-    }
-
-    private void colocarDatosDelJugador(Jugador jugadorDeTuno) {
-
-        VBox contenedorVertical = new VBox();
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(10));
-
-        colocarBoton(contenedorVertical);
-
-        Label etiqueta = new Label();
-        etiqueta.setText("Oro : " + jugadorDeTuno.oro());
-
-        nombreDelJugadorDeTurno = juego.jugadorDeTurno().obtenerNombre();
-
-        Label etiquetaTurno = new Label();
-        etiquetaTurno.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
-
-        contenedorVertical.getChildren().addAll(etiquetaTurno, etiqueta);
-        contenedor.getChildren().add(contenedorVertical);
-    }
-
-    private void colocarBoton(VBox contenedorVertical) {
+    private void colocarBoton() {
 
         Button boton = new Button();
         boton.setText("Terminar turno");
@@ -99,10 +37,10 @@ public class BotonTerminarFase extends Button {
             @Override
             public void handle(ActionEvent event) {
                 juego.terminarTurno();
-                actualizarContenedor();
+                juegoView.acualizarContenedorDeInformacionDeJugadores();
             }
         });
 
-        contenedorVertical.getChildren().addAll(boton);
+        contenedor.getChildren().add(boton);
     }
 }

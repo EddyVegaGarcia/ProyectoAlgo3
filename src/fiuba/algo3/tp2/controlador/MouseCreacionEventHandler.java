@@ -49,50 +49,28 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         double columna = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
         double fila = event.getY()*FILA_DEFAULT_MAPA/height;
 
-        Unidad unaUnidad = null;
-
         try {
-            unaUnidad = ((Edificio) edificio).crearUnidad(unidadType);
+
+            juego.crearUnidad((Edificio)edificio, fila, columna, unidadType);
+            juegoView.actualizar();
         }
         catch (AccionUnicaRealizadaException e){
 
             etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
             canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
-
-        Posicion posicion = new Posicion((int)fila, (int)columna);
-
-        try {
-            this.validarDistanciaDeCreacion(posicion);
-        }
         catch (PosicionDeCreacionInvalidaException e){
 
-            etiquetaAlertas.setText("Cada edificio solo puede crear una sola pieza");
+            etiquetaAlertas.setText("Ubicacion invalida para crear.");
             canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
-
-
-        ArrayList<Posicion> list = new ArrayList<>();
-        list.add(posicion);
-
-        mapa.colocarPieza(unaUnidad, posicion);
-        Jugador jugador = juego.jugadorDeTurno();
-
-        jugador.agregaPieza(unaUnidad);
-        unaUnidad.agregarPosicion(list);
-
-        juegoView.actualizar();
-        canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
-    }
-
-    private void validarDistanciaDeCreacion(Posicion posicion) {
-
-        Posicion unaPosicion = edificio.obtenerPosicion();
-
-
-        if( !posicion.validacionPosicionValida(unaPosicion, edificio.obtenerTamanio())) {
-
-            throw new PosicionDeCreacionInvalidaException();
+        catch (OroInsuficienteException e){
+            etiquetaAlertas.setText("No tienes suficiente oro.");
+            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
+        }
+        catch (UbicacionOcupadaException e){
+            etiquetaAlertas.setText("La ubicacion donde se quiere crear, esta ocupada.");
+            canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
         }
     }
 }

@@ -51,22 +51,4 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
 
 
     }
-
-/*
-    @Override
-    public void handle(MouseEvent event) {
-
-        double x = event.getX()*COLUMNA_DEFAULT_MAPA/widht;
-        double y = event.getY()*FILA_DEFAULT_MAPA/height;
-
-        nuevaPosicionCreada = new Posicion((int)y,(int)x);
-
-        Pieza pieza = mapa.recuperarPieza(nuevaPosicionCreada);
-
-        if( pieza == null ){
-            this.validarDistanciaDeCreacion(nuevaPosicionCreada);
-        }
-
-    }
-*/
 }

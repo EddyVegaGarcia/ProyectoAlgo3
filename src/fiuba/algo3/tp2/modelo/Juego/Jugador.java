@@ -19,7 +19,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 public class Jugador {
 
-    int oro;
+    public int oro;
     private ArrayList<Pieza> piezas;
     private List<Unidad> poblacion;
     private Castillo castillo;
@@ -41,7 +41,6 @@ public class Jugador {
         this.poblacion = new ArrayList<>();
         this.mapa = mapa;
         this.estado = new NoHabilitadoParaJugar();
-
     }
 
     public int vida() {
@@ -162,6 +161,10 @@ public class Jugador {
         for(Pieza piezaActual : piezas){
             piezaActual.refrescar();
         }
+    }
+
+    public void pagar(int costo) {
+        oro = oro - costo;
     }
 
 /*

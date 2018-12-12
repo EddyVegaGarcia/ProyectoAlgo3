@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.modelo.Campo.Mapa;
+import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
@@ -14,9 +16,10 @@ public class CuartelTest {
     @Test
     public void testCuartelCreaEspadachin() {
 
+        Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
-        Unidad espadachin = cuartel.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
+        Unidad espadachin = cuartel.crearUnidad(UnidadType.UNIDAD_ESPADACHIN, jugador);
 
         int vidaEsperada = 100;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -25,9 +28,10 @@ public class CuartelTest {
     @Test
     public void testCuartelCreaArquero() {
 
+        Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARQUERO);
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARQUERO, jugador);
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -35,10 +39,11 @@ public class CuartelTest {
 
     @Test (expected = InvalidUnidadTypeException.class)
     public void testCrearUnidadIncorrectaDeArmaDeAsedioEnCuartel() {
+        Jugador jugador = new Jugador("loo", new Mapa());
 
         Edificio cuartel = new Cuartel();
 
-        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO);
+        Unidad arquero = cuartel.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO, jugador);
 
     }
 

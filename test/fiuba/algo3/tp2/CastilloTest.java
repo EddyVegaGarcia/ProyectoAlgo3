@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.modelo.Campo.Mapa;
+import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
@@ -12,10 +14,11 @@ public class CastilloTest {
 
     @Test
     public void testCastilloCreaArmaDeAsedio(){
+        Jugador jugador = new Jugador("loo", new Mapa());
 
         Edificio castillo = new Castillo();
 
-        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO);
+        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ARMADEASEDIO, jugador);
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -25,9 +28,10 @@ public class CastilloTest {
     @Test (expected = InvalidUnidadTypeException.class)
     public void testCrearUnidadIncorrectaDeEspadachinEnCastillo() {
 
+        Jugador jugador = new Jugador("loo", new Mapa());
         Edificio castillo = new Castillo();
 
-        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ESPADACHIN);
+        Unidad armaDeAsedio = castillo.crearUnidad(UnidadType.UNIDAD_ESPADACHIN, jugador);
 
     }
 

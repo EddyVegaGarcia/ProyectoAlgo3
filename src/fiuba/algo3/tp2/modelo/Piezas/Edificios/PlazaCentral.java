@@ -4,6 +4,7 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
@@ -20,7 +21,7 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    public Unidad crearUnidad(UnidadType unidadType){
+    public Unidad crearUnidad(UnidadType unidadType, Jugador oro){
 
         if(unidadType == UnidadType.UNIDAD_ALDEANO ){
             this.validarAcciones();
