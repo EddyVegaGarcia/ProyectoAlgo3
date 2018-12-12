@@ -60,10 +60,13 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
             etiquetaAlertas.setText("Ubicacion invalida para crear.");
         }
         catch (OroInsuficienteException e){
-            etiquetaAlertas.setText("No tienes suficiente oro.");
+            etiquetaAlertas.setText("No tienes suficiente Oro.");
         }
         catch (UbicacionOcupadaException e){
             etiquetaAlertas.setText("La ubicacion donde se quiere crear, esta ocupada.");
+        }
+        catch (EdificioInexistenteException e){
+            etiquetaAlertas.setText("El edificio se encuentra en construccion");
         }
 
         juegoView.actualizar();

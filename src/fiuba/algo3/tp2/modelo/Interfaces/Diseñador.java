@@ -8,6 +8,6 @@ public interface Diseñador {
 
     void validarOroSufiente(int cantidadOroActual);
 
-    Pieza crearPieza(PiezaType unidadType, Jugador unJugador);
+    Pieza colocarPieza(PiezaType unidadType, Jugador unJugador);
 
 }

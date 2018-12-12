@@ -112,7 +112,7 @@ public class JuegoView {
         //colocarBoton(contenedorVertical);
 
         Label etiqueta = new Label();
-        etiqueta.setText("Oro : " + jugadorDeTuno.oro());
+        etiqueta.setText("Oro : " + jugadorDeTuno.stringOro());
 
         String nombreDelJugadorDeTurno = juego.jugadorDeTurno().obtenerNombre();
 
@@ -191,7 +191,7 @@ public class JuegoView {
         setEstadoDelJuego(canvasCentral);
     }
 
-    public void crearBotoneraParaPieza(Pieza pieza) {
+    public void BotonFactory(Pieza pieza) {
 
         vaciarOpcionesDePieza();
         etiquetaConsola.setText("");

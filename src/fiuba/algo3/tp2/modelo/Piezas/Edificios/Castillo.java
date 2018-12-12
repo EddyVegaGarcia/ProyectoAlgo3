@@ -58,9 +58,9 @@ public class Castillo extends Edificio implements Atacante, Creador {
     }
 
     @Override
-    public Unidad crearPieza(PiezaType piezaType, Jugador jugador) {
+    public Unidad colocarPieza(PiezaType piezaType, Jugador jugador) {
 
-        this.validarOroSufiente(jugador.oro);
+        this.validarOroSufiente(jugador.obtenerOro());
 
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
