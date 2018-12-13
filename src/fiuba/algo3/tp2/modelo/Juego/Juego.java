@@ -1,9 +1,7 @@
 package fiuba.algo3.tp2.modelo.Juego;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
-import fiuba.algo3.tp2.modelo.Exception.PiezaAtacadaPertenecienteException;
-import fiuba.algo3.tp2.modelo.Exception.PosicionAtacadaSinResultadosException;
-import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
@@ -110,8 +108,6 @@ public class Juego{
 
         Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
-        System.out.println(unEdificio.obtenerEstado());
-
         mapa.colocarPieza(unEdificio, posicion);
 
         jugadorDeTurno().agregaPieza(unEdificio);
@@ -152,6 +148,20 @@ public class Juego{
             }
             else
                 throw new PiezaAtacadaPertenecienteException();
+
+    }
+
+    public void reparar(Posicion unaPosicion, Constructor unaPiezaReparadora) {
+
+        Pieza unaPieza = mapa.recuperarPieza(unaPosicion);
+
+        if(unaPieza == null)
+            throw new PosicionReparadaSinResultadosException();
+        else
+        if(jugadorDeTurno().sosDuenioDe(unaPieza))
+            unaPiezaReparadora.repararPieza(unaPieza);
+        else
+            throw new PiezaReaparadaPertenecienteAlEnemigoException();
 
     }
 

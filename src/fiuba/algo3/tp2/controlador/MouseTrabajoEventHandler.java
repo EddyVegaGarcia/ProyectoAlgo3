@@ -1,9 +1,6 @@
 package fiuba.algo3.tp2.controlador;
 
-import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
-import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
-import fiuba.algo3.tp2.modelo.Exception.EdificioEnConstruccionException;
-import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -53,16 +50,19 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
 
         }
         catch (EdificioConstruidoException e){
-            etiquetaAlertas.setText("Edificio ya inagurado para trabajar");
+            etiquetaAlertas.setText("Edificio ya inagurado para trabajar.");
         }
         catch(PosicionDeCreacionInvalidaException e){
-            etiquetaAlertas.setText("No se ecuentra lo suficiente cerca para contruir/reparar el edificio");
+            etiquetaAlertas.setText("No se ecuentra lo suficiente cerca para contruir/repararPieza el edificio.");
         }
         catch (AccionUnicaRealizadaException e){
-            etiquetaAlertas.setText("Cada piezaConstructora solo puede realizar una sola accion");
+            etiquetaAlertas.setText("Cada piezaConstructora solo puede realizar una sola accion.");
         }
         catch(EdificioEnConstruccionException e){
-            etiquetaAlertas.setText("Edificio ya esta en proceso de construccion con otro constructor");
+            etiquetaAlertas.setText("Edificio ya esta en proceso de construccion con otro constructor.");
+        }
+        catch (PiezaNoReparableNoConstruibleException e){
+            etiquetaAlertas.setText("La pieza no es construible.");
         }
 
         juegoView.actualizar();

@@ -302,6 +302,8 @@ public class JuegoView {
     private void agregarBotonReparar(Pieza pieza) {
 
         Button boton = new Button();
+        boton.setOnAction(new RepararEventHandler(this, juego, canvasCentral,
+                (Constructor) pieza , etiquetaConsola));
         boton.setText("Reparar");
 
         contenedorParaUnaPieza.getChildren().add(boton);

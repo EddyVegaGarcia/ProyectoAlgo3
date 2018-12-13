@@ -40,27 +40,6 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public void construir(Edificio unEdificio)  {
-
-        this.ValidarEdificio(unEdificio);
-        this.validarAcciones();
-
-        ((Construible)unEdificio).verificarProcesoEnConstruccion();
-
-        edificioEnConstruccion = unEdificio;
-
-        this.seguirTrabajando();
-
-        turnosConstruccion = 0;
-
-        this.accionRealizada();
-    }
-
-    public void construccionRealizada(){
-        this.turnosConstruccion++;
-    }
-
-    @Override
     public Edificio colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarOroSufiente(unJugador.oro);
@@ -83,18 +62,52 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
-    private void ValidarEdificio(Edificio unEdificio) {
+    @Override
+    public void construir(Pieza unaPieza)  {
 
-        if(unEdificio.obtenerTamanio() == 16)
+        this.validarPiezaEdificio(unaPieza);
+        this.ValidarConstruirCastillo(unaPieza);
+        this.validarAcciones();
+
+        ((Construible)unaPieza).verificarProcesoEnConstruccion();
+
+        edificioEnConstruccion = (Edificio)unaPieza;
+
+        this.seguirTrabajando();
+
+        turnosConstruccion = 0;
+
+        this.accionRealizada();
+    }
+
+    public void construccionRealizada() {
+
+        this.turnosConstruccion++;
+    }
+
+    private void ValidarConstruirCastillo(Pieza unaPieza) {
+
+        if(unaPieza.obtenerTamanio() == 16)
             throw new ConstruccionCastilloException();
 
     }
 
-    public void reparar(Edificio edificio) {
+    private void validarPiezaEdificio(Pieza unaPieza){
+
+        if(unaPieza.obtenerTamanio() == 1)
+            throw new PiezaNoReparableNoConstruibleException();
+
+    }
+
+    @Override
+    public void repararPieza(Pieza unaPieza) {
+
+        this.validarPiezaEdificio(unaPieza);
+        this.validarAcciones();
+
 
         this.estado.reparar(this.estado);
-
-        edificio.darVidaPorReparacion();
+        ((Edificio)unaPieza).darVidaPorReparacion();
 
     }
 

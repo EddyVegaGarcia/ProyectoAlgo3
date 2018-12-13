@@ -82,6 +82,15 @@ public class Cuartel extends Edificio implements Creador, Construible{
     }
 
     @Override
+    public void verificarProcesoEnReparacion() {
+
+        if(estadoVida.estaEnReparacion()){
+            throw new EdificioEnReparacionException();
+        }
+
+    }
+
+    @Override
     public void finalizarConstruccion() {
 
         this.estado = this.estado.finalizarConstruccion();
