@@ -5,4 +5,8 @@ public interface Montable {
     void montar();
 
     void desmontar();
+
+    void montarIncogruencia();
+
+    void desmontarIncogruencia();
 }

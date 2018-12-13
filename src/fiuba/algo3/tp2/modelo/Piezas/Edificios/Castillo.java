@@ -16,8 +16,6 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Castillo extends Edificio implements Atacante, Creador {
 
-    public RangoDeAtaque rangoDeAtaque;
-
     public Castillo() {
 
         this.vida = VIDA_MAXIMA_CASTILLO;
@@ -29,26 +27,13 @@ public class Castillo extends Edificio implements Atacante, Creador {
     @Override
     public int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
 
-    @Override
-    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
-        this.rangoDeAtaque = rango;
-    }
-
     public void atacarUnidad(Unidad unidad) {
+
+        this.validarAcciones();
+        this.validarRangoDeAtaque(unidad.obtenerPosicion(), this.obtenerDistanciaAtaque());
         unidad.recibirDanio(ATAQUE_CASTILLO);
     }
 
-    public void atacar(ArrayList<Pieza> unasPiezas) {
-
-
-      /*  List<Posicion> posicionesDeEnemigos = rangoDeAtaque.obtenerRangoDeAtaque(this, POSICION_DEFAULT_CASTILLO1);
-
-        for (Posicion posActual : posicionesDeEnemigos) {
-
-
-        }
-        */
-    }
     @Override
     public void validarOroSufiente(int cantidadOroActual) {
 
@@ -65,7 +50,7 @@ public class Castillo extends Edificio implements Atacante, Creador {
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             jugador.pagar(COSTO_ARMADEASEDIO);
             return (Unidad) PiezaFactory.crearPieza(piezaType);
@@ -88,7 +73,7 @@ public class Castillo extends Edificio implements Atacante, Creador {
 
     @Override
     public void atacarEdificio(Edificio unEdificio) {
-
+        throw new PiezaAtacadaNoValidaException();
     }
 
     @Override
@@ -99,5 +84,13 @@ public class Castillo extends Edificio implements Atacante, Creador {
     @Override
     public String obtenerNombre() {
         return "Castillo";
+    }
+
+    @Override
+    public void atacarPieza(Pieza unaPieza) {
+        if(unaPieza.obtenerTamanio() == 1)
+            this.atacarUnidad((Unidad)unaPieza);
+        else
+            this.atacarEdificio((Edificio) unaPieza);
     }
 }

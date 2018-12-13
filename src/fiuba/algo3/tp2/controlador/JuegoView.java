@@ -1,7 +1,10 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
+import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
@@ -53,14 +56,16 @@ public class JuegoView {
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
         contenedorConsola = new VBox();
-        contenedorConsola.setPrefHeight(200);
+        contenedorConsola.setPrefHeight(20);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
 
         contenedorInformacionDeJugadores = new HBox();
-        contenedorInformacionDeJugadores.setPrefHeight(200);
+        contenedorInformacionDeJugadores.setPrefHeight(20);
         contenedorInformacionDeJugadores.setSpacing(10);
         contenedorInformacionDeJugadores.setPadding(new Insets(15));
+
+        informarQueJugadorEstaDeTurno();
 
         setConsola();
         acualizarContenedorDeInformacionDeJugadores();
@@ -72,7 +77,6 @@ public class JuegoView {
         contenedorPrincipal.setLeft(contenedorParaUnaPieza);
         contenedorPrincipal.setBottom(contenedorConsola);
 
-        informarQueJugadorEstaDeTurno();
     }
 
     private void colocarDatosDeTurno(Jugador jugadorDeTurno){
@@ -195,16 +199,17 @@ public class JuegoView {
             else if (type.equals(PiezaType.UNIDAD_ALDEANO)){
 
                 agregarBotonesDeMovimiento(pieza);
-                agregarBotonConstruirCuartel(pieza);
-                agregarBotonConstruirPlazaCentral(pieza);
+                agregarBotonColocarCuartel(pieza);
+                agregarBotonColocarPlazaCentral(pieza);
+                agregarBotonConstruirEdificio(pieza);
                 agregarBotonReparar(pieza);
 
             }
             else if (type.equals(PiezaType.UNIDAD_ARMADEASEDIO)){
 
                 agregarBotonesDeMovimiento(pieza);
-                //agregarBotonMontarse(pieza);
-                //agregarBotonDesmontarse(pieza);
+                agregarBotonMontarse(pieza);
+                agregarBotonDesmontarse(pieza);
                 agregarBotonDeAtaque(pieza);
 
             }
@@ -239,6 +244,17 @@ public class JuegoView {
 
     }
 
+    private void agregarBotonConstruirEdificio(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new TrabajoEventHandler(this, juego, canvasCentral,(Constructor) pieza,
+                UNIDAD_ARQUERO , etiquetaConsola));
+        boton.setText("Terminar construccion");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
     private void agregarBotonCrearArquero(Pieza pieza) {
 
         Button boton = new Button();
@@ -261,7 +277,7 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonConstruirPlazaCentral(Pieza pieza) {
+    private void agregarBotonColocarPlazaCentral(Pieza pieza) {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral, (Diseñador) pieza,
@@ -272,7 +288,7 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonConstruirCuartel(Pieza pieza) {
+    private void agregarBotonColocarCuartel(Pieza pieza) {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral,(Diseñador) pieza,
@@ -302,16 +318,28 @@ public class JuegoView {
         contenedorParaUnaPieza.getChildren().add(boton);
 
     }
-    /*
-    private void agregarBotonDesmontar(Pieza pieza) {
-        if(pieza.podesDesmontarArmaAsedio()) {
-            Button boton = new Button();
-            boton.setText("Desmontar Arma de Asedio");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+    private void agregarBotonMontarse(Pieza pieza){
+
+        Button boton = new Button();
+        boton.setOnAction(new MontarEventHandler(this, juego, canvasCentral,(Montable) pieza,
+                UNIDAD_ARMADEASEDIO , etiquetaConsola));
+        boton.setText("Montarse");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
-    */
+
+    private void agregarBotonDesmontarse(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new DesmontarEventHandler(this, juego, canvasCentral,(Montable) pieza,
+                UNIDAD_ARMADEASEDIO , etiquetaConsola));
+        boton.setText("Desmontarse");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
 
     private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
 
@@ -325,9 +353,11 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonDeAtaque(Pieza pieza) {
+    private void agregarBotonDeAtaque(Pieza unAtacante) {
 
         Button boton = new Button();
+        boton.setOnAction(new AtacarEventHandler(this, juego, canvasCentral,
+                (Atacante)unAtacante, etiquetaConsola));
         boton.setText("Atacar");
 
         contenedorParaUnaPieza.getChildren().add(boton);

@@ -11,12 +11,12 @@ import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Cuartel extends Edificio implements Creador, Construible {
+public class Cuartel extends Edificio implements Creador, Construible{
 
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
         this.tamanio = TAMANIO_CUARTEL;
-        this.estado = new EnConstruccion();
+        this.estado = new EnProceso();
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
@@ -37,7 +37,7 @@ public class Cuartel extends Edificio implements Creador, Construible {
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             if(piezaType == UNIDAD_ESPADACHIN)
                 unJugador.pagar(COSTO_ESPADACHIN);
@@ -73,9 +73,25 @@ public class Cuartel extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public void verificarConstruccion() {
+    public void verificarProcesoEnConstruccion() {
 
+        if(estado.estaEnConstruccion()){
+            throw new EdificioEnConstruccionException();
+        }
 
+    }
+
+    @Override
+    public void finalizarConstruccion() {
+
+        this.estado = this.estado.finalizarConstruccion();
+
+    }
+
+    @Override
+    public void iniciarConstruccion() {
+
+        this.estado = this.estado.iniciarConstruccion();
 
     }
 }

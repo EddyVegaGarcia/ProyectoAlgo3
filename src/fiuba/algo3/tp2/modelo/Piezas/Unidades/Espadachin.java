@@ -13,7 +13,6 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 public class Espadachin extends Unidad implements Atacante {
 
     int distanciaDeAtaque;
-    RangoDeAtaque rango;
 
     public Espadachin() {
 
@@ -25,22 +24,23 @@ public class Espadachin extends Unidad implements Atacante {
 
     public void atacarUnidad(Unidad unaUnidad) {
 
+        this.validarAcciones();
+        this.validarRangoDeAtaque(unaUnidad.obtenerPosicion(), this.obtenerDistanciaAtaque());
         unaUnidad.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+
     }
 
     public void atacarEdificio(Edificio unEdificio) {
 
+        this.validarAcciones();
+        this.validarRangoDeAtaque(unEdificio.obtenerPosicion(), this.obtenerDistanciaAtaque());
         unEdificio.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+
     }
 
     @Override
     public int obtenerDistanciaAtaque() {
         return distanciaDeAtaque;
-    }
-
-    @Override
-    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
-        this.rango = rango;
     }
 
     @Override
@@ -58,4 +58,11 @@ public class Espadachin extends Unidad implements Atacante {
         return "Espadachin";
     }
 
+    @Override
+    public void atacarPieza(Pieza unaPieza) {
+        if(unaPieza.obtenerTamanio() == 1)
+            this.atacarUnidad((Unidad)unaPieza);
+        else
+            this.atacarEdificio((Edificio) unaPieza);
+    }
 }

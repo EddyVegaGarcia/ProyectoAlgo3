@@ -1,38 +1,33 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
-import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
-
-import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 
-
-public class CreacionEventHandler implements EventHandler<ActionEvent> {
+public class AtacarEventHandler implements EventHandler<ActionEvent>{
 
     private Label etiquetaAlertas;
     private Mapa mapa;
     private JuegoView juegoView;
     private Juego juego;
-    private Diseñador piezaConstructora;
+    private Atacante piezaAtacante;
     private Canvas canvasCentral;
     private double height;
     private double widht;
-    private PiezaType piezaType;
 
-    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
-                                Diseñador unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
+
+    public AtacarEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral, Atacante unaPiezaAtacante, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
-        this.piezaConstructora = unaPiezaCreadora;
+        this.piezaAtacante = unaPiezaAtacante;
         this.juegoView = unJuegoView;
         this.canvasCentral = unCanvasCentral;
-        this.piezaType = unaPiezaType;
         this.juego = unJuego;
         this.etiquetaAlertas = etiquetaConsola;
 
@@ -42,11 +37,10 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent event) {
+    public void handle(ActionEvent actionEvent) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral,
-                piezaConstructora, piezaType, etiquetaAlertas));
-
+        canvasCentral.setOnMousePressed(new MouseAtaqueEventHandler(juegoView, juego, canvasCentral,
+                piezaAtacante, etiquetaAlertas));
 
     }
 }

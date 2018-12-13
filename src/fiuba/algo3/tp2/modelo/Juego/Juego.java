@@ -1,9 +1,14 @@
 package fiuba.algo3.tp2.modelo.Juego;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Exception.PiezaAtacadaPertenecienteException;
+import fiuba.algo3.tp2.modelo.Exception.PosicionAtacadaSinResultadosException;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import java.util.ArrayList;
@@ -76,7 +81,7 @@ public class Juego{
         turno.terminarTurno();
     }
 
-    public void crearUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
+    public void colocarUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
         validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
@@ -91,7 +96,7 @@ public class Juego{
 
     }
 
-    public void crearEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
+    public void colocarEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
@@ -105,6 +110,8 @@ public class Juego{
 
         Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
+        System.out.println(unEdificio.obtenerEstado());
+
         mapa.colocarPieza(unEdificio, posicion);
 
         jugadorDeTurno().agregaPieza(unEdificio);
@@ -112,11 +119,46 @@ public class Juego{
     }
 
     private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
+
         Posicion unaPosicion = edificio.obtenerPosicion();
 
-        if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
+        if( !unaPosicion.estaContenidaEnRango1(posicion, edificio.obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }
+    }
+
+    public void construirEdificio(Constructor piezaConstructora, double fila, double columna, PiezaType piezaType) {
+
+        Posicion posicion = new Posicion((int)fila, (int)columna);
+
+        Edificio unEdificio = (Edificio) mapa.recuperarPieza(posicion);
+
+        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(), unEdificio);
+
+        piezaConstructora.construir(unEdificio);
+
+    }
+
+    public void atacar(Posicion unaPosicion, Atacante unaPiezaAtacante) {
+
+        Pieza unaPieza = mapa.recuperarPieza(unaPosicion);
+
+        if (unaPieza == null)
+            throw new PosicionAtacadaSinResultadosException();
+        else
+            if(!jugadorDeTurno().sosDuenioDe(unaPieza)){
+                unaPiezaAtacante.atacarPieza(unaPieza);
+            }
+            else
+                throw new PiezaAtacadaPertenecienteException();
+
+    }
+
+    public void actualizarPiezas() {
+
+        jugador1.actualizarPiezas();
+        jugador2.actualizarPiezas();
+
     }
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
+import fiuba.algo3.tp2.modelo.Exception.ArmaDeAsedioMontadaSinMovimientoException;
 import fiuba.algo3.tp2.modelo.Exception.UbicacionErroneaException;
 import fiuba.algo3.tp2.modelo.Exception.UbicacionOcupadaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
@@ -41,6 +42,9 @@ public class MoverEventHandler implements EventHandler<ActionEvent> {
         }
         catch (UbicacionErroneaException e){
             etiquetaAvisos.setText("La ubicacion esta fuera del mapa");
+        }
+        catch (ArmaDeAsedioMontadaSinMovimientoException e){
+            etiquetaAvisos.setText("Estado montado - solo ataque");
         }
 
         juegoView.actualizar();

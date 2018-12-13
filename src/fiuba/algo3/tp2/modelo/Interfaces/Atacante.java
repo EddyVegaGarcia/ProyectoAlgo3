@@ -12,8 +12,5 @@ public interface Atacante {
 
     int obtenerDistanciaAtaque();
 
-    void guardarRangoDeAtaque(RangoDeAtaque rango);
-
-    int obtenerTamanio();
-
+    void atacarPieza(Pieza unaPieza);
 }

@@ -3,9 +3,7 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
-import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
-import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -46,9 +44,9 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
 
         try {
             if(((Pieza)piezaConstructora).obtenerType().equals(UNIDAD_ALDEANO))
-                juego.crearEdificio( piezaConstructora, fila, columna, piezaType);
+                juego.colocarEdificio( piezaConstructora, fila, columna, piezaType);
             else
-                juego.crearUnidad( piezaConstructora, fila, columna, piezaType);
+                juego.colocarUnidad( piezaConstructora, fila, columna, piezaType);
 
         }
         catch (AccionUnicaRealizadaException e){

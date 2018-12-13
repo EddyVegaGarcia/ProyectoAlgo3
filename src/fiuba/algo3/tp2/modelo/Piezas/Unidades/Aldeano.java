@@ -17,6 +17,7 @@ public class Aldeano extends Unidad implements Constructor {
     //public int stringOro;
     public EstadoDeAldeano estado;
     int turnosConstruccion;
+    Edificio edificioEnConstruccion;
 
 
     public Aldeano() {
@@ -44,13 +45,19 @@ public class Aldeano extends Unidad implements Constructor {
         this.ValidarEdificio(unEdificio);
         this.validarAcciones();
 
-        this.turnosConstruccion++;
-        this.estado = estado.construir(unEdificio,turnosConstruccion);
-        if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
-            this.turnosConstruccion = 0;
-        }
+        ((Construible)unEdificio).verificarProcesoEnConstruccion();
+
+        edificioEnConstruccion = unEdificio;
+
+        this.seguirTrabajando();
+
+        turnosConstruccion = 0;
 
         this.accionRealizada();
+    }
+
+    public void construccionRealizada(){
+        this.turnosConstruccion++;
     }
 
     @Override
@@ -61,7 +68,7 @@ public class Aldeano extends Unidad implements Constructor {
         if (piezaType == PiezaType.EDIFICIO_CUARTEL ||piezaType == PiezaType.EDIFICIO_PLAZACENTRAL ) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             if(piezaType == EDIFICIO_CUARTEL)
                 unJugador.pagar(COSTO_CUARTEL);
@@ -83,12 +90,6 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
-    @Override
-    public void validarAcciones() {
-        if(accionesRealizadas == 1 && !estado.estaTrabajando())
-            throw new AccionUnicaRealizadaException();
-    }
-
     public void reparar(Edificio edificio) {
 
         this.estado.reparar(this.estado);
@@ -96,17 +97,6 @@ public class Aldeano extends Unidad implements Constructor {
         edificio.darVidaPorReparacion();
 
     }
-
-   /* public int obtenerOroTotal() {
-        return stringOro;
-    }
-
-   public void sumarOro(){
-        this.stringOro = stringOro + 20;
-    }
-
-    public void ganarMonedas(){ estado.ganarOro(this);
-    }*/
 
     public boolean estaTrabajando() {
         return estado.estaTrabajando();
@@ -131,4 +121,24 @@ public class Aldeano extends Unidad implements Constructor {
     public int oroRecolectado() {
         return estado.oroRecolectado();
     }
+
+    @Override
+    public void refrescar() {
+       if(!estado.estaTrabajando())
+           super.refrescar();
+    }
+
+    @Override
+    public void seguirTrabajando() {
+
+        this.construccionRealizada();
+
+        this.estado = estado.construir(edificioEnConstruccion, turnosConstruccion);
+
+        if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
+            this.turnosConstruccion = 0;
+        }
+
+    }
+
 }

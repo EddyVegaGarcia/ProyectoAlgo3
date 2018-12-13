@@ -2,31 +2,29 @@ package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
-
-import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 
-
-public class CreacionEventHandler implements EventHandler<ActionEvent> {
+public class TrabajoEventHandler implements EventHandler<ActionEvent> {
 
     private Label etiquetaAlertas;
     private Mapa mapa;
     private JuegoView juegoView;
     private Juego juego;
-    private Diseñador piezaConstructora;
+    private Constructor piezaConstructora;
     private Canvas canvasCentral;
     private double height;
     private double widht;
     private PiezaType piezaType;
 
-    public CreacionEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
-                                Diseñador unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
+    public TrabajoEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
+                               Constructor unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {
 
         this.mapa = unJuego.mapa();
         this.piezaConstructora = unaPiezaCreadora;
@@ -39,14 +37,14 @@ public class CreacionEventHandler implements EventHandler<ActionEvent> {
         widht = unCanvasCentral.getWidth();
         height = unCanvasCentral.getHeight();
 
+
     }
 
     @Override
-    public void handle(ActionEvent event) {
+    public void handle(ActionEvent actionEvent) {
 
-        canvasCentral.setOnMousePressed(new MouseCreacionEventHandler(juegoView, juego, canvasCentral,
+        canvasCentral.setOnMousePressed(new MouseTrabajoEventHandler(juegoView, juego, canvasCentral,
                 piezaConstructora, piezaType, etiquetaAlertas));
-
 
     }
 }

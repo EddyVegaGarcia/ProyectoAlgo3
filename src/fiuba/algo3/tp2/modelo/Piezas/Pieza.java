@@ -18,7 +18,15 @@ public abstract class Pieza {
 
     public int obtenerTamanio() { return tamanio; }
 
-    public void recibirDanio(int unDanio) { this.vida = vida - unDanio;}
+    public void recibirDanio(int unDanio) {
+
+        if (vida - unDanio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+
+        this.vida = vida - unDanio;
+    }
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 
@@ -27,12 +35,13 @@ public abstract class Pieza {
     }
 
     public void validarAcciones(){
+
         if(accionesRealizadas == 1)
             throw new AccionUnicaRealizadaException();
     }
 
     protected void accionRealizada() {
-        accionesRealizadas++;
+        accionesRealizadas = 1;
     }
 
     public abstract double getTamanio();
@@ -43,5 +52,14 @@ public abstract class Pieza {
 
     public void refrescar(){
         accionesRealizadas = 0;
+    }
+
+    public void validarRangoDeAtaque(Posicion unaPosicion, int distanciaDeAtaque) {
+
+        Posicion posicion = this.obtenerPosicion();
+
+        if(!unaPosicion.estaContenidaEnRangoDeAtaque(posicion, distanciaDeAtaque))
+            throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
+
     }
 }

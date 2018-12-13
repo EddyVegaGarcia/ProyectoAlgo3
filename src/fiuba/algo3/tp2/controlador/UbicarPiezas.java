@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
-
 public class UbicarPiezas {
     private Jugador jugador;
     private Canvas canvas;
