@@ -56,6 +56,7 @@ public class MouseAtaqueEventHandler implements EventHandler<MouseEvent> {
         }
         catch (PiezaDestruidaException e){
             juego.actualizarPiezas();
+            mapa.actualizarPiezas();
             etiquetaAlertas.setText("Pieza victoriosamente destruida.");
         }
         catch (PosicionAtacadaSinResultadosException e){

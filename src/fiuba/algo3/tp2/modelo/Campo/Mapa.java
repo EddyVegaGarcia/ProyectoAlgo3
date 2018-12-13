@@ -2,6 +2,10 @@ package fiuba.algo3.tp2.modelo.Campo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import fiuba.algo3.tp2.controlador.UbicarPiezas;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -94,7 +98,6 @@ public class Mapa {
 
             }
 
-
         }
 
         return unaPieza;
@@ -134,4 +137,17 @@ public class Mapa {
 
     }
 
+    public void actualizarPiezas() {
+
+        List<Pieza> unaLista = new ArrayList<>();
+
+        for(Posicion unaPosicion: piezasDelMapa.keySet()) {
+            if (piezasDelMapa.get(unaPosicion).obtenerVida() == 0) {
+                unaLista.add(piezasDelMapa.get(unaPosicion));
+            }
+        }
+
+        piezasDelMapa.values().removeAll(unaLista);
+
+    }
 }
