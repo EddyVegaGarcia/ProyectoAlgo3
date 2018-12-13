@@ -42,7 +42,6 @@ public class Juego{
         this.ganador = null;
 
         this.colocarPiezasPorDefault();
-        //turno.jugadorDeTurno().recolectarOro();
     }
 
 

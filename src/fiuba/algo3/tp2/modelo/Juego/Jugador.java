@@ -171,6 +171,10 @@ public class Jugador {
         oro = oro - costo;
     }
 
+    public int poblacion() {
+        return poblacion.size();
+    }
+
 /*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
