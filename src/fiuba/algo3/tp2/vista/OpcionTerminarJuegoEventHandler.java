@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.controlador;
+package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.vista.ContenedorBienvenidos;
 import fiuba.algo3.tp2.vista.Main;

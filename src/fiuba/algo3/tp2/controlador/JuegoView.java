@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
+import fiuba.algo3.tp2.vista.OpcionTerminarJuegoEventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
@@ -95,15 +96,6 @@ public class JuegoView {
         MenuItem opcionInstrucciones = new MenuItem("Instrucciones");
 
         opcionTerminarJuego.setOnAction(new OpcionTerminarJuegoEventHandler(stage));
-
-        /*
-        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
-        opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
-
-        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
-        opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
-
-        opcionPantallaCompleta.setDisable(true);*/
 
         menuInicio.getItems().addAll(opcionTerminarJuego);
         menuAyuda.getItems().addAll(opcionInstrucciones);
