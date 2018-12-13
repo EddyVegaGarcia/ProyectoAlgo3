@@ -46,19 +46,18 @@ public class JuegoView {
         canvasCentral = new Canvas(width, height);
         canvasCentral.setOnMousePressed(new MouseEventHandler(this, juego, canvasCentral));
 
-        contenedorVertical = new VBox();
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(10));
-
         contenedorParaUnaPieza = new VBox();
+        contenedorParaUnaPieza.setPrefWidth(200);
         contenedorParaUnaPieza.setSpacing(10);
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
         contenedorConsola = new VBox();
+        contenedorConsola.setPrefHeight(200);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
 
         contenedorInformacionDeJugadores = new HBox();
+        contenedorInformacionDeJugadores.setPrefHeight(200);
         contenedorInformacionDeJugadores.setSpacing(10);
         contenedorInformacionDeJugadores.setPadding(new Insets(15));
 
