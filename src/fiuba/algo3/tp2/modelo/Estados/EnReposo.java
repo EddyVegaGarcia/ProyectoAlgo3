@@ -2,9 +2,12 @@ package fiuba.algo3.tp2.modelo.Estados;
 
 import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioEnConstruccionException;
+import fiuba.algo3.tp2.modelo.Exception.EdificioEnReparacionException;
+import fiuba.algo3.tp2.modelo.Exception.EdificioYaReparadoException;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeAldeano;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public class EnReposo implements EstadoDeAldeano {
 
@@ -30,8 +33,20 @@ public class EnReposo implements EstadoDeAldeano {
     }
 
     @Override
-    public void reparar(EstadoDeAldeano unEstado) {
-        unEstado = new EstaTrabajando();
+    public EstadoDeAldeano reparar(Edificio unEdificio, PiezaType unaPiezaType) {
+
+        if(!unEdificio.obtenerEstadoVida().estaReparado() && !unEdificio.obtenerEstadoVida().estaEnReparacion()){
+
+            unEdificio.iniciarReparacion();
+            return new EstaTrabajando();
+
+        }
+        else if(unEdificio.obtenerEstadoVida().estaReparado())
+            throw new EdificioYaReparadoException();
+        else if (unEdificio.obtenerEstadoVida().estaEnReparacion())
+            throw new EdificioEnReparacionException();
+
+        return new EnReposo();
     }
 
     @Override

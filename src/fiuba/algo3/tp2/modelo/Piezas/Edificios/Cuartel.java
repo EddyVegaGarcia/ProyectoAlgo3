@@ -17,7 +17,14 @@ public class Cuartel extends Edificio implements Creador, Construible{
         this.costo = COSTO_CUARTEL;
         this.tamanio = TAMANIO_CUARTEL;
         this.estado = new EnProceso();
+        this.estadoVida = new Reparado();
         this.vida = VIDA_MAXIMA_CUARTEL;
+    }
+
+    @Override
+    public void recibirDanio(int unDanio) {
+        estadoVida = new Daniado();
+        super.recibirDanio(unDanio);
     }
 
     @Override
@@ -98,9 +105,23 @@ public class Cuartel extends Edificio implements Creador, Construible{
     }
 
     @Override
+    public void finalizarReparacion() {
+
+        this.estadoVida = this.estadoVida.finalizarReparacion();
+
+    }
+
+    @Override
     public void iniciarConstruccion() {
 
         this.estado = this.estado.iniciarConstruccion();
+
+    }
+
+    @Override
+    public void iniciarReparacion() {
+
+        this.estadoVida =  this.estadoVida.reparar();
 
     }
 }

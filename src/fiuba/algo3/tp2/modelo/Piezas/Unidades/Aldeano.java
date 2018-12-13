@@ -18,6 +18,7 @@ public class Aldeano extends Unidad implements Constructor {
     public EstadoDeAldeano estado;
     int turnosConstruccion;
     Edificio edificioEnConstruccion;
+    Edificio edificioEnReparacion;
 
 
     public Aldeano() {
@@ -105,9 +106,13 @@ public class Aldeano extends Unidad implements Constructor {
         this.validarPiezaEdificio(unaPieza);
         this.validarAcciones();
 
+        ((Reparable)unaPieza).verificarProcesoEnReparacion();
 
-        this.estado.reparar(this.estado);
-        ((Edificio)unaPieza).darVidaPorReparacion();
+        edificioEnReparacion = (Edificio) unaPieza;
+
+        this.seguirReparando();
+
+        this.accionRealizada();
 
     }
 
@@ -154,4 +159,11 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
+    @Override
+    public void seguirReparando() {
+
+        edificioEnReparacion.darVidaPorReparacion();
+        this.estado = this.estado.reparar(edificioEnReparacion, edificioEnReparacion.obtenerType());
+
+    }
 }

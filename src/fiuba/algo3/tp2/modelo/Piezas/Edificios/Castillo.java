@@ -21,7 +21,13 @@ public class Castillo extends Edificio implements Atacante, Creador {
         this.vida = VIDA_MAXIMA_CASTILLO;
         this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
+        this.estadoVida =  new Reparado();
+    }
 
+    @Override
+    public void recibirDanio(int unDanio) {
+        estadoVida = new Daniado();
+        super.recibirDanio(unDanio);
     }
 
     @Override
@@ -92,6 +98,29 @@ public class Castillo extends Edificio implements Atacante, Creador {
             this.atacarUnidad((Unidad)unaPieza);
         else
             this.atacarEdificio((Edificio) unaPieza);
+    }
+
+    @Override
+    public void verificarProcesoEnReparacion() {
+
+        if(estadoVida.estaEnReparacion()){
+            throw new EdificioEnReparacionException();
+        }
+
+    }
+
+    @Override
+    public void finalizarReparacion() {
+
+        this.estadoVida = this.estadoVida.finalizarReparacion();
+
+    }
+
+    @Override
+    public void iniciarReparacion() {
+
+        this.estadoVida =  this.estadoVida.reparar();
+
     }
 
 }

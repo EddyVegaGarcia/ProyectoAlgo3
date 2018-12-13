@@ -70,6 +70,9 @@ public class MouseReparacionEventHandler implements EventHandler<MouseEvent> {
         catch(EdificioYaReparadoException e){
             etiquetaAlertas.setText("No se puede reparar ya que cuenta con la vida maxima");
         }
+        catch(EdificioEnReparacionException e){
+            etiquetaAlertas.setText("Un solo reparador puede reparar el edificio");
+        }
 
 
 

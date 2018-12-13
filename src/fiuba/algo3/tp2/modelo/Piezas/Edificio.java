@@ -12,6 +12,8 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     public EstadoDeEdificio obtenerEstado(){return estado;}
 
+    public EstadoVidaEdificio obtenerEstadoVida(){ return estadoVida;}
+
     public abstract void darVidaPorReparacion();
 
     protected void validarExistencia() {
@@ -21,6 +23,6 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     }
 
-    
+
 
 }
