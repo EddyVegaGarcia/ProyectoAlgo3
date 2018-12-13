@@ -77,6 +77,7 @@ public class JuegoView {
 
     private void colocarDatosDeTurno(Jugador jugadorDeTurno){
         VBox contenedorVertical = new VBox();
+        contenedorVertical.setPrefWidth(1000);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(10));
 
@@ -117,7 +118,6 @@ public class JuegoView {
         String mensaje = "Comienza el jugador " + juego.jugadorDeTurno().obtenerNombre() + ".";
         alert.setContentText(mensaje);
         alert.show();
-
     }
 
     private void setConsola() {
