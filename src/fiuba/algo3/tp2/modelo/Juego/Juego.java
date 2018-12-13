@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo.Juego;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
@@ -77,7 +78,7 @@ public class Juego{
         turno.terminarTurno();
     }
 
-    public void crearUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
+    public void colocarUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
         validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
@@ -92,7 +93,7 @@ public class Juego{
 
     }
 
-    public void crearEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
+    public void colocarEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
@@ -113,11 +114,33 @@ public class Juego{
     }
 
     private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
+
         Posicion unaPosicion = edificio.obtenerPosicion();
 
         if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }
+    }
+
+    private void validarDistanciaDeConstruccion(Posicion posicion, Unidad unidad) {
+
+        Posicion unaPosicion = unidad.obtenerPosicion();
+
+        if( !unaPosicion.validacionPosicionValida(posicion, unidad.obtenerTamanio())) {
+
+            throw new PosicionDeCreacionInvalidaException();
+        }
+    }
+
+    public void construirEdificio(Constructor piezaConstructora, double fila, double columna, PiezaType piezaType) {
+
+        Posicion posicion = new Posicion((int)fila, (int)columna);
+        validarDistanciaDeConstruccion(posicion, (Unidad) piezaConstructora);
+
+        Edificio unEdificio = (Edificio) mapa.recuperarPieza(posicion);
+
+        piezaConstructora.construir(unEdificio);
+
     }
 }

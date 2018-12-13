@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -210,8 +211,9 @@ public class JuegoView {
             else if (type.equals(PiezaType.UNIDAD_ALDEANO)){
 
                 agregarBotonesDeMovimiento(pieza);
-                agregarBotonConstruirCuartel(pieza);
-                agregarBotonConstruirPlazaCentral(pieza);
+                agregarBotonColocarCuartel(pieza);
+                agregarBotonColocarPlazaCentral(pieza);
+                agregarBotonConstruirEdificio(pieza);
                 agregarBotonReparar(pieza);
 
             }
@@ -254,6 +256,17 @@ public class JuegoView {
 
     }
 
+    private void agregarBotonConstruirEdificio(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new TrabajoEventHandler(this, juego, canvasCentral,(Constructor) pieza,
+                UNIDAD_ARQUERO , etiquetaConsola));
+        boton.setText("Terminar construccion");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
+
     private void agregarBotonCrearArquero(Pieza pieza) {
 
         Button boton = new Button();
@@ -276,7 +289,7 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonConstruirPlazaCentral(Pieza pieza) {
+    private void agregarBotonColocarPlazaCentral(Pieza pieza) {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral, (Diseñador) pieza,
@@ -287,7 +300,7 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonConstruirCuartel(Pieza pieza) {
+    private void agregarBotonColocarCuartel(Pieza pieza) {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral,(Diseñador) pieza,

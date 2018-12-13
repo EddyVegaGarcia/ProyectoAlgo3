@@ -95,7 +95,7 @@ public class Jugador {
 
         PlazaCentral plaza = new PlazaCentral();
         plaza.finalizarConstruccion();
-        
+
         this.piezas.add(plaza);
         this.piezas.add(castillo);
 
