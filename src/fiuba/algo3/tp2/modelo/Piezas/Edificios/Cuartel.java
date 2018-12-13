@@ -31,8 +31,6 @@ public class Cuartel extends Edificio implements Creador, Construible{
     @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
-        System.out.println(this.obtenerEstado());
-
         this.validarExistencia();
         this.validarOroSufiente(unJugador.obtenerOro());
 

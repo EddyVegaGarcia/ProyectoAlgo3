@@ -52,7 +52,7 @@ public class Posicion {
         Posicion nuevaPosicion = new Posicion(posicionFila - unaDistanciaAtaque,
                             posicionColumna - unaDistanciaAtaque);
 
-        return  nuevaPosicion.estaContenidaEn(unaPosicion, unaDistanciaAtaque * 2);
+        return  unaPosicion.estaContenidaEn(nuevaPosicion, unaDistanciaAtaque * 2);
 
     }
 }
