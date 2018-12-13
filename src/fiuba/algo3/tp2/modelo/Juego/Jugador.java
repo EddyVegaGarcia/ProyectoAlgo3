@@ -94,6 +94,7 @@ public class Jugador {
     public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
 
         PlazaCentral plaza = new PlazaCentral();
+        plaza.iniciarConstruccion();
         plaza.finalizarConstruccion();
 
         this.piezas.add(plaza);

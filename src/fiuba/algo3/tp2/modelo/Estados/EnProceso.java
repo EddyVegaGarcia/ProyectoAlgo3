@@ -1,18 +1,19 @@
 package fiuba.algo3.tp2.modelo.Estados;
 
+import fiuba.algo3.tp2.modelo.Exception.EdificioAunEnProcesoException;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeEdificio;
 
-public class EnConstruccion implements EstadoDeEdificio {
+
+public class EnProceso implements EstadoDeEdificio {
 
     @Override
     public EstadoDeEdificio iniciarConstruccion() {
-        return this;
+        return new EnConstruccion();
     }
 
     @Override
     public EstadoDeEdificio finalizarConstruccion() {
-
-        return new Construido();
+        throw new EdificioAunEnProcesoException();
     }
 
     @Override
@@ -22,6 +23,6 @@ public class EnConstruccion implements EstadoDeEdificio {
 
     @Override
     public boolean estaEnConstruccion() {
-        return true;
+        return false;
     }
 }

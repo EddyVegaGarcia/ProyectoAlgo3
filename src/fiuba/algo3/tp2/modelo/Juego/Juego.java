@@ -110,6 +110,8 @@ public class Juego{
 
         Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
+        System.out.println(unEdificio.obtenerEstado());
+
         mapa.colocarPieza(unEdificio, posicion);
 
         jugadorDeTurno().agregaPieza(unEdificio);

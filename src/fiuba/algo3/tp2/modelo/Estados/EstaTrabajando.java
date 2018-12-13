@@ -9,7 +9,6 @@ import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
 
 public class EstaTrabajando implements EstadoDeAldeano {
 
-
     @Override
     public boolean estaTrabajando() {
         return true;

@@ -13,7 +13,7 @@ public abstract class Edificio extends Pieza {
 
     protected void validarExistencia() {
 
-        if(!estado.estaProcesoDeConstruccion())
+        if(!estado.estaConstruido())
             throw new EdificioInexistenteException();
 
     }

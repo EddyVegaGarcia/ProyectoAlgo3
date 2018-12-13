@@ -1,9 +1,15 @@
 package fiuba.algo3.tp2.modelo.Interfaces;
 
+import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+
 public interface EstadoDeEdificio {
 
-    void finalizarConstruccion(EstadoDeEdificio unEstado);
+    EstadoDeEdificio iniciarConstruccion();
 
-    boolean estaProcesoDeConstruccion();
+    EstadoDeEdificio finalizarConstruccion();
+
+    boolean estaConstruido();
+
+    boolean estaEnConstruccion();
 
 }

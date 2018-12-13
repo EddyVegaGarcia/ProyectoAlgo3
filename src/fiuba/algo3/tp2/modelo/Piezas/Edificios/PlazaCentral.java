@@ -16,7 +16,7 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     public PlazaCentral(){
 
         this.costo = COSTO_PLAZACENTRAL;
-        this.estado = new EnConstruccion();
+        this.estado = new EnProceso();
         this.tamanio = TAMANIO_PLAZA;
         this.vida = VIDA_MAXIMA_PLAZACENTRAL;
 
@@ -70,9 +70,9 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public void verificarConstruccionEnProceso() {
+    public void verificarProcesoEnConstruccion() {
 
-        if(estado.estaProcesoDeConstruccion()){
+        if(estado.estaConstruido()){
             throw new EdificioEnConstruccionException();
         }
 
@@ -81,8 +81,14 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     @Override
     public void finalizarConstruccion() {
 
-        this.estado.finalizarConstruccion(this.estado);
+        this. estado = this.estado.finalizarConstruccion();
 
     }
 
+    @Override
+    public void iniciarConstruccion() {
+
+        this.estado = this.estado.iniciarConstruccion();
+
+    }
 }

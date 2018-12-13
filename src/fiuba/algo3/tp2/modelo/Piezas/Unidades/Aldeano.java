@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
-import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
@@ -46,7 +45,7 @@ public class Aldeano extends Unidad implements Constructor {
         this.ValidarEdificio(unEdificio);
         this.validarAcciones();
 
-        ((Construible)unEdificio).verificarConstruccionEnProceso();
+        ((Construible)unEdificio).verificarProcesoEnConstruccion();
 
         edificioEnConstruccion = unEdificio;
 
@@ -69,7 +68,7 @@ public class Aldeano extends Unidad implements Constructor {
         if (piezaType == PiezaType.EDIFICIO_CUARTEL ||piezaType == PiezaType.EDIFICIO_PLAZACENTRAL ) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             if(piezaType == EDIFICIO_CUARTEL)
                 unJugador.pagar(COSTO_CUARTEL);
@@ -141,4 +140,5 @@ public class Aldeano extends Unidad implements Constructor {
         }
 
     }
+
 }

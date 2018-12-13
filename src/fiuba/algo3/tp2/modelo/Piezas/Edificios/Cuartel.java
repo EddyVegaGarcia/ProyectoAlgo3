@@ -16,7 +16,7 @@ public class Cuartel extends Edificio implements Creador, Construible{
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
         this.tamanio = TAMANIO_CUARTEL;
-        this.estado = new EnConstruccion();
+        this.estado = new EnProceso();
         this.vida = VIDA_MAXIMA_CUARTEL;
     }
 
@@ -31,13 +31,15 @@ public class Cuartel extends Edificio implements Creador, Construible{
     @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
+        System.out.println(this.obtenerEstado());
+
         this.validarExistencia();
         this.validarOroSufiente(unJugador.obtenerOro());
 
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             if(piezaType == UNIDAD_ESPADACHIN)
                 unJugador.pagar(COSTO_ESPADACHIN);
@@ -73,9 +75,9 @@ public class Cuartel extends Edificio implements Creador, Construible{
     }
 
     @Override
-    public void verificarConstruccionEnProceso() {
+    public void verificarProcesoEnConstruccion() {
 
-        if(estado.estaProcesoDeConstruccion()){
+        if(estado.estaEnConstruccion()){
             throw new EdificioEnConstruccionException();
         }
 
@@ -83,7 +85,15 @@ public class Cuartel extends Edificio implements Creador, Construible{
 
     @Override
     public void finalizarConstruccion() {
-        estado.finalizarConstruccion(this.estado);
+
+        this.estado = this.estado.finalizarConstruccion();
+
     }
 
+    @Override
+    public void iniciarConstruccion() {
+
+        this.estado = this.estado.iniciarConstruccion();
+
+    }
 }
