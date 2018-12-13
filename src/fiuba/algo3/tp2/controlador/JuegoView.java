@@ -11,9 +11,7 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -27,6 +25,8 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class JuegoView {
 
+    private Stage stage;
+    private VBox contenedorTop;
     private HBox contenedorInformacionDeJugadores;
     private VBox contenedorConsola;
     private VBox contenedorParaUnaPieza;
@@ -46,12 +46,13 @@ public class JuegoView {
         this.contenedorPrincipal = contenedorPrincipal;
         jugador1 = juego.jugador1();
         jugador2 = juego.jugador2();
+        stage = myStage;
 
         canvasCentral = new Canvas(width, height);
         canvasCentral.setOnMousePressed(new MouseEventHandler(this, juego, canvasCentral));
 
         contenedorParaUnaPieza = new VBox();
-        contenedorParaUnaPieza.setPrefWidth(200);
+        contenedorParaUnaPieza.setPrefWidth(250);
         contenedorParaUnaPieza.setSpacing(10);
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
@@ -59,6 +60,10 @@ public class JuegoView {
         contenedorConsola.setPrefHeight(20);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
+
+        contenedorTop = new VBox();
+        contenedorTop.setSpacing(20);
+        setMenu();
 
         contenedorInformacionDeJugadores = new HBox();
         contenedorInformacionDeJugadores.setPrefHeight(20);
@@ -69,19 +74,48 @@ public class JuegoView {
 
         setConsola();
         acualizarContenedorDeInformacionDeJugadores();
-
         setEstadoDelJuego(canvasCentral);
 
         contenedorPrincipal.setCenter(canvasCentral);
-        contenedorPrincipal.setTop(contenedorInformacionDeJugadores);
+        contenedorPrincipal.setTop(contenedorTop);
         contenedorPrincipal.setLeft(contenedorParaUnaPieza);
         contenedorPrincipal.setBottom(contenedorConsola);
 
+        contenedorTop.getChildren().add(contenedorInformacionDeJugadores);
+
+    }
+
+    private void setMenu() {
+        MenuBar barra = new MenuBar();
+
+        Menu menuInicio = new Menu("Inicio");
+        Menu menuAyuda = new Menu("Ayuda");
+
+        MenuItem opcionTerminarJuego = new MenuItem("Terminar Juego");
+        MenuItem opcionInstrucciones = new MenuItem("Instrucciones");
+
+        opcionTerminarJuego.setOnAction(new OpcionTerminarJuegoEventHandler(stage));
+
+        /*
+        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
+        opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
+
+        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
+        opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
+
+        opcionPantallaCompleta.setDisable(true);*/
+
+        menuInicio.getItems().addAll(opcionTerminarJuego);
+        menuAyuda.getItems().addAll(opcionInstrucciones);
+
+        barra.getMenus().addAll(menuInicio, menuAyuda);
+
+        contenedorTop.getChildren().add(barra);
     }
 
     private void colocarDatosDeTurno(Jugador jugadorDeTurno){
         VBox contenedorVertical = new VBox();
-        contenedorVertical.setPrefWidth(1000);
+        contenedorVertical.setPrefWidth(800);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(10));
 
@@ -97,9 +131,9 @@ public class JuegoView {
 
     private void colocarDatosDelJugador(Jugador jugadorDeTurno) {
 
-        VBox contenedorVertical = new VBox();
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(10));
+        HBox contenedorHorizonal = new HBox();
+        contenedorHorizonal.setSpacing(30);
+        contenedorHorizonal.setPadding(new Insets(15));
 
         Label etiquetaVida = new Label();
         etiquetaVida.setText("Vida : " + jugadorDeTurno.vida());
@@ -110,8 +144,8 @@ public class JuegoView {
         Label etiquetaPoblacion = new Label();
         etiquetaPoblacion.setText("Poblacion : " + jugadorDeTurno.poblacion() + " / " + LIMITE_POBLACION);
 
-        contenedorVertical.getChildren().addAll(etiquetaVida, etiqueta, etiquetaPoblacion);
-        contenedorInformacionDeJugadores.getChildren().add(contenedorVertical);
+        contenedorHorizonal.getChildren().addAll(etiquetaVida, etiqueta, etiquetaPoblacion);
+        contenedorInformacionDeJugadores.getChildren().add(contenedorHorizonal);
     }
 
     private void informarQueJugadorEstaDeTurno() {

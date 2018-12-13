@@ -13,6 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 
 public class ContenedorBienvenidos extends StackPane{
 
@@ -25,11 +27,14 @@ public class ContenedorBienvenidos extends StackPane{
         this.stage = stage;
         this.setAlignment(Pos.CENTER);
 
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
         Image bgImage = new Image("file:src/fiuba/algo3/tp2/vista/imagenes/AlgoEmpiresPresentacion.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(bgImage);
-        imageView.setFitHeight(768);
-        imageView.setFitWidth(1366);
+        imageView.setFitHeight(screenSize.height);
+        imageView.setFitWidth(screenSize.width);
         this.getChildren().add(imageView);
 
         VBox box = crearVBox(proximaEscena);

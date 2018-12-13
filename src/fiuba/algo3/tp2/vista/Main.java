@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 
 public class Main extends Application {
 
@@ -16,12 +18,14 @@ public class Main extends Application {
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
 
         Scene escenaJuego = new Scene(contenedorPrincipal);
-        /*ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
 
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1920, 1080);
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        stage.setScene(escenaBienvenidos);*/
-        stage.setScene(escenaJuego);
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, screenSize.width, screenSize.height);
+
+        stage.setScene(escenaBienvenidos);
         stage.show();
     }
 
