@@ -112,7 +112,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
         this.validarAcciones();
         this.movimientoPosible();
-        this.accionRealizada();
         super.cambiarPosicion(nuevaPosicion);
 
     }

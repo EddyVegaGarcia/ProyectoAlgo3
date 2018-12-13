@@ -65,7 +65,7 @@ public class Castillo extends Edificio implements Atacante, Creador {
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             jugador.pagar(COSTO_ARMADEASEDIO);
             return (Unidad) PiezaFactory.crearPieza(piezaType);

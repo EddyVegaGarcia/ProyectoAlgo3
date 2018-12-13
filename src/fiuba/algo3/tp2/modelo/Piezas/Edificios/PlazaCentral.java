@@ -38,7 +38,7 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
 
         if(piezaType == UNIDAD_ALDEANO ){
             this.validarAcciones();
-            this.accionesRealizadas++;
+            this.accionRealizada();
 
             unJugador.pagar(COSTO_ALDEANO);
 
