@@ -55,6 +55,7 @@ public class MouseAtaqueEventHandler implements EventHandler<MouseEvent> {
             etiquetaAlertas.setText("Cada piezaAtacante solo puede crear una sola pieza.");
         }
         catch (PiezaDestruidaException e){
+            juego.actualizarPiezas();
             etiquetaAlertas.setText("Pieza victoriosamente destruida.");
         }
         catch (PosicionAtacadaSinResultadosException e){

@@ -1,18 +1,13 @@
 package fiuba.algo3.tp2.modelo.Juego;
 
+
 import fiuba.algo3.tp2.modelo.Campo.*;
-import fiuba.algo3.tp2.modelo.Estados.*;
-
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
-
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +17,7 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 public class Jugador {
 
     public int oro;
-    private ArrayList<Pieza> piezas;
+    private List<Pieza> piezas;
     private List<Unidad> poblacion;
     private List<Constructor> aldeanos;
     private Castillo castillo;
@@ -30,9 +25,6 @@ public class Jugador {
     private int limitePoblacion;
     private String nombre;
     private Mapa mapa;
-
-    //public EstadoDeJugador estado;
-
 
     public Jugador(String unNombre, Mapa mapa) {
 
@@ -44,7 +36,7 @@ public class Jugador {
         this.poblacion = new ArrayList<>();
         this.aldeanos = new ArrayList<>();
         this.mapa = mapa;
-        //this.estado = new NoHabilitadoParaJugar();
+
     }
 
     public int vida() {
@@ -87,7 +79,7 @@ public class Jugador {
         this.mapa.colocarPieza(aldeano1,posicionAldeano1);
         this.mapa.colocarPieza(aldeano2,posicionAldeano2);
         this.mapa.colocarPieza(aldeano3,posicionAldeano3);
-        
+
     }
 
 
@@ -104,29 +96,6 @@ public class Jugador {
         mapa.colocarPieza(plaza,posicionPlaza);
 
     }
-    /*
-
-           public boolean castilloDestruido() {
-               return castillo == null;
-           }
-
-           public int cantidadDePoblacion() {
-               return poblacion;
-           }
-
-           public void cobrarOro(int costo) {
-               this.stringOro = stringOro - costo;
-           }
-
-           public void asignarEstadoHabilitado() {
-               // Esta la necesitamos para comenzar el juego con un jugador habilitado.
-               this.estado = new HabilitadoParaJugar();
-           }
-
-           public void cambiarEstadoDeJugador() {
-               this.estado = estado.cambiarEstado();
-           }
-       */
 
     public void agregarPoblacion(Unidad unaUnidad){
 
@@ -143,7 +112,7 @@ public class Jugador {
     }
 
     public ArrayList<Pieza> getPiezas() {
-        return piezas;
+        return (ArrayList<Pieza>) piezas;
     }
 
     public boolean sosDuenioDe(Pieza pieza) {
@@ -185,20 +154,35 @@ public class Jugador {
 
     }
 
-/*
+    public void actualizarPiezas() {
 
-    private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {
-        this.mapa.colocarPiezaNoAtacante(pieza,posicion);
+        List<Pieza> nuevaLista = new ArrayList<>();
+
+        for(Pieza unaPieza : piezas){
+            if(unaPieza.obtenerVida() == 0) {
+                nuevaLista.add(unaPieza);
+            }
+        }
+        piezas.removeAll(nuevaLista);
+
+        List<Unidad> nuevaLista2 = new ArrayList<>();
+
+        for(Unidad unaPoblacion: poblacion){
+            if(unaPoblacion.obtenerVida() == 0) {
+                nuevaLista2.add(unaPoblacion);
+            }
+        }
+        poblacion.removeAll(nuevaLista2);
+
+        List<Constructor> nuevaLista3 = new ArrayList<>();
+
+        for(Constructor unAldeano: aldeanos){
+            if(((Pieza)unAldeano).obtenerVida() == 0) {
+                nuevaLista3.add(unAldeano);
+            }
+        }
+        aldeanos.removeAll(nuevaLista3);
+
     }
 
-    private void ubicarEnElMapaPiezaAtacante(Atacante atacante, Posicion posicion){
-        this.mapa.colocarPiezaAtacante(atacante,posicion);
-    }
-
-    private void agregarPiezaAtacante(Pieza pieza, Posicion posicion){
-        this.piezas.add(pieza);
-        this.poblacion = poblacion + 1;
-        this.mapa.colocarPiezaNoAtacante(pieza,posicion);
-    }
-    */
 }

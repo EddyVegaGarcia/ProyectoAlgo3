@@ -154,4 +154,11 @@ public class Juego{
                 throw new PiezaAtacadaPertenecienteException();
 
     }
+
+    public void actualizarPiezas() {
+
+        jugador1.actualizarPiezas();
+        jugador2.actualizarPiezas();
+
+    }
 }
