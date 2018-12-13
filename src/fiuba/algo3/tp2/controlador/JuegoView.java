@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import static fiuba.algo3.tp2.modelo.Campo.Constantes.LIMITE_POBLACION;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class JuegoView {
@@ -74,51 +75,37 @@ public class JuegoView {
         informarQueJugadorEstaDeTurno();
     }
 
-    private void agregarEtiquetasDeVidasDeJugadores() {
-        VBox contenedorJugador1 = new VBox();
-        contenedorJugador1.setPadding(new Insets(10));
-        contenedorJugador1.setSpacing(10);
+    private void colocarDatosDeTurno(Jugador jugadorDeTurno){
+        VBox contenedorVertical = new VBox();
+        contenedorVertical.setSpacing(10);
+        contenedorVertical.setPadding(new Insets(10));
 
-        VBox contenedorJugador2 = new VBox();
-        contenedorJugador2.setPadding(new Insets(10));
-        contenedorJugador2.setSpacing(10);
+        agregarBotonTerminarFase(contenedorVertical);
 
-        //etiqueta para la vida de los jugadores
-        Label etiquetaVidaCastilloJugador1 = crearEtiquetaConTexto("vida : " + jugador1.vida());
-        Label etiquetaVidaCastilloJugador2 = crearEtiquetaConTexto("vida : " + jugador2.vida());
+        Label etiquetaTurno = new Label();
+        etiquetaTurno.setText("Turno del Jugador : " + jugadorDeTurno.obtenerNombre());
 
-        //etiqueta para los nombres de los jugadores
-        Label nombreJugador1 = crearEtiquetaConTexto(jugador1.obtenerNombre());
-        Label nombreJugador2 = crearEtiquetaConTexto(jugador2.obtenerNombre());
+        contenedorVertical.getChildren().add(etiquetaTurno);
+        contenedorInformacionDeJugadores.getChildren().add(contenedorVertical);
 
-        contenedorJugador1.getChildren().addAll(nombreJugador1, etiquetaVidaCastilloJugador1);
-        contenedorJugador2.getChildren().addAll(nombreJugador2, etiquetaVidaCastilloJugador2);
-
-        /*HBox contenedorHorizontal = new HBox();
-        contenedorHorizontal.setSpacing(10);
-        contenedorHorizontal.getChildren().addAll(contenedorJugador1, contenedorJugador2);*/
-        contenedorInformacionDeJugadores.getChildren().addAll(contenedorJugador1, contenedorJugador2);
-
-        //contenedorVertical.getChildren().addAll(contenedorHorizontal);
     }
 
-    private void colocarDatosDelJugador(Jugador jugadorDeTuno) {
+    private void colocarDatosDelJugador(Jugador jugadorDeTurno) {
 
         VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(10));
 
-        //colocarBoton(contenedorVertical);
+        Label etiquetaVida = new Label();
+        etiquetaVida.setText("Vida : " + jugadorDeTurno.vida());
 
         Label etiqueta = new Label();
-        etiqueta.setText("Oro : " + jugadorDeTuno.stringOro());
+        etiqueta.setText("Oro : " + jugadorDeTurno.stringOro());
 
-        String nombreDelJugadorDeTurno = juego.jugadorDeTurno().obtenerNombre();
+        Label etiquetaPoblacion = new Label();
+        etiquetaPoblacion.setText("Poblacion : " + jugadorDeTurno.poblacion() + " / " + LIMITE_POBLACION);
 
-        Label etiquetaTurno = new Label();
-        etiquetaTurno.setText("Turno del Jugador : " + nombreDelJugadorDeTurno);
-
-        contenedorVertical.getChildren().addAll(etiquetaTurno, etiqueta);
+        contenedorVertical.getChildren().addAll(etiquetaVida, etiqueta, etiquetaPoblacion);
         contenedorInformacionDeJugadores.getChildren().add(contenedorVertical);
     }
 
@@ -148,8 +135,8 @@ public class JuegoView {
         canvasCentral.getGraphicsContext2D().drawImage(imagen,0,0, width, height);
     }
 
-    private void agregarBotonTerminarFase(){
-        BotonTerminarFase boton = new BotonTerminarFase(contenedorInformacionDeJugadores, juego, this);
+    private void agregarBotonTerminarFase(VBox contenedorVertical){
+        BotonTerminarFase boton = new BotonTerminarFase(contenedorVertical, juego, this);
     }
 
     private void setEstadoDelJuego(Canvas canvasCentral) {
@@ -182,7 +169,6 @@ public class JuegoView {
 
         contenedorParaUnaPieza.getChildren().clear();
         contenedorInformacionDeJugadores.getChildren().clear();
-        contenedorVertical.getChildren().clear();
         canvasCentral.getGraphicsContext2D().clearRect(0,0, canvasCentral.getWidth(), canvasCentral.getHeight());
 
         acualizarContenedorDeInformacionDeJugadores();
@@ -397,8 +383,7 @@ public class JuegoView {
 
     public void acualizarContenedorDeInformacionDeJugadores() {
         contenedorInformacionDeJugadores.getChildren().clear();
+        colocarDatosDeTurno(juego.jugadorDeTurno());
         colocarDatosDelJugador(juego.jugadorDeTurno());
-        agregarBotonTerminarFase();
-        agregarEtiquetasDeVidasDeJugadores();
     }
 }

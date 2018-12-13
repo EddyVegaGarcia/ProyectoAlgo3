@@ -15,10 +15,10 @@ public class BotonTerminarFase extends Button {
     private Jugador jugador2;
     private JuegoView juegoView;
     private Juego juego;
-    private HBox contenedor;
+    private VBox contenedor;
     private String nombreDelJugadorDeTurno;
 
-    public BotonTerminarFase(HBox contenedor, Juego juego, JuegoView juegoView){
+    public BotonTerminarFase(VBox contenedor, Juego juego, JuegoView juegoView){
 
         this.contenedor = contenedor;
         this.juego = juego;
