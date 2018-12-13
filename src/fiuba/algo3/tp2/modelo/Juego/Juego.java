@@ -4,6 +4,7 @@ import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
+import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
@@ -132,6 +133,12 @@ public class Juego{
         this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(), unEdificio);
 
         piezaConstructora.construir(unEdificio);
+
+    }
+
+    public void montar(Montable piezaMontable, PiezaType piezaType) {
+
+
 
     }
 }

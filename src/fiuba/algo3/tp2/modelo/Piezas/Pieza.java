@@ -18,7 +18,15 @@ public abstract class Pieza {
 
     public int obtenerTamanio() { return tamanio; }
 
-    public void recibirDanio(int unDanio) { this.vida = vida - unDanio;}
+    public void recibirDanio(int unDanio) {
+
+        if (vida - unDanio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+
+        this.vida = vida - unDanio;
+    }
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 

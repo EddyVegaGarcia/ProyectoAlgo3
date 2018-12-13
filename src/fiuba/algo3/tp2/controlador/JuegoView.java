@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Direcciones.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
+import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Juego.*;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
@@ -206,8 +207,8 @@ public class JuegoView {
             else if (type.equals(PiezaType.UNIDAD_ARMADEASEDIO)){
 
                 agregarBotonesDeMovimiento(pieza);
-                //agregarBotonMontarse(pieza);
-                //agregarBotonDesmontarse(pieza);
+                agregarBotonMontarse(pieza);
+                agregarBotonDesmontarse(pieza);
                 agregarBotonDeAtaque(pieza);
 
             }
@@ -316,16 +317,28 @@ public class JuegoView {
         contenedorParaUnaPieza.getChildren().add(boton);
 
     }
-    /*
-    private void agregarBotonDesmontar(Pieza pieza) {
-        if(pieza.podesDesmontarArmaAsedio()) {
-            Button boton = new Button();
-            boton.setText("Desmontar Arma de Asedio");
 
-            contenedorParaUnaPieza.getChildren().add(boton);
-        }
+    private void agregarBotonMontarse(Pieza pieza){
+
+        Button boton = new Button();
+        boton.setOnAction(new MontarEventHandler(this, juego, canvasCentral,(Montable) pieza,
+                UNIDAD_ARMADEASEDIO , etiquetaConsola));
+        boton.setText("Montarse");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
     }
-    */
+
+    private void agregarBotonDesmontarse(Pieza pieza) {
+
+        Button boton = new Button();
+        boton.setOnAction(new DesmontarEventHandler(this, juego, canvasCentral,(Montable) pieza,
+                UNIDAD_ARMADEASEDIO , etiquetaConsola));
+        boton.setText("Desmontarse");
+
+        contenedorParaUnaPieza.getChildren().add(boton);
+
+    }
 
     private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
 

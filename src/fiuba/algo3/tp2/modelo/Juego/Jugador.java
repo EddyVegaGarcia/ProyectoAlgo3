@@ -31,7 +31,7 @@ public class Jugador {
     private String nombre;
     private Mapa mapa;
 
-    public EstadoDeJugador estado;
+    //public EstadoDeJugador estado;
 
 
     public Jugador(String unNombre, Mapa mapa) {
@@ -44,7 +44,7 @@ public class Jugador {
         this.poblacion = new ArrayList<>();
         this.aldeanos = new ArrayList<>();
         this.mapa = mapa;
-        this.estado = new NoHabilitadoParaJugar();
+        //this.estado = new NoHabilitadoParaJugar();
     }
 
     public int vida() {

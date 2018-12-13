@@ -90,6 +90,9 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     @Override
     public void montar() {
 
+        this.validarAcciones();
+        this.montarIncogruencia();
+        this.accionRealizada();
         this.estado = estado.montar(this);
 
     }
@@ -97,6 +100,9 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     @Override
     public void desmontar() {
 
+        this.validarAcciones();
+        this.desmontarIncogruencia();
+        this.accionRealizada();
         this.estado = estado.desmontar(this);
 
     }
@@ -104,7 +110,9 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     @Override
     public void cambiarPosicion(Posicion nuevaPosicion) {
 
+        this.validarAcciones();
         this.movimientoPosible();
+        this.accionRealizada();
         super.cambiarPosicion(nuevaPosicion);
 
     }
@@ -124,4 +132,15 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         return "Aldeano";
     }
 
+    @Override
+    public void montarIncogruencia() {
+        if(this.estado.estaMontado())
+            throw new MontarIncogruenciaException();
+    }
+
+    @Override
+    public void desmontarIncogruencia() {
+        if(!this.estado.estaMontado())
+            throw new DesmontarIncogruenciaException();
+    }
 }

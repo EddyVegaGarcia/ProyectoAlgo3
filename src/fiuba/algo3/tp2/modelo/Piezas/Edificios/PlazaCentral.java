@@ -84,4 +84,5 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
         this.estado.finalizarConstruccion(this.estado);
 
     }
+
 }

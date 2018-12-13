@@ -19,11 +19,9 @@ public class TrabajoEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private Constructor piezaConstructora;
     private Canvas canvasCentral;
-    private UbicarPiezas ubicarPiezas;
     private double height;
     private double widht;
     private PiezaType piezaType;
-    private Posicion nuevaPosicionCreada;
 
     public TrabajoEventHandler(JuegoView unJuegoView, Juego unJuego, Canvas unCanvasCentral,
                                Constructor unaPiezaCreadora, PiezaType unaPiezaType, Label etiquetaConsola) {

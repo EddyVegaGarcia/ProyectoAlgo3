@@ -91,16 +91,6 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
-    @Override
-    public void validarAcciones() {
-        if(accionesRealizadas == 1 )
-            throw new AccionUnicaRealizadaException();
-
-        //if(estado.estaTrabajando())
-        //    throw new AccionesNuevasDenegadasException();
-
-    }
-
     public void reparar(Edificio edificio) {
 
         this.estado.reparar(this.estado);
