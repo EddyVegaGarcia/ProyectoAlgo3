@@ -4,7 +4,6 @@ import fiuba.algo3.tp2.modelo.*;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
-import fiuba.algo3.tp2.modelo.Exception.AtaqueInvalidoException;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
@@ -15,7 +14,6 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     int distanciaDeAtaque, tiempoEsperadoDeMontura;
-    RangoDeAtaque rango;
     EstadoDeArmaDeAsedio estado;
 
     public ArmaDeAsedio(){
@@ -34,8 +32,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         if(!estado.estaMontado())
             throw new ArmaDeAsedioDesmontadaSinAtaqueException();
 
-        if(tiempoEsperadoDeMontura < TIEMPO_ESPERADO_DE_MONTURA)
-            throw new AtaqueInvalidoException();
 
     }
 
@@ -59,13 +55,14 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     }
 
     public void atacarUnidad(Unidad unaUnidad) {
-
+        throw new PiezaAtacadaNoValidaException();
     }
 
     public void atacarEdificio(Edificio unEdificio) {
 
+        this.validarAcciones();
         this.validarAtaqueMontura();
-        this.montar();
+        this.validarRangoDeAtaque(unEdificio.obtenerPosicion(), this.obtenerDistanciaAtaque());
         unEdificio.recibirDanio(ATAQUE_ARMADEASEDIO);
 
     }
@@ -73,12 +70,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     @Override
     public int obtenerDistanciaAtaque() {
         return distanciaDeAtaque;
-    }
-
-    @Override
-    public void guardarRangoDeAtaque(RangoDeAtaque rango) {
-        this.rango = rango;
-
     }
 
     public int obtenerTiempoEsperado(){
@@ -141,5 +132,13 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
     public void desmontarIncogruencia() {
         if(!this.estado.estaMontado())
             throw new DesmontarIncogruenciaException();
+    }
+
+    @Override
+    public void atacarPieza(Pieza unaPieza) {
+        if(unaPieza.obtenerTamanio() == 1)
+            this.atacarUnidad((Unidad)unaPieza);
+        else
+            this.atacarEdificio((Edificio) unaPieza);
     }
 }

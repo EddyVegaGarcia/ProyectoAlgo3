@@ -1,10 +1,12 @@
 package fiuba.algo3.tp2.modelo.Juego;
 
 import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Exception.PiezaAtacadaPertenecienteException;
+import fiuba.algo3.tp2.modelo.Exception.PosicionAtacadaSinResultadosException;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
-import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
@@ -118,7 +120,7 @@ public class Juego{
 
         Posicion unaPosicion = edificio.obtenerPosicion();
 
-        if( !unaPosicion.validacionPosicionValida(posicion, edificio.obtenerTamanio())) {
+        if( !unaPosicion.estaContenidaEnRango1(posicion, edificio.obtenerTamanio())) {
 
             throw new PosicionDeCreacionInvalidaException();
         }
@@ -136,9 +138,18 @@ public class Juego{
 
     }
 
-    public void montar(Montable piezaMontable, PiezaType piezaType) {
+    public void atacar(Posicion unaPosicion, Atacante unaPiezaAtacante) {
 
+        Pieza unaPieza = mapa.recuperarPieza(unaPosicion);
 
+        if (unaPieza == null)
+            throw new PosicionAtacadaSinResultadosException();
+        else
+            if(!jugadorDeTurno().sosDuenioDe(unaPieza)){
+                unaPiezaAtacante.atacarPieza(unaPieza);
+            }
+            else
+                throw new PiezaAtacadaPertenecienteException();
 
     }
 }

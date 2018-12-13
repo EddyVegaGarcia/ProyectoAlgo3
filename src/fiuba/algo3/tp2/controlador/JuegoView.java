@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.controlador;
 
 import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Interfaces.Montable;
@@ -352,9 +353,11 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonDeAtaque(Pieza pieza) {
+    private void agregarBotonDeAtaque(Pieza unAtacante) {
 
         Button boton = new Button();
+        boton.setOnAction(new AtacarEventHandler(this, juego, canvasCentral,
+                (Atacante)unAtacante, etiquetaConsola));
         boton.setText("Atacar");
 
         contenedorParaUnaPieza.getChildren().add(boton);

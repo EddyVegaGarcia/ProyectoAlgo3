@@ -53,4 +53,13 @@ public abstract class Pieza {
     public void refrescar(){
         accionesRealizadas = 0;
     }
+
+    public void validarRangoDeAtaque(Posicion unaPosicion, int distanciaDeAtaque) {
+
+        Posicion posicion = this.obtenerPosicion();
+
+        if(!unaPosicion.estaContenidaEnRangoDeAtaque(posicion, distanciaDeAtaque))
+            throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
+
+    }
 }

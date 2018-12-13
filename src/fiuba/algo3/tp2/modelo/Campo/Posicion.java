@@ -39,27 +39,20 @@ public class Posicion {
                 && (posicionFila >= unaPosicion.getFila()) && (posicionColumna >= unaPosicion.getColumna()));
     }
 
-    public boolean validacionPosicionValida(Posicion unaPosicion, int tamanioDelEdificio){
+    public boolean estaContenidaEnRango1(Posicion unaPosicion, int tamanioDelEdificio){
 
         Posicion nuevaPosicion = new Posicion(posicionFila - 1 , posicionColumna - 1);
 
         return  unaPosicion.estaContenidaEn(nuevaPosicion, (int) (sqrt(tamanioDelEdificio) + 1));
 
     }
+
+    public boolean estaContenidaEnRangoDeAtaque(Posicion unaPosicion, int unaDistanciaAtaque) {
+
+        Posicion nuevaPosicion = new Posicion(posicionFila - unaDistanciaAtaque,
+                            posicionColumna - unaDistanciaAtaque);
+
+        return  nuevaPosicion.estaContenidaEn(unaPosicion, unaDistanciaAtaque * 2);
+
+    }
 }
-
-    /*
-    public Posicion calcularPosicionDeUnRango(int tamanio, Mapa mapa) {
-            int filaInferior = posicionFila + (tamanio/ 4);
-            int columnaDerecha = posicionColumna + (tamanio / 4);
-
-            for (int i = posicionColumna + tamanio; i <= columnaDerecha + tamanio; i++) {
-                for (int j = posicionFila + tamanio; j <= filaInferior + tamanio; j++) {
-                    Posicion posActual = new Posicion(i, j);
-                    if (estaContenidaEnDimensiones(mapa.getFilas(),mapa.getColumnas()) && mapa.estaDisponible(posActual)) {
-                        return posActual;
-                    }
-                }
-            }
-            return null;
-    }*/
