@@ -13,9 +13,10 @@ public class EnReposo implements EstadoDeAldeano {
 
     @Override
     public EstadoDeAldeano construir(Edificio edificio, int turnosConstruccion) {
-        if(!edificio.estaConstruido()) {
-            //edificio.iniciarConstruccion();
+        if(edificio.obtenerEstado().estaProcesoDeConstruccion()) {
+
             return new EstaTrabajando();
+
         }
         throw new EdificioConstruidoException();
     }
@@ -29,5 +30,6 @@ public class EnReposo implements EstadoDeAldeano {
     public int oroRecolectado() {
         return 20;
     }
+
 }
 

@@ -1,9 +1,17 @@
 package fiuba.algo3.tp2.modelo.Estados;
 
-public class EnConstruccion extends EstadoDeEdificio {
+import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeEdificio;
+
+public class EnConstruccion implements EstadoDeEdificio {
 
     @Override
-    public boolean estaConstruido() {
-        return false;
+    public void finalizarConstruccion(EstadoDeEdificio unEstado) {
+        unEstado = new Construido();
     }
+
+    @Override
+    public boolean estaProcesoDeConstruccion() {
+        return true;
+    }
+
 }

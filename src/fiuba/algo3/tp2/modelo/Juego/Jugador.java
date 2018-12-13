@@ -175,6 +175,15 @@ public class Jugador {
         return poblacion.size();
     }
 
+    public void terminarConstruccion() {
+
+        for(Constructor unConstructor: aldeanos){
+            if(unConstructor.estaTrabajando())
+                unConstructor.seguirTrabajando();
+        }
+
+    }
+
 /*
 
     private void ubicarEnElMapaPiezaNoAtacante(Pieza pieza, Posicion posicion) {

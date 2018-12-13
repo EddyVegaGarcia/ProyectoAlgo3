@@ -27,12 +27,13 @@ public abstract class Pieza {
     }
 
     public void validarAcciones(){
+
         if(accionesRealizadas == 1)
             throw new AccionUnicaRealizadaException();
     }
 
     protected void accionRealizada() {
-        accionesRealizadas++;
+        accionesRealizadas = 1;
     }
 
     public abstract double getTamanio();

@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import java.util.ArrayList;
@@ -122,22 +123,13 @@ public class Juego{
         }
     }
 
-    private void validarDistanciaDeConstruccion(Posicion posicion, Unidad unidad) {
-
-        Posicion unaPosicion = unidad.obtenerPosicion();
-
-        if( !unaPosicion.validacionPosicionValida(posicion, unidad.obtenerTamanio())) {
-
-            throw new PosicionDeCreacionInvalidaException();
-        }
-    }
-
     public void construirEdificio(Constructor piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
-        validarDistanciaDeConstruccion(posicion, (Unidad) piezaConstructora);
 
         Edificio unEdificio = (Edificio) mapa.recuperarPieza(posicion);
+
+        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(), unEdificio);
 
         piezaConstructora.construir(unEdificio);
 

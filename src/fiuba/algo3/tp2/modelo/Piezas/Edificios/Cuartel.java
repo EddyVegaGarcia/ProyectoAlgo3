@@ -11,7 +11,7 @@ import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Cuartel extends Edificio implements Creador, Construible {
+public class Cuartel extends Edificio implements Creador, Construible{
 
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
@@ -73,9 +73,17 @@ public class Cuartel extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public void verificarConstruccion() {
+    public void verificarConstruccionEnProceso() {
 
-
+        if(estado.estaProcesoDeConstruccion()){
+            throw new EdificioEnConstruccionException();
+        }
 
     }
+
+    @Override
+    public void finalizarConstruccion() {
+        estado.finalizarConstruccion(this.estado);
+    }
+
 }

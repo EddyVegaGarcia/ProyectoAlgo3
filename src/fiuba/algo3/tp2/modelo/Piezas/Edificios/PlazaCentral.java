@@ -70,7 +70,18 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public void verificarConstruccion() {
+    public void verificarConstruccionEnProceso() {
+
+        if(estado.estaProcesoDeConstruccion()){
+            throw new EdificioEnConstruccionException();
+        }
+
+    }
+
+    @Override
+    public void finalizarConstruccion() {
+
+        this.estado.finalizarConstruccion(this.estado);
 
     }
 }

@@ -54,14 +54,16 @@ public class JuegoView {
         contenedorParaUnaPieza.setPadding(new Insets(10));
 
         contenedorConsola = new VBox();
-        contenedorConsola.setPrefHeight(200);
+        contenedorConsola.setPrefHeight(20);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
 
         contenedorInformacionDeJugadores = new HBox();
-        contenedorInformacionDeJugadores.setPrefHeight(200);
+        contenedorInformacionDeJugadores.setPrefHeight(20);
         contenedorInformacionDeJugadores.setSpacing(10);
         contenedorInformacionDeJugadores.setPadding(new Insets(15));
+
+        informarQueJugadorEstaDeTurno();
 
         setConsola();
         acualizarContenedorDeInformacionDeJugadores();
@@ -73,7 +75,6 @@ public class JuegoView {
         contenedorPrincipal.setLeft(contenedorParaUnaPieza);
         contenedorPrincipal.setBottom(contenedorConsola);
 
-        informarQueJugadorEstaDeTurno();
     }
 
     private void colocarDatosDeTurno(Jugador jugadorDeTurno){

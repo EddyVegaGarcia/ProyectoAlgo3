@@ -12,4 +12,5 @@ public interface Constructor extends Diseñador{
 
     int oroRecolectado();
 
+    void seguirTrabajando();
 }

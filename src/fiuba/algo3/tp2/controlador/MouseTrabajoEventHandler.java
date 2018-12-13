@@ -1,6 +1,9 @@
 package fiuba.algo3.tp2.controlador;
 
+import fiuba.algo3.tp2.modelo.Exception.AccionUnicaRealizadaException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
+import fiuba.algo3.tp2.modelo.Exception.EdificioEnConstruccionException;
+import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -27,13 +30,13 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
 
     public MouseTrabajoEventHandler(JuegoView juegoView, Juego juego, Canvas canvasCentral, Constructor piezaConstructora, PiezaType piezaType, Label etiquetaAlertas) {
 
-        this.widht = canvas.getWidth();
-        this.height = canvas.getHeight();
+        this.widht = canvasCentral.getWidth();
+        this.height = canvasCentral.getHeight();
         this.juegoView = juegoView;
         this.piezaConstructora = piezaConstructora;
         this.piezaType = piezaType;
         this.juego = juego;
-        this.canvas = canvas;
+        this.canvas = canvasCentral;
         this.etiquetaAlertas = etiquetaAlertas;
 
     }
@@ -50,7 +53,16 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
 
         }
         catch (EdificioConstruidoException e){
-            etiquetaAlertas.setText("Edificio inagurado para trabajar");
+            etiquetaAlertas.setText("Edificio ya inagurado para trabajar");
+        }
+        catch(PosicionDeCreacionInvalidaException e){
+            etiquetaAlertas.setText("No se ecuentra lo suficiente cerca para contruir/reparar el edificio");
+        }
+        catch (AccionUnicaRealizadaException e){
+            etiquetaAlertas.setText("Cada piezaConstructora solo puede realizar una sola accion");
+        }
+        catch(EdificioEnConstruccionException e){
+            etiquetaAlertas.setText("Edificio ya esta en proceso de construccion con otro constructor");
         }
 
         juegoView.actualizar();
