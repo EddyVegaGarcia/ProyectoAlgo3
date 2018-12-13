@@ -6,7 +6,6 @@ import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
@@ -38,7 +37,7 @@ public class MouseEventHandler implements EventHandler<MouseEvent> {
         Pieza pieza = mapa.recuperarPieza(new Posicion((int)y,(int)x));
 
         if( pieza != null ){
-            juegoView.crearBotoneraParaPieza(pieza);
+            juegoView.BotonFactory(pieza);
         }
     }
 }

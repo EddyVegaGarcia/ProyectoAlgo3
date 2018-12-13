@@ -14,7 +14,7 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Aldeano extends Unidad implements Constructor {
 
-    //public int oro;
+    //public int stringOro;
     public EstadoDeAldeano estado;
     int turnosConstruccion;
 
@@ -23,7 +23,7 @@ public class Aldeano extends Unidad implements Constructor {
 
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
-        //this.oro = 0;
+        //this.stringOro = 0;
         this.estado = new EnReposo();
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
@@ -38,6 +38,7 @@ public class Aldeano extends Unidad implements Constructor {
 
     }
 
+    @Override
     public void construir(Edificio unEdificio)  {
 
         this.ValidarEdificio(unEdificio);
@@ -53,7 +54,7 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public Edificio crearPieza(PiezaType piezaType, Jugador unJugador) {
+    public Edificio colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarOroSufiente(unJugador.oro);
 
@@ -97,11 +98,11 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
    /* public int obtenerOroTotal() {
-        return oro;
+        return stringOro;
     }
 
    public void sumarOro(){
-        this.oro = oro + 20;
+        this.stringOro = stringOro + 20;
     }
 
     public void ganarMonedas(){ estado.ganarOro(this);
@@ -125,7 +126,6 @@ public class Aldeano extends Unidad implements Constructor {
     public String obtenerNombre() {
         return "Aldeano";
     }
-
 
     @Override
     public int oroRecolectado() {

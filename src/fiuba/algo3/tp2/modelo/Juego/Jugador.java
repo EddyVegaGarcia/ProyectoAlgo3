@@ -56,9 +56,11 @@ public class Jugador {
     }
 
 
-    public String oro() {
+    public String stringOro() {
         return Integer.toString(oro);
     }
+
+    public int obtenerOro(){ return  oro;}
 
     public Castillo obtenerCastillo() {
         return castillo;
@@ -92,6 +94,8 @@ public class Jugador {
     public void ubicarEdificiosPorDefault(Posicion posicionCastillo, Posicion posicionPlaza){
 
         PlazaCentral plaza = new PlazaCentral();
+        plaza.finalizarConstruccion();
+        
         this.piezas.add(plaza);
         this.piezas.add(castillo);
 
@@ -100,26 +104,6 @@ public class Jugador {
 
     }
     /*
-       public void comprarPieza(Edificio unEdificio) {
-
-           Unidad aldeano = unEdificio.crearPieza(PiezaType.UNIDAD_ALDEANO);
-           this.mapa.ubicarUnidadAlrededorDeEdificio(aldeano,plaza);
-           this.poblacion = poblacion +1;
-
-       }
-
-           public void comprarPlazaCentral(Posicion posicion) {
-               Pieza plaza = new PlazaCentral();
-               this.mapa.colocarPiezaNoAtacante(plaza,posicion);
-           }
-
-           public String obtenerNombre() {
-               return nombre;
-           }
-
-           public int obtenerOro() {
-               return oro;
-           }
 
            public boolean castilloDestruido() {
                return castillo == null;
@@ -130,7 +114,7 @@ public class Jugador {
            }
 
            public void cobrarOro(int costo) {
-               this.oro = oro - costo;
+               this.stringOro = stringOro - costo;
            }
 
            public void asignarEstadoHabilitado() {

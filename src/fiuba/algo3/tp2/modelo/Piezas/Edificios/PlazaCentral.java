@@ -31,9 +31,10 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public Unidad crearPieza(PiezaType piezaType, Jugador unJugador){
+    public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador){
 
-        this.validarOroSufiente(unJugador.oro);
+        this.validarExistencia();
+        this.validarOroSufiente(unJugador.obtenerOro());
 
         if(piezaType == UNIDAD_ALDEANO ){
             this.validarAcciones();
@@ -70,6 +71,6 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
 
     @Override
     public void verificarConstruccion() {
-        
+
     }
 }

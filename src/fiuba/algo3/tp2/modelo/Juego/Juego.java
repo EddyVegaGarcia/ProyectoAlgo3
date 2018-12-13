@@ -4,7 +4,6 @@ import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.PosicionDeCreacionInvalidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
-import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import java.util.ArrayList;
@@ -83,7 +82,7 @@ public class Juego{
         validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
         mapa.validarPosicion(posicion);
 
-        Unidad unaUnidad = (Unidad) piezaConstructora.crearPieza(unidadType, jugadorDeTurno());
+        Unidad unaUnidad = (Unidad) piezaConstructora.colocarPieza(unidadType, jugadorDeTurno());
 
         mapa.colocarPieza(unaUnidad, posicion);
 
@@ -104,7 +103,7 @@ public class Juego{
 
         }
 
-        Edificio unEdificio = (Edificio) piezaConstructora.crearPieza(piezaType, jugadorDeTurno());
+        Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
         mapa.colocarPieza(unEdificio, posicion);
 
