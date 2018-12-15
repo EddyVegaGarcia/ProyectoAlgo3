@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class FinalizadoView {
+
     public FinalizadoView(Stage stage, Juego juego) {
         Jugador ganador = juego.ganador();
 

@@ -53,13 +53,13 @@ public class MouseReparacionEventHandler implements EventHandler<MouseEvent> {
         }
         catch (AccionUnicaRealizadaException e){
 
-            etiquetaAlertas.setText("Cada piezaAtacante solo puede crear una sola pieza.");
+            etiquetaAlertas.setText("Cada piezaReparadora solo puede crear una sola pieza.");
         }
         catch (PosicionReparadaSinResultadosException e){
             etiquetaAlertas.setText("Ubicacion reparada sin resultados.");
         }
         catch (PiezaReaparadaPertenecienteAlEnemigoException e){
-            etiquetaAlertas.setText("La pieza atacada pertence al jugador enemigo.");
+            etiquetaAlertas.setText("La pieza a reparar pertenece al jugador enemigo.");
         }
         catch (PiezaNoReparableNoConstruibleException e){
             etiquetaAlertas.setText("La pieza reparadora no puede reparar a unidades.");

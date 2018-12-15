@@ -51,10 +51,10 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
             etiquetaAlertas.setText("Edificio ya inagurado para trabajar.");
         }
         catch(PosicionDeCreacionInvalidaException e){
-            etiquetaAlertas.setText("No se ecuentra lo suficiente cerca para contruir/repararPieza el edificio.");
+            etiquetaAlertas.setText("No se ecuentra lo suficiente cerca para contruir el edificio.");
         }
         catch (AccionUnicaRealizadaException e){
-            etiquetaAlertas.setText("Cada piezaConstructora solo puede realizar una sola accion.");
+            etiquetaAlertas.setText("La piezaConstructora se encuentra trabajando.");
         }
         catch(EdificioEnConstruccionException e){
             etiquetaAlertas.setText("Edificio ya esta en proceso de construccion con otro constructor.");

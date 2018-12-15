@@ -102,7 +102,6 @@ public class Mapa {
 
     }
 
-
     public void moverUnidad(Posicion posicion, Direccion direccion) {
 
         Posicion nuevaPosicion = direccion.obtenerNuevaPosicion(posicion);

@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo.Juego;
 
 
 import fiuba.algo3.tp2.modelo.Campo.*;
+import fiuba.algo3.tp2.modelo.Exception.SobrepoblacionException;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
@@ -132,9 +133,11 @@ public class Jugador {
     }
 
     public void refrescarPiezas() {
+
         for(Pieza piezaActual : piezas){
             piezaActual.refrescar();
         }
+
     }
 
     public void pagar(int costo) {
@@ -187,5 +190,12 @@ public class Jugador {
     }
 
     public void terminoTuTurno() {
+    }
+
+    public void validarPoblacionMaxima() {
+
+        if(poblacion.size() > 50)
+            throw new SobrepoblacionException();
+
     }
 }

@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -11,9 +10,8 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
-import static java.lang.Math.sqrt;
 
-public class Castillo extends Edificio implements Atacante, Diseñador {
+public class Castillo extends Edificio implements Diseñador {
 
     public Castillo() {
 
@@ -29,16 +27,7 @@ public class Castillo extends Edificio implements Atacante, Diseñador {
         super.recibirDanio(unDanio);
     }
 
-    @Override
     public int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
-
-    public void atacarUnidad(Unidad unidad) {
-
-        this.validarAcciones();
-        this.validarRangoDeAtaque(unidad.obtenerPosicion(), this.obtenerDistanciaAtaque());
-        unidad.recibirDanio(ATAQUE_CASTILLO);
-    }
-
 
     @Override
     public void validarOroSufiente(int cantidadOroActual, int costo) {
@@ -76,11 +65,6 @@ public class Castillo extends Edificio implements Atacante, Diseñador {
     }
 
     @Override
-    public void atacarEdificio(Edificio unEdificio) {
-        throw new PiezaAtacadaNoValidaException();
-    }
-
-    @Override
     public void darVidaPorReparacion() {
         this.vida = vida + VIDA_REPARACION;
     }
@@ -88,14 +72,6 @@ public class Castillo extends Edificio implements Atacante, Diseñador {
     @Override
     public String obtenerNombre() {
         return "Castillo";
-    }
-
-    @Override
-    public void atacarPieza(Pieza unaPieza) {
-        if(unaPieza.obtenerTamanio() == 1)
-            this.atacarUnidad((Unidad)unaPieza);
-        else
-            this.atacarEdificio((Edificio) unaPieza);
     }
 
     @Override
@@ -124,4 +100,5 @@ public class Castillo extends Edificio implements Atacante, Diseñador {
     public void atacarA(Pieza victima) {
         victima.recibirDanio(ATAQUE_CASTILLO);
     }
+
 }

@@ -90,7 +90,8 @@ public class Juego{
     public void colocarUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
-        validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
+        jugadorDeTurno().validarPoblacionMaxima();
+        this.validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
         mapa.validarPosicion(posicion);
 
         Unidad unaUnidad = (Unidad) piezaConstructora.colocarPieza(unidadType, jugadorDeTurno());
