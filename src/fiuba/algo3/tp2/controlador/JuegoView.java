@@ -10,15 +10,21 @@ import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import fiuba.algo3.tp2.vista.ContenedorPrincipal;
 import fiuba.algo3.tp2.vista.OpcionTerminarJuegoEventHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static fiuba.algo3.tp2.modelo.Constantes.LIMITE_POBLACION;
@@ -142,12 +148,37 @@ public class JuegoView {
 
     private void informarQueJugadorEstaDeTurno() {
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Inicio Del Juego");
-        alert.setHeaderText("Jugador de Turno");
-        String mensaje = "Comienza el jugador " + juego.jugadorDeTurno().obtenerNombre() + ".";
-        alert.setContentText(mensaje);
-        alert.show();
+        Stage nuevoStage = new Stage();
+        nuevoStage.initOwner(stage);
+        nuevoStage.setTitle("Jugador De Turno");
+
+        Pane root = new Pane();
+
+        VBox contenedorVertical = new VBox();
+        contenedorVertical.setPadding(new Insets(15));
+        contenedorVertical.setSpacing(15);
+        contenedorVertical.setPrefWidth(250);
+
+        Label etiqueta = new Label();
+        etiqueta.setText("Comienza el Jugador : " + juego.jugadorDeTurno().obtenerNombre() + ".");
+
+        Button boton = new Button();
+        boton.setText("Aceptar");
+        boton.setDefaultButton(true);
+        boton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                nuevoStage.close();
+            }
+        });
+
+        contenedorVertical.getChildren().addAll(etiqueta, boton);
+        root.getChildren().add(contenedorVertical);
+
+        Scene escena = new Scene(root);
+
+        nuevoStage.setScene(escena);
+        nuevoStage.show();
     }
 
     private void setConsola() {
