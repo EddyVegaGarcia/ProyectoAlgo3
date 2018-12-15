@@ -11,8 +11,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
+import static fiuba.algo3.tp2.modelo.Constantes.COLUMNA_DEFAULT_MAPA;
+import static fiuba.algo3.tp2.modelo.Constantes.FILA_DEFAULT_MAPA;
 
 public class MouseReparacionEventHandler implements EventHandler<MouseEvent> {
 

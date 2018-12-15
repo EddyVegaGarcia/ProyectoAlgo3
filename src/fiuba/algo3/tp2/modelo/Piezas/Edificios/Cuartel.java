@@ -1,17 +1,17 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
-import fiuba.algo3.tp2.modelo.Interfaces.Creador;
+import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Cuartel extends Edificio implements Creador, Construible{
+public class Cuartel extends Edificio implements Diseñador, Construible{
 
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
@@ -28,7 +28,7 @@ public class Cuartel extends Edificio implements Creador, Construible{
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual) {
+    public void validarOroSufiente(int oro, int cantidadOroActual) {
 
         if( cantidadOroActual < COSTO_ESPADACHIN || cantidadOroActual < COSTO_ARQUERO )
             throw new OroInsuficienteException();
@@ -39,7 +39,7 @@ public class Cuartel extends Edificio implements Creador, Construible{
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarExistencia();
-        this.validarOroSufiente(unJugador.obtenerOro());
+        this.validarOroSufiente(unJugador.oro, unJugador.obtenerOro());
 
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 

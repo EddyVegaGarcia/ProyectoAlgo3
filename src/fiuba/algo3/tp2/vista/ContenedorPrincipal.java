@@ -52,6 +52,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         Button botonEnviar = new Button();
         botonEnviar.setText(" Enviar ");
+        botonEnviar.setDefaultButton(true);
 
         Label mensajeJugador1 = new Label();
         Label mensajeJugador2 = new Label();

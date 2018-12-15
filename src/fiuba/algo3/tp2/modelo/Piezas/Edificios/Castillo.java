@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import fiuba.algo3.tp2.modelo.*;
+import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
@@ -9,12 +9,11 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 
-import java.util.ArrayList;
-
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
+import static java.lang.Math.sqrt;
 
-public class Castillo extends Edificio implements Atacante, Creador {
+public class Castillo extends Edificio implements Atacante, Diseñador {
 
     public Castillo() {
 
@@ -40,18 +39,17 @@ public class Castillo extends Edificio implements Atacante, Creador {
         unidad.recibirDanio(ATAQUE_CASTILLO);
     }
 
+
     @Override
-    public void validarOroSufiente(int cantidadOroActual) {
-
-        if( cantidadOroActual < COSTO_ARMADEASEDIO )
+    public void validarOroSufiente(int cantidadOroActual, int costo) {
+        if(cantidadOroActual < costo)
             throw new OroInsuficienteException();
-
     }
 
     @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador jugador) {
 
-        this.validarOroSufiente(jugador.obtenerOro());
+        this.validarOroSufiente(jugador.oro, COSTO_ARMADEASEDIO);
 
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
@@ -123,4 +121,7 @@ public class Castillo extends Edificio implements Atacante, Creador {
 
     }
 
+    public void atacarA(Pieza victima) {
+        victima.recibirDanio(ATAQUE_CASTILLO);
+    }
 }

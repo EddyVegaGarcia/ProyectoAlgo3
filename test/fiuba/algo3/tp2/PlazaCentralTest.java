@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;
 
 public class PlazaCentralTest {

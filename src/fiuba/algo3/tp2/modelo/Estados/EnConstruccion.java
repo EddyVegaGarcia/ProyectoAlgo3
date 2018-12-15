@@ -10,10 +10,7 @@ public class EnConstruccion implements EstadoDeEdificio {
     }
 
     @Override
-    public EstadoDeEdificio finalizarConstruccion() {
-
-        return new Construido();
-    }
+    public EstadoDeEdificio finalizarConstruccion() { return new Construido(); }
 
     @Override
     public boolean estaConstruido() {

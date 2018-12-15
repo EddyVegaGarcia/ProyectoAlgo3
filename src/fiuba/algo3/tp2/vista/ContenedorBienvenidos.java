@@ -52,6 +52,7 @@ public class ContenedorBienvenidos extends StackPane{
 
         Button botonEntrar = new Button();
         botonEntrar.setText(" Iniciar Juego ");
+        botonEntrar.setDefaultButton(true);
 
 
         Label etiqueta = new Label();

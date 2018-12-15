@@ -2,15 +2,13 @@ package fiuba.algo3.tp2.modelo.Campo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-import fiuba.algo3.tp2.controlador.UbicarPiezas;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Direccion;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static java.lang.Math.sqrt;
 
 public class Mapa {
@@ -149,5 +147,21 @@ public class Mapa {
 
         piezasDelMapa.values().removeAll(unaLista);
 
+    }
+
+    public ArrayList<Pieza> obtenerPiezasQueEstanEnRango(Posicion posicion, int tamanio, int distancia) {
+        ArrayList<Pieza> piezas = new ArrayList<Pieza>();
+
+        Posicion posicionInicio = new Posicion(posicion.getFila() - distancia, posicion.getColumna() - distancia);
+        for(int i = 0; i < sqrt(tamanio) + (distancia*2); i++){
+            for(int j = 0; j < sqrt(tamanio) + (distancia*2); j++){
+
+                Posicion posicionActual = new Posicion(posicionInicio.getFila() + i,posicionInicio.getColumna() + j);
+                Pieza pieza = recuperarPieza(posicionActual);
+                if( pieza != null )
+                    piezas.add(pieza);
+            }
+        }
+        return piezas;
     }
 }

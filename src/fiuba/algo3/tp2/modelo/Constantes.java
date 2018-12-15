@@ -1,5 +1,7 @@
-package fiuba.algo3.tp2.modelo.Campo;
+package fiuba.algo3.tp2.modelo;
 
+
+import fiuba.algo3.tp2.modelo.Campo.Posicion;
 
 public class Constantes {
     public static int FILA_DEFAULT_MAPA = 27;
@@ -57,7 +59,7 @@ public class Constantes {
     public static int VIDA_MAXIMA_ARMADEASEDIO = 150;
     public static int VIDA_MAXIMA_PLAZACENTRAL = 450;
     public static int VIDA_MAXIMA_CUARTEL = 250;
-    public static int VIDA_MAXIMA_CASTILLO = 1000;
+    public static int VIDA_MAXIMA_CASTILLO = 5;
 
     /*TURNOS*/
     public static int TURNOS_CONSTRUCCION_MAXIMO = 3;

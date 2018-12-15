@@ -5,7 +5,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 
 import org.junit.Test;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;
 
 public class ArqueroTest {

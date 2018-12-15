@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaFactory;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Aldeano extends Unidad implements Constructor {
@@ -33,28 +33,36 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual) {
+    public void validarOroSufiente(int cantidadOroActual, int costo) {
 
-        if( cantidadOroActual < COSTO_CUARTEL || cantidadOroActual < COSTO_PLAZACENTRAL )
+        /*if( cantidadOroActual < COSTO_CUARTEL || cantidadOroActual < COSTO_PLAZACENTRAL )
+            throw new OroInsuficienteException();*/
+
+        if( cantidadOroActual < costo )
             throw new OroInsuficienteException();
-
     }
 
     @Override
     public Edificio colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
-        this.validarOroSufiente(unJugador.oro);
+       // this.validarOroSufiente(unJugador.oro, unJugador.oro);
+
+        this.validarAcciones();
 
         if (piezaType == PiezaType.EDIFICIO_CUARTEL ||piezaType == PiezaType.EDIFICIO_PLAZACENTRAL ) {
 
-            this.validarAcciones();
-            this.accionRealizada();
+            //this.validarAcciones();
 
-            if(piezaType == EDIFICIO_CUARTEL)
+            if(piezaType == EDIFICIO_CUARTEL) {
+                this.validarOroSufiente(unJugador.oro, COSTO_CUARTEL);
                 unJugador.pagar(COSTO_CUARTEL);
-            if(piezaType == EDIFICIO_PLAZACENTRAL)
+            }
+            if(piezaType == EDIFICIO_PLAZACENTRAL) {
+                this.validarOroSufiente(unJugador.oro, COSTO_PLAZACENTRAL);
                 unJugador.pagar(COSTO_PLAZACENTRAL);
+            }
 
+            this.accionRealizada();
             return (Edificio) PiezaFactory.crearPieza(piezaType);
 
         }

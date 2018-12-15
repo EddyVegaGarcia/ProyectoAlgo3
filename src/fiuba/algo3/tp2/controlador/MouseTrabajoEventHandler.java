@@ -3,16 +3,14 @@ package fiuba.algo3.tp2.controlador;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
-import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.COLUMNA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.FILA_DEFAULT_MAPA;
-import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ALDEANO;
+import static fiuba.algo3.tp2.modelo.Constantes.COLUMNA_DEFAULT_MAPA;
+import static fiuba.algo3.tp2.modelo.Constantes.FILA_DEFAULT_MAPA;
 
 public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
 

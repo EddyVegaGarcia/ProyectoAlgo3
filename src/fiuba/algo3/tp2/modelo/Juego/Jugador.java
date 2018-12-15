@@ -8,10 +8,12 @@ import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Jugador {
@@ -62,7 +64,7 @@ public class Jugador {
 
         Aldeano aldeano1 = new Aldeano();
         Aldeano aldeano2 = new Aldeano();
-        Aldeano aldeano3 = new Aldeano();
+        Arquero aldeano3 = new Arquero();
 
         this.piezas.add(aldeano1);
         this.piezas.add(aldeano2);
@@ -74,12 +76,11 @@ public class Jugador {
 
         this.aldeanos.add(aldeano1);
         this.aldeanos.add(aldeano2);
-        this.aldeanos.add(aldeano3);
+        //this.aldeanos.add(aldeano3);
 
         this.mapa.colocarPieza(aldeano1,posicionAldeano1);
         this.mapa.colocarPieza(aldeano2,posicionAldeano2);
         this.mapa.colocarPieza(aldeano3,posicionAldeano3);
-
     }
 
 
@@ -185,4 +186,6 @@ public class Jugador {
 
     }
 
+    public void terminoTuTurno() {
+    }
 }

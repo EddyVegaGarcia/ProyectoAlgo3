@@ -48,4 +48,10 @@ public class Turno {
 
     }
 
+    public Jugador jugadorEnEspera() {
+        if( jugadorEnJuego == jugador1 )
+            return jugador2;
+        else
+            return jugador1;
+    }
 }

@@ -21,7 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.LIMITE_POBLACION;
+import static fiuba.algo3.tp2.modelo.Constantes.LIMITE_POBLACION;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class JuegoView {
@@ -198,7 +198,6 @@ public class JuegoView {
     public void actualizar() {
 
         contenedorParaUnaPieza.getChildren().clear();
-        contenedorInformacionDeJugadores.getChildren().clear();
         canvasCentral.getGraphicsContext2D().clearRect(0,0, canvasCentral.getWidth(), canvasCentral.getHeight());
 
         acualizarContenedorDeInformacionDeJugadores();
@@ -385,7 +384,7 @@ public class JuegoView {
 
         Button boton = new Button();
         boton.setOnAction(new AtacarEventHandler(this, juego, canvasCentral,
-                (Atacante)unAtacante, etiquetaConsola));
+                (Atacante)unAtacante, etiquetaConsola, stage));
         boton.setText("Atacar");
 
         contenedorParaUnaPieza.getChildren().add(boton);

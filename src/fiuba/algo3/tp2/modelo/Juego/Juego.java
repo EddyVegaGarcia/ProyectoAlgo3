@@ -6,12 +6,15 @@ import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Pieza;
 import fiuba.algo3.tp2.modelo.Piezas.Unidad;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
+import javafx.geometry.Pos;
+
 import java.util.ArrayList;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 public class Juego{
 
@@ -19,16 +22,17 @@ public class Juego{
     private Jugador ganador;
     private Mapa mapa;
     private Turno turno;
+    private boolean finalizado = false;
 
     private void colocarPiezasPorDefault(){
 
         jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
                 POSICION_DEFAULT_ALDEANO1_2,
-                POSICION_DEFAULT_ALDEANO1_3);
+                /*POSICION_DEFAULT_ALDEANO1_3*/new Posicion(22, 2));
 
         jugador2.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO2_1,
                 POSICION_DEFAULT_ALDEANO2_2,
-                POSICION_DEFAULT_ALDEANO2_3);
+                /*POSICION_DEFAULT_ALDEANO2_3*/ new Posicion(25,18));
 
         jugador1.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1, POSICION_DEFAULT_PLAZA1);
         jugador2.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO2, POSICION_DEFAULT_PLAZA2);
@@ -76,6 +80,10 @@ public class Juego{
     }
 
     public void terminarTurno() {
+        Castillo castillo =  jugadorDeTurno().obtenerCastillo();
+        ataqueMasivo(castillo, castillo.obtenerPosicion(), TAMANIO_CASTILLO);
+
+        jugadorDeTurno().terminoTuTurno();
         turno.terminarTurno();
     }
 
@@ -170,5 +178,30 @@ public class Juego{
         jugador1.actualizarPiezas();
         jugador2.actualizarPiezas();
 
+    }
+
+    public void ataqueMasivo(Castillo castillo, Posicion posicion, int tamanioDePieza) {
+        ArrayList<Pieza> victimas = mapa.obtenerPiezasQueEstanEnRango(posicion, tamanioDePieza, castillo.obtenerDistanciaAtaque());
+        for(Pieza victima : victimas){
+            if( !jugadorDeTurno().sosDuenioDe(victima) )
+                try {
+                    castillo.atacarA(victima);
+                }catch (PiezaDestruidaException e){
+                    this.actualizarPiezas();
+                    mapa.actualizarPiezas();
+                }
+        }
+    }
+
+    public boolean finalizado() {
+        if(turno.jugadorEnEspera().vida() <= 0){
+            ganador = jugadorDeTurno();
+            return true;
+        }
+        return false;
+    }
+
+    public Jugador ganador() {
+        return ganador;
     }
 }

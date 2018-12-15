@@ -1,17 +1,17 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
-import static fiuba.algo3.tp2.modelo.Campo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
-import fiuba.algo3.tp2.modelo.Interfaces.Creador;
+import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class PlazaCentral extends Edificio implements Creador, Construible {
+public class PlazaCentral extends Edificio implements Diseñador, Construible {
 
     public PlazaCentral(){
 
@@ -30,9 +30,9 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual) {
+    public void validarOroSufiente(int cantidadOroActual, int costo) {
 
-        if( cantidadOroActual < COSTO_ALDEANO )
+        if( cantidadOroActual < costo )
             throw new OroInsuficienteException();
 
     }
@@ -41,7 +41,7 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador){
 
         this.validarExistencia();
-        this.validarOroSufiente(unJugador.obtenerOro());
+        this.validarOroSufiente(unJugador.oro, COSTO_ALDEANO);
 
         if(piezaType == UNIDAD_ALDEANO ){
             this.validarAcciones();
@@ -88,7 +88,7 @@ public class PlazaCentral extends Edificio implements Creador, Construible {
     @Override
     public void finalizarConstruccion() {
 
-        this. estado = this.estado.finalizarConstruccion();
+        estado = estado.finalizarConstruccion();
 
     }
 

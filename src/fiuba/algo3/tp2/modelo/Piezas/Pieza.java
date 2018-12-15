@@ -54,11 +54,11 @@ public abstract class Pieza {
         accionesRealizadas = 0;
     }
 
-    public void validarRangoDeAtaque(Posicion unaPosicion, int distanciaDeAtaque) {
+    public void validarRangoDeAtaque(Posicion posicionPiezaAtacada, int distanciaDeAtaque) {
 
         Posicion posicion = this.obtenerPosicion();
 
-        if(!unaPosicion.estaContenidaEnRangoDeAtaque(posicion, distanciaDeAtaque))
+        if(!posicionPiezaAtacada.estaContenidaEnRangoDeAtaque(posicion, distanciaDeAtaque))
             throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
 
     }

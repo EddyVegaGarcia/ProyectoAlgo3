@@ -37,7 +37,9 @@ public class BotonTerminarFase extends Button {
             @Override
             public void handle(ActionEvent event) {
                 juego.terminarTurno();
-                juegoView.acualizarContenedorDeInformacionDeJugadores();
+                //juegoView.acualizarContenedorDeInformacionDeJugadores();
+                //juegoView.vaciarOpcionesDePieza();
+                juegoView.actualizar();
             }
         });
 
