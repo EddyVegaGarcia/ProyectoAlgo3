@@ -28,11 +28,11 @@ public class Juego{
 
         jugador1.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO1_1,
                 POSICION_DEFAULT_ALDEANO1_2,
-                /*POSICION_DEFAULT_ALDEANO1_3*/new Posicion(22, 2));
+                POSICION_DEFAULT_ALDEANO1_3);
 
         jugador2.ubicarAldeanosPorDefault(POSICION_DEFAULT_ALDEANO2_1,
                 POSICION_DEFAULT_ALDEANO2_2,
-                /*POSICION_DEFAULT_ALDEANO2_3*/ new Posicion(25,18));
+                POSICION_DEFAULT_ALDEANO2_3);
 
         jugador1.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1, POSICION_DEFAULT_PLAZA1);
         jugador2.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO2, POSICION_DEFAULT_PLAZA2);

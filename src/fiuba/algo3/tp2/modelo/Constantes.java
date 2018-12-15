@@ -59,7 +59,7 @@ public class Constantes {
     public static int VIDA_MAXIMA_ARMADEASEDIO = 150;
     public static int VIDA_MAXIMA_PLAZACENTRAL = 450;
     public static int VIDA_MAXIMA_CUARTEL = 250;
-    public static int VIDA_MAXIMA_CASTILLO = 5;
+    public static int VIDA_MAXIMA_CASTILLO = 1000;
 
     /*TURNOS*/
     public static int TURNOS_CONSTRUCCION_MAXIMO = 3;

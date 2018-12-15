@@ -64,7 +64,7 @@ public class Jugador {
 
         Aldeano aldeano1 = new Aldeano();
         Aldeano aldeano2 = new Aldeano();
-        Arquero aldeano3 = new Arquero();
+        Aldeano aldeano3 = new Aldeano();
 
         this.piezas.add(aldeano1);
         this.piezas.add(aldeano2);
@@ -76,7 +76,7 @@ public class Jugador {
 
         this.aldeanos.add(aldeano1);
         this.aldeanos.add(aldeano2);
-        //this.aldeanos.add(aldeano3);
+        this.aldeanos.add(aldeano3);
 
         this.mapa.colocarPieza(aldeano1,posicionAldeano1);
         this.mapa.colocarPieza(aldeano2,posicionAldeano2);
