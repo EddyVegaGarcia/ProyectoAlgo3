@@ -52,8 +52,7 @@ public class MouseReparacionEventHandler implements EventHandler<MouseEvent> {
             juego.reparar(posicion, piezaReparadora);
         }
         catch (AccionUnicaRealizadaException e){
-
-            etiquetaAlertas.setText("Cada piezaReparadora solo puede crear una sola pieza.");
+            etiquetaAlertas.setText("Cada piezaReparadora solo puede realizar una accion.");
         }
         catch (PosicionReparadaSinResultadosException e){
             etiquetaAlertas.setText("Ubicacion reparada sin resultados.");
@@ -73,8 +72,12 @@ public class MouseReparacionEventHandler implements EventHandler<MouseEvent> {
         catch(EdificioEnReparacionException e){
             etiquetaAlertas.setText("Un solo reparador puede reparar el edificio");
         }
+        catch (EstaReparandoException e){
+            etiquetaAlertas.setText("La pieza esta realizando una reparacion no puede trabajar.");
+        }
 
-
+        juegoView.actualizar();
+        canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
 
     }
 }

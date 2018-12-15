@@ -10,9 +10,12 @@ public interface Constructor extends Diseñador{
 
     boolean estaTrabajando();
 
+    boolean estaReparando();
+
     int oroRecolectado();
 
     void seguirTrabajando();
 
     void seguirReparando();
+
 }

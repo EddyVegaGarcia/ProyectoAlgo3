@@ -4,15 +4,22 @@ import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioEnConstruccionException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioEnReparacionException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioYaReparadoException;
+import fiuba.algo3.tp2.modelo.Interfaces.Colocador;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeAldeano;
+import fiuba.algo3.tp2.modelo.Interfaces.Reparador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
-public class EnReposo implements EstadoDeAldeano {
+public class EnReposo implements EstadoDeAldeano, Colocador, Reparador {
 
     @Override
     public boolean estaTrabajando() {
+        return false;
+    }
+
+    @Override
+    public boolean estaReparando() {
         return false;
     }
 
@@ -38,7 +45,7 @@ public class EnReposo implements EstadoDeAldeano {
         if(!unEdificio.obtenerEstadoVida().estaReparado() && !unEdificio.obtenerEstadoVida().estaEnReparacion()){
 
             unEdificio.iniciarReparacion();
-            return new EstaTrabajando();
+            return new EstaReparando();
 
         }
         else if(unEdificio.obtenerEstadoVida().estaReparado())
@@ -46,7 +53,7 @@ public class EnReposo implements EstadoDeAldeano {
         else if (unEdificio.obtenerEstadoVida().estaEnReparacion())
             throw new EdificioEnReparacionException();
 
-        return new EnReposo();
+        return this;
     }
 
     @Override

@@ -1,5 +1,9 @@
 package fiuba.algo3.tp2.modelo.Campo;
 
+import fiuba.algo3.tp2.modelo.Piezas.Pieza;
+
+import java.util.ArrayList;
+
 import static java.lang.Math.sqrt;
 
 public class Posicion {
@@ -55,4 +59,5 @@ public class Posicion {
         return  unaPosicion.estaContenidaEn(nuevaPosicion, unaDistanciaAtaque * 2);
 
     }
+
 }

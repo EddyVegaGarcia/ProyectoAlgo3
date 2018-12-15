@@ -17,15 +17,13 @@ public class Aldeano extends Unidad implements Constructor {
     //public int stringOro;
     public EstadoDeAldeano estado;
     int turnosConstruccion;
-    Edificio edificioEnConstruccion;
-    Edificio edificioEnReparacion;
+    Edificio edificioCreado;
 
 
     public Aldeano() {
 
         this.vida = VIDA_MAXIMA_ALDEANO;
         this.costo = COSTO_ALDEANO;
-        //this.stringOro = 0;
         this.estado = new EnReposo();
         this.tamanio = TAMANIO_UNIDAD;
         this.turnosConstruccion = 0;
@@ -80,7 +78,7 @@ public class Aldeano extends Unidad implements Constructor {
 
         ((Construible)unaPieza).verificarProcesoEnConstruccion();
 
-        edificioEnConstruccion = (Edificio)unaPieza;
+        edificioCreado = (Edificio)unaPieza;
 
         this.seguirTrabajando();
 
@@ -116,7 +114,7 @@ public class Aldeano extends Unidad implements Constructor {
 
         ((Reparable)unaPieza).verificarProcesoEnReparacion();
 
-        edificioEnReparacion = (Edificio) unaPieza;
+        edificioCreado = (Edificio) unaPieza;
 
         this.seguirReparando();
 
@@ -125,7 +123,11 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     public boolean estaTrabajando() {
-        return estado.estaTrabajando();
+        return ((Colocador)estado).estaTrabajando();
+    }
+
+    public boolean estaReparando(){
+        return ((Reparador)estado).estaReparando();
     }
 
     @Override
@@ -150,7 +152,7 @@ public class Aldeano extends Unidad implements Constructor {
 
     @Override
     public void refrescar() {
-       if(!estado.estaTrabajando())
+       if(!((Colocador)estado).estaTrabajando() && !((Reparador)estado).estaReparando())
            super.refrescar();
     }
 
@@ -159,7 +161,7 @@ public class Aldeano extends Unidad implements Constructor {
 
         this.construccionRealizada();
 
-        this.estado = estado.construir(edificioEnConstruccion, turnosConstruccion);
+        this.estado = ((Colocador)estado).construir(edificioCreado, turnosConstruccion);
 
         if(turnosConstruccion == TURNOS_CONSTRUCCION_MAXIMO){
             this.turnosConstruccion = 0;
@@ -170,8 +172,8 @@ public class Aldeano extends Unidad implements Constructor {
     @Override
     public void seguirReparando() {
 
-        edificioEnReparacion.darVidaPorReparacion();
-        this.estado = this.estado.reparar(edificioEnReparacion, edificioEnReparacion.obtenerType());
+        edificioCreado.darVidaPorReparacion();
+        this.estado = ((Reparador)estado).reparar(edificioCreado, edificioCreado.obtenerType());
 
     }
 }

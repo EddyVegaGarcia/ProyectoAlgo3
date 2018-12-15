@@ -24,8 +24,8 @@ public abstract class Pieza {
             vida = 0;
             throw new PiezaDestruidaException();
         }
-
         this.vida = vida - unDanio;
+
     }
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}

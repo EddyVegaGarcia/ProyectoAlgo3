@@ -62,6 +62,9 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
         catch (PiezaNoReparableNoConstruibleException e){
             etiquetaAlertas.setText("La pieza no es construible.");
         }
+        catch(EstaTrabajandoException e){
+            etiquetaAlertas.setText("La pieza está realizando un trabajo no puede reparar.");
+        }
 
         juegoView.actualizar();
         canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
