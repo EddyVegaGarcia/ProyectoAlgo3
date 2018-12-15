@@ -33,9 +33,6 @@ public class Aldeano extends Unidad implements Constructor {
     @Override
     public void validarOroSufiente(int cantidadOroActual, int costo) {
 
-        /*if( cantidadOroActual < COSTO_CUARTEL || cantidadOroActual < COSTO_PLAZACENTRAL )
-            throw new OroInsuficienteException();*/
-
         if( cantidadOroActual < costo )
             throw new OroInsuficienteException();
     }

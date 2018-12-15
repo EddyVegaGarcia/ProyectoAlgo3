@@ -56,10 +56,24 @@ public abstract class Pieza {
 
     public void validarRangoDeAtaque(Posicion posicionPiezaAtacada, int distanciaDeAtaque) {
 
-        Posicion posicion = this.obtenerPosicion();
-
-        if(!posicionPiezaAtacada.estaContenidaEnRangoDeAtaque(posicion, distanciaDeAtaque))
+        if(!posicionPiezaAtacada.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), distanciaDeAtaque))
             throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
+
+    }
+
+    protected void validarRangoDeAtaqueAEdificio(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
+
+        for(Posicion unaPosicion : unaListaPosiciones){
+
+            if (unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque)) {
+                System.out.println("entro" + unaPosicion.getFila() + "" + unaPosicion.getColumna());
+                return;
+            }
+            else
+                throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
+
+
+        }
 
     }
 }
