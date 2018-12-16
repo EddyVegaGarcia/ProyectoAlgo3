@@ -17,9 +17,12 @@ public class PlazaCentralTest {
     public void testPlazaCentralCreaAldeano(){
         Jugador jugador = new Jugador("loo", new Mapa());
 
-        Edificio plaza = new PlazaCentral();
+        Edificio plazaCentral = new PlazaCentral();
 
-        Unidad aldeano = ((PlazaCentral) plaza).colocarPieza(PiezaType.UNIDAD_ALDEANO, jugador);
+        ((PlazaCentral) plazaCentral).iniciarConstruccion();
+        ((PlazaCentral) plazaCentral).finalizarConstruccion();
+
+        Unidad aldeano = ((PlazaCentral) plazaCentral).colocarPieza(PiezaType.UNIDAD_ALDEANO, jugador);
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
@@ -31,6 +34,9 @@ public class PlazaCentralTest {
 
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio plazaCentral = new PlazaCentral();
+
+        ((PlazaCentral) plazaCentral).iniciarConstruccion();
+        ((PlazaCentral) plazaCentral).finalizarConstruccion();
 
         Unidad aldeano = ((PlazaCentral) plazaCentral).colocarPieza(PiezaType.UNIDAD_ESPADACHIN, jugador);
     }

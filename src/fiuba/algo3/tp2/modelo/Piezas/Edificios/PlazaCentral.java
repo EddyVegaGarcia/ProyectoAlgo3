@@ -41,7 +41,7 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador){
 
         this.validarExistencia();
-        this.validarOroSufiente(unJugador.oro, COSTO_ALDEANO);
+        this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ALDEANO);
 
         if(piezaType == UNIDAD_ALDEANO ){
             this.validarAcciones();

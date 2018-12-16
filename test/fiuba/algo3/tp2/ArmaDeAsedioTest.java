@@ -83,6 +83,7 @@ public class ArmaDeAsedioTest {
         Montable armaDeAsedio = new ArmaDeAsedio();
 
         armaDeAsedio.montar();
+        ((ArmaDeAsedio) armaDeAsedio).refrescar();
         armaDeAsedio.desmontar();
 
         int tiempoEsperado = 0;
@@ -93,15 +94,11 @@ public class ArmaDeAsedioTest {
     @Test(expected = ArmaDeAsedioMontadaSinMovimientoException.class)
     public void testMoverArmaDeAsedioEnEstadoMontado() {
 
-        Mapa mapa = new Mapa();
-        Posicion posicion = new Posicion(24,30);
         Montable unArmaDeAsedio = new ArmaDeAsedio();
 
-        mapa.colocarPieza((Pieza)unArmaDeAsedio, posicion);
-
         unArmaDeAsedio.montar();
-
-        mapa.moverUnidad(posicion, new DireccionIzquierda());
+        ((ArmaDeAsedio) unArmaDeAsedio).refrescar();
+        ((ArmaDeAsedio) unArmaDeAsedio).movimientoPosible();
 
     }
 }

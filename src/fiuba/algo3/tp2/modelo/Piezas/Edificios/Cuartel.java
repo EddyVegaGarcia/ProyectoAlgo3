@@ -39,7 +39,7 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarExistencia();
-        this.validarOroSufiente(unJugador.oro, unJugador.obtenerOro());
+        this.validarOroSufiente(unJugador.obtenerOro(), unJugador.obtenerOro());
 
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 

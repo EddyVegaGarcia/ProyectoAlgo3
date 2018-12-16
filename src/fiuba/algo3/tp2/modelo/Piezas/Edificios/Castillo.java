@@ -43,10 +43,9 @@ public class Castillo extends Edificio implements Diseñador {
     @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador jugador) {
 
-        this.validarOroSufiente(jugador.oro, COSTO_ARMADEASEDIO);
-
         if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
 
+            this.validarOroSufiente(jugador.obtenerOro(), COSTO_ARMADEASEDIO);
             this.validarAcciones();
             this.accionRealizada();
 
@@ -71,10 +70,12 @@ public class Castillo extends Edificio implements Diseñador {
 
     @Override
     public void darVidaPorReparacion() {
+
         if(vida + VIDA_REPARACION_A_CUARTEL > VIDA_MAXIMA_CASTILLO)
             vida = VIDA_MAXIMA_CASTILLO;
         else
             this.vida = vida + VIDA_REPARACION_A_CASTILLO;
+
     }
 
     @Override

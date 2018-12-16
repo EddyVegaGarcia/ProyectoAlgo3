@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -14,7 +15,14 @@ public class CastilloTest {
 
     @Test
     public void testCastilloCreaArmaDeAsedio(){
+
         Jugador jugador = new Jugador("loo", new Mapa());
+        jugador.agregarPoblacion(new Aldeano());
+        jugador.agregarPoblacion(new Aldeano());
+        jugador.agregarPoblacion(new Aldeano());
+
+        jugador.recolectarOro();
+        jugador.recolectarOro();
 
         Edificio castillo = new Castillo();
 
