@@ -58,7 +58,10 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
 
     @Override
     public void darVidaPorReparacion() {
-        this.vida = vida + VIDA_REPARACION_A_PLAZACENTRAL;
+        if(vida + VIDA_REPARACION_A_CUARTEL > VIDA_MAXIMA_PLAZACENTRAL)
+            vida = VIDA_MAXIMA_PLAZACENTRAL;
+        else
+            this.vida = vida + VIDA_REPARACION_A_PLAZACENTRAL;
     }
 
     @Override
