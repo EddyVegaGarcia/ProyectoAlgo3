@@ -141,5 +141,5 @@ public class AldeanoTest {
         long obtenido = (long)aldeano.getTamanio();
         assertEquals((long)1, obtenido);
     }
-    
+
 }
