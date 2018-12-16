@@ -19,12 +19,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static fiuba.algo3.tp2.modelo.Constantes.LIMITE_POBLACION;
@@ -185,7 +183,7 @@ public class JuegoView {
         etiquetaConsola = new Label();
         etiquetaConsola.setText("consola...");
         etiquetaConsola.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-        etiquetaConsola.setTextFill(Color.WHITE);
+        etiquetaConsola.setTextFill(Color.RED);
 
         contenedorConsola.getChildren().add(etiquetaConsola);
         contenedorConsola.setStyle("-fx-background-color: black;");
@@ -223,7 +221,9 @@ public class JuegoView {
     }
 
     public void vaciarOpcionesDePieza() {
+
         contenedorParaUnaPieza.getChildren().clear();
+
     }
 
     public void actualizar() {
@@ -277,7 +277,7 @@ public class JuegoView {
             }
             else if (type.equals(PiezaType.EDIFICIO_CASTILLO)){
 
-                agregarBotonConstruirArmaAsedio(pieza);
+                agregarBotonCrearArmaAsedio(pieza);
 
             }
             else if (type.equals(PiezaType.EDIFICIO_CUARTEL)){
@@ -316,7 +316,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,(Diseñador) pieza,
                 UNIDAD_ARQUERO , etiquetaConsola));
-        boton.setText("Crear Arquero");
+        boton.setText("Crear Arquero: $75");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -327,7 +327,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, (Diseñador)pieza,
                 UNIDAD_ESPADACHIN , etiquetaConsola));
-        boton.setText("Crear espadachin");
+        boton.setText("Crear espadachin: $50");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -338,7 +338,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral, (Diseñador) pieza,
                 EDIFICIO_PLAZACENTRAL, etiquetaConsola));
-        boton.setText("Crear Plaza Central");
+        boton.setText("Crear Plaza Central: $100");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -349,7 +349,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this,juego,canvasCentral,(Diseñador) pieza,
                 EDIFICIO_CUARTEL, etiquetaConsola));
-        boton.setText("Crear Cuartel");
+        boton.setText("Crear Cuartel: $50");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -371,7 +371,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral, (Diseñador) pieza,
                 UNIDAD_ALDEANO , etiquetaConsola));
-        boton.setText("Crear Aldeano");
+        boton.setText("Crear Aldeano: $25");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -382,7 +382,7 @@ public class JuegoView {
         Button boton = new Button();
         boton.setOnAction(new MontarEventHandler(this, juego, canvasCentral,(Montable) pieza,
                 UNIDAD_ARMADEASEDIO , etiquetaConsola));
-        boton.setText("Montarse");
+        boton.setText("Montarse: 1 turno");
 
         contenedorParaUnaPieza.getChildren().add(boton);
 
@@ -399,12 +399,12 @@ public class JuegoView {
 
     }
 
-    private void agregarBotonConstruirArmaAsedio(Pieza pieza) {
+    private void agregarBotonCrearArmaAsedio(Pieza pieza) {
 
         Button boton = new Button();
         boton.setOnAction(new CreacionEventHandler(this, juego, canvasCentral,
                 (Diseñador) pieza, UNIDAD_ARMADEASEDIO , etiquetaConsola));
-        boton.setText("Construir Arma de Asedio");
+        boton.setText("Crear Arma de Asedio: $200");
 
 
         contenedorParaUnaPieza.getChildren().add(boton);

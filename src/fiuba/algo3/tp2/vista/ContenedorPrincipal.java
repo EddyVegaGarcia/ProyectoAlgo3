@@ -16,7 +16,6 @@ public class ContenedorPrincipal extends BorderPane {
 
     public ContenedorPrincipal(Stage stage){
         this.myStage = stage;
-        //this.setMenu();
         this.nombreDeLosJugadores();
     }
 
@@ -71,7 +70,7 @@ public class ContenedorPrincipal extends BorderPane {
     public void iniciarJuego(String nombreJugador1, String nombreJugador2) {
 
         myStage.setMaximized(true);
-        myStage.setTitle("Algo3Age of Empires");
+        myStage.setTitle("AlgoEmpires");
 
         JuegoView vistaJuego = new JuegoView(this, nombreJugador1, nombreJugador2, myStage);
     }
