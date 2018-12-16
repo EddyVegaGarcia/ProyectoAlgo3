@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ARQUERO;
 import static org.junit.Assert.assertEquals;
 
 public class ArqueroTest {
@@ -61,4 +62,29 @@ public class ArqueroTest {
 
     }
 
+    //tests de getters
+
+    @Test
+    public void testObtenerNombreDevuelveArquero(){
+        Arquero arquero = new Arquero();
+        assertEquals("Arquero", arquero.obtenerNombre());
+    }
+
+    @Test
+    public void testObtenerDistanciaDeAtaqueDevuelve3(){
+        Arquero arquero =  new Arquero();
+        assertEquals(3, arquero.obtenerDistanciaAtaque());
+    }
+
+    @Test
+    public void testGetTamanioDevuelve1(){
+        Arquero arquero = new Arquero();
+        assertEquals(1, (long)arquero.getTamanio());
+    }
+
+    @Test
+    public void testObtenerTypeDevuelveUnidadArquero(){
+        Arquero arquero = new Arquero();
+        assertEquals(UNIDAD_ARQUERO, arquero.obtenerType());
+    }
 }

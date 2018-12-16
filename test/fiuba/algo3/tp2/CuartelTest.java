@@ -9,10 +9,14 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.EDIFICIO_CUARTEL;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class CuartelTest {
 
+    //tests de creacion de unidades
     @Test
     public void testCuartelCreaEspadachin() {
 
@@ -55,6 +59,7 @@ public class CuartelTest {
         Unidad arquero = ((Cuartel) cuartel).colocarPieza(PiezaType.UNIDAD_ARMADEASEDIO, jugador);
     }
 
+    //tests de recibeDanio
     @Test
     public void testCuartelRecibeDanioDeEspadachin() {
 
@@ -105,15 +110,125 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        for(int i = 0; i < 4; i++){
-            //cuartel.construir();
-        }
         cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
         cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
         cuartel.recibirDanio(ATAQUE_ARMADEASEDIO);
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
-
     }
+
+    @Test(expected = PiezaDestruidaException.class)
+    public void testCuartelRecibeDanioHastaSerdestruidoLanzaExcepcionYLaVidaEsCero(){
+        Edificio cuartel = new Cuartel();
+
+        cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO);
+    }
+
+    //tests de getters
+
+    @Test
+    public void testObtenerNombreDevuelveCuartel(){
+        Cuartel cuartel = new Cuartel();
+        assertEquals("Cuartel", cuartel.obtenerNombre());
+    }
+
+
+    @Test
+    public void testGetTamanioDevuelve4(){
+        Cuartel cuartel = new Cuartel();
+        assertEquals(4, (long)cuartel.getTamanio());
+    }
+
+    @Test
+    public void testObtenerTypeDevuelveEdificioCuartel(){
+        Cuartel cuartel = new Cuartel();
+        assertEquals(EDIFICIO_CUARTEL, cuartel.obtenerType());
+    }
+
+    //test dar vida por reparacion
+
+    @Test
+    public void testDarVidaPorReparacionAumentalaVidaDelCuartelEn50ComoMaximo() {
+        Cuartel cuartel = new Cuartel();
+        cuartel.recibirDanio(50);
+        cuartel.darVidaPorReparacion();
+
+        assertEquals(250, cuartel.obtenerVida());
+    }
+
+    @Test
+    public void testDarVidaPorReparacionAumentaLaVidaDelCuartelEn20SiElCuartelTiene230DeVida(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.recibirDanio(20);
+        cuartel.darVidaPorReparacion();
+
+        assertEquals(250, cuartel.obtenerVida());
+    }
+
+    @Test
+    public void testDarVidaPorReparacionNoAumentaLaVidaSiCuartelTieneVidaMaxima(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.darVidaPorReparacion();
+
+        assertEquals(250, cuartel.obtenerVida());
+    }
+
+
+    //tests de estados
+
+    @Test(expected = EdificioEnReparacionException.class)
+    public void testIniciarReparacionCambiaElEstadoDeCuartelAEnReparacion(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.recibirDanio(20);
+        cuartel.iniciarReparacion();
+
+        cuartel.verificarProcesoEnReparacion();
+    }
+
+    @Test(expected = EdificioYaReparadoException.class)
+    public void testIniciarReparacionLanzaExcepcionSiCuartelNoEstaDaniado(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.iniciarReparacion();
+    }
+
+    @Test
+    public void testCuartelRecienCreadoEstaEnEstadoReperado(){
+        Cuartel cuartel = new Cuartel();
+
+        assertFalse(cuartel.obtenerEstadoVida().estaEnReparacion());
+        assertTrue(cuartel.obtenerEstadoVida().estaReparado());
+    }
+
+    @Test
+    public void testCuartelRecienCreadoNoEstaEnConstruccion(){
+        Cuartel cuartel = new Cuartel();
+
+        assertFalse(cuartel.obtenerEstado().estaConstruido());
+        assertFalse(cuartel.obtenerEstado().estaEnConstruccion());
+    }
+
+    @Test(expected = EdificioEnConstruccionException.class)
+    public void testCuartelIniciarConstruccionCambiaElEstadoDeCuartelAEStaEnConstruccion(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.iniciarConstruccion();
+
+        cuartel.verificarProcesoEnConstruccion();
+    }
+
+    @Test
+    public void testTerminarConstruccionCambiaElEstadoDeCuartelAConstruido(){
+        Cuartel cuartel = new Cuartel();
+        cuartel.iniciarConstruccion();
+        cuartel.finalizarConstruccion();
+
+        assertTrue(cuartel.obtenerEstado().estaConstruido());
+        assertFalse(cuartel.obtenerEstado().estaEnConstruccion());
+    }
+
+
 }

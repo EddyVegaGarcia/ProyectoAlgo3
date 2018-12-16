@@ -28,9 +28,9 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
     }
 
     @Override
-    public void validarOroSufiente(int oro, int cantidadOroActual) {
+    public void validarOroSufiente(int cantidadOroActual, int costo) {
 
-        if( cantidadOroActual < COSTO_ESPADACHIN || cantidadOroActual < COSTO_ARQUERO )
+        if( cantidadOroActual < costo )
             throw new OroInsuficienteException();
 
     }
@@ -39,18 +39,20 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
         this.validarExistencia();
-        this.validarOroSufiente(unJugador.obtenerOro(), unJugador.obtenerOro());
 
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 
             this.validarAcciones();
             this.accionRealizada();
 
-            if(piezaType == UNIDAD_ESPADACHIN)
+            if(piezaType == UNIDAD_ESPADACHIN) {
+                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ESPADACHIN);
                 unJugador.pagar(COSTO_ESPADACHIN);
-            if(piezaType == UNIDAD_ARQUERO)
+            }
+            if(piezaType == UNIDAD_ARQUERO) {
+                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ARQUERO);
                 unJugador.pagar(COSTO_ARQUERO);
-
+            }
             return (Unidad) PiezaFactory.crearPieza(piezaType);
         }
         else

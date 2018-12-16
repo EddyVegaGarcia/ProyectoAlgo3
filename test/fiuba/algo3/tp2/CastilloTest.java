@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.EDIFICIO_CASTILLO;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class CastilloTest {
@@ -27,9 +28,6 @@ public class CastilloTest {
 
         Jugador jugador = new Jugador("loo", new Mapa());
         jugador.ubicarAldeanosPorDefault(new Posicion(1,1), new Posicion(2,1), new Posicion( 2, 2));
-        jugador.agregarPoblacion(new Aldeano());
-        jugador.agregarPoblacion(new Aldeano());
-        jugador.agregarPoblacion(new Aldeano());
 
         jugador.recolectarOro();
         jugador.recolectarOro();
@@ -244,15 +242,17 @@ public class CastilloTest {
     //tests de Posicion
 
     @Test
-    public void testObtenerPoscionDevuelveLaPrimeraPosicionDeLaLista(){
-        Castillo castillo = new Castillo();
-        ArrayList<Posicion> posiciones = new ArrayList<>();
-        Posicion pos1 = new Posicion(1,1);
-        posiciones.add(pos1);
-        posiciones.add(new Posicion(2,2));
-        castillo.agregarPosicion(posiciones);
+    public void testObtenerPoscionDevuelveLaPosicionExtremaSuperiorIzquierda(){
 
-        assertEquals(pos1, castillo.obtenerPosicion());
+        Jugador unJugador = new Jugador("alex", new Mapa());
+        unJugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1, POSICION_DEFAULT_PLAZA1);
+
+        Castillo unCastillo = unJugador.obtenerCastillo();
+        Posicion unaPosicion = unCastillo.obtenerPosicion();
+
+        Posicion otraPosicion = new Posicion(0,33);
+
+        assertTrue(unaPosicion.compararPosicion(otraPosicion));
     }
 
     //tests ataque masivo
