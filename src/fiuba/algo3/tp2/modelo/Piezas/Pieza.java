@@ -68,7 +68,6 @@ public abstract class Pieza {
         for(Posicion unaPosicion : unaListaPosiciones){
 
             estaContenido = unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque);
-            System.out.println("entro" + unaPosicion.getFila() + "" + unaPosicion.getColumna());
 
         }
 
