@@ -120,7 +120,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
 
     @Override
     public String obtenerNombre() {
-        return "Aldeano";
+        return "ArmaDeAsedio";
     }
 
     @Override

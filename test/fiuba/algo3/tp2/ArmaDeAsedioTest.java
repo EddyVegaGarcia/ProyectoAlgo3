@@ -11,10 +11,12 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ARMADEASEDIO;
 import static org.junit.Assert.assertEquals;
 
 public class ArmaDeAsedioTest {
 
+    //test de recibir danio
     @Test
     public void testArmaDeAsedioRecibirDanioDeEspadachin() {
 
@@ -65,6 +67,7 @@ public class ArmaDeAsedioTest {
 
     }
 
+    //tests de mover
     @Test
     public void testMontarArmaDeAsedioConContadorIniciado() {
 
@@ -100,5 +103,32 @@ public class ArmaDeAsedioTest {
         ((ArmaDeAsedio) unArmaDeAsedio).refrescar();
         ((ArmaDeAsedio) unArmaDeAsedio).movimientoPosible();
 
+    }
+
+    //tests de getters
+
+    @Test
+    public void testObtenerNombreDevuelveArmaDeAsedio(){
+        ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
+        assertEquals("ArmaDeAsedio", armaDeAsedio.obtenerNombre());
+    }
+
+    @Test
+    public void testGetTamanioDevuelve1(){
+        ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
+
+        assertEquals((long)1, (long)armaDeAsedio.getTamanio());
+    }
+
+    @Test
+    public void testObtenerTypeDevuelveUnidadArmaDeAsedio(){
+        ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
+        assertEquals(UNIDAD_ARMADEASEDIO, armaDeAsedio.obtenerType());
+    }
+
+    @Test
+    public void testObtenerDistanciaDeAtaque(){
+        ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
+        assertEquals(5, armaDeAsedio.obtenerDistanciaAtaque());
     }
 }
