@@ -1,14 +1,17 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.modelo.Campo.Mapa;
-import fiuba.algo3.tp2.modelo.Campo.*;
-import fiuba.algo3.tp2.modelo.Direcciones.*;
+import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Exception.PiezaDestruidaException;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Cuartel;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static org.junit.Assert.assertEquals;
@@ -16,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class ArmaDeAsedioTest {
 
     @Test
-    public void testArmaDeAsedioRecibirDanioDeEspadachin() {
+    public void testArmaDeAsedioRecibirDanioLaCantidadDeAtaqueDeEspadachin() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -28,7 +31,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioRecibirDanioDeArquero() {
+    public void testArmaDeAsedioRecibirDanioLaCantidadDeAtaqueDeArquero() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -40,7 +43,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioRecibirDanioDeCastillo() {
+    public void testArmaDeAsedioRecibirDanioLaCantidadDeAtaqueDeCastillo() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -52,7 +55,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = PiezaDestruidaException.class)
-    public void testArmaDeAsedioRecibeDanioDeEspadachinDosVecesYMuere() {
+    public void testArmaDeAsedioRecibeDanioLaCantidadDeAtaqueDeEspadachinSeisVecesYMuere() {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
@@ -100,5 +103,92 @@ public class ArmaDeAsedioTest {
         ((ArmaDeAsedio) unArmaDeAsedio).refrescar();
         ((ArmaDeAsedio) unArmaDeAsedio).movimientoPosible();
 
+    }
+
+    @Test(expected = PiezaAtacadaNoValidaException.class)
+    public void testArmaDeAsedioAtacaUnAldeano() {
+
+        Atacante unArmaDeAsedio = new ArmaDeAsedio();
+        Pieza unAldeano = new Aldeano();
+
+        unArmaDeAsedio.atacarPieza(unAldeano);
+
+    }
+
+    @Test(expected = PiezaAtacadaNoValidaException.class)
+    public void testArmaDeAsedioAtacaUnaPiezaCualquiera() {
+
+        Atacante unArmaDeAsedio = new ArmaDeAsedio();
+        Pieza unaPieza = new Arquero();
+
+        unArmaDeAsedio.atacarPieza(unaPieza);
+
+    }
+
+    @Test
+    public void testArmaDeAsedioAtacaUnCuartel() {
+
+        ArrayList<Posicion> unaListaPosicionAtacante = new ArrayList<>();
+        ArrayList<Posicion> unaListaPosicionAtacable = new ArrayList<>();
+
+        Atacante unArmaDeASedio = new ArmaDeAsedio();
+        Posicion unaPosicionDelAtacante = new Posicion(15,15);
+        unaListaPosicionAtacante.add(unaPosicionDelAtacante);
+        
+        ((ArmaDeAsedio) unArmaDeASedio).agregarPosicion(unaListaPosicionAtacante);
+
+        Pieza unCuartel = new Cuartel();
+        Posicion unaPosicionDelAtacable_1 = new Posicion(13,13);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_1);
+        Posicion unaPosicionDelAtacable_2 = new Posicion(13,14);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_2);
+        Posicion unaPosicionDelAtacable_3 = new Posicion(14,13);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_3);
+        Posicion unaPosicionDelAtacable_4 = new Posicion(14,14);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_4);
+        
+        unCuartel.agregarPosicion(unaListaPosicionAtacable);
+
+        ((ArmaDeAsedio) unArmaDeASedio).montar();
+        ((ArmaDeAsedio) unArmaDeASedio).refrescar();
+
+        unArmaDeASedio.atacarPieza(unCuartel);
+
+        int vidaEsperada = 175;
+        assertEquals(vidaEsperada, unCuartel.obtenerVida());
+
+    }
+
+    @Test
+    public void testArmaDeAsedioAtacaUnaPlazaCentral() {
+
+        ArrayList<Posicion> unaListaPosicionAtacante = new ArrayList<>();
+        ArrayList<Posicion> unaListaPosicionAtacable = new ArrayList<>();
+
+        Atacante unArmaDeASedio = new ArmaDeAsedio();
+        Posicion unaPosicionDelAtacante = new Posicion(15,15);
+        unaListaPosicionAtacante.add(unaPosicionDelAtacante);
+
+        ((ArmaDeAsedio) unArmaDeASedio).agregarPosicion(unaListaPosicionAtacante);
+
+        Pieza unaPLazaCentral = new PlazaCentral();
+        Posicion unaPosicionDelAtacable_1 = new Posicion(13,13);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_1);
+        Posicion unaPosicionDelAtacable_2 = new Posicion(13,14);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_2);
+        Posicion unaPosicionDelAtacable_3 = new Posicion(14,13);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_3);
+        Posicion unaPosicionDelAtacable_4 = new Posicion(14,14);
+        unaListaPosicionAtacable.add(unaPosicionDelAtacable_4);
+
+        unaPLazaCentral.agregarPosicion(unaListaPosicionAtacable);
+
+        ((ArmaDeAsedio) unArmaDeASedio).montar();
+        ((ArmaDeAsedio) unArmaDeASedio).refrescar();
+
+        unArmaDeASedio.atacarPieza(unaPLazaCentral);
+
+        int vidaEsperada = 375;
+        assertEquals(vidaEsperada, unaPLazaCentral.obtenerVida());
     }
 }
