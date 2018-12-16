@@ -61,7 +61,7 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
 
     @Override
     public void darVidaPorReparacion() {
-        this.vida = vida + VIDA_REPARACION_CUARTEL;
+        this.vida = vida + VIDA_REPARACION_A_CUARTEL;
     }
 
     @Override

@@ -154,6 +154,8 @@ public class Jugador {
         for(Constructor unConstructor: aldeanos){
             if(unConstructor.estaTrabajando())
                 unConstructor.seguirTrabajando();
+            if(unConstructor.estaReparando())
+                unConstructor.seguirReparando();
         }
 
     }
@@ -189,13 +191,16 @@ public class Jugador {
 
     }
 
-    public void terminoTuTurno() {
-    }
-
     public void validarPoblacionMaxima() {
 
         if(poblacion.size() > 50)
             throw new SobrepoblacionException();
+
+    }
+
+    public void castilloAtaqueMasivo(Juego unJuego) {
+
+        this.castillo.ataqueMasivo(this, mapa, unJuego);
 
     }
 }

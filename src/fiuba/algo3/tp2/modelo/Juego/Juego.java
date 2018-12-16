@@ -22,7 +22,6 @@ public class Juego{
     private Jugador ganador;
     private Mapa mapa;
     private Turno turno;
-    private boolean finalizado = false;
 
     private void colocarPiezasPorDefault(){
 
@@ -69,11 +68,9 @@ public class Juego{
     }
 
     public void terminarTurno() {
-        Castillo castillo =  jugadorDeTurno().obtenerCastillo();
-        ataqueMasivo(castillo, castillo.obtenerPosicion(), TAMANIO_CASTILLO);
 
-        jugadorDeTurno().terminoTuTurno();
-        turno.terminarTurno();
+        turno.terminarTurno(this);
+
     }
 
     public void colocarUnidad(Diseñador piezaConstructora, double fila, double columna, PiezaType unidadType) {
@@ -170,19 +167,6 @@ public class Juego{
 
     }
 
-    public void ataqueMasivo(Castillo castillo, Posicion posicion, int tamanioDePieza) {
-        ArrayList<Pieza> victimas = mapa.obtenerPiezasQueEstanEnRango(posicion, tamanioDePieza, castillo.obtenerDistanciaAtaque());
-        for(Pieza victima : victimas){
-            if( !jugadorDeTurno().sosDuenioDe(victima) )
-                try {
-                    castillo.atacarA(victima);
-                }catch (PiezaDestruidaException e){
-                    this.actualizarPiezas();
-                    mapa.actualizarPiezas();
-                }
-        }
-    }
-
     public boolean finalizado() {
         if(turno.jugadorEnEspera().vida() <= 0){
             ganador = jugadorDeTurno();
@@ -194,4 +178,5 @@ public class Juego{
     public Jugador ganador() {
         return ganador;
     }
+
 }

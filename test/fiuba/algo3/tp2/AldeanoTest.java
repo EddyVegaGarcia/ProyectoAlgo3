@@ -118,16 +118,15 @@ public class AldeanoTest {
         assertEquals(0, aldeano.oroRecolectado());
     }
 
-  /*  @Test
+    @Test
     public void testOroRecolectadoEs20SiTerminoDeReparar(){
         Aldeano aldeano = new Aldeano();
         Cuartel cuartel =  new Cuartel();
         cuartel.recibirDanio(50);
         aldeano.repararPieza(cuartel);
-        aldeano.seguirReparando();
 
         assertEquals(20, aldeano.oroRecolectado());
-    }*/
+    }
 
     @Test
     public void testAldeanoObtenerNombreDevuelveStringAldeano(){
@@ -135,4 +134,12 @@ public class AldeanoTest {
 
         assertEquals("Aldeano", aldeano.obtenerNombre());
     }
+
+    @Test
+    public void testTamanioDevuelve1(){
+        Aldeano aldeano = new Aldeano();
+        long obtenido = (long)aldeano.getTamanio();
+        assertEquals((long)1, obtenido);
+    }
+    
 }

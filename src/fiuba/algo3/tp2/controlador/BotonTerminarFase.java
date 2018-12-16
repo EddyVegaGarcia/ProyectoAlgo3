@@ -16,7 +16,6 @@ public class BotonTerminarFase extends Button {
     private JuegoView juegoView;
     private Juego juego;
     private VBox contenedor;
-    private String nombreDelJugadorDeTurno;
 
     public BotonTerminarFase(VBox contenedor, Juego juego, JuegoView juegoView){
 
@@ -37,8 +36,6 @@ public class BotonTerminarFase extends Button {
             @Override
             public void handle(ActionEvent event) {
                 juego.terminarTurno();
-                //juegoView.acualizarContenedorDeInformacionDeJugadores();
-                //juegoView.vaciarOpcionesDePieza();
                 juegoView.actualizar();
             }
         });

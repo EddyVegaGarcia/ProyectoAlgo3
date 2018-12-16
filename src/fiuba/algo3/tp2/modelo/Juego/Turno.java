@@ -36,11 +36,13 @@ public class Turno {
 
     }
 
-    public void terminarTurno(){
+    public void terminarTurno(Juego unJuego){
 
         jugadorEnJuego.recolectarOro();
         jugadorEnJuego.terminarConstruccion();
         jugadorEnJuego.refrescarPiezas();
+        jugadorEnJuego.castilloAtaqueMasivo(unJuego);
+
         if( jugadorEnJuego == jugador1 )
             jugadorEnJuego = jugador2;
         else
