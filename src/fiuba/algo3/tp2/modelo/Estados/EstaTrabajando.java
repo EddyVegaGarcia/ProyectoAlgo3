@@ -39,7 +39,6 @@ public class EstaTrabajando implements EstadoDeAldeano {
             unEdificio.finalizarReparacion();
             return new EnReposo();
         }
-
         return this;
 
     }

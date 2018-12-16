@@ -37,6 +37,7 @@ public class EnReposo implements EstadoDeAldeano {
 
         if(!unEdificio.obtenerEstadoVida().estaReparado() && !unEdificio.obtenerEstadoVida().estaEnReparacion()){
 
+            System.out.print("entro al if");
             unEdificio.iniciarReparacion();
             return new EstaTrabajando();
 
@@ -46,7 +47,7 @@ public class EnReposo implements EstadoDeAldeano {
         else if (unEdificio.obtenerEstadoVida().estaEnReparacion())
             throw new EdificioEnReparacionException();
 
-        return new EnReposo();
+        return this;
     }
 
     @Override

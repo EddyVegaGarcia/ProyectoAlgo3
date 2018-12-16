@@ -121,7 +121,6 @@ public class Aldeano extends Unidad implements Constructor {
         this.seguirReparando();
 
         this.accionRealizada();
-
     }
 
     public boolean estaTrabajando() {
@@ -171,7 +170,6 @@ public class Aldeano extends Unidad implements Constructor {
     public void seguirReparando() {
 
         edificioEnReparacion.darVidaPorReparacion();
-        this.estado = this.estado.reparar(edificioEnReparacion, edificioEnReparacion.obtenerType());
-
+        estado = estado.reparar(edificioEnReparacion, edificioEnReparacion.obtenerType());
     }
 }

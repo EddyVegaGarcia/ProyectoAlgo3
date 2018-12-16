@@ -81,4 +81,58 @@ public class AldeanoTest {
         aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
 
     }
+
+    @Test
+    public void testOroRecolectadoEs20SiEstaEnReposo(){
+         Aldeano aldeano = new Aldeano();
+
+         assertEquals(20, aldeano.oroRecolectado());
+    }
+
+    @Test
+    public void testOroRecolectadoEs0SiEstaTrabajando(){
+        Aldeano aldeano = new Aldeano();
+        aldeano.construir(new Cuartel());
+
+        assertEquals(0, aldeano.oroRecolectado());
+    }
+
+    @Test
+    public void testOroRecolectadoEs20DespuesDeConstruirTodoElCuartel(){
+        Aldeano aldeano =  new Aldeano();
+        aldeano.construir(new Cuartel());
+        aldeano.seguirTrabajando();
+        aldeano.seguirTrabajando();
+        aldeano.seguirTrabajando();
+
+        assertEquals(20, aldeano.oroRecolectado());
+    }
+
+    @Test
+    public void testOroRecolectadoEs0SiEstaReparando(){
+        Aldeano aldeano = new Aldeano();
+        Cuartel cuartel =  new Cuartel();
+        cuartel.recibirDanio(50);
+        aldeano.repararPieza(cuartel);
+
+        assertEquals(0, aldeano.oroRecolectado());
+    }
+
+  /*  @Test
+    public void testOroRecolectadoEs20SiTerminoDeReparar(){
+        Aldeano aldeano = new Aldeano();
+        Cuartel cuartel =  new Cuartel();
+        cuartel.recibirDanio(50);
+        aldeano.repararPieza(cuartel);
+        aldeano.seguirReparando();
+
+        assertEquals(20, aldeano.oroRecolectado());
+    }*/
+
+    @Test
+    public void testAldeanoObtenerNombreDevuelveStringAldeano(){
+        Aldeano aldeano = new Aldeano();
+
+        assertEquals("Aldeano", aldeano.obtenerNombre());
+    }
 }

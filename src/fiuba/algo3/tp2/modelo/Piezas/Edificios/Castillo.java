@@ -66,7 +66,7 @@ public class Castillo extends Edificio implements Diseñador {
 
     @Override
     public void darVidaPorReparacion() {
-        this.vida = vida + VIDA_REPARACION;
+        this.vida = vida + VIDA_REPARACION_CASTILLO;
     }
 
     @Override

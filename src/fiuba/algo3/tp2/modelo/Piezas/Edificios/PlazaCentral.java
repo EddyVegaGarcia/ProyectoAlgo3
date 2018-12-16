@@ -58,7 +58,7 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
 
     @Override
     public void darVidaPorReparacion() {
-        this.vida = vida + VIDA_REPARACION;
+        this.vida = vida + VIDA_REPARACION_PLAZA;
     }
 
     @Override

@@ -63,7 +63,9 @@ public class Constantes {
 
     /*TURNOS*/
     public static int TURNOS_CONSTRUCCION_MAXIMO = 3;
-    public static final int VIDA_REPARACION = 15;
+    public static final int VIDA_REPARACION_PLAZA = 25;
+    public static final int VIDA_REPARACION_CASTILLO = 15;
+    public static final int VIDA_REPARACION_CUARTEL = 50;
 
 
     /*ATAQUES DE LAS UNIDADES Y CASTILLO*/

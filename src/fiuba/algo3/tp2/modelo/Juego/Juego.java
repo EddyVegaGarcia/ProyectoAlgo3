@@ -50,17 +50,6 @@ public class Juego{
         this.colocarPiezasPorDefault();
     }
 
-
-/*
-    private void verificarGanador() {
-        if (jugador1.castilloDestruido()) {
-            this.ganador = jugador2;
-        }
-        else if (jugador2.castilloDestruido()) {
-            this.ganador = jugador1;
-        }
-    }
-    */
     public Mapa mapa() {
     return mapa;
 }
