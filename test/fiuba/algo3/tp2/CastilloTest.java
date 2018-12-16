@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
@@ -254,18 +255,182 @@ public class CastilloTest {
         assertEquals(pos1, castillo.obtenerPosicion());
     }
 
-/*    @Test
-    public void testAtaqueMasivoAtacaALasUnidadesEnSuRangoDeAtaque(){
+    //tests ataque masivo
+
+    @Test
+    public void testAtaqueMasivoAtacaALasUnidadesEnRangoDeAtaqueDe1(){
         Juego juego = new Juego("victor", "manuel");
         Mapa mapa  = juego.mapa();
-        Jugador jugador = juego.jugadorDeTurno();
+        Jugador jugador = juego.jugador1();
 
         Arquero arquero = new Arquero();
         Espadachin espadachin = new Espadachin();
 
-        jugador.agregaPieza(arquero);
-        jugador.agregaPieza(espadachin);
+        juego.jugador2().agregaPieza(arquero);
+        juego.jugador2().agregaPieza(espadachin);
 
-        mapa.colocarPieza(arquero, new Posicion());
-    }*/
+        mapa.colocarPieza(arquero, new Posicion(0,32));
+        mapa.colocarPieza(espadachin, new Posicion(1,32));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(80, espadachin.obtenerVida());
+        assertEquals(55, arquero.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALasUnidadesEnRangoDeAtaqueDe2(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin();
+
+        juego.jugador2().agregaPieza(arquero);
+        juego.jugador2().agregaPieza(espadachin);
+
+        mapa.colocarPieza(arquero, new Posicion(0,31));
+        mapa.colocarPieza(espadachin, new Posicion(1,31));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(80, espadachin.obtenerVida());
+        assertEquals(55, arquero.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALasUnidadesEnRangoDeAtaqueDe3(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin();
+
+        juego.jugador2().agregaPieza(arquero);
+        juego.jugador2().agregaPieza(espadachin);
+
+        mapa.colocarPieza(arquero, new Posicion(2,30));
+        mapa.colocarPieza(espadachin, new Posicion(6,30));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(80, espadachin.obtenerVida());
+        assertEquals(55, arquero.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALasUnidadesEnRangoDeAtaqueVariado(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin();
+
+        juego.jugador2().agregaPieza(arquero);
+        juego.jugador2().agregaPieza(espadachin);
+
+        mapa.colocarPieza(arquero, new Posicion(0,32));
+        mapa.colocarPieza(espadachin, new Posicion(1,31));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(80, espadachin.obtenerVida());
+        assertEquals(55, arquero.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALosEdificiosEnRangoDeAtaqueDe1(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Cuartel cuartel = new Cuartel();
+        PlazaCentral plazaCentral =  new PlazaCentral();
+
+        juego.jugador2().agregaPieza(cuartel);
+        juego.jugador2().agregaPieza(plazaCentral);
+
+        mapa.colocarPieza(cuartel, new Posicion(5,34));
+        mapa.colocarPieza(plazaCentral, new Posicion(0,31));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(230, cuartel.obtenerVida());
+        assertEquals(430, plazaCentral.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALosEdificiosEnRangoDeAtaqueDe2(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Cuartel cuartel = new Cuartel();
+
+        juego.jugador2().agregaPieza(cuartel);
+
+        mapa.colocarPieza(cuartel, new Posicion(6,34));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(230, cuartel.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaALosEdificiosEnRangoDeAtaqueDe3(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Cuartel cuartel = new Cuartel();
+
+        juego.jugador2().agregaPieza(cuartel);
+
+        mapa.colocarPieza(cuartel, new Posicion(6,34));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(230, cuartel.obtenerVida());
+    }
+
+    @Test
+    public void testAtaqueMasivoAtacaAPiezasEnRangoDeAtaqueVariado(){
+        Juego juego = new Juego("victor", "manuel");
+        Mapa mapa  = juego.mapa();
+        Jugador jugador = juego.jugador1();
+
+        Cuartel cuartel = new Cuartel();
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        Arquero arquero = new Arquero();
+        Espadachin espadachin = new Espadachin();
+
+        juego.jugador2().agregaPieza(cuartel);
+        juego.jugador2().agregaPieza(plazaCentral);
+        juego.jugador2().agregaPieza(arquero);
+        juego.jugador2().agregaPieza(espadachin);
+
+        mapa.colocarPieza(cuartel, new Posicion(5,34));
+        mapa.colocarPieza(plazaCentral, new Posicion(0,31));
+        mapa.colocarPieza(arquero, new Posicion(3,32));
+        mapa.colocarPieza(espadachin, new Posicion(5,32));
+
+        Castillo castillo = jugador.obtenerCastillo();
+        castillo.ataqueMasivo(jugador, mapa, juego);
+
+        assertEquals(230, cuartel.obtenerVida());
+        assertEquals(430, plazaCentral.obtenerVida());
+        assertEquals(80, espadachin.obtenerVida());
+        assertEquals(55, arquero.obtenerVida());
+    }
+
 }

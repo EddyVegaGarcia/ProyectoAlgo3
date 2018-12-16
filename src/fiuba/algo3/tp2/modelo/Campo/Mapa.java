@@ -157,7 +157,7 @@ public class Mapa {
 
                 Posicion posicionActual = new Posicion(posicionInicio.getFila() + i,posicionInicio.getColumna() + j);
                 Pieza pieza = recuperarPieza(posicionActual);
-                if( pieza != null )
+                if( pieza != null && !piezas.contains(pieza))
                     piezas.add(pieza);
             }
         }
