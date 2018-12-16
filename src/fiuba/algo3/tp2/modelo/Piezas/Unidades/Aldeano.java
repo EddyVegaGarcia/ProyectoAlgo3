@@ -45,11 +45,11 @@ public class Aldeano extends Unidad implements Constructor {
         if (piezaType == PiezaType.EDIFICIO_CUARTEL ||piezaType == PiezaType.EDIFICIO_PLAZACENTRAL ) {
 
             if(piezaType == EDIFICIO_CUARTEL) {
-                this.validarOroSufiente(unJugador.oro, COSTO_CUARTEL);
+                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_CUARTEL);
                 unJugador.pagar(COSTO_CUARTEL);
             }
             if(piezaType == EDIFICIO_PLAZACENTRAL) {
-                this.validarOroSufiente(unJugador.oro, COSTO_PLAZACENTRAL);
+                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_PLAZACENTRAL);
                 unJugador.pagar(COSTO_PLAZACENTRAL);
             }
 
