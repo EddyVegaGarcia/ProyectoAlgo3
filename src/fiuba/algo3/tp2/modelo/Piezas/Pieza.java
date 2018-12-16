@@ -63,17 +63,19 @@ public abstract class Pieza {
 
     protected void validarRangoDeAtaqueAEdificio(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
 
+        boolean estaContenido = false;
+
         for(Posicion unaPosicion : unaListaPosiciones){
 
-            if (unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque)) {
-                System.out.println("entro" + unaPosicion.getFila() + "" + unaPosicion.getColumna());
-                return;
-            }
-            else
-                throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
-
+            estaContenido = unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque);
+            System.out.println("entro" + unaPosicion.getFila() + "" + unaPosicion.getColumna());
 
         }
+
+        if(estaContenido)
+            return;
+        else
+            throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
 
     }
 }
