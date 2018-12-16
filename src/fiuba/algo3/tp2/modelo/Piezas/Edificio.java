@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public abstract class Edificio extends Pieza implements Reparable {
 
-    public EstadoDeEdificio estado;
-    public EstadoVidaEdificio estadoVida;
+    protected EstadoDeEdificio estado;
+    protected EstadoVidaEdificio estadoVida;
 
     public EstadoDeEdificio obtenerEstado(){return estado;}
 

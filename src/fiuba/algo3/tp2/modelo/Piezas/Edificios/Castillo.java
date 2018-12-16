@@ -32,7 +32,7 @@ public class Castillo extends Edificio implements Diseñador {
         super.recibirDanio(unDanio);
     }
 
-    public int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
+    private int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
 
     @Override
     public void validarOroSufiente(int cantidadOroActual, int costo) {
@@ -71,7 +71,13 @@ public class Castillo extends Edificio implements Diseñador {
 
     @Override
     public void darVidaPorReparacion() {
-        this.vida = vida + VIDA_REPARACION_A_CASTILLO;
+        if( vida + VIDA_REPARACION_A_CASTILLO > VIDA_MAXIMA_CASTILLO ){
+            int aRestar = VIDA_REPARACION_A_CASTILLO - (vida + VIDA_REPARACION_A_CASTILLO - VIDA_MAXIMA_CASTILLO);
+            vida += aRestar;
+        }
+        else{
+            vida += VIDA_REPARACION_A_CASTILLO;
+        }
     }
 
     @Override
@@ -81,11 +87,8 @@ public class Castillo extends Edificio implements Diseñador {
 
     @Override
     public void verificarProcesoEnReparacion() {
-
-        if(estadoVida.estaEnReparacion()){
+        if(estadoVida.estaEnReparacion())
             throw new EdificioEnReparacionException();
-        }
-
     }
 
     @Override
