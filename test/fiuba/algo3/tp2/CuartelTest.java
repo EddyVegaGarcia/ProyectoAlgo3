@@ -19,6 +19,9 @@ public class CuartelTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
+        ((Cuartel) cuartel).iniciarConstruccion();
+        ((Cuartel) cuartel).finalizarConstruccion();
+
         Unidad espadachin = ((Cuartel) cuartel).colocarPieza(PiezaType.UNIDAD_ESPADACHIN, jugador);
 
         int vidaEsperada = 100;
@@ -31,6 +34,9 @@ public class CuartelTest {
         Jugador jugador = new Jugador("loo", new Mapa());
         Edificio cuartel = new Cuartel();
 
+        ((Cuartel) cuartel).iniciarConstruccion();
+        ((Cuartel) cuartel).finalizarConstruccion();
+
         Unidad arquero = ((Cuartel) cuartel).colocarPieza(PiezaType.UNIDAD_ARQUERO, jugador);
 
         int vidaEsperada = 75;
@@ -42,6 +48,9 @@ public class CuartelTest {
         Jugador jugador = new Jugador("loo", new Mapa());
 
         Edificio cuartel = new Cuartel();
+
+        ((Cuartel) cuartel).iniciarConstruccion();
+        ((Cuartel) cuartel).finalizarConstruccion();
 
         Unidad arquero = ((Cuartel) cuartel).colocarPieza(PiezaType.UNIDAD_ARMADEASEDIO, jugador);
     }

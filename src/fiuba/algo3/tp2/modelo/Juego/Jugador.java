@@ -19,7 +19,7 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
 public class Jugador {
 
-    public int oro;
+    private int oro;
     private List<Pieza> piezas;
     private List<Unidad> poblacion;
     private List<Constructor> aldeanos;
@@ -126,10 +126,12 @@ public class Jugador {
     }
 
     public void recolectarOro() {
+
         for(Constructor constructorActual : aldeanos){
 
             oro = oro + constructorActual.oroRecolectado();
         }
+
     }
 
     public void refrescarPiezas() {

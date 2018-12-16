@@ -1,9 +1,7 @@
 package fiuba.algo3.tp2;
 
-import com.sun.org.apache.bcel.internal.generic.CASTORE;
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
-import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
@@ -12,7 +10,6 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
-import fiuba.algo3.tp2.vista.Main;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,8 +23,13 @@ public class CastilloTest {
     //test de creacion de unidades
     @Test
     public void testCastilloCreaArmaDeAsedio(){
+
         Jugador jugador = new Jugador("loo", new Mapa());
         jugador.ubicarAldeanosPorDefault(new Posicion(1,1), new Posicion(2,1), new Posicion( 2, 2));
+        jugador.agregarPoblacion(new Aldeano());
+        jugador.agregarPoblacion(new Aldeano());
+        jugador.agregarPoblacion(new Aldeano());
+
         jugador.recolectarOro();
         jugador.recolectarOro();
 
