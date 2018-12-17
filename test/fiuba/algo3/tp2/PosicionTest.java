@@ -69,4 +69,11 @@ public class PosicionTest {
         assertEquals(tamanioEsperadoDeEncapsulamiento, posicion1.obtenerTamanioLimite());
 
     }
+
+    @Test
+    public void testGetFilaYColumnaDeUnaPosicionDeFila7Columna8Es7Y8(){
+        Posicion posicion =  new Posicion(7,8);
+        assertEquals(7, posicion.getFila());
+        assertEquals(8, posicion.getColumna());
+    }
 }

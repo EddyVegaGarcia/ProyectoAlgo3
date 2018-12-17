@@ -23,13 +23,6 @@ public class Mapa {
 
     }
 
-    public Mapa(int fila , int columna){
-
-        this.piezasDelMapa = new HashMap<>();
-        this.posicionLimite = new Posicion(fila,columna);
-
-    }
-
     public int getTamanio() {
         return (posicionLimite.obtenerTamanioLimite());
     }

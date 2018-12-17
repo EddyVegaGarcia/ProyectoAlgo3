@@ -8,6 +8,9 @@ import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.Exception.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class MapaTest {
@@ -248,5 +251,44 @@ public class MapaTest {
 
         mapa.colocarPieza(unaPlaza, posicionPlaza);
 
+    }
+
+    @Test
+    public void testObtenerPiezasEnUnRangoDe3DesdeUnaPosicionConUnTamanioDe4(){
+        Mapa mapa =  new Mapa();
+        PlazaCentral unaPlaza = new PlazaCentral();
+        Arquero arquero = new Arquero();
+
+        mapa.colocarPieza(unaPlaza, new Posicion(10, 13));
+        mapa.colocarPieza(arquero, new Posicion(13,10));
+
+        ArrayList<Pieza> piezas = mapa.obtenerPiezasQueEstanEnRango(new Posicion(10,10), 4, 3);
+        assertTrue(piezas.contains(unaPlaza));
+        assertTrue(piezas.contains(arquero));
+    }
+
+    @Test
+    public void testObtenerPiezasEnUnRangoDe3DesdeUnaPosicionConUnTamanio4DeUnaPiezaQueEstaFueraDeRango(){
+        Mapa mapa =  new Mapa();
+        PlazaCentral unaPlaza = new PlazaCentral();
+
+        mapa.colocarPieza(unaPlaza, new Posicion(10, 16));
+
+        ArrayList<Pieza> piezas = mapa.obtenerPiezasQueEstanEnRango(new Posicion(10,10), 4, 3);
+        assertTrue(piezas.size() == 0);
+    }
+
+    @Test(expected = UbicacionOcupadaException.class)
+    public void testValidarPosicionEnUnaPosicionOcupadaLanzaException(){
+        Mapa mapa =  new Mapa();
+        mapa.colocarPieza(new PlazaCentral(), new Posicion(10,10));
+
+        mapa.validarPosicion(new Posicion(10,10));
+    }
+
+    @Test(expected = UbicacionErroneaException.class)
+    public void testValidarPosicionEnUnaPosicionFueraDelMapaLanzaException(){
+        Mapa mapa =  new Mapa();
+        mapa.validarPosicion(new Posicion(30,10));
     }
 }
