@@ -24,6 +24,7 @@ public class Arquero extends Unidad implements Atacante {
         this.validarAcciones();
         this.validarRangoDeAtaque(unaUnidad.obtenerPosicion(), this.obtenerDistanciaAtaque());
         unaUnidad.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
+        this.accionRealizada();
 
     }
 
@@ -32,6 +33,7 @@ public class Arquero extends Unidad implements Atacante {
         this.validarAcciones();
         this.validarRangoDeAtaqueAEdificio(unEdificio.obtenerPosiciones(), this.obtenerDistanciaAtaque());
         unEdificio.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
+        this.accionRealizada();
 
     }
 

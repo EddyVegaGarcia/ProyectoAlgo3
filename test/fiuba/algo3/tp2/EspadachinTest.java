@@ -181,16 +181,16 @@ public class EspadachinTest {
         ArrayList<Posicion> unaListaPosicionAtacable = new ArrayList<>();
 
         Espadachin unEspadachin = new Espadachin();
-        unaListaPosicionAtacante.add(new Posicion(10,10));
+        unaListaPosicionAtacante.add(new Posicion(8,36));
 
         unEspadachin.agregarPosicion(unaListaPosicionAtacante);
 
         Pieza unaPlazaCentral = new PlazaCentral();
 
-        unaListaPosicionAtacable.add(new Posicion(8,8));
-        unaListaPosicionAtacable.add(new Posicion(8,9));
-        unaListaPosicionAtacable.add( new Posicion(9,8));
-        unaListaPosicionAtacable.add(new Posicion(9,9));
+        unaListaPosicionAtacable.add(new Posicion(9,37));
+        unaListaPosicionAtacable.add(new Posicion(9,38));
+        unaListaPosicionAtacable.add( new Posicion(10,37));
+        unaListaPosicionAtacable.add(new Posicion(10,38));
 
         unaPlazaCentral.agregarPosicion(unaListaPosicionAtacable);
 
