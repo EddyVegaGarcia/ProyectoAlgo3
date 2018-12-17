@@ -48,8 +48,6 @@ public abstract class Pieza {
 
     public abstract PiezaType obtenerType();
 
-    public abstract String obtenerNombre();
-
     public void refrescar(){
         accionesRealizadas = 0;
     }

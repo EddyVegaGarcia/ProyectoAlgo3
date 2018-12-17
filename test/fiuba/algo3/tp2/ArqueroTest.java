@@ -69,13 +69,6 @@ public class ArqueroTest {
     }
 
     //tests de getters
-
-    @Test
-    public void testObtenerNombreDevuelveArquero(){
-        Arquero arquero = new Arquero();
-        assertEquals("Arquero", arquero.obtenerNombre());
-    }
-
     @Test
     public void testObtenerDistanciaDeAtaqueDevuelveTres(){
         Arquero arquero =  new Arquero();

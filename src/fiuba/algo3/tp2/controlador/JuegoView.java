@@ -135,7 +135,7 @@ public class JuegoView {
         etiquetaVida.setText("Vida : " + jugadorDeTurno.vida());
 
         Label etiqueta = new Label();
-        etiqueta.setText("Oro : " + jugadorDeTurno.stringOro());
+        etiqueta.setText("Oro : " + jugadorDeTurno.obtenerOro());
 
         Label etiquetaPoblacion = new Label();
         etiquetaPoblacion.setText("Poblacion : " + jugadorDeTurno.poblacion() + " / " + LIMITE_POBLACION);
@@ -462,7 +462,7 @@ public class JuegoView {
 
     private void agregarInformacionDePieza(Pieza pieza) {
 
-        Label etiqueta = crearEtiquetaConTexto("Selecciono : " + pieza.obtenerNombre());
+        Label etiqueta = crearEtiquetaConTexto("Selecciono : " + pieza.getClass().getSimpleName());
 
         Label etiquetaVida = crearEtiquetaConTexto("Vida : " + pieza.obtenerVida());
 

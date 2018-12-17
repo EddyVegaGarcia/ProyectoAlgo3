@@ -132,13 +132,6 @@ public class CuartelTest {
     //tests de getters
 
     @Test
-    public void testObtenerNombreDevuelveCuartel(){
-        Cuartel cuartel = new Cuartel();
-        assertEquals("Cuartel", cuartel.obtenerNombre());
-    }
-
-
-    @Test
     public void testGetTamanioDevuelve4(){
         Cuartel cuartel = new Cuartel();
         assertEquals(4, (long)cuartel.getTamanio());

@@ -75,11 +75,6 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
     }
 
     @Override
-    public String obtenerNombre() {
-        return "Plaza Central";
-    }
-
-    @Override
     public void verificarProcesoEnConstruccion() {
 
         if(estado.estaConstruido()){

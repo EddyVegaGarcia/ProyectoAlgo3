@@ -50,11 +50,6 @@ public class Jugador {
         return nombre;
     }
 
-
-    public String stringOro() {
-        return Integer.toString(oro);
-    }
-
     public int obtenerOro(){ return  oro;}
 
     public Castillo obtenerCastillo() {
@@ -99,7 +94,7 @@ public class Jugador {
 
     }
 
-    public void agregarPoblacion(Unidad unaUnidad){
+    private void agregarPoblacion(Unidad unaUnidad){
 
         if(unaUnidad.obtenerType() == UNIDAD_ALDEANO)
             this.aldeanos.add((Constructor) unaUnidad);
@@ -108,9 +103,9 @@ public class Jugador {
     }
 
     public void agregaPieza(Pieza unaPieza) {
-
         piezas.add(unaPieza);
-
+        if(unaPieza.getTamanio() == 1)
+            agregarPoblacion((Unidad) unaPieza);
     }
 
     public ArrayList<Pieza> getPiezas() {
@@ -190,7 +185,6 @@ public class Jugador {
             }
         }
         aldeanos.removeAll(nuevaLista3);
-
     }
 
     public void validarPoblacionMaxima() {

@@ -51,10 +51,6 @@ public class Espadachin extends Unidad implements Atacante {
         return tamanio;
     }
 
-    @Override
-    public String obtenerNombre() {
-        return "Espadachin";
-    }
 
     @Override
     public void atacarPieza(Pieza unaPieza) {

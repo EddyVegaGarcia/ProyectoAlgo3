@@ -130,13 +130,6 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoObtenerNombreDevuelveStringAldeano(){
-        Aldeano aldeano = new Aldeano();
-
-        assertEquals("Aldeano", aldeano.obtenerNombre());
-    }
-
-    @Test
     public void testTamanioDevuelve1(){
         Aldeano aldeano = new Aldeano();
         long obtenido = (long)aldeano.getTamanio();

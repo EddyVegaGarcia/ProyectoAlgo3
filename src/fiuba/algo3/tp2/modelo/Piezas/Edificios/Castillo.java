@@ -78,11 +78,6 @@ public class Castillo extends Edificio implements Diseñador {
     }
 
     @Override
-    public String obtenerNombre() {
-        return "Castillo";
-    }
-
-    @Override
     public void verificarProcesoEnReparacion() {
         if(estadoVida.estaEnReparacion())
             throw new EdificioEnReparacionException();

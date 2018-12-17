@@ -80,10 +80,6 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
         return tamanio;
     }
 
-    @Override
-    public String obtenerNombre() {
-        return "Cuartel";
-    }
 
     @Override
     public void verificarProcesoEnConstruccion() {

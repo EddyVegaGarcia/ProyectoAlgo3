@@ -114,12 +114,6 @@ public class ArmaDeAsedioTest {
     //tests de getters
 
     @Test
-    public void testObtenerNombreDevuelveArmaDeAsedio(){
-        ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
-        assertEquals("ArmaDeAsedio", armaDeAsedio.obtenerNombre());
-    }
-
-    @Test
     public void testGetTamanioDevuelve1(){
         ArmaDeAsedio armaDeAsedio =  new ArmaDeAsedio();
 

@@ -51,11 +51,6 @@ public class Arquero extends Unidad implements Atacante {
     }
 
     @Override
-    public String obtenerNombre() {
-        return "Arquero";
-    }
-
-    @Override
     public void atacarPieza(Pieza unaPieza) {
         if(unaPieza.obtenerTamanio() == 1)
             this.atacarUnidad((Unidad)unaPieza);

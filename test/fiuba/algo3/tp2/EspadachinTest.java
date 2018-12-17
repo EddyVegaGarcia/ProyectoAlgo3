@@ -72,12 +72,6 @@ public class EspadachinTest {
     //tests de getters
 
     @Test
-    public void testObtenerNombreDevuelveEspadachin(){
-        Espadachin espadachin = new Espadachin();
-        assertEquals("Espadachin", espadachin.obtenerNombre());
-    }
-
-    @Test
     public void testObtenerDistanciaDeAtaqueDevuelve1(){
         Espadachin espadachin = new Espadachin();
         assertEquals(1, espadachin.obtenerDistanciaAtaque());

@@ -132,10 +132,6 @@ public class Aldeano extends Unidad implements Constructor {
         return tamanio;
     }
 
-    @Override
-    public String obtenerNombre() {
-        return "Aldeano";
-    }
 
     @Override
     public int oroRecolectado() {

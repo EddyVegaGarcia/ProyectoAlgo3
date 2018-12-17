@@ -161,12 +161,6 @@ public class CastilloTest {
     }
 
     @Test
-    public void testCastilloObtenerNombreEsCastillo(){
-        Castillo castillo = new Castillo();
-        assertEquals("Castillo", castillo.obtenerNombre());
-    }
-
-    @Test
     public void testObtenerTamanioDevuelve16(){
          Castillo castillo = new Castillo();
         assertEquals(16, castillo.obtenerTamanio());
