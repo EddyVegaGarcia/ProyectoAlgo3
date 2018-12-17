@@ -6,7 +6,7 @@ public class Turno {
 
     private Jugador jugador1, jugador2;
 
-    public Jugador jugadorEnJuego;
+    private Jugador jugadorEnJuego;
 
     public Turno(Jugador jugador1, Jugador jugador2){
 
