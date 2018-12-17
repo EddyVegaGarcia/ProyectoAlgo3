@@ -1,10 +1,13 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ARQUERO;
+import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ESPADACHIN;
 import static org.junit.Assert.assertEquals;
 
 public class EspadachinTest {
@@ -60,4 +63,29 @@ public class EspadachinTest {
 
     }
 
+    //tests de getters
+
+    @Test
+    public void testObtenerNombreDevuelveEspadachin(){
+        Espadachin espadachin = new Espadachin();
+        assertEquals("Espadachin", espadachin.obtenerNombre());
+    }
+
+    @Test
+    public void testObtenerDistanciaDeAtaqueDevuelve1(){
+        Espadachin espadachin = new Espadachin();
+        assertEquals(1, espadachin.obtenerDistanciaAtaque());
+    }
+
+    @Test
+    public void testGetTamanioDevuelve1(){
+        Espadachin espadachin = new Espadachin();
+        assertEquals(1, (long)espadachin.getTamanio());
+    }
+
+    @Test
+    public void testObtenerTypeDevuelveUnidadEspadachin(){
+        Espadachin espadachin = new Espadachin();
+        assertEquals(UNIDAD_ESPADACHIN, espadachin.obtenerType());
+    }
 }

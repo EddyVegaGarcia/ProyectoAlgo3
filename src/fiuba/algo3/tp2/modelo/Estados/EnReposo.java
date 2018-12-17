@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2.modelo.Estados;
 
-import fiuba.algo3.tp2.modelo.Exception.EdificioConstruidoException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioEnConstruccionException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioEnReparacionException;
+import fiuba.algo3.tp2.modelo.Exception.EdificioYaConstruidoException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioYaReparadoException;
 import fiuba.algo3.tp2.modelo.Interfaces.Colocador;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
@@ -32,7 +32,7 @@ public class EnReposo implements EstadoDeAldeano, Colocador, Reparador {
 
         }
         else if(edificio.obtenerEstado().estaConstruido())
-            throw new EdificioConstruidoException();
+            throw new EdificioYaConstruidoException();
         else if(edificio.obtenerEstado().estaEnConstruccion())
             throw new EdificioEnConstruccionException();
 

@@ -83,7 +83,7 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
     public void verificarProcesoEnConstruccion() {
 
         if(estado.estaConstruido()){
-            throw new EdificioEnConstruccionException();
+            throw new EdificioYaConstruidoException();
         }
 
     }

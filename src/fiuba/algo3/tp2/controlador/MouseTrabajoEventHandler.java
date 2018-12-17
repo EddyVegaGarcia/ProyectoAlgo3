@@ -47,7 +47,7 @@ public class MouseTrabajoEventHandler implements EventHandler<MouseEvent> {
             juego.construirEdificio( piezaConstructora, fila, columna, piezaType);
 
         }
-        catch (EdificioConstruidoException e){
+        catch (EdificioYaConstruidoException e){
             etiquetaAlertas.setText("Edificio ya inagurado para trabajar.");
         }
         catch(PosicionDeCreacionInvalidaException e){

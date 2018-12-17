@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class PlazaCentralTest {
 
@@ -102,5 +102,83 @@ public class PlazaCentralTest {
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
 
     }
+
+    @Test(expected = PiezaDestruidaException.class)
+    public void testRecibirDanioHastaSerDestruidoLanzaException(){
+        Edificio plazaCentral = new PlazaCentral();
+
+        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO);
+        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+    }
+
+    //tests de estados
+    @Test
+    public void testPlazaRecienCreadaNoEstaEnConstruccion(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+
+        assertFalse(plazaCentral.obtenerEstado().estaEnConstruccion());
+        assertFalse(plazaCentral.obtenerEstado().estaConstruido());
+    }
+
+    @Test
+    public void testIniciarConstruccionEnPlazaCambiaSuEstadoAEnConstruccion(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        plazaCentral.iniciarConstruccion();
+
+        assertTrue(plazaCentral.obtenerEstado().estaEnConstruccion());
+        assertFalse(plazaCentral.obtenerEstado().estaConstruido());
+    }
+
+    @Test(expected = EdificioYaConstruidoException.class)
+    public void testTerminarConstruccionCambiaElEstadoDePlazaAConstruidoYLanzaException(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        plazaCentral.iniciarConstruccion();
+        plazaCentral.finalizarConstruccion();
+
+        plazaCentral.verificarProcesoEnConstruccion();
+    }
+
+    @Test
+    public void testPlazaRecienCreadaEstaReparada(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+
+        assertTrue(plazaCentral.obtenerEstadoVida().estaReparado());
+    }
+
+    @Test
+    public void testPlazaDaniadaNoEstaReparada(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        plazaCentral.recibirDanio(20);
+
+        assertFalse(plazaCentral.obtenerEstadoVida().estaReparado());
+    }
+
+    @Test(expected = EdificioEnReparacionException.class)
+    public void testPlazaDaniadaInnciarReparacionCambiaElEstadoAEnReparacion(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        plazaCentral.recibirDanio(20);
+        plazaCentral.iniciarReparacion();
+
+        plazaCentral.verificarProcesoEnReparacion();
+    }
+
+    @Test
+    public void testTerminarReparacionDeUnaPlazaEnReparacionEstaReparada(){
+        PlazaCentral plazaCentral =  new PlazaCentral();
+        plazaCentral.recibirDanio(20);
+        plazaCentral.iniciarReparacion();
+        plazaCentral.finalizarReparacion();
+
+        assertTrue(plazaCentral.obtenerEstadoVida().estaReparado());
+    }
+
 
 }
