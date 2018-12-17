@@ -63,18 +63,14 @@ public abstract class Pieza {
 
     protected void validarRangoDeAtaqueAEdificio(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
 
-        boolean estaContenido = false;
-
         for(Posicion unaPosicion : unaListaPosiciones){
 
-            estaContenido = unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque);
+            if(unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque))
+                return;
 
         }
 
-        if(estaContenido)
-            return;
-        else
-            throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
+        throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
 
     }
 }

@@ -65,6 +65,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
         this.validarAtaqueMontura();
         this.validarRangoDeAtaqueAEdificio(unEdificio.obtenerPosiciones(), this.obtenerDistanciaAtaque());
         unEdificio.recibirDanio(ATAQUE_ARMADEASEDIO);
+        this.accionRealizada();
 
     }
 
