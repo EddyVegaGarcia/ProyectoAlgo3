@@ -8,4 +8,6 @@ public interface Construible {
 
     void finalizarConstruccion();
 
+    void validarExistencia();
+
 }

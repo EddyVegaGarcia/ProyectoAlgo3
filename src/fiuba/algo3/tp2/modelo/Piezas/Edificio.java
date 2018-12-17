@@ -19,14 +19,6 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     public abstract void darVidaPorReparacion();
 
-    protected void validarExistencia() {
-
-        if(!estado.estaConstruido())
-            throw new EdificioInexistenteException();
-
-    }
-
-
     public ArrayList<Posicion> obtenerPosiciones() {
         return posiciones;
     }

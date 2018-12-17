@@ -125,4 +125,13 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
 
     }
 
+    @Override
+    public void validarExistencia() {
+
+        if(!estado.estaConstruido())
+            throw new EdificioInexistenteException();
+
+    }
+
+
 }

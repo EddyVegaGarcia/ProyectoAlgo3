@@ -42,17 +42,18 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
 
         if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
 
-            this.validarAcciones();
-            this.accionRealizada();
-
             if(piezaType == UNIDAD_ESPADACHIN) {
                 this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ESPADACHIN);
+                this.validarAcciones();
                 unJugador.pagar(COSTO_ESPADACHIN);
             }
             if(piezaType == UNIDAD_ARQUERO) {
                 this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ARQUERO);
+                this.validarAcciones();
                 unJugador.pagar(COSTO_ARQUERO);
             }
+
+            this.accionRealizada();
             return (Unidad) PiezaFactory.crearPieza(piezaType);
         }
         else
@@ -127,6 +128,14 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
     public void iniciarReparacion() {
 
         this.estadoVida =  this.estadoVida.reparar();
+
+    }
+
+    @Override
+    public void validarExistencia() {
+
+        if(!estado.estaConstruido())
+            throw new EdificioInexistenteException();
 
     }
 }
