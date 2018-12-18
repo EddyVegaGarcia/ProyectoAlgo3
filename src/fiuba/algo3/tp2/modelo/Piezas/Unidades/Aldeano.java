@@ -40,7 +40,6 @@ public class Aldeano extends Unidad implements Constructor, Creable {
         Creable edificio;
         edificio = (Creable)PiezaFactory.crearPieza(piezaType);
         edificio.validarOroSuficiente(unJugador.obtenerOro());
-        unJugador.pagar(edificio.costo());
 
         this.accionRealizada();
         return (Edificio)edificio;

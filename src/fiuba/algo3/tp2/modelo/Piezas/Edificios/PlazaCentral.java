@@ -42,8 +42,6 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
         this.validarAcciones();
         this.accionRealizada();
 
-        unJugador.pagar(unidad.costo());
-
         return (Unidad) unidad;
     }
 

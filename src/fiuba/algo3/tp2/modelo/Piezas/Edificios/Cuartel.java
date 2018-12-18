@@ -38,7 +38,6 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
         Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);
         unidad.validarOroSuficiente(unJugador.obtenerOro());
         this.validarAcciones();
-        unJugador.pagar(unidad.costo());
 
         this.accionRealizada();
         return (Unidad) unidad;

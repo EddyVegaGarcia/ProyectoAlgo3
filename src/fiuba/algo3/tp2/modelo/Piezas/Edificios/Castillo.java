@@ -45,7 +45,6 @@ public class Castillo extends Edificio implements Diseñador {
         this.validarAcciones();
         this.accionRealizada();
 
-        jugador.pagar(unidad.costo());
         return (Unidad)unidad;
     }
 

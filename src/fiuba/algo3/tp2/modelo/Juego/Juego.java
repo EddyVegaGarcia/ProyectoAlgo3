@@ -4,6 +4,7 @@ import fiuba.algo3.tp2.modelo.Campo.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Constructor;
+import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificio;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
@@ -85,27 +86,26 @@ public class Juego{
         mapa.colocarPieza(unaUnidad, posicion);
 
         jugadorDeTurno().agregaPieza(unaUnidad);
-
+        jugadorDeTurno().pagar( ( (Creable)unaUnidad ).costo() );
     }
 
     public void colocarEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
+        Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
+
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        ArrayList<Posicion> unaLista = mapa.generarLista(posicion, TAMANIO_CUARTEL);
+        ArrayList<Posicion> unaLista = mapa.generarLista(posicion, unEdificio.obtenerTamanio());
 
         for(Posicion unaPosicion : unaLista){
 
             mapa.validarPosicion(unaPosicion);
 
         }
-
-        Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
-
         mapa.colocarPieza(unEdificio, posicion);
 
         jugadorDeTurno().agregaPieza(unEdificio);
-
+        jugadorDeTurno().pagar( ( (Creable)unEdificio ).costo() );
     }
 
     private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
