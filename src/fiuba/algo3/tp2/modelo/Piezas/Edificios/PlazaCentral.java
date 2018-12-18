@@ -68,7 +68,7 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
 
     @Override
     public int costo() {
-        return COSTO_PLAZACENTRAL;
+        return costo;
     }
 
     @Override
@@ -130,5 +130,13 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
 
     }
 
+    @Override
+    public void verificarPosibleConstruccion() {
+        this.verificarProcesoEnConstruccion();
+    }
 
+    @Override
+    public void verificarPosibleReparacion() {
+        this.verificarProcesoEnReparacion();
+    }
 }

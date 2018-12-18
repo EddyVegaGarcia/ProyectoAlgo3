@@ -125,6 +125,16 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
 
     @Override
     public int costo() {
-        return COSTO_CUARTEL;
+        return costo;
+    }
+
+    @Override
+    public void verificarPosibleConstruccion() {
+        this.verificarProcesoEnConstruccion();
+    }
+
+    @Override
+    public void verificarPosibleReparacion() {
+        this.verificarProcesoEnReparacion();
     }
 }

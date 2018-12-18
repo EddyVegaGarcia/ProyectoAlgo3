@@ -147,6 +147,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
 
     @Override
     public int costo() {
-        return COSTO_ARMADEASEDIO;
+        return costo;
     }
+
 }

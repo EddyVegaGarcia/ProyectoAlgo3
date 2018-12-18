@@ -49,11 +49,9 @@ public class Aldeano extends Unidad implements Constructor, Creable {
     @Override
     public void construir(Pieza unaPieza)  {
 
-        this.validarPiezaEdificio(unaPieza);
-        this.ValidarConstruirCastillo(unaPieza);
         this.validarAcciones();
 
-        ((Construible)unaPieza).verificarProcesoEnConstruccion();
+        unaPieza.verificarPosibleConstruccion();
 
         edificioCreado = (Edificio)unaPieza;
 
@@ -69,27 +67,11 @@ public class Aldeano extends Unidad implements Constructor, Creable {
         this.turnosConstruccion++;
     }
 
-    private void ValidarConstruirCastillo(Pieza unaPieza) {
-
-        if(unaPieza.obtenerTamanio() == 16)
-            throw new ConstruccionCastilloException();
-
-    }
-
-    private void validarPiezaEdificio(Pieza unaPieza){
-
-        if(unaPieza.obtenerTamanio() == 1)
-            throw new PiezaNoReparableNoConstruibleException();
-
-    }
-
     @Override
     public void repararPieza(Pieza unaPieza) {
 
-        this.validarPiezaEdificio(unaPieza);
         this.validarAcciones();
-
-        ((Reparable)unaPieza).verificarProcesoEnReparacion();
+        unaPieza.verificarPosibleReparacion();
 
         edificioCreado = (Edificio) unaPieza;
 
@@ -136,7 +118,7 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
     @Override
     public int costo() {
-        return COSTO_ALDEANO;
+        return costo;
     }
 
     @Override
@@ -157,5 +139,10 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
         edificioCreado.darVidaPorReparacion();
         this.estado = ((Reparador)estado).reparar(edificioCreado, edificioCreado.obtenerType());
+    }
+
+    @Override
+    public void verificarPosibleConstruccion() {
+        throw new PiezaNoReparableNoConstruibleException();
     }
 }

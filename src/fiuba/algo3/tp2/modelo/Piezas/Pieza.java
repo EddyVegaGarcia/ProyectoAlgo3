@@ -71,4 +71,8 @@ public abstract class Pieza {
         throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
 
     }
+
+    public abstract void verificarPosibleConstruccion();
+
+    public abstract void verificarPosibleReparacion();
 }

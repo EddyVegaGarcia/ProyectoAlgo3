@@ -118,15 +118,15 @@ public class Juego{
         }
     }
 
-    public void construirEdificio(Constructor piezaConstructora, double fila, double columna, PiezaType piezaType) {
+    public void construirEdificio(Constructor piezaConstructora, double fila, double columna) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        Edificio unEdificio = (Edificio) mapa.recuperarPieza(posicion);
+        Pieza unaPieza = mapa.recuperarPieza(posicion);
 
-        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(), unEdificio);
+        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(),(Edificio) unaPieza);
 
-        piezaConstructora.construir(unEdificio);
+        piezaConstructora.construir(unaPieza);
 
     }
 

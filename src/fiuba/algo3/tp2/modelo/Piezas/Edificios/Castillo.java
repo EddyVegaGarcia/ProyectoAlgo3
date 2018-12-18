@@ -110,4 +110,13 @@ public class Castillo extends Edificio implements Diseñador {
 
     }
 
+    @Override
+    public void verificarPosibleConstruccion() {
+        throw new ConstruccionCastilloException();
+    }
+
+    @Override
+    public void verificarPosibleReparacion() {
+        this.verificarProcesoEnReparacion();
+    }
 }
