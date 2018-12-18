@@ -27,25 +27,10 @@ public class Mapa {
         return (posicionLimite.obtenerTamanioLimite());
     }
 
-    public ArrayList<Posicion> generarLista(Posicion unaPosicion, int tamanio){
-
-        ArrayList<Posicion> unaLista = new ArrayList<>();
-
-        for(int i = 0; i < sqrt(tamanio); i++){
-            for(int j = 0; j < sqrt(tamanio); j++){
-
-                unaLista.add(new Posicion(unaPosicion.getFila() + i,
-                        unaPosicion.getColumna() + j));
-
-            }
-        }
-
-        return unaLista;
-    }
 
     public void colocarPieza(Pieza unaPieza, Posicion unaPosicion){
 
-        ArrayList<Posicion> unaLista = this.generarLista(unaPosicion, unaPieza.obtenerTamanio());
+        ArrayList<Posicion> unaLista = unaPosicion.generarListaDePosicionesAdyacentes(unaPieza.obtenerTamanio());
 
         this.agregarPiezaAMapa(unaLista, unaPieza);
         unaPieza.agregarPosicion(unaLista);

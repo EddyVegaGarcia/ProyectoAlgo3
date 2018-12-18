@@ -88,11 +88,12 @@ public class Juego{
 
     }
 
+
     public void colocarEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        ArrayList<Posicion> unaLista = mapa.generarLista(posicion, TAMANIO_CUARTEL);
+        ArrayList<Posicion> unaLista = posicion.generarListaDePosicionesAdyacentes(TAMANIO_CUARTEL);
 
         for(Posicion unaPosicion : unaLista){
 

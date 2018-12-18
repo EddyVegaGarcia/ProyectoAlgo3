@@ -24,6 +24,23 @@ public class Posicion {
         return posicionFila;
     }
 
+
+    public ArrayList<Posicion> generarListaDePosicionesAdyacentes(int dimension){
+
+        ArrayList<Posicion> unaLista = new ArrayList<>();
+
+        for(int i = 0; i < sqrt(dimension); i++){
+            for(int j = 0; j < sqrt(dimension); j++){
+
+                unaLista.add(new Posicion(posicionFila + i,
+                        posicionColumna + j));
+
+            }
+        }
+
+        return unaLista;
+    }
+
     public boolean estaContenidaEnDimensiones(Posicion unaPosicionLimite) {
         return ((posicionFila >= 0) && (posicionColumna >= 0)
                 && (posicionFila < unaPosicionLimite.getFila()) && (posicionColumna < unaPosicionLimite.getColumna()));
