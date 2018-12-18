@@ -89,13 +89,14 @@ public class Juego{
         jugadorDeTurno().pagar( ( (Creable)unaUnidad ).costo() );
     }
 
+
     public void colocarEdificio(Diseñador piezaConstructora, double fila, double columna, PiezaType piezaType) {
 
         Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        ArrayList<Posicion> unaLista = mapa.generarLista(posicion, unEdificio.obtenerTamanio());
+        ArrayList<Posicion> unaLista = posicion.generarListaDePosicionesAdyacentes(unEdificio.obtenerTamanio());
 
         for(Posicion unaPosicion : unaLista){
 
@@ -118,15 +119,15 @@ public class Juego{
         }
     }
 
-    public void construirEdificio(Constructor piezaConstructora, double fila, double columna, PiezaType piezaType) {
+    public void construirEdificio(Constructor piezaConstructora, double fila, double columna) {
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
 
-        Edificio unEdificio = (Edificio) mapa.recuperarPieza(posicion);
+        Pieza unaPieza = mapa.recuperarPieza(posicion);
 
-        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(), unEdificio);
+        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(),(Edificio) unaPieza);
 
-        piezaConstructora.construir(unEdificio);
+        piezaConstructora.construir(unaPieza);
 
     }
 

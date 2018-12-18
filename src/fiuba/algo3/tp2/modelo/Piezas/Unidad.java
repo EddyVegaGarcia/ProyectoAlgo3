@@ -16,6 +16,14 @@ public abstract class Unidad extends Pieza {
 
     }
 
+    @Override
+    public void verificarPosibleConstruccion() {
+        throw new PiezaNoReparableNoConstruibleException();
+    }
 
+    @Override
+    public void verificarPosibleReparacion() {
+        throw new PiezaNoReparableNoConstruibleException();
+    }
 }
 

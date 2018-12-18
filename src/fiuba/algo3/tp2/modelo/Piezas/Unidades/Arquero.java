@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.modelo.Exception.OroInsuficienteException;
+import fiuba.algo3.tp2.modelo.Exception.PiezaNoReparableNoConstruibleException;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Piezas.*;
@@ -70,6 +71,7 @@ public class Arquero extends Unidad implements Atacante, Creable {
 
     @Override
     public int costo() {
-        return COSTO_ARQUERO;
+        return costo;
     }
+
 }

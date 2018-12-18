@@ -22,4 +22,6 @@ public abstract class Edificio extends Pieza implements Reparable {
     public ArrayList<Posicion> obtenerPosiciones() {
         return posiciones;
     }
+
+
 }

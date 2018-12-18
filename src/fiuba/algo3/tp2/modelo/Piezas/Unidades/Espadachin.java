@@ -72,6 +72,7 @@ public class Espadachin extends Unidad implements Atacante, Creable {
 
     @Override
     public int costo() {
-        return COSTO_ESPADACHIN;
+        return costo;
     }
+
 }
