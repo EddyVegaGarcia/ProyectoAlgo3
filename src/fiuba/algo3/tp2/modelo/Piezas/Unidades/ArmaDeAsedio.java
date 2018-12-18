@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
+public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable {
 
     int distanciaDeAtaque, tiempoEsperadoDeMontura;
     EstadoDeArmaDeAsedio estado;
@@ -137,5 +137,16 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable {
             this.atacarUnidad((Unidad)unaPieza);
         else
             this.atacarEdificio((Edificio) unaPieza);
+    }
+
+    @Override
+    public void validarOroSuficiente(int oro) {
+        if( oro < COSTO_ARMADEASEDIO )
+            throw new OroInsuficienteException();
+    }
+
+    @Override
+    public int costo() {
+        return COSTO_ARMADEASEDIO;
     }
 }

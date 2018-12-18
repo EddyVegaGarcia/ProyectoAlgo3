@@ -12,9 +12,8 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Aldeano extends Unidad implements Constructor {
+public class Aldeano extends Unidad implements Constructor, Creable {
 
-    //public int stringOro;
     public EstadoDeAldeano estado;
     int turnosConstruccion;
     Edificio edificioCreado;
@@ -31,35 +30,20 @@ public class Aldeano extends Unidad implements Constructor {
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual, int costo) {
-
-        if( cantidadOroActual < costo )
-            throw new OroInsuficienteException();
-    }
-
-    @Override
     public Edificio colocarPieza(PiezaType piezaType, Jugador unJugador) {
+
+        if ( (piezaType != PiezaType.EDIFICIO_CUARTEL) && (piezaType != PiezaType.EDIFICIO_PLAZACENTRAL) )
+            throw new InvalidUnidadTypeException();
 
         this.validarAcciones();
 
-        if (piezaType == PiezaType.EDIFICIO_CUARTEL ||piezaType == PiezaType.EDIFICIO_PLAZACENTRAL ) {
+        Creable edificio;
+        edificio = (Creable)PiezaFactory.crearPieza(piezaType);
+        edificio.validarOroSuficiente(unJugador.obtenerOro());
+        unJugador.pagar(edificio.costo());
 
-            if(piezaType == EDIFICIO_CUARTEL) {
-                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_CUARTEL);
-                unJugador.pagar(COSTO_CUARTEL);
-            }
-            if(piezaType == EDIFICIO_PLAZACENTRAL) {
-                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_PLAZACENTRAL);
-                unJugador.pagar(COSTO_PLAZACENTRAL);
-            }
-
-            this.accionRealizada();
-            return (Edificio) PiezaFactory.crearPieza(piezaType);
-
-        }
-        else
-            throw new InvalidUnidadTypeException();
-
+        this.accionRealizada();
+        return (Edificio)edificio;
     }
 
     @Override
@@ -142,6 +126,17 @@ public class Aldeano extends Unidad implements Constructor {
     public void refrescar() {
        if(!((Colocador)estado).estaTrabajando() && !((Reparador)estado).estaReparando())
            super.refrescar();
+    }
+
+    @Override
+    public void validarOroSuficiente(int oro) {
+        if( oro < COSTO_ALDEANO )
+            throw new OroInsuficienteException();
+    }
+
+    @Override
+    public int costo() {
+        return COSTO_ALDEANO;
     }
 
     @Override

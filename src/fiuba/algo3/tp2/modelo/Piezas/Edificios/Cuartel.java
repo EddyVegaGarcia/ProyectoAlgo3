@@ -5,13 +5,14 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
+import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Cuartel extends Edificio implements Diseñador, Construible{
+public class Cuartel extends Edificio implements Diseñador, Construible, Creable {
 
     public Cuartel() {
         this.costo = COSTO_CUARTEL;
@@ -28,38 +29,19 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual, int costo) {
-
-        if( cantidadOroActual < costo )
-            throw new OroInsuficienteException();
-
-    }
-
-    @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador) {
 
-        this.validarExistencia();
-
-        if ((piezaType == UNIDAD_ESPADACHIN) || (piezaType == UNIDAD_ARQUERO)) {
-
-            if(piezaType == UNIDAD_ESPADACHIN) {
-                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ESPADACHIN);
-                this.validarAcciones();
-                unJugador.pagar(COSTO_ESPADACHIN);
-            }
-            if(piezaType == UNIDAD_ARQUERO) {
-                this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ARQUERO);
-                this.validarAcciones();
-                unJugador.pagar(COSTO_ARQUERO);
-            }
-
-            this.accionRealizada();
-            return (Unidad) PiezaFactory.crearPieza(piezaType);
-        }
-        else
+        if ((piezaType != UNIDAD_ESPADACHIN) && (piezaType != UNIDAD_ARQUERO))
             throw new InvalidUnidadTypeException();
 
+        this.validarExistencia();
+        Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);
+        unidad.validarOroSuficiente(unJugador.obtenerOro());
+        this.validarAcciones();
+        unJugador.pagar(unidad.costo());
 
+        this.accionRealizada();
+        return (Unidad) unidad;
     }
 
     @Override
@@ -133,5 +115,16 @@ public class Cuartel extends Edificio implements Diseñador, Construible{
         if(!estado.estaConstruido())
             throw new EdificioInexistenteException();
 
+    }
+
+    @Override
+    public void validarOroSuficiente(int oro) {
+        if( oro < COSTO_CUARTEL )
+            throw new OroInsuficienteException();
+    }
+
+    @Override
+    public int costo() {
+        return COSTO_CUARTEL;
     }
 }

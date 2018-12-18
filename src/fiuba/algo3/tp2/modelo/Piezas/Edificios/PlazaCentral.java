@@ -5,13 +5,14 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
+import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class PlazaCentral extends Edificio implements Diseñador, Construible {
+public class PlazaCentral extends Edificio implements Diseñador, Construible, Creable {
 
     public PlazaCentral(){
 
@@ -30,30 +31,20 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
     }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual, int costo) {
-
-        if( cantidadOroActual < costo )
-            throw new OroInsuficienteException();
-
-    }
-
-    @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador){
-
-        this.validarExistencia();
-        this.validarOroSufiente(unJugador.obtenerOro(), COSTO_ALDEANO);
-
-        if(piezaType == UNIDAD_ALDEANO ){
-            this.validarAcciones();
-            this.accionRealizada();
-
-            unJugador.pagar(COSTO_ALDEANO);
-
-            return (Unidad) PiezaFactory.crearPieza(piezaType);
-        }
-        else
+        if(piezaType != UNIDAD_ALDEANO )
             throw new InvalidUnidadTypeException();
 
+        Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);;
+        this.validarExistencia();
+        unidad.validarOroSuficiente(unJugador.obtenerOro());
+
+        this.validarAcciones();
+        this.accionRealizada();
+
+        unJugador.pagar(unidad.costo());
+
+        return (Unidad) unidad;
     }
 
     @Override
@@ -67,6 +58,17 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible {
     @Override
     public PiezaType obtenerType() {
         return EDIFICIO_PLAZACENTRAL;
+    }
+
+    @Override
+    public void validarOroSuficiente(int oro) {
+        if( oro < COSTO_PLAZACENTRAL )
+            throw new OroInsuficienteException();
+    }
+
+    @Override
+    public int costo() {
+        return COSTO_PLAZACENTRAL;
     }
 
     @Override

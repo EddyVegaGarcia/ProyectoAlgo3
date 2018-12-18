@@ -6,8 +6,6 @@ import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public interface Diseñador {
 
-    void validarOroSufiente(int cantidadOroActual, int costo);
-
     Pieza colocarPieza(PiezaType unidadType, Jugador unJugador);
 
 }

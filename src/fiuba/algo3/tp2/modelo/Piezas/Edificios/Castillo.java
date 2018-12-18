@@ -35,27 +35,18 @@ public class Castillo extends Edificio implements Diseñador {
     private int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
 
     @Override
-    public void validarOroSufiente(int cantidadOroActual, int costo) {
-        if(cantidadOroActual < costo)
-            throw new OroInsuficienteException();
-    }
-
-    @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador jugador) {
 
-        if (piezaType == PiezaType.UNIDAD_ARMADEASEDIO) {
-
-            this.validarOroSufiente(jugador.obtenerOro(), COSTO_ARMADEASEDIO);
-            this.validarAcciones();
-            this.accionRealizada();
-
-            jugador.pagar(COSTO_ARMADEASEDIO);
-            return (Unidad) PiezaFactory.crearPieza(piezaType);
-
-        }
-        else
+        if (piezaType != PiezaType.UNIDAD_ARMADEASEDIO)
             throw new InvalidUnidadTypeException();
 
+        Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);
+        unidad.validarOroSuficiente(jugador.obtenerOro());
+        this.validarAcciones();
+        this.accionRealizada();
+
+        jugador.pagar(unidad.costo());
+        return (Unidad)unidad;
     }
 
     @Override
