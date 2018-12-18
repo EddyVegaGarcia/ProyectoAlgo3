@@ -189,7 +189,7 @@ public class Jugador {
 
     public void validarPoblacionMaxima() {
 
-        if(poblacion.size() >= 50)
+        if(poblacion.size() >= LIMITE_POBLACION)
             throw new SobrepoblacionException();
 
     }

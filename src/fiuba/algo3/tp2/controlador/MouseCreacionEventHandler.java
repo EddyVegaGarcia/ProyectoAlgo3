@@ -64,7 +64,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
             etiquetaAlertas.setText("La ubicacion donde se quiere crear esta ocupada.");
         }
         catch (EdificioInexistenteException e){
-            etiquetaAlertas.setText("El edificio no se encuentra en construccion");
+            etiquetaAlertas.setText("El edificio no se encuentra construido aún.");
         }
         catch (SobrepoblacionException e){
             etiquetaAlertas.setText("Población máxima alcanzada.");
