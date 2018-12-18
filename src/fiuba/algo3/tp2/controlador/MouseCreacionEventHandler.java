@@ -51,7 +51,7 @@ public class MouseCreacionEventHandler implements EventHandler<MouseEvent> {
         }
         catch (AccionUnicaRealizadaException e){
 
-            etiquetaAlertas.setText("Cada piezaConstructora solo puede crear una sola pieza");
+            etiquetaAlertas.setText("Cada Edificio solo puede crear una sola pieza");
         }
         catch (PosicionDeCreacionInvalidaException e){
 
