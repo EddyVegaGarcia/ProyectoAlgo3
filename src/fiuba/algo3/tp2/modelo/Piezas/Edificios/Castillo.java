@@ -29,17 +29,34 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
     @Override
     public void atacarPieza(Pieza victima) {
+
         victima.recibirDanioDe(this);
+
     }
 
     @Override
-    public int danioParaUnidad() {
-        return ATAQUE_CASTILLO;
+    public void recibirCantidadDanio(int unDanio) {
+
+        if (vida - unDanio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=unDanio;
+
     }
 
     @Override
-    public int danioParaEdificio() {
-        return ATAQUE_CASTILLO;
+    public void atacarUnidad(Pieza unaPieza) {
+
+        unaPieza.recibirCantidadDanio(ATAQUE_CASTILLO);
+
+    }
+
+    @Override
+    public void atacarEdificio(Pieza unaPieza) {
+
+        unaPieza.recibirCantidadDanio(ATAQUE_CASTILLO);
+
     }
 
     @Override
@@ -103,12 +120,9 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
+
         estadoVida = new Daniado();
-        int danio = atacante.danioParaEdificio();
-        if (vida - danio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=danio;
+
+        atacante.atacarEdificio(this);
     }
 }

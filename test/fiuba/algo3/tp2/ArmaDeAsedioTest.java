@@ -146,6 +146,8 @@ public class ArmaDeAsedioTest {
     public void testArmaDeAsedioAtacaUnaPiezaCualquiera() {
 
         Atacante unArmaDeAsedio = new ArmaDeAsedio();
+        ((ArmaDeAsedio) unArmaDeAsedio).montar();
+        ((ArmaDeAsedio) unArmaDeAsedio).refrescar();
         Pieza unaPieza = new Arquero();
 
         unArmaDeAsedio.atacarPieza(unaPieza);

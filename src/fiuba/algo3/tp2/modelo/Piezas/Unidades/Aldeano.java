@@ -43,6 +43,7 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
         this.accionRealizada();
         return (Edificio)edificio;
+
     }
 
     @Override
@@ -77,6 +78,7 @@ public class Aldeano extends Unidad implements Constructor, Creable {
         this.seguirReparando();
 
         this.accionRealizada();
+
     }
 
     public boolean estaTrabajando() {
@@ -147,11 +149,19 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-        int danio = atacante.danioParaUnidad();
-        if (vida - danio <= 0) {
+
+        atacante.atacarUnidad(this);
+
+    }
+
+    @Override
+    public void recibirCantidadDanio(int unDanio) {
+
+        if (vida - unDanio <= 0) {
             vida = 0;
             throw new PiezaDestruidaException();
         }
-        vida-=danio;
+        vida-=unDanio;
+
     }
 }

@@ -100,12 +100,20 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-        int danio = atacante.danioParaUnidad();
-        if (vida - danio <= 0) {
+
+        atacante.atacarUnidad(this);
+
+    }
+
+    @Override
+    public void recibirCantidadDanio(int unDanio) {
+
+        if (vida - unDanio <= 0) {
             vida = 0;
             throw new PiezaDestruidaException();
         }
-        vida-=danio;
+        vida-=unDanio;
+
     }
 
     @Override
@@ -135,13 +143,17 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
     }
 
     @Override
-    public int danioParaUnidad() {
-        return ATAQUE_ARMADEASEDIO_UNIDAD;
+    public void atacarUnidad(Pieza unaPieza) {
+
+        unaPieza.recibirCantidadDanio(ATAQUE_ARMADEASEDIO_UNIDAD);
+
     }
 
     @Override
-    public int danioParaEdificio() {
-        return ATAQUE_ARMADEASEDIO_EDIFICIO;
+    public void atacarEdificio(Pieza unaPieza) {
+
+        unaPieza.recibirCantidadDanio(ATAQUE_ARMADEASEDIO_EDIFICIO);
+
     }
 
     @Override

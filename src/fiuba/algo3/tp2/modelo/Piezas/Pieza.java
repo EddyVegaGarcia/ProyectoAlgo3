@@ -30,6 +30,8 @@ public abstract class Pieza {
 
     public abstract void recibirDanioDe(Atacante pieza);
 
+    public abstract void recibirCantidadDanio(int unDanio);
+
     public int obtenerVida(){ return vida; }
 
     public Posicion obtenerPrimeraPosicion() { return posiciones.get(0); }

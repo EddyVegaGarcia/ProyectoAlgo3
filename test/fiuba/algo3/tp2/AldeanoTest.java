@@ -124,6 +124,7 @@ public class AldeanoTest {
         cuartel.recibirDanioDe(new Espadachin());
         aldeano.repararPieza(cuartel);
         aldeano.seguirReparando();
+        aldeano.refrescar();
 
         assertEquals(20, aldeano.oroRecolectado());
     }

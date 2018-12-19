@@ -8,7 +8,7 @@ public interface Atacante {
 
     void atacarPieza(Pieza unaPieza);
 
-    int danioParaUnidad();
+    void atacarUnidad(Pieza unaPieza);
 
-    int danioParaEdificio();
+    void atacarEdificio(Pieza unaPieza);
 }
