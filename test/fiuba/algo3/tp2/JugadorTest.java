@@ -14,6 +14,7 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import org.junit.Test;
 
+import static fiuba.algo3.tp2.modelo.Constantes.ATAQUE_PARA_PRUEBA;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -167,7 +168,7 @@ public class JugadorTest {
         jugador.agregaPieza(aldeano);
 
         try {
-            aldeano.recibirDanio(50, ATAQUE_ESPADACHIN_A_UNIDAD);
+            aldeano.recibirDanio(ATAQUE_PARA_PRUEBA, 50);
         }catch (Exception e ){}
 
         jugador.actualizarPiezas();

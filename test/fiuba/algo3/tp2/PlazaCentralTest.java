@@ -64,7 +64,7 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
 
         int vidaEsperada = 440;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -79,7 +79,7 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
 
         int vidaEsperada = 375;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -95,8 +95,8 @@ public class PlazaCentralTest {
             //plazaCentral.construir();
         }
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
 
         int vidaEsperada = 350;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -109,12 +109,12 @@ public class PlazaCentralTest {
 
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
         plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
         plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
     }
@@ -156,7 +156,7 @@ public class PlazaCentralTest {
     @Test
     public void testPlazaDaniadaNoEstaReparada(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
 
         assertFalse(plazaCentral.obtenerEstadoVida().estaReparado());
     }
@@ -164,7 +164,7 @@ public class PlazaCentralTest {
     @Test(expected = EdificioEnReparacionException.class)
     public void testPlazaDaniadaInnciarReparacionCambiaElEstadoAEnReparacion(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         plazaCentral.iniciarReparacion();
 
         plazaCentral.verificarProcesoEnReparacion();
@@ -173,7 +173,7 @@ public class PlazaCentralTest {
     @Test
     public void testTerminarReparacionDeUnaPlazaEnReparacionEstaReparada(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         plazaCentral.iniciarReparacion();
         plazaCentral.finalizarReparacion();
 

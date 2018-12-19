@@ -83,7 +83,7 @@ public class CuartelTest {
         for(int i = 0; i < 4; i++){
            // cuartel.construir();
         }
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
 
         int vidaEsperada = 240;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -98,7 +98,7 @@ public class CuartelTest {
         for(int i = 0; i < 4; i++){
             //cuartel.construir();
         }
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
 
         int vidaEsperada = 175;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -111,8 +111,8 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -123,10 +123,10 @@ public class CuartelTest {
         Edificio cuartel = new Cuartel();
 
         cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
     }
 
     //tests de getters

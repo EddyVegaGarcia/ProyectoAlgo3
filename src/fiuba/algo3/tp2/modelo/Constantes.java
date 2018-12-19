@@ -76,6 +76,7 @@ public class Constantes {
     public static int ATAQUE_ARMADEASEDIO_EDIFICIO = 75;
     public static int ATAQUE_ARMADEASEDIO_UNIDAD = 30;
     public static int ATAQUE_CASTILLO = 20;
+    public static int ATAQUE_PARA_PRUEBA = 20;
 
     /*DISTANCIAS DE ATAQUES */
     public static int DISTANCIA_ATAQUE_CASTILLO = 3;
