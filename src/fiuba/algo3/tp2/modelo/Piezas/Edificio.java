@@ -50,11 +50,11 @@ public abstract class Edificio extends Pieza implements Reparable {
     @Override
     public void recibirDanio(int unDanioEdifcio, int unDanioUnidad){
 
-        if (vida - unDanioUnidad <= 0) {
+        if (vida - unDanioEdifcio <= 0) {
             vida = 0;
             throw new PiezaDestruidaException();
         }
-        this.vida = vida - unDanioUnidad;
+        this.vida = vida - unDanioEdifcio;
 
     }
 }
