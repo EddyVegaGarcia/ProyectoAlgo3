@@ -34,7 +34,7 @@ public class UbicarPiezas {
 
             double tamanio = Math.sqrt(pieza.getTamanio());
 
-            Posicion posicion = pieza.obtenerPosicion();
+            Posicion posicion = pieza.obtenerPrimeraPosicion();
             ubicarPieza(imagen, posicion.getColumna(), posicion.getFila(),tamanio);
         }
     }

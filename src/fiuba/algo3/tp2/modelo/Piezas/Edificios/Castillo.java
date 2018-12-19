@@ -74,7 +74,7 @@ public class Castillo extends Edificio implements Diseñador {
 
     public void ataqueMasivo(Jugador unJugador, Mapa unMapa, Juego unJuego) {
 
-        ArrayList<Pieza> victimas = unMapa.obtenerPiezasQueEstanEnRango(obtenerPosiciones() ,this.obtenerTamanio(), this.obtenerDistanciaAtaque());
+        ArrayList<Pieza> victimas = unMapa.obtenerPiezasQueEstanEnRango(obtenerPrimeraPosicion() ,this.obtenerTamanio(), this.obtenerDistanciaAtaque());
 
         for(Pieza victima : victimas){
             if( !unJugador.sosDuenioDe(victima) )
