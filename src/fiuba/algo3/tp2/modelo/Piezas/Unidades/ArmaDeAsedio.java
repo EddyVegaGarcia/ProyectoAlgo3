@@ -7,8 +7,6 @@ import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
-import java.util.ArrayList;
-
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
@@ -122,7 +120,7 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
         this.validarAcciones();
         this.validarAtaqueMontura();
         this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unaPieza.recibirDanio(ATAQUE_ARMADEASEDIO);
+        unaPieza.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
         this.accionRealizada();
     }
 

@@ -12,7 +12,6 @@ import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
-import javafx.geometry.Pos;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -168,7 +167,7 @@ public class JugadorTest {
         jugador.agregaPieza(aldeano);
 
         try {
-            aldeano.recibirDanio(50);
+            aldeano.recibirDanio(50, ATAQUE_ESPADACHIN_A_UNIDAD);
         }catch (Exception e ){}
 
         jugador.actualizarPiezas();

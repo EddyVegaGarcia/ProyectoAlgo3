@@ -25,9 +25,9 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
     }
 
     @Override
-    public void recibirDanio(int unDanio) {
+    public void recibirDanio(int unDanio, int ataqueEspadachinAUnidad) {
         estadoVida = new Daniado();
-        super.recibirDanio(unDanio);
+        super.recibirDanio(unDanio, ataqueEspadachinAUnidad);
     }
 
     @Override

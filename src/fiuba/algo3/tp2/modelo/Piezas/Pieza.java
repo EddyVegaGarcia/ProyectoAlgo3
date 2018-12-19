@@ -14,45 +14,39 @@ public abstract class Pieza {
     protected ArrayList<Posicion> posiciones;
     protected int accionesRealizadas = 0;
 
-    public int obtenerVida(){ return vida; }
-
-    public Posicion obtenerPrimeraPosicion() { return posiciones.get(0);
-    }
-
-    public int obtenerTamanio() { return tamanio; }
-
-    public void recibirDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        this.vida = vida - unDanio;
-
-    }
-
-    public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
-
-    public ArrayList<Posicion> obtenerPosiciones(){
-        return posiciones;
-    }
-
-    public void validarAcciones(){
-
-        if(accionesRealizadas == 1)
-            throw new AccionUnicaRealizadaException();
-    }
-
-    protected void accionRealizada() {
-        accionesRealizadas = 1;
-    }
+    /* METODOS ABSTRACTOS*/
 
     public abstract double getTamanio();
 
     public abstract PiezaType obtenerType();
 
-    public void refrescar(){
-        accionesRealizadas = 0;
+    public abstract void verificarPosibleConstruccion();
+
+    public abstract void verificarPosibleReparacion();
+
+
+    /* METODOS */
+
+    public abstract void recibirDanio(int unDanioEdificio, int unDanioUnidad) ;
+
+    public int obtenerVida(){ return vida; }
+
+    public Posicion obtenerPrimeraPosicion() { return posiciones.get(0); }
+
+    protected void accionRealizada() { accionesRealizadas = 1; }
+
+    public void refrescar(){ accionesRealizadas = 0; }
+
+    public int obtenerTamanio() { return tamanio; }
+
+    public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
+
+    public ArrayList<Posicion> obtenerPosiciones(){ return posiciones; }
+
+    public void validarAcciones(){
+
+        if(accionesRealizadas == 1)
+            throw new AccionUnicaRealizadaException();
     }
 
     protected void validarRangoDeAtaque(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
@@ -66,7 +60,4 @@ public abstract class Pieza {
 
     }
 
-    public abstract void verificarPosibleConstruccion();
-
-    public abstract void verificarPosibleReparacion();
 }

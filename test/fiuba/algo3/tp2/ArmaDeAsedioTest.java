@@ -5,7 +5,6 @@ import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Exception.PiezaDestruidaException;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
-import fiuba.algo3.tp2.modelo.Interfaces.Montable;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
@@ -28,7 +27,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 125;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -40,7 +39,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 135;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -52,7 +51,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_CASTILLO);
+        armaDeAsedio.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 130;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -64,12 +63,12 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
     }
 

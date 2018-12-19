@@ -17,6 +17,17 @@ public abstract class Unidad extends Pieza {
     }
 
     @Override
+    public void recibirDanio(int unDanioEdifcio, int unDanioUnidad){
+
+        if (vida - unDanioUnidad <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        this.vida = vida - unDanioUnidad;
+
+    }
+
+    @Override
     public void verificarPosibleConstruccion() {
         throw new PiezaNoReparableNoConstruibleException();
     }

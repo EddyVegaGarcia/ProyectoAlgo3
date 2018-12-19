@@ -41,7 +41,7 @@ public class Arquero extends Unidad implements Atacante, Creable {
     public void atacarPieza(Pieza unaPieza) {
         this.validarAcciones();
         this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unaPieza.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO);
+        unaPieza.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO,ATAQUE_ARQUERO_A_UNIDAD);
         this.accionRealizada();
     }
 

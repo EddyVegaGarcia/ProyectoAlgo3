@@ -23,9 +23,9 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
     }
 
     @Override
-    public void recibirDanio(int unDanio) {
+    public void recibirDanio(int unDanio, int ataqueEspadachinAUnidad) {
         estadoVida = new Daniado();
-        super.recibirDanio(unDanio);
+        super.recibirDanio(unDanio, ataqueEspadachinAUnidad);
     }
 
     @Override

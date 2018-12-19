@@ -41,7 +41,7 @@ public class AldeanoTest {
 
         Unidad aldeano = new Aldeano();
 
-        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 25;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
@@ -53,7 +53,7 @@ public class AldeanoTest {
 
         Unidad aldeano = new Aldeano();
 
-        aldeano.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
+        aldeano.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 35;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
@@ -65,7 +65,7 @@ public class AldeanoTest {
 
         Unidad aldeano = new Aldeano();
 
-        aldeano.recibirDanio(ATAQUE_CASTILLO);
+        aldeano.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 30;
         assertEquals(vidaEsperada, aldeano.obtenerVida());
@@ -77,8 +77,8 @@ public class AldeanoTest {
 
         Unidad aldeano = new Aldeano();
 
-        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        aldeano.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
     }
 
@@ -112,7 +112,7 @@ public class AldeanoTest {
     public void testOroRecolectadoEs0SiEstaReparando(){
         Aldeano aldeano = new Aldeano();
         Cuartel cuartel =  new Cuartel();
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50, ATAQUE_ESPADACHIN_A_UNIDAD);
         aldeano.repararPieza(cuartel);
 
         assertEquals(0, aldeano.oroRecolectado());
@@ -122,7 +122,7 @@ public class AldeanoTest {
     public void testOroRecolectadoEs20SiTerminoDeReparar(){
         Aldeano aldeano = new Aldeano();
         Cuartel cuartel =  new Cuartel();
-        cuartel.recibirDanio(50);
+        cuartel.recibirDanio(50, ATAQUE_ESPADACHIN_A_UNIDAD);
         aldeano.repararPieza(cuartel);
         aldeano.seguirReparando();
 

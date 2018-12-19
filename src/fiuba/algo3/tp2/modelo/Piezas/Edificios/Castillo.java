@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Edificios;
 
 import fiuba.algo3.tp2.modelo.Campo.Mapa;
-import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Juego.Juego;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
@@ -27,9 +26,9 @@ public class Castillo extends Edificio implements Diseñador {
     }
 
     @Override
-    public void recibirDanio(int unDanio) {
+    public void recibirDanio(int unDanio, int ataqueEspadachinAUnidad) {
         estadoVida = new Daniado();
-        super.recibirDanio(unDanio);
+        super.recibirDanio(unDanio, ataqueEspadachinAUnidad);
     }
 
     private int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
@@ -69,13 +68,13 @@ public class Castillo extends Edificio implements Diseñador {
 
     public void atacarA(Pieza victima) {
 
-        victima.recibirDanio(ATAQUE_CASTILLO);
+        victima.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
     }
 
     public void ataqueMasivo(Jugador unJugador, Mapa unMapa, Juego unJuego) {
 
-        ArrayList<Pieza> victimas = unMapa.obtenerPiezasQueEstanEnRango(obtenerPosicion() ,this.obtenerTamanio(), this.obtenerDistanciaAtaque());
+        ArrayList<Pieza> victimas = unMapa.obtenerPiezasQueEstanEnRango(obtenerPosiciones() ,this.obtenerTamanio(), this.obtenerDistanciaAtaque());
 
         for(Pieza victima : victimas){
             if( !unJugador.sosDuenioDe(victima) )

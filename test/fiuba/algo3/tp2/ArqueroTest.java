@@ -23,7 +23,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -35,7 +35,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
+        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 60;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -47,7 +47,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_CASTILLO);
+        arquero.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 55;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -59,9 +59,9 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
-        arquero.recibirDanio(ATAQUE_CASTILLO);
+        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 15;
         assertEquals(vidaEsperada, arquero.obtenerVida());

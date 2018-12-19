@@ -43,7 +43,7 @@ public class Espadachin extends Unidad implements Atacante, Creable {
 
         this.validarAcciones();
         this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unaPieza.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO);
+        unaPieza.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO,ATAQUE_ESPADACHIN_A_UNIDAD);
         this.accionRealizada();
     }
 

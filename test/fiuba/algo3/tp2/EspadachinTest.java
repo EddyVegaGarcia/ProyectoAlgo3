@@ -13,7 +13,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
-import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ARQUERO;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.UNIDAD_ESPADACHIN;
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +23,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -36,7 +35,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
+        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 85;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -48,7 +47,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_CASTILLO);
+        espadachin.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 80;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -60,9 +59,9 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD);
-        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD);
-        espadachin.recibirDanio(ATAQUE_CASTILLO);
+        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
 
         int vidaEsperada = 40;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
