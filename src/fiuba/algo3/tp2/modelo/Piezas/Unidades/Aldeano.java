@@ -126,6 +126,13 @@ public class Aldeano extends Unidad implements Constructor, Creable {
     }
 
     @Override
+    public void seguirRealizandoAccion() {
+
+        this.estado.seguirRalizandoAccion(this);
+
+    }
+
+    @Override
     public void seguirTrabajando() {
 
         this.construccionRealizada();
@@ -165,11 +172,6 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
         unCastillo.darVidaPorReparacion(VIDA_REPARACION_A_CASTILLO);
 
-    }
-
-    @Override
-    public void verificarPosibleConstruccion() {
-        throw new PiezaNoReparableNoConstruibleException();
     }
 
     @Override

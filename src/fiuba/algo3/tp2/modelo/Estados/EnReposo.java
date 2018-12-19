@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeAldeano;
 import fiuba.algo3.tp2.modelo.Interfaces.Reparador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 public class EnReposo implements EstadoDeAldeano, Colocador, Reparador {
@@ -61,5 +62,11 @@ public class EnReposo implements EstadoDeAldeano, Colocador, Reparador {
         return 20;
     }
 
+    @Override
+    public void seguirRalizandoAccion(Aldeano aldeano) {
+
+        return;
+
+    }
 }
 

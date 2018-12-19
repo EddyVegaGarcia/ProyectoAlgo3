@@ -39,7 +39,7 @@ public class Turno {
     public void terminarTurno(Juego unJuego){
 
         jugadorEnJuego.recolectarOro();
-        jugadorEnJuego.terminarConstruccion();
+        jugadorEnJuego.terminarAccion();
         jugadorEnJuego.refrescarPiezas();
         jugadorEnJuego.castilloAtaqueMasivo(unJuego);
 

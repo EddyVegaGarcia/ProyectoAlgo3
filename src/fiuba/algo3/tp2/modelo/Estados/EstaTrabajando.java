@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeAldeano;
 import fiuba.algo3.tp2.modelo.Interfaces.Reparador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
 import static fiuba.algo3.tp2.modelo.Constantes.*;
@@ -39,5 +40,12 @@ public class EstaTrabajando implements EstadoDeAldeano, Colocador, Reparador {
     @Override
     public int oroRecolectado() {
         return 0;
+    }
+
+    @Override
+    public void seguirRalizandoAccion(Aldeano aldeano) {
+
+        aldeano.seguirTrabajando();
+
     }
 }

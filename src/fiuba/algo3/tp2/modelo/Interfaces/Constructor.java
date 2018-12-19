@@ -25,4 +25,6 @@ public interface Constructor extends Diseñador{
 
     void repararPlazaCentral(PlazaCentral unaPlazaCentral);
 
+    void seguirRealizandoAccion();
+
 }

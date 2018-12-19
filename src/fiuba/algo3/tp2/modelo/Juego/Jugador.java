@@ -146,13 +146,16 @@ public class Jugador {
         return poblacion.size();
     }
 
-    public void terminarConstruccion() {
+    public void terminarAccion() {
 
         for(Constructor unConstructor: aldeanos){
-            if(unConstructor.estaTrabajando())
+
+            unConstructor.seguirRealizandoAccion();
+
+            /*if(unConstructor.estaTrabajando())
                 unConstructor.seguirTrabajando();
             if(unConstructor.estaReparando())
-                unConstructor.seguirReparando();
+                unConstructor.seguirReparando();*/
         }
 
     }
