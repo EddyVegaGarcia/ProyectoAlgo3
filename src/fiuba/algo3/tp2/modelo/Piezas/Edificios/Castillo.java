@@ -19,11 +19,11 @@ import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 public class Castillo extends Edificio implements Diseñador {
 
     public Castillo() {
-
         this.vida = VIDA_MAXIMA_CASTILLO;
         this.tamanio = TAMANIO_CASTILLO;
         this.estado = new Construido();
         this.estadoVida =  new Reparado();
+        vidaMaxima = VIDA_MAXIMA_CASTILLO;
     }
 
     @Override
@@ -65,26 +65,6 @@ public class Castillo extends Edificio implements Diseñador {
             vida = VIDA_MAXIMA_CASTILLO;
         else
             this.vida = vida + VIDA_REPARACION_A_CASTILLO;
-    }
-
-    @Override
-    public void verificarProcesoEnReparacion() {
-        if(estadoVida.estaEnReparacion())
-            throw new EdificioEnReparacionException();
-    }
-
-    @Override
-    public void finalizarReparacion() {
-
-        this.estadoVida = this.estadoVida.finalizarReparacion();
-
-    }
-
-    @Override
-    public void iniciarReparacion() {
-
-        this.estadoVida =  this.estadoVida.reparar();
-
     }
 
     public void atacarA(Pieza victima) {

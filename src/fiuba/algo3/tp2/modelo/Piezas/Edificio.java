@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo.Piezas;
 
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
+import fiuba.algo3.tp2.modelo.Exception.EdificioEnReparacionException;
 import fiuba.algo3.tp2.modelo.Exception.EdificioInexistenteException;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoDeEdificio;
 import fiuba.algo3.tp2.modelo.Interfaces.EstadoVidaEdificio;
@@ -12,6 +13,7 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     protected EstadoDeEdificio estado;
     protected EstadoVidaEdificio estadoVida;
+    protected int vidaMaxima;
 
     public EstadoDeEdificio obtenerEstado(){return estado;}
 
@@ -19,4 +21,25 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     public abstract void darVidaPorReparacion();
 
+
+    public void verificarProcesoEnReparacion() {
+        if(estadoVida.estaEnReparacion())
+            throw new EdificioEnReparacionException();
+    }
+
+    public void iniciarReparacion() {
+        this.estadoVida =  this.estadoVida.reparar();
+    }
+
+    public void finalizarReparacion() {
+        this.estadoVida = this.estadoVida.finalizarReparacion();
+    }
+
+    public boolean estasReparado(){
+        if( vida == vidaMaxima ) {
+            finalizarReparacion();
+            return true;
+        }
+        return false;
+    }
 }

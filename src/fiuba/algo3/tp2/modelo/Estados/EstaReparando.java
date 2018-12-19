@@ -24,19 +24,8 @@ public class EstaReparando implements EstadoDeAldeano, Reparador, Colocador {
     @Override
     public EstadoDeAldeano reparar(Edificio unEdificio, PiezaType unaPiezaType) {
 
-        int vidaMaxima = 0;
-
-        if(unaPiezaType == PiezaType.EDIFICIO_CASTILLO)
-            vidaMaxima = VIDA_MAXIMA_CASTILLO;
-        if(unaPiezaType == PiezaType.EDIFICIO_CUARTEL)
-            vidaMaxima = VIDA_MAXIMA_CUARTEL;
-        if(unaPiezaType == PiezaType.EDIFICIO_PLAZACENTRAL)
-            vidaMaxima = VIDA_MAXIMA_PLAZACENTRAL;
-
-        if(unEdificio.obtenerVida() == vidaMaxima){
-            unEdificio.finalizarReparacion();
+        if( unEdificio.estasReparado() )
             return new EnReposo();
-        }
 
         return this;
 

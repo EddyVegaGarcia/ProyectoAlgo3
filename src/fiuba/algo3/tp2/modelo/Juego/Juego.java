@@ -125,7 +125,7 @@ public class Juego{
 
         Pieza unaPieza = mapa.recuperarPieza(posicion);
 
-        ArrayList<Posicion> posiciones = ((Pieza)piezaConstructora).obtenerPosicion();
+        ArrayList<Posicion> posiciones = ((Pieza)piezaConstructora).obtenerPosiciones();
 
         this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPrimeraPosicion(),(Edificio) unaPieza);
 

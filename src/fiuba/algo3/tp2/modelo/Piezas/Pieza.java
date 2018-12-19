@@ -33,7 +33,7 @@ public abstract class Pieza {
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 
-    public ArrayList<Posicion> obtenerPosicion(){
+    public ArrayList<Posicion> obtenerPosiciones(){
         return posiciones;
     }
 
