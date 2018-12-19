@@ -144,4 +144,14 @@ public class Aldeano extends Unidad implements Constructor, Creable {
     public void verificarPosibleConstruccion() {
         throw new PiezaNoReparableNoConstruibleException();
     }
+
+    @Override
+    public void recibirDanioDe(Atacante atacante) {
+        int danio = atacante.danioParaUnidad();
+        if (vida - danio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=danio;
+    }
 }

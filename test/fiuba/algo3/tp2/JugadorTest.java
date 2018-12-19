@@ -168,7 +168,8 @@ public class JugadorTest {
         jugador.agregaPieza(aldeano);
 
         try {
-            aldeano.recibirDanio(ATAQUE_PARA_PRUEBA, 50);
+            aldeano.recibirDanioDe(new Espadachin());
+            aldeano.recibirDanioDe(new Espadachin());
         }catch (Exception e ){}
 
         jugador.actualizarPiezas();

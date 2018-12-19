@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Exception.PiezaAtacadaNoEstaEnRangoDeAtaqueExeception;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Cuartel;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.*;
@@ -23,7 +24,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 50;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -35,7 +36,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 60;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -47,7 +48,7 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanioDe(new Castillo());
 
         int vidaEsperada = 55;
         assertEquals(vidaEsperada, arquero.obtenerVida());
@@ -59,9 +60,9 @@ public class ArqueroTest {
 
         Unidad arquero = new Arquero();
 
-        arquero.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        arquero.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        arquero.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        arquero.recibirDanioDe(new Espadachin());
+        arquero.recibirDanioDe(new Arquero());
+        arquero.recibirDanioDe(new Castillo());
 
         int vidaEsperada = 15;
         assertEquals(vidaEsperada, arquero.obtenerVida());

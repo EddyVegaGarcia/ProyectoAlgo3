@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.modelo.Exception.OroInsuficienteException;
+import fiuba.algo3.tp2.modelo.Exception.PiezaDestruidaException;
 import fiuba.algo3.tp2.modelo.Exception.PiezaNoReparableNoConstruibleException;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Creable;
@@ -33,6 +34,16 @@ public class Arquero extends Unidad implements Atacante, Creable {
     }
 
     @Override
+    public void recibirDanioDe(Atacante atacante) {
+        int danio = atacante.danioParaUnidad();
+        if (vida - danio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=danio;
+    }
+
+    @Override
     public double getTamanio() {
         return tamanio;
     }
@@ -41,8 +52,18 @@ public class Arquero extends Unidad implements Atacante, Creable {
     public void atacarPieza(Pieza unaPieza) {
         this.validarAcciones();
         this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unaPieza.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO,ATAQUE_ARQUERO_A_UNIDAD);
+        unaPieza.recibirDanioDe(this);
         this.accionRealizada();
+    }
+
+    @Override
+    public int danioParaUnidad() {
+        return ATAQUE_ARQUERO_A_UNIDAD;
+    }
+
+    @Override
+    public int danioParaEdificio() {
+        return ATAQUE_ARQUERO_A_EDIFICIO;
     }
 
     @Override

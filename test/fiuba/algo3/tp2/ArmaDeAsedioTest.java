@@ -27,7 +27,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 125;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -39,7 +39,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 135;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -51,7 +51,7 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanioDe(new Castillo());
 
         int vidaEsperada = 130;
         assertEquals(vidaEsperada, armaDeAsedio.obtenerVida());
@@ -63,12 +63,12 @@ public class ArmaDeAsedioTest {
 
         Unidad armaDeAsedio = new ArmaDeAsedio();
 
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        armaDeAsedio.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        armaDeAsedio.recibirDanioDe(new Espadachin());
+        armaDeAsedio.recibirDanioDe(new Espadachin());
+        armaDeAsedio.recibirDanioDe(new Espadachin());
+        armaDeAsedio.recibirDanioDe(new Espadachin());
+        armaDeAsedio.recibirDanioDe(new Espadachin());
+        armaDeAsedio.recibirDanioDe(new Espadachin());
 
     }
 

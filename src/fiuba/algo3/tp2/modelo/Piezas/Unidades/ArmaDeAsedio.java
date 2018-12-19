@@ -99,6 +99,16 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
     }
 
     @Override
+    public void recibirDanioDe(Atacante atacante) {
+        int danio = atacante.danioParaUnidad();
+        if (vida - danio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=danio;
+    }
+
+    @Override
     public double getTamanio() {
         return tamanio;
     }
@@ -120,8 +130,18 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
         this.validarAcciones();
         this.validarAtaqueMontura();
         this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unaPieza.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        unaPieza.recibirDanioDe(this);
         this.accionRealizada();
+    }
+
+    @Override
+    public int danioParaUnidad() {
+        return ATAQUE_ARMADEASEDIO_UNIDAD;
+    }
+
+    @Override
+    public int danioParaEdificio() {
+        return ATAQUE_ARMADEASEDIO_EDIFICIO;
     }
 
     @Override

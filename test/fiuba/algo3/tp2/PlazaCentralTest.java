@@ -5,6 +5,9 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
@@ -49,7 +52,7 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 435;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -64,7 +67,7 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        plazaCentral.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 440;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -79,7 +82,7 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 375;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -94,9 +97,9 @@ public class PlazaCentralTest {
         for(int i = 0; i < 4; i++){
             //plazaCentral.construir();
         }
-        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        plazaCentral.recibirDanioDe(new Espadachin());
+        plazaCentral.recibirDanioDe(new Arquero());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 350;
         assertEquals(vidaEsperada, plazaCentral.obtenerVida());
@@ -107,16 +110,16 @@ public class PlazaCentralTest {
     public void testRecibirDanioHastaSerDestruidoLanzaException(){
         Edificio plazaCentral = new PlazaCentral();
 
-        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        plazaCentral.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        plazaCentral.recibirDanioDe(new Espadachin());
+        plazaCentral.recibirDanioDe(new Arquero());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
+        plazaCentral.recibirDanioDe(new Espadachin());
+        plazaCentral.recibirDanioDe(new Espadachin());
     }
 
     //tests de estados
@@ -156,7 +159,7 @@ public class PlazaCentralTest {
     @Test
     public void testPlazaDaniadaNoEstaReparada(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        plazaCentral.recibirDanioDe(new Espadachin());
 
         assertFalse(plazaCentral.obtenerEstadoVida().estaReparado());
     }
@@ -164,7 +167,7 @@ public class PlazaCentralTest {
     @Test(expected = EdificioEnReparacionException.class)
     public void testPlazaDaniadaInnciarReparacionCambiaElEstadoAEnReparacion(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        plazaCentral.recibirDanioDe(new Espadachin());
         plazaCentral.iniciarReparacion();
 
         plazaCentral.verificarProcesoEnReparacion();
@@ -173,7 +176,7 @@ public class PlazaCentralTest {
     @Test
     public void testTerminarReparacionDeUnaPlazaEnReparacionEstaReparada(){
         PlazaCentral plazaCentral =  new PlazaCentral();
-        plazaCentral.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        plazaCentral.recibirDanioDe(new Espadachin());
         plazaCentral.iniciarReparacion();
         plazaCentral.finalizarReparacion();
 

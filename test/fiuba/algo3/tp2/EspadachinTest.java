@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.modelo.Campo.Posicion;
 import fiuba.algo3.tp2.modelo.Exception.PiezaAtacadaNoEstaEnRangoDeAtaqueExeception;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.Cuartel;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
@@ -23,7 +24,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 75;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -35,7 +36,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 85;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -47,7 +48,7 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanioDe(new Castillo());
 
         int vidaEsperada = 80;
         assertEquals(vidaEsperada, espadachin.obtenerVida());
@@ -59,9 +60,9 @@ public class EspadachinTest {
 
         Unidad espadachin = new Espadachin();
 
-        espadachin.recibirDanio(ATAQUE_ESPADACHIN_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        espadachin.recibirDanio(ATAQUE_ARQUERO_A_UNIDAD, ATAQUE_ESPADACHIN_A_UNIDAD);
-        espadachin.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        espadachin.recibirDanioDe(new Espadachin());
+        espadachin.recibirDanioDe(new Arquero());
+        espadachin.recibirDanioDe(new Castillo());
 
         int vidaEsperada = 40;
         assertEquals(vidaEsperada, espadachin.obtenerVida());

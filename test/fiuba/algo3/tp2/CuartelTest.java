@@ -5,6 +5,9 @@ import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
 import org.junit.Test;
 
@@ -68,7 +71,7 @@ public class CuartelTest {
         for(int i = 0; i < 4; i++){
             //cuartel.construir();
         }
-        cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 235;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -83,7 +86,7 @@ public class CuartelTest {
         for(int i = 0; i < 4; i++){
            // cuartel.construir();
         }
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        cuartel.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 240;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -98,7 +101,7 @@ public class CuartelTest {
         for(int i = 0; i < 4; i++){
             //cuartel.construir();
         }
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 175;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -110,9 +113,9 @@ public class CuartelTest {
 
         Edificio cuartel = new Cuartel();
 
-        cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        cuartel.recibirDanioDe(new Espadachin());
+        cuartel.recibirDanioDe(new Arquero());
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 150;
         assertEquals(vidaEsperada, cuartel.obtenerVida());
@@ -122,11 +125,11 @@ public class CuartelTest {
     public void testCuartelRecibeDanioHastaSerdestruidoLanzaExcepcionYLaVidaEsCero(){
         Edificio cuartel = new Cuartel();
 
-        cuartel.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
-        cuartel.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        cuartel.recibirDanioDe(new Espadachin());
+        cuartel.recibirDanioDe(new Arquero());
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
     }
 
     //tests de getters
@@ -148,16 +151,16 @@ public class CuartelTest {
     @Test
     public void testDarVidaPorReparacionAumentalaVidaDelCuartelEn50ComoMaximo() {
         Cuartel cuartel = new Cuartel();
-        cuartel.recibirDanio(50, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanioDe(new ArmaDeAsedio());
         cuartel.darVidaPorReparacion();
 
-        assertEquals(250, cuartel.obtenerVida());
+        assertEquals(225, cuartel.obtenerVida());
     }
 
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCuartelEn20SiElCuartelTiene230DeVida(){
         Cuartel cuartel = new Cuartel();
-        cuartel.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanioDe(new Espadachin());
         cuartel.darVidaPorReparacion();
 
         assertEquals(250, cuartel.obtenerVida());
@@ -177,7 +180,7 @@ public class CuartelTest {
     @Test(expected = EdificioEnReparacionException.class)
     public void testIniciarReparacionCambiaElEstadoDeCuartelAEnReparacion(){
         Cuartel cuartel = new Cuartel();
-        cuartel.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        cuartel.recibirDanioDe(new Espadachin());
         cuartel.iniciarReparacion();
 
         cuartel.verificarProcesoEnReparacion();

@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
@@ -57,7 +58,7 @@ public class CastilloTest {
     @Test
     public void testRecibirDanioCambiaElEstadoDelCastilloADaniado(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Espadachin());
         assertFalse(castillo.obtenerEstadoVida().estaReparado());
         assertFalse(castillo.obtenerEstadoVida().estaEnReparacion());
     }
@@ -67,7 +68,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanioDe(new Espadachin());
 
         int vidaEsperada = 985;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -79,7 +80,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
+        castillo.recibirDanioDe(new Arquero());
 
         int vidaEsperada = 990;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -91,7 +92,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        castillo.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 925;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -103,9 +104,9 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        castillo.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        castillo.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
+        castillo.recibirDanioDe(new Espadachin());
+        castillo.recibirDanioDe(new Arquero());
+        castillo.recibirDanioDe(new ArmaDeAsedio());
 
         int vidaEsperada = 900;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -118,7 +119,7 @@ public class CastilloTest {
         Espadachin espadachin = new Espadachin();
         Castillo castillo = new Castillo();
 
-        castillo.atacarA(espadachin);
+        castillo.atacarPieza(espadachin);
         assertEquals(80, espadachin.obtenerVida());
     }
 
@@ -127,7 +128,7 @@ public class CastilloTest {
         Arquero arquero = new Arquero();
         Castillo castillo = new Castillo();
 
-        castillo.atacarA(arquero);
+        castillo.atacarPieza(arquero);
         assertEquals(55, arquero.obtenerVida());
     }
 
@@ -136,7 +137,7 @@ public class CastilloTest {
         Aldeano aldeano = new Aldeano();
         Castillo castillo = new Castillo();
 
-        castillo.atacarA(aldeano);
+        castillo.atacarPieza(aldeano);
         assertEquals(30, aldeano.obtenerVida());
     }
 
@@ -145,7 +146,7 @@ public class CastilloTest {
         Cuartel cuartel = new Cuartel();
         Castillo castillo = new Castillo();
 
-        castillo.atacarA(cuartel);
+        castillo.atacarPieza(cuartel);
         assertEquals(230, cuartel.obtenerVida());
     }
 
@@ -154,7 +155,7 @@ public class CastilloTest {
         PlazaCentral plaza = new PlazaCentral();
         Castillo castillo = new Castillo();
 
-        castillo.atacarA(plaza);
+        castillo.atacarPieza(plaza);
         assertEquals(430, plaza.obtenerVida());
     }
 
@@ -174,7 +175,7 @@ public class CastilloTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn15(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Castillo());
         castillo.darVidaPorReparacion();
 
         assertEquals(995, castillo.obtenerVida());
@@ -183,7 +184,7 @@ public class CastilloTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn10SiACastilloLeFaltaDiezParaTenerLaVidaCompleta(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(10, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Arquero());
         castillo.darVidaPorReparacion();
 
         assertEquals(1000, castillo.obtenerVida());
@@ -192,7 +193,7 @@ public class CastilloTest {
     @Test
     public void testIniciarReparacionEnCastilloDaniadoCambiaElEstadoAEnReparacion(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Arquero());
         castillo.iniciarReparacion();
         assertTrue(castillo.obtenerEstadoVida().estaEnReparacion());
     }
@@ -207,7 +208,7 @@ public class CastilloTest {
     @Test
     public void testTerminarReparacionEnCastilloEnReparacionLeCambiaElEstadoAReparado(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Arquero());
         castillo.iniciarReparacion();
         castillo.finalizarReparacion();
         assertTrue(castillo.obtenerEstadoVida().estaReparado());
@@ -225,7 +226,7 @@ public class CastilloTest {
     @Test(expected = EdificioEnReparacionException.class)
     public void testVerificarProcesoEnReparacionLanzaExceptionSiEstaEnReparacion(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
+        castillo.recibirDanioDe(new Arquero());
         castillo.iniciarReparacion();
 
         castillo.verificarProcesoEnReparacion();

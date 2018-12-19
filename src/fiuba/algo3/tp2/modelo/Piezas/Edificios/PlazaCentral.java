@@ -4,6 +4,7 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Construible;
 import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
@@ -25,9 +26,14 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
     }
 
     @Override
-    public void recibirDanio(int unDanio, int ataqueEspadachinAUnidad) {
+    public void recibirDanioDe(Atacante atacante) {
         estadoVida = new Daniado();
-        super.recibirDanio(unDanio, ataqueEspadachinAUnidad);
+        int danio = atacante.danioParaEdificio();
+        if (vida - danio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=danio;
     }
 
     @Override

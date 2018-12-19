@@ -7,4 +7,8 @@ public interface Atacante {
     int obtenerDistanciaAtaque();
 
     void atacarPieza(Pieza unaPieza);
+
+    int danioParaUnidad();
+
+    int danioParaEdificio();
 }

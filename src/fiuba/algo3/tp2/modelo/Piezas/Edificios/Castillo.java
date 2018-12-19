@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import static fiuba.algo3.tp2.modelo.Constantes.*;
 import static fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType.*;
 
-public class Castillo extends Edificio implements Diseñador {
+public class Castillo extends Edificio implements Diseñador, Atacante {
 
     public Castillo() {
         this.vida = VIDA_MAXIMA_CASTILLO;
@@ -25,13 +25,22 @@ public class Castillo extends Edificio implements Diseñador {
         vidaMaxima = VIDA_MAXIMA_CASTILLO;
     }
 
+    public int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
+
     @Override
-    public void recibirDanio(int unDanio, int ataqueEspadachinAUnidad) {
-        estadoVida = new Daniado();
-        super.recibirDanio(unDanio, ataqueEspadachinAUnidad);
+    public void atacarPieza(Pieza victima) {
+        victima.recibirDanioDe(this);
     }
 
-    private int obtenerDistanciaAtaque() { return DISTANCIA_ATAQUE_CASTILLO; }
+    @Override
+    public int danioParaUnidad() {
+        return ATAQUE_CASTILLO;
+    }
+
+    @Override
+    public int danioParaEdificio() {
+        return ATAQUE_CASTILLO;
+    }
 
     @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador jugador) {
@@ -66,12 +75,6 @@ public class Castillo extends Edificio implements Diseñador {
             this.vida = vida + VIDA_REPARACION_A_CASTILLO;
     }
 
-    public void atacarA(Pieza victima) {
-
-        victima.recibirDanio(ATAQUE_CASTILLO, ATAQUE_ESPADACHIN_A_UNIDAD);
-
-    }
-
     public void ataqueMasivo(Jugador unJugador, Mapa unMapa, Juego unJuego) {
 
         ArrayList<Pieza> victimas = unMapa.obtenerPiezasQueEstanEnRango(obtenerPrimeraPosicion() ,this.obtenerTamanio(), this.obtenerDistanciaAtaque());
@@ -79,7 +82,7 @@ public class Castillo extends Edificio implements Diseñador {
         for(Pieza victima : victimas){
             if( !unJugador.sosDuenioDe(victima) )
                 try {
-                    this.atacarA(victima);
+                    this.atacarPieza(victima);
                 }catch (PiezaDestruidaException e){
                     unJuego.actualizarPiezas();
                     unMapa.actualizarPiezas();
@@ -96,5 +99,16 @@ public class Castillo extends Edificio implements Diseñador {
     @Override
     public void verificarPosibleReparacion() {
         this.verificarProcesoEnReparacion();
+    }
+
+    @Override
+    public void recibirDanioDe(Atacante atacante) {
+        estadoVida = new Daniado();
+        int danio = atacante.danioParaEdificio();
+        if (vida - danio <= 0) {
+            vida = 0;
+            throw new PiezaDestruidaException();
+        }
+        vida-=danio;
     }
 }
