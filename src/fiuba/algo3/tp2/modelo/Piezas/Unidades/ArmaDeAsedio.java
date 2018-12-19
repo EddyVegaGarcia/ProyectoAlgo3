@@ -55,20 +55,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
 
     }
 
-    public void atacarUnidad(Unidad unaUnidad) {
-        throw new PiezaAtacadaNoValidaException();
-    }
-
-    public void atacarEdificio(Edificio unEdificio) {
-
-        this.validarAcciones();
-        this.validarAtaqueMontura();
-        this.validarRangoDeAtaqueAEdificio(unEdificio.obtenerPosiciones(), this.obtenerDistanciaAtaque());
-        unEdificio.recibirDanio(ATAQUE_ARMADEASEDIO);
-        this.accionRealizada();
-
-    }
-
     @Override
     public int obtenerDistanciaAtaque() {
         return distanciaDeAtaque;
@@ -133,10 +119,11 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
 
     @Override
     public void atacarPieza(Pieza unaPieza) {
-        if(unaPieza.obtenerTamanio() == 1)
-            this.atacarUnidad((Unidad)unaPieza);
-        else
-            this.atacarEdificio((Edificio) unaPieza);
+        this.validarAcciones();
+        this.validarAtaqueMontura();
+        this.validarRangoDeAtaque(unaPieza.obtenerPosiciones(), this.obtenerDistanciaAtaque());
+        unaPieza.recibirDanio(ATAQUE_ARMADEASEDIO);
+        this.accionRealizada();
     }
 
     @Override
