@@ -106,17 +106,6 @@ public class ArmaDeAsedio extends Unidad implements Atacante, Montable, Creable 
     }
 
     @Override
-    public void recibirCantidadDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=unDanio;
-
-    }
-
-    @Override
     public double getTamanio() {
         return tamanio;
     }

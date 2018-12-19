@@ -56,11 +56,6 @@ public class MouseAtaqueEventHandler implements EventHandler<MouseEvent> {
         catch (AccionUnicaRealizadaException e){
             etiquetaAlertas.setText("Cada piezaAtacante solo puede atacar una sola pieza.");
         }
-        catch (PiezaDestruidaException e){
-            juego.actualizarPiezas();
-            mapa.actualizarPiezas();
-            etiquetaAlertas.setText("Pieza victoriosamente destruida.");
-        }
         catch (PosicionAtacadaSinResultadosException e){
             etiquetaAlertas.setText("Ubicacion atacada sin resultados.");
         }
@@ -81,6 +76,8 @@ public class MouseAtaqueEventHandler implements EventHandler<MouseEvent> {
             FinalizadoView finalizadoView = new FinalizadoView(stage, juego);
         }
 
+        juego.actualizarPiezas();
+        mapa.actualizarPiezas();
         juegoView.actualizar();
         canvas.setOnMousePressed(new MouseEventHandler(juegoView, juego, canvas));
 

@@ -162,7 +162,7 @@ public class Jugador {
         List<Pieza> nuevaLista = new ArrayList<>();
 
         for(Pieza unaPieza : piezas){
-            if(unaPieza.obtenerVida() == 0) {
+            if(unaPieza.obtenerVida() <= 0) {
                 nuevaLista.add(unaPieza);
             }
         }
@@ -171,7 +171,7 @@ public class Jugador {
         List<Unidad> nuevaLista2 = new ArrayList<>();
 
         for(Unidad unaPoblacion: poblacion){
-            if(unaPoblacion.obtenerVida() == 0) {
+            if(unaPoblacion.obtenerVida() <= 0) {
                 nuevaLista2.add(unaPoblacion);
             }
         }
@@ -180,7 +180,7 @@ public class Jugador {
         List<Constructor> nuevaLista3 = new ArrayList<>();
 
         for(Constructor unAldeano: aldeanos){
-            if(((Pieza)unAldeano).obtenerVida() == 0) {
+            if(((Pieza)unAldeano).obtenerVida() <= 0) {
                 nuevaLista3.add(unAldeano);
             }
         }

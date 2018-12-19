@@ -30,7 +30,7 @@ public abstract class Pieza {
 
     public abstract void recibirDanioDe(Atacante pieza);
 
-    public abstract void recibirCantidadDanio(int unDanio);
+    public void recibirCantidadDanio(int unDanio){vida-=unDanio;}
 
     public int obtenerVida(){ return vida; }
 

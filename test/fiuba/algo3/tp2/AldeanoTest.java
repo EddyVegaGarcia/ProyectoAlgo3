@@ -72,15 +72,6 @@ public class AldeanoTest {
 
     }
 
-    @Test (expected = PiezaDestruidaException.class)
-    public void testAldeanoRecibeDanioDeEspadachinDosVecesYMuere() {
-
-        Unidad aldeano = new Aldeano();
-
-        aldeano.recibirDanioDe(new Espadachin());
-        aldeano.recibirDanioDe(new Espadachin());
-    }
-
     @Test
     public void testOroRecolectadoEs20SiEstaEnReposo(){
          Aldeano aldeano = new Aldeano();

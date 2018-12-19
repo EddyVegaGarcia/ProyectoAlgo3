@@ -179,14 +179,4 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
     }
 
-    @Override
-    public void recibirCantidadDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=unDanio;
-
-    }
 }

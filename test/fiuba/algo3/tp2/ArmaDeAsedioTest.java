@@ -58,20 +58,6 @@ public class ArmaDeAsedioTest {
 
     }
 
-    @Test (expected = PiezaDestruidaException.class)
-    public void testArmaDeAsedioRecibeDanioLaCantidadDeAtaqueDeEspadachinSeisVecesYMuere() {
-
-        Unidad armaDeAsedio = new ArmaDeAsedio();
-
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-        armaDeAsedio.recibirDanioDe(new Espadachin());
-
-    }
-
     //tests de mover
     @Test
     public void testMontarArmaDeAsedioConContadorIniciado() {
