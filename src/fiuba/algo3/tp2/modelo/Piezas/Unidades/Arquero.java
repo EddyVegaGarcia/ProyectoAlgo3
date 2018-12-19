@@ -1,8 +1,6 @@
 package fiuba.algo3.tp2.modelo.Piezas.Unidades;
 
 import fiuba.algo3.tp2.modelo.Exception.OroInsuficienteException;
-import fiuba.algo3.tp2.modelo.Exception.PiezaDestruidaException;
-import fiuba.algo3.tp2.modelo.Exception.PiezaNoReparableNoConstruibleException;
 import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
 import fiuba.algo3.tp2.modelo.Interfaces.Creable;
 import fiuba.algo3.tp2.modelo.Piezas.*;

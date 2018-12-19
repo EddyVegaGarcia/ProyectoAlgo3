@@ -113,11 +113,8 @@ public class AldeanoTest {
         Aldeano aldeano = new Aldeano();
         Cuartel cuartel =  new Cuartel();
         cuartel.recibirDanioDe(new Espadachin());
-        System.out.println(aldeano.estado);
         aldeano.repararPieza(cuartel);
-        System.out.println(aldeano.estado);
         aldeano.seguirReparando();
-        System.out.println(aldeano.estado);
 
 
         assertEquals(20, aldeano.oroRecolectado());

@@ -122,17 +122,6 @@ public class CuartelTest {
         assertEquals(vidaEsperada, cuartel.obtenerVida());
     }
 
-    @Test(expected = PiezaDestruidaException.class)
-    public void testCuartelRecibeDanioHastaSerdestruidoLanzaExcepcionYLaVidaEsCero(){
-        Edificio cuartel = new Cuartel();
-
-        cuartel.recibirDanioDe(new Espadachin());
-        cuartel.recibirDanioDe(new Arquero());
-        cuartel.recibirDanioDe(new ArmaDeAsedio());
-        cuartel.recibirDanioDe(new ArmaDeAsedio());
-        cuartel.recibirDanioDe(new ArmaDeAsedio());
-    }
-
     //tests de getters
 
     @Test

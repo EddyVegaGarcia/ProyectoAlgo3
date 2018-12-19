@@ -126,14 +126,4 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
 
     }
 
-    @Override
-    public void recibirCantidadDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=unDanio;
-
-    }
 }

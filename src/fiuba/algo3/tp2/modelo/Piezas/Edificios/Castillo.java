@@ -35,17 +35,6 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
     }
 
     @Override
-    public void recibirCantidadDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=unDanio;
-
-    }
-
-    @Override
     public void atacarUnidad(Pieza unaPieza) {
 
         unaPieza.recibirCantidadDanio(ATAQUE_CASTILLO);
@@ -108,12 +97,10 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
         for(Pieza victima : victimas){
             if( !unJugador.sosDuenioDe(victima) )
-                try {
-                    this.atacarPieza(victima);
-                }catch (PiezaDestruidaException e){
-                    unJuego.actualizarPiezas();
-                    unMapa.actualizarPiezas();
-                }
+                this.atacarPieza(victima);
+                unJuego.actualizarPiezas();
+                unMapa.actualizarPiezas();
+
         }
 
     }

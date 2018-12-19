@@ -106,22 +106,6 @@ public class PlazaCentralTest {
 
     }
 
-    @Test(expected = PiezaDestruidaException.class)
-    public void testRecibirDanioHastaSerDestruidoLanzaException(){
-        Edificio plazaCentral = new PlazaCentral();
-
-        plazaCentral.recibirDanioDe(new Espadachin());
-        plazaCentral.recibirDanioDe(new Arquero());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new ArmaDeAsedio());
-        plazaCentral.recibirDanioDe(new Espadachin());
-        plazaCentral.recibirDanioDe(new Espadachin());
-    }
-
     //tests de estados
     @Test
     public void testPlazaRecienCreadaNoEstaEnConstruccion(){

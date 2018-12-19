@@ -32,17 +32,6 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
     }
 
     @Override
-    public void recibirCantidadDanio(int unDanio) {
-
-        if (vida - unDanio <= 0) {
-            vida = 0;
-            throw new PiezaDestruidaException();
-        }
-        vida-=unDanio;
-
-    }
-
-    @Override
     public Unidad colocarPieza(PiezaType piezaType, Jugador unJugador){
         if(piezaType != UNIDAD_ALDEANO )
             throw new InvalidUnidadTypeException();
