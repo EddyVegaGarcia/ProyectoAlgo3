@@ -111,7 +111,7 @@ public class Juego{
 
     private void validarDistanciaDeCreacion(Posicion posicion, Edificio edificio) {
 
-        Posicion unaPosicion = edificio.obtenerPosicion();
+        Posicion unaPosicion = edificio.obtenerPrimeraPosicion();
 
         if( !unaPosicion.estaContenidaEnRango1(posicion, edificio.obtenerTamanio())) {
 
@@ -125,7 +125,9 @@ public class Juego{
 
         Pieza unaPieza = mapa.recuperarPieza(posicion);
 
-        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPosicion(),(Edificio) unaPieza);
+        ArrayList<Posicion> posiciones = ((Pieza)piezaConstructora).obtenerPosicion();
+
+        this.validarDistanciaDeCreacion(((Pieza)piezaConstructora).obtenerPrimeraPosicion(),(Edificio) unaPieza);
 
         piezaConstructora.construir(unaPieza);
 

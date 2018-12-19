@@ -16,6 +16,9 @@ public abstract class Pieza {
 
     public int obtenerVida(){ return vida; }
 
+    public Posicion obtenerPrimeraPosicion() { return posiciones.get(0);
+    }
+
     public int obtenerTamanio() { return tamanio; }
 
     public void recibirDanio(int unDanio) {
@@ -30,8 +33,8 @@ public abstract class Pieza {
 
     public void agregarPosicion(ArrayList<Posicion> unaLista) {posiciones = unaLista;}
 
-    public Posicion obtenerPosicion(){
-        return posiciones.get(0);
+    public ArrayList<Posicion> obtenerPosicion(){
+        return posiciones;
     }
 
     public void validarAcciones(){
@@ -52,22 +55,13 @@ public abstract class Pieza {
         accionesRealizadas = 0;
     }
 
-    public void validarRangoDeAtaque(Posicion posicionPiezaAtacada, int distanciaDeAtaque) {
-
-        if(!posicionPiezaAtacada.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), distanciaDeAtaque))
-            throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
-
-    }
-
-    protected void validarRangoDeAtaqueAEdificio(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
+    protected void validarRangoDeAtaque(ArrayList<Posicion> unaListaPosiciones, int unaDistanciaDeAtaque) {
 
         for(Posicion unaPosicion : unaListaPosiciones){
 
-            if(unaPosicion.estaContenidaEnRangoDeAtaque(this.obtenerPosicion(), unaDistanciaDeAtaque))
+            if(unaPosicion.estaContenidaEnRangoDeAtaque(posiciones.get(0), unaDistanciaDeAtaque))
                 return;
-
         }
-
         throw new PiezaAtacadaNoEstaEnRangoDeAtaqueExeception();
 
     }

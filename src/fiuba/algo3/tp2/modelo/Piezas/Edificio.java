@@ -19,9 +19,4 @@ public abstract class Edificio extends Pieza implements Reparable {
 
     public abstract void darVidaPorReparacion();
 
-    public ArrayList<Posicion> obtenerPosiciones() {
-        return posiciones;
-    }
-
-
 }
