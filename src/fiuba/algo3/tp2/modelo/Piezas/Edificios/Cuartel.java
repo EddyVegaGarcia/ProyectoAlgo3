@@ -72,15 +72,6 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
     }
 
     @Override
-    public void verificarProcesoEnReparacion() {
-
-        if(estadoVida.estaEnReparacion()){
-            throw new EdificioEnReparacionException();
-        }
-
-    }
-
-    @Override
     public void finalizarConstruccion() {
 
         this.estado = this.estado.finalizarConstruccion();
@@ -88,23 +79,9 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
     }
 
     @Override
-    public void finalizarReparacion() {
-
-        this.estadoVida = this.estadoVida.finalizarReparacion();
-
-    }
-
-    @Override
     public void iniciarConstruccion() {
 
         this.estado = this.estado.iniciarConstruccion();
-
-    }
-
-    @Override
-    public void iniciarReparacion() {
-
-        this.estadoVida =  this.estadoVida.reparar();
 
     }
 

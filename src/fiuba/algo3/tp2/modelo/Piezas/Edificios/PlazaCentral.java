@@ -98,29 +98,6 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
     }
 
     @Override
-    public void verificarProcesoEnReparacion() {
-
-        if(estadoVida.estaEnReparacion()){
-            throw new EdificioEnReparacionException();
-        }
-
-    }
-
-    @Override
-    public void finalizarReparacion() {
-
-        this.estadoVida = this.estadoVida.finalizarReparacion();
-
-    }
-
-    @Override
-    public void iniciarReparacion() {
-
-        this.estadoVida =  this.estadoVida.reparar();
-
-    }
-
-    @Override
     public void validarExistencia() {
 
         if(!estado.estaConstruido())
