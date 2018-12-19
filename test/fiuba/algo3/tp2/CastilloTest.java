@@ -57,7 +57,7 @@ public class CastilloTest {
     @Test
     public void testRecibirDanioCambiaElEstadoDelCastilloADaniado(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         assertFalse(castillo.obtenerEstadoVida().estaReparado());
         assertFalse(castillo.obtenerEstadoVida().estaEnReparacion());
     }
@@ -79,7 +79,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ARQUERO_A_UNIDAD);
 
         int vidaEsperada = 990;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -91,7 +91,7 @@ public class CastilloTest {
 
         Edificio castillo = new Castillo();
 
-        castillo.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
 
         int vidaEsperada = 925;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -105,7 +105,7 @@ public class CastilloTest {
 
         castillo.recibirDanio(ATAQUE_ESPADACHIN_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
         castillo.recibirDanio(ATAQUE_ARQUERO_A_EDIFICIO, ATAQUE_ESPADACHIN_A_UNIDAD);
-        castillo.recibirDanio(ATAQUE_ARMADEASEDIO, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_ARMADEASEDIO_EDIFICIO, ATAQUE_ARMADEASEDIO_UNIDAD);
 
         int vidaEsperada = 900;
         assertEquals(vidaEsperada, castillo.obtenerVida());
@@ -174,7 +174,7 @@ public class CastilloTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn15(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         castillo.darVidaPorReparacion();
 
         assertEquals(995, castillo.obtenerVida());
@@ -183,7 +183,7 @@ public class CastilloTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn10SiACastilloLeFaltaDiezParaTenerLaVidaCompleta(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(10, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(10, ATAQUE_PARA_PRUEBA);
         castillo.darVidaPorReparacion();
 
         assertEquals(1000, castillo.obtenerVida());
@@ -192,7 +192,7 @@ public class CastilloTest {
     @Test
     public void testIniciarReparacionEnCastilloDaniadoCambiaElEstadoAEnReparacion(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         castillo.iniciarReparacion();
         assertTrue(castillo.obtenerEstadoVida().estaEnReparacion());
     }
@@ -207,7 +207,7 @@ public class CastilloTest {
     @Test
     public void testTerminarReparacionEnCastilloEnReparacionLeCambiaElEstadoAReparado(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         castillo.iniciarReparacion();
         castillo.finalizarReparacion();
         assertTrue(castillo.obtenerEstadoVida().estaReparado());
@@ -225,7 +225,7 @@ public class CastilloTest {
     @Test(expected = EdificioEnReparacionException.class)
     public void testVerificarProcesoEnReparacionLanzaExceptionSiEstaEnReparacion(){
         Castillo castillo = new Castillo();
-        castillo.recibirDanio(20, ATAQUE_ESPADACHIN_A_UNIDAD);
+        castillo.recibirDanio(ATAQUE_PARA_PRUEBA, ATAQUE_PARA_PRUEBA);
         castillo.iniciarReparacion();
 
         castillo.verificarProcesoEnReparacion();
@@ -240,7 +240,7 @@ public class CastilloTest {
         unJugador.ubicarEdificiosPorDefault(POSICION_DEFAULT_CASTILLO1, POSICION_DEFAULT_PLAZA1);
 
         Castillo unCastillo = unJugador.obtenerCastillo();
-        Posicion unaPosicion = unCastillo.obtenerPosicion();
+        Posicion unaPosicion = unCastillo.obtenerPrimeraPosicion();
 
         Posicion otraPosicion = new Posicion(0,33);
 

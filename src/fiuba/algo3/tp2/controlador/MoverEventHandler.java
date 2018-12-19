@@ -32,7 +32,7 @@ public class MoverEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         try {
-            mapa.moverUnidad(pieza.obtenerPosicion(), direccion);
+            mapa.moverUnidad(pieza.obtenerPrimeraPosicion(), direccion);
         }
         catch (AccionUnicaRealizadaException e){
             etiquetaAvisos.setText("Cada pieza solo puede realizar una unica accion");
