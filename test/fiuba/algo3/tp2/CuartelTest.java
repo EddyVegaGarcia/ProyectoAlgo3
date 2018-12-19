@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.Piezas.Edificios.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
+import fiuba.algo3.tp2.modelo.Piezas.Unidades.Aldeano;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.ArmaDeAsedio;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Arquero;
 import fiuba.algo3.tp2.modelo.Piezas.Unidades.Espadachin;
@@ -152,7 +153,7 @@ public class CuartelTest {
     public void testDarVidaPorReparacionAumentalaVidaDelCuartelEn50ComoMaximo() {
         Cuartel cuartel = new Cuartel();
         cuartel.recibirDanioDe(new ArmaDeAsedio());
-        cuartel.darVidaPorReparacion();
+        cuartel.reparacionPor(new Aldeano());
 
         assertEquals(225, cuartel.obtenerVida());
     }
@@ -160,8 +161,9 @@ public class CuartelTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCuartelEn20SiElCuartelTiene230DeVida(){
         Cuartel cuartel = new Cuartel();
+        Aldeano unAldeano = new Aldeano();
         cuartel.recibirDanioDe(new Espadachin());
-        cuartel.darVidaPorReparacion();
+        unAldeano.repararPieza(cuartel);
 
         assertEquals(250, cuartel.obtenerVida());
     }
@@ -169,7 +171,7 @@ public class CuartelTest {
     @Test
     public void testDarVidaPorReparacionNoAumentaLaVidaSiCuartelTieneVidaMaxima(){
         Cuartel cuartel = new Cuartel();
-        cuartel.darVidaPorReparacion();
+        cuartel.reparacionPor(new Aldeano());
 
         assertEquals(250, cuartel.obtenerVida());
     }

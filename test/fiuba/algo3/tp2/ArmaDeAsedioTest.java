@@ -132,27 +132,6 @@ public class ArmaDeAsedioTest {
     }
 
     //tests de ataques
-    @Test(expected = PiezaAtacadaNoValidaException.class)
-    public void testArmaDeAsedioAtacaUnAldeano() {
-
-        Atacante unArmaDeAsedio = new ArmaDeAsedio();
-        Pieza unAldeano = new Aldeano();
-
-        unArmaDeAsedio.atacarPieza(unAldeano);
-
-    }
-
-    @Test(expected = PiezaAtacadaNoValidaException.class)
-    public void testArmaDeAsedioAtacaUnaPiezaCualquiera() {
-
-        Atacante unArmaDeAsedio = new ArmaDeAsedio();
-        ((ArmaDeAsedio) unArmaDeAsedio).montar();
-        ((ArmaDeAsedio) unArmaDeAsedio).refrescar();
-        Pieza unaPieza = new Arquero();
-
-        unArmaDeAsedio.atacarPieza(unaPieza);
-
-    }
 
     @Test
     public void testArmaDeAsedioAtacaUnCuartelADistanciaDeAtaqueCorrecto() {

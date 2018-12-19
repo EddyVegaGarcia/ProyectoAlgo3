@@ -5,6 +5,9 @@ import fiuba.algo3.tp2.modelo.Exception.*;
 import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Castillo;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.Cuartel;
+import fiuba.algo3.tp2.modelo.Piezas.Edificios.PlazaCentral;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaFactory;
 import fiuba.algo3.tp2.modelo.UnidadFactory.PiezaType;
 
@@ -138,8 +141,30 @@ public class Aldeano extends Unidad implements Constructor, Creable {
     @Override
     public void seguirReparando() {
 
-        edificioCreado.darVidaPorReparacion();
         this.estado = ((Reparador)estado).reparar(edificioCreado, edificioCreado.obtenerType());
+        edificioCreado.reparacionPor(this);
+
+    }
+
+    @Override
+    public void repararCuartel(Cuartel unCuartel) {
+
+        unCuartel.darVidaPorReparacion(VIDA_REPARACION_A_CUARTEL);
+
+    }
+
+    @Override
+    public void repararPlazaCentral(PlazaCentral unaPlazaCentral) {
+
+        unaPlazaCentral.darVidaPorReparacion(VIDA_REPARACION_A_PLAZACENTRAL);
+
+    }
+
+    @Override
+    public void repararCastillo(Castillo unCastillo) {
+
+        unCastillo.darVidaPorReparacion(VIDA_REPARACION_A_CASTILLO);
+
     }
 
     @Override

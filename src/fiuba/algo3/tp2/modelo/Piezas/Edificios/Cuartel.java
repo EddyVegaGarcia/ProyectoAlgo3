@@ -4,10 +4,7 @@ import static fiuba.algo3.tp2.modelo.Constantes.*;
 
 import fiuba.algo3.tp2.modelo.Estados.*;
 import fiuba.algo3.tp2.modelo.Exception.*;
-import fiuba.algo3.tp2.modelo.Interfaces.Atacante;
-import fiuba.algo3.tp2.modelo.Interfaces.Construible;
-import fiuba.algo3.tp2.modelo.Interfaces.Creable;
-import fiuba.algo3.tp2.modelo.Interfaces.Diseñador;
+import fiuba.algo3.tp2.modelo.Interfaces.*;
 import fiuba.algo3.tp2.modelo.Juego.Jugador;
 import fiuba.algo3.tp2.modelo.Piezas.*;
 import fiuba.algo3.tp2.modelo.UnidadFactory.*;
@@ -39,11 +36,22 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
     }
 
     @Override
-    public void darVidaPorReparacion() {
-        if(vida + VIDA_REPARACION_A_CUARTEL > VIDA_MAXIMA_CUARTEL)
+    public void reparacionPor(Constructor unConstructor) {
+
+        unConstructor.repararCuartel(this);
+
+    }
+
+    @Override
+    public void darVidaPorReparacion(int unaCantidadReparacion) {
+
+        if(vida + unaCantidadReparacion >= VIDA_MAXIMA_CUARTEL) {
             vida = VIDA_MAXIMA_CUARTEL;
+            this.finalizarReparacion();
+        }
         else
-            this.vida = vida + VIDA_REPARACION_A_CUARTEL;
+            super.darVidaPorReparacion(unaCantidadReparacion);
+
     }
 
     @Override

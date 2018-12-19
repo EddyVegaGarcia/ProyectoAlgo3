@@ -176,7 +176,7 @@ public class CastilloTest {
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn15(){
         Castillo castillo = new Castillo();
         castillo.recibirDanioDe(new Castillo());
-        castillo.darVidaPorReparacion();
+        castillo.reparacionPor(new Aldeano());
 
         assertEquals(995, castillo.obtenerVida());
     }
@@ -184,8 +184,9 @@ public class CastilloTest {
     @Test
     public void testDarVidaPorReparacionAumentaLaVidaDelCastilloEn10SiACastilloLeFaltaDiezParaTenerLaVidaCompleta(){
         Castillo castillo = new Castillo();
+        Aldeano unAldeano = new Aldeano();
         castillo.recibirDanioDe(new Arquero());
-        castillo.darVidaPorReparacion();
+        unAldeano.repararPieza(castillo);
 
         assertEquals(1000, castillo.obtenerVida());
     }

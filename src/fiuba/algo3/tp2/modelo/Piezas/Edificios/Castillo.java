@@ -84,12 +84,22 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
     }
 
     @Override
-    public void darVidaPorReparacion() {
+    public void reparacionPor(Constructor unConstructor) {
 
-        if(vida + VIDA_REPARACION_A_CASTILLO > VIDA_MAXIMA_CASTILLO)
+        unConstructor.repararCastillo(this);
+
+    }
+
+    @Override
+    public void darVidaPorReparacion(int unaCantidadReparacion) {
+
+        if(vida + unaCantidadReparacion >= VIDA_MAXIMA_CASTILLO) {
             vida = VIDA_MAXIMA_CASTILLO;
+            this.finalizarReparacion();
+        }
         else
-            this.vida = vida + VIDA_REPARACION_A_CASTILLO;
+            super.darVidaPorReparacion(unaCantidadReparacion);
+
     }
 
     public void ataqueMasivo(Jugador unJugador, Mapa unMapa, Juego unJuego) {
