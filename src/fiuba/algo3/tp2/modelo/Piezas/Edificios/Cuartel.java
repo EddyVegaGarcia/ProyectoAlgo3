@@ -29,9 +29,7 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
         this.validarExistencia();
         Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);
         unidad.validarOroSuficiente(unJugador.obtenerOro());
-        this.validarAcciones();
 
-        this.accionRealizada();
         return (Unidad) unidad;
     }
 
@@ -119,11 +117,8 @@ public class Cuartel extends Edificio implements Diseñador, Construible, Creabl
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-
         estadoVida = new Daniado();
-
         atacante.atacarEdificio(this);
-
     }
 
 }

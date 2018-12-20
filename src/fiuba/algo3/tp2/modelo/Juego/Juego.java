@@ -78,13 +78,15 @@ public class Juego{
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
         jugadorDeTurno().validarPoblacionMaxima();
-        this.validarDistanciaDeCreacion(posicion, (Edificio) piezaConstructora);
+        this.validarDistanciaDeCreacion(posicion, (Edificio)piezaConstructora);
         mapa.validarPosicion(posicion);
+        ((Pieza)piezaConstructora).validarAcciones();
 
         Unidad unaUnidad = (Unidad) piezaConstructora.colocarPieza(unidadType, jugadorDeTurno());
 
         mapa.colocarPieza(unaUnidad, posicion);
 
+        ((Pieza)piezaConstructora).accionRealizada();
         jugadorDeTurno().agregaPieza(unaUnidad);
         jugadorDeTurno().pagar( ( (Creable)unaUnidad ).costo() );
     }
@@ -95,16 +97,15 @@ public class Juego{
         Edificio unEdificio = (Edificio) piezaConstructora.colocarPieza(piezaType, jugadorDeTurno());
 
         Posicion posicion = new Posicion((int)fila, (int)columna);
-
         ArrayList<Posicion> unaLista = posicion.generarListaDePosicionesAdyacentes(unEdificio.obtenerTamanio());
 
-        for(Posicion unaPosicion : unaLista){
-
+        for(Posicion unaPosicion : unaLista)
             mapa.validarPosicion(unaPosicion);
 
-        }
-        mapa.colocarPieza(unEdificio, posicion);
+        ( (Pieza)piezaConstructora ).validarAcciones();
 
+        mapa.colocarPieza(unEdificio, posicion);
+        ( (Pieza)piezaConstructora ).accionRealizada();
         jugadorDeTurno().agregaPieza(unEdificio);
         jugadorDeTurno().pagar( ( (Creable)unEdificio ).costo() );
     }

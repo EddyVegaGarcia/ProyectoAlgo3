@@ -33,9 +33,7 @@ public class Arquero extends Unidad implements Atacante, Creable {
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-
         atacante.atacarUnidad(this);
-
     }
 
     @Override
@@ -53,16 +51,12 @@ public class Arquero extends Unidad implements Atacante, Creable {
 
     @Override
     public void atacarUnidad(Pieza unaPieza) {
-
         unaPieza.recibirCantidadDanio(ATAQUE_ARQUERO_A_UNIDAD);
-
     }
 
     @Override
     public void atacarEdificio(Pieza unaPieza) {
-
         unaPieza.recibirCantidadDanio(ATAQUE_ARQUERO_A_EDIFICIO);
-
     }
 
     @Override

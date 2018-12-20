@@ -38,13 +38,10 @@ public class Aldeano extends Unidad implements Constructor, Creable {
         if ( (piezaType != PiezaType.EDIFICIO_CUARTEL) && (piezaType != PiezaType.EDIFICIO_PLAZACENTRAL) )
             throw new InvalidUnidadTypeException();
 
-        this.validarAcciones();
-
         Creable edificio;
         edificio = (Creable)PiezaFactory.crearPieza(piezaType);
         edificio.validarOroSuficiente(unJugador.obtenerOro());
 
-        this.accionRealizada();
         return (Edificio)edificio;
 
     }
@@ -176,9 +173,7 @@ public class Aldeano extends Unidad implements Constructor, Creable {
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-
         atacante.atacarUnidad(this);
-
     }
 
 }

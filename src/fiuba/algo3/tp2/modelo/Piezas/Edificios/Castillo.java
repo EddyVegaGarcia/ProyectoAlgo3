@@ -36,9 +36,7 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
     @Override
     public void atacarUnidad(Pieza unaPieza) {
-
         unaPieza.recibirCantidadDanio(ATAQUE_CASTILLO);
-
     }
 
     @Override
@@ -56,8 +54,6 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
         Creable unidad = (Creable)PiezaFactory.crearPieza(piezaType);
         unidad.validarOroSuficiente(jugador.obtenerOro());
-        this.validarAcciones();
-        this.accionRealizada();
 
         return (Unidad)unidad;
     }
@@ -117,9 +113,7 @@ public class Castillo extends Edificio implements Diseñador, Atacante {
 
     @Override
     public void recibirDanioDe(Atacante atacante) {
-
         estadoVida = new Daniado();
-
         atacante.atacarEdificio(this);
     }
 }

@@ -36,7 +36,7 @@ public abstract class Pieza {
 
     public Posicion obtenerPrimeraPosicion() { return posiciones.get(0); }
 
-    protected void accionRealizada() { accionesRealizadas = 1; }
+    public void accionRealizada() { accionesRealizadas = 1; }
 
     public void refrescar(){ accionesRealizadas = 0; }
 

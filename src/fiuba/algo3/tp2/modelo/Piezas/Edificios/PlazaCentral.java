@@ -40,9 +40,6 @@ public class PlazaCentral extends Edificio implements Diseñador, Construible, C
         this.validarExistencia();
         unidad.validarOroSuficiente(unJugador.obtenerOro());
 
-        this.validarAcciones();
-        this.accionRealizada();
-
         return (Unidad) unidad;
     }
 
